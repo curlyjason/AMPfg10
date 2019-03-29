@@ -1,0 +1,38 @@
+/* 
+    Created on : May 12, 2015, 3:04:59 PM
+    Author     : jasont
+*/
+
+.Customers > h1 {
+    background-color: #003d4c;
+    border-radius: 4px;
+    padding: 10px;
+	color: white;
+}
+
+div.Customer {
+    margin-left: 2%;
+}
+
+div.Items{
+	margin-left: 2%;
+}
+
+div.Items table > tbody > tr > td:nth-child(1) {
+    width: 30%;
+}
+div.Items table > tbody > tr > td:nth-child(2) {
+    width: 20%;
+}
+div.Items table > tbody > tr > td:nth-child(3) {
+    width: 20%;
+}
+div.Items table > tbody > tr > td:nth-child(4) {
+    width: 10%;
+}
+div.Items table > tbody > tr > td:nth-child(5) {
+    width: 10%;
+}
+div.Items table > tbody > tr > td:nth-child(6) {
+    width: 10%;
+}

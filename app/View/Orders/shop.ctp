@@ -1,0 +1,1 @@
+<p>You can shop in this catalog</p>

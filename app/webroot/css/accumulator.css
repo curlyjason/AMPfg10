@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+div.page, div.page-x {
+    height: 10in;
+    width: 8.5in;
+}
+
+/* *************************************************** 
+  Starter settings for divs
+  These get refined for special circumstances
+*************************************************** */
+
+/* section wrapper, needs sizing and content */
+div.section{
+    border: thin solid #CCCCCC;	
+}
+div.right {
+    float: right;
+}
+div.left {
+    float: left;
+}
+/* when a section has columns, these two styles make them. width comes later */
+div.split {
+	border-right: thin solid #ccc;
+	height: 100%
+}
+div.split:last-of-type {
+	border-right: none;
+}
+/* sections get .25in, gray header bars */
+div.header {
+	height: .25in;
+	background-color: #eee;
+	border-bottom: thin solid #ccc;
+/*	padding-top: 3px;*/
+}
+div.header p, div.type h1 {
+	font-variant: small-caps;
+	font-weight: bold;
+	text-align: center;
+}
+div.type h1 {
+	padding-top: 5px;
+}
+div.header p {
+	font-size: 90%;
+	padding-top: 5px;
+}
+div.type {
+	background-color: #ddd;
+}
+div.reference_block, div.type {
+	clear: right;
+    float: right;
+    height: 0.5in;
+    margin-bottom: 0.125in;
+    /*padding: 0.125in;*/
+    width: 3.5in;
+}
+div#amp p{
+	font-size: 120%;
+	padding: 2px;
+}
+div.page_header {
+	width: 100%;
+	height: .25in;
+	clear: both;
+	text-align: right;
+	font-variant: small-caps;
+}
+/* *************************************************** 
+  Refinements for the addresss section
+*************************************************** */
+/* the sizing for an address section */
+div.address {
+    clear: right;
+    height: 1.25in;
+    width: 3.5in;
+	margin-bottom: .25in;
+}
+div.address div.content_block {
+    padding: 5px 12px;
+}
+
+.section.address.right.replenishment {
+    visibility: hidden;
+}
+/* *************************************************** 
+  Refinements for the reference block
+*************************************************** */
+/* the sizing and position for the reference block */
+div.reference_block {
+    border: thin solid #CCCCCC;
+/*	clear: right;
+    float: right;
+    height: 0.5in;
+    margin-bottom: 0.125in;
+    padding: 0.125in;
+    width: 3.5in;*/
+}
+div.split {
+	height: 100%;
+}
+div.reference_block div.split {
+	width: 49%;
+}
+div.reference_block div.content_block, div.reference_block div.header {
+	height: .25in;
+}
+div.reference_block div.content_block p {
+	padding-top: 3px;
+	text-align: center;
+}
+/* *************************************************** 
+  Line item section
+*************************************************** */
+div.accumulator {
+	border: none;
+	/*margin-top: .25in;*/
+	clear: both;
+	width: 100%;
+	height: 7.5in;
+	border: thin solid #ccc;
+}
+div.page-x div.accumulator {
+	margin: 0;
+	height: 100%;
+}
+div.summary {
+    border: thin solid #CCCCCC;
+    clear: both;
+    height: 0.5in;
+    margin-bottom: 0.125in;
+    width: 100%;
+}
+div.accumulator div.header {
+	border-bottom: thin solid #ccc;
+}
+div.accumulator div.split:first-of-type {
+	clear: left;
+}
+div.line {
+	height: .25in;
+	border-bottom: thin solid #eee;
+	/*border-top: none;*/
+}
+div.accumulator div.header p, div.summary div.header p {
+	text-align: left;
+	padding-left: 8px;
+}
+div.accumulator div.line p, div.summary div.content_block p {
+	padding-left: 8px;
+	padding-top: 3px;
+}
+/* *************************************************** 
+  Order Line item section
+*************************************************** */
+div.accumulator div.split:nth-of-type(1) { /* # */
+	width: 5%;
+}
+div.accumulator div.split:nth-of-type(2) { /* qty */
+	width: 7%;
+}
+div.accumulator div.split:nth-of-type(3) { /* code */
+	width: 13%
+}
+div.accumulator div.split:nth-of-type(4) { /* name */
+	width: 54%;
+}
+div.accumulator div.split:nth-of-type(5) { /* loc */
+	width: 20%;
+}
+div.summary div.content_block {
+	height: 50%;
+}
+div.summary div.split {
+	width: 16.5%;
+}
+/* *************************************************** 
+  Additional pages
+*************************************************** */
+div.page-x {
+	page-break-before: always;
+	/*height: 10.875in;*/
+	/*margin-bottom: 1.25in;*/
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<note
+	xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+	xsi:noNamespaceSchemaLocation='file:/Library/WebServer/Documents/amp-fg/app/webroot/files/note.xsd'>
+	<to>Don Drake</to>
+	<from>His Future Self</from>
+	<heading>RE: Next Month</heading>
+	<body>Next month it will be warm and your short sleaved shirts are getting thread-bare. How about doing some clothes shopping? Your going to meet someone who cares about such trivialities.</body>
+<!--	<blahfoo>This is blahfoo info</blahfoo>-->
+
+</note>

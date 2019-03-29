@@ -1,0 +1,81 @@
+/* 
+    Document   : report.print
+    Created on : Apr 9, 2014, 4:32:10 PM
+    Author     : jasont
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+*{
+	/*font-size: 60%;*/
+	margin-left: .25in;
+	margin-top: .25in;
+	font-family: sans-serif;
+}
+table { 
+    width: 7.5in;
+	font-size: 10pt;
+}
+table table{
+	width: 100%;
+}
+table, table table, table tr, table tr td, tbody, div, td, tr, .spacer table { 
+	margin: 0;
+	padding: 0;
+}
+.spacer th, th, tr > th {
+	background-color: #999;
+    font-size: 50%;
+	color: white;
+	font-weight: normal;
+	text-align: left;
+}
+td {
+	border: none;
+}
+table table td {
+	border-left: thin solid #ddd;
+	border-bottom: thin solid #999;
+}
+.spacer table {
+	width: 100%;
+}
+
+/*.spacer table > tbody > tr > td:nth-child(1) {
+    width: 60%;
+}
+.spacer table > tbody > tr > td:nth-child(2) {
+    width: 5%;
+}
+.spacer table > tbody > tr > td:nth-child(3) {
+    width: 5%;
+}
+.spacer table > tbody > tr > td:nth-child(4) {
+    width: 5%;
+}
+.spacer table > tbody > tr > td:nth-child(5) {
+    width: 5%;
+}*/
+table table > tbody > tr > td:nth-child(1) {
+    width: 37%;
+}
+table table > tbody > tr > td:nth-child(2) {
+    width: 14%;
+}
+table table > tbody > tr > td:nth-child(3) {
+    width: 14%;
+}
+table table > tbody > tr > td:nth-child(4) {
+    width: 14%;
+}
+table table > tbody > tr > td:nth-child(5) {
+    width: 14%;
+}
+table > tbody > tr:nth-child(3) {
+	border: none;
+}
+
+tr.inventoryStartSnapshot > td, tr.inventoryEndSnapshot > td {
+	font-size: 2pt;
+	background-color: grey;
+}

@@ -1,0 +1,108 @@
+/* 
+    Document   : menu
+    Created on : Sep 5, 2013, 4:25:50 PM
+    Author     : jasont
+    Description: provide styling for the menu element
+*/
+
+/*ul#MainMenu {
+    background-color: #003D4C;
+    border-top: 5px solid tan;
+    height: 20px;
+    margin-top: 20px;
+    padding-top: 10px;
+}*/
+/*ul#MainMenu {
+    background-color: #003D4C;
+    font-size: 90%;
+    font-weight: normal;
+    height: 20px;
+    padding-top: 10px;
+}*/
+ul#MainMenu {
+    background-color: #003D4C;
+    font-size: 90%;
+    font-weight: normal;
+    height: 20px;
+    margin-top: 14px;
+    padding-top: 10px;
+}
+
+ul#MainMenu.snap {
+    margin-left: -20px;
+    margin-top: 0;
+    padding-top: 0;
+    position: fixed;
+    top: 0;
+    z-index: 10005;
+	width: 100%;
+}
+
+ul#MainMenu.unsnap {
+	position: realative;
+}
+
+ul#MainMenu a {
+    font-weight: normal;
+}
+/*#MainMenu > li {
+    display: inline-block;
+    position: relative;
+    width: 97px;
+}*/
+/*#MainMenu > li {
+    border-right: thin dotted #7A7A7A;
+    display: inline-block;
+    font-size: 90%;
+    position: relative;
+    width: 69px;
+}*/
+#MainMenu > li {
+    border-right: thin dotted #7A7A7A;
+    display: inline-block;
+    font-size: 90%;
+    margin: 0;
+    padding: 0 10px;
+    position: relative;
+    text-align: center;
+    width: 69px;
+}
+#MainMenu > li > a{
+    /*width: 40em;*/
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+#MainMenu > li > a:hover{
+    /*text-decoration:underline;*/
+}
+
+#MainMenu > li > ul > li > a{
+    color: #003D4C;
+    text-decoration: none;
+}
+#MainMenu > li > ul > li > a:hover{
+    text-decoration: underline;
+}
+
+#MainMenu > li > ul {
+    display: none;
+    text-align: left;
+}
+
+#MainMenu > li > ul > li {
+    width: 170px;
+    list-style: circle;
+}
+
+#MainMenu > li > ul:hover, #MainMenu > li:hover > ul {
+    display: block;
+    position: absolute;
+    background-color: white;
+    opacity: 0.95;
+    padding: 5px;
+    padding-left: 15px;
+    border: thin solid #2c6877;
+    border-top: 5px solid tan;
+    z-index: 15000;
+}

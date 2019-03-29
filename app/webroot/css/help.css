@@ -1,0 +1,26 @@
+/* 
+    Document   : help
+    Created on : Jan 24, 2014, 1:00:56 PM
+    Author     : jasont
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+.helpText.float{
+	background-color: #FFFFFF;
+	opacity: 0.96;
+	padding: 25px;
+	position: absolute;
+	width: 50%;
+	height: 45%;
+	border-radius: 30px;
+	border: thin solid black;
+}
+.helpTextMarkdown {
+    height: 80%;
+    overflow: auto;
+}
+textarea#HelpHelp {
+    font-size: 100%;
+}

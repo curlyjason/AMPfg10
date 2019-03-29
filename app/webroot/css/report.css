@@ -1,0 +1,109 @@
+/* 
+    Document   : report
+    Created on : Apr 2, 2014, 6:11:09 PM
+    Author     : jasont
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+th {
+    color: #535353;
+    font-size: 72%;
+    font-weight: normal;
+    padding-left: 6px;
+}
+.Order > td, .inventoryHead > td {
+    background-color: #FFFFFF;
+    border-bottom: medium none;
+    font-weight: bold;
+}
+tr > th,
+.inventoryStartSnapshot > td,
+.inventoryEndSnapshot > td {
+    background-color: #CCCCCC;
+    border: medium none;
+}
+.spacer > td {
+}
+.spacer > td {
+    background-color: #FFFFFF;
+    padding: 0;
+}
+.orderItem > td,
+.inventoryActivity >td {
+    border-bottom: medium none;
+}
+.inventoryActivity > td {
+	font-size: 80%;
+	padding: 2px 6px;
+}
+.Status > td {
+    background-color: #EEEEEE;
+    border: medium none;
+    font-size: 150%;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+.spacer th,
+.inventoryStartSnapshot > td,
+.inventoryEndSnapshot > td {
+    background-color: #ECECEC;
+    font-size: 70%;
+}
+h2 {
+	margin: 0;
+	font-size: .25in;
+	font-family: sans-serif;
+}
+.spacer table > tbody > tr > td:nth-child(1) {
+    width: 40%;
+}
+.spacer table > tbody > tr > td:nth-child(2) {
+    width: 15%;
+}
+.spacer table > tbody > tr > td:nth-child(3) {
+    width: 15%;
+}
+.spacer table > tbody > tr > td:nth-child(4) {
+    width: 15%;
+}
+.spacer table > tbody > tr > td:nth-child(5) {
+    width: 15%;
+}
+table > tbody > tr > td:nth-child(1) {
+    width: 15%;
+}
+table > tbody > tr > td:nth-child(2) {
+    width: 33%;
+}
+table > tbody > tr > td:nth-child(3) {
+    width: 25%;
+}
+table > tbody > tr > td:nth-child(4) {
+    width: 25%;
+}
+table#inventory > tbody > tr > td:nth-child(1) {
+    width: 20%;
+}
+table#inventory > tbody > tr > td:nth-child(2) {
+    width: 20%;
+}
+table#inventory > tbody > tr > td:nth-child(3) {
+    width: 15%;
+}
+table#inventory > tbody > tr > td:nth-child(4) {
+    width: 20%;
+}
+table#inventory > tbody > tr > td:nth-child(5) {
+    width: 15%;
+}
+tr.section > td {
+    background-color: #000000;
+    border-top: 16px solid;
+    color: #FFFFFF;
+    font-size: 80%;
+    padding: 5px 0 6px 10px;
+}

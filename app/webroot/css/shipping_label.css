@@ -1,0 +1,82 @@
+#labels > li > button {
+    width: 200px;
+}
+#labels > li:first-of-type {
+    margin-bottom: 7px;
+}
+#labels img {
+    margin-left: 5px;
+}
+tr.itemRow label {
+    display: inline;
+    font-size: 80%;
+}
+tr.itemRow input[type="text"] {
+    font-size: 100%;
+    margin-left: 8px;
+    width: 49%;
+}
+.itemRow > td:first-child {
+    padding-top: 12px;
+}
+tr > td:nth-child(3) {
+    width: 59%;
+}
+tr > td:nth-child(1) {
+     width: 13%;
+}
+tr.omit.itemRow {
+    color: #ccc;
+}
+img.print {
+	margin-bottom: -2px;
+	width: 18px;
+	height: 18px;
+}
+
+div#address > p {
+    font-size: 20px;
+    margin: 0 0 0 .125in;
+}
+div#label {
+    height: 6in;
+    width: 4in;
+	padding: .125in;
+}
+div#label > div {
+    margin-top: 0.125in;
+}
+div#items > p {
+	margin: 0;
+	padding: 5px 0 0;
+}
+.contains > span {
+     border: thin solid #aaaaaa;
+     display: inline-block;
+     padding: 5px;
+}
+
+.qty {
+     width: 10%;
+}
+
+.name {
+     width: 80%;
+}
+p.labelOrderNumber {
+    font-size: 150%;
+    font-style: normal;
+}
+div#content div.sidebar h3.labelHeading {
+    margin-left: 0;
+    padding: 0;
+    text-align: left;
+    width: 100%;
+}
+p.labelAddress {
+    margin: 3px;
+    padding: 0;
+}
+.labelNewButton{
+    margin-top: 10px;
+}

@@ -1,0 +1,49 @@
+tr#section, td[id*="invoiceTitleTotal-"], td[id*="groupHeaderRow-"] {
+    font-size: 130%;
+	/*border-top: 26px solid rgba(0, 0, 0, 0);*/
+    font-weight: bold;
+}
+#section > td {
+    /*border-top: rgba(0, 0, 0, 0);*/
+    background-color: rgba(0, 64, 77, 0.19);
+	/*border-top: 26px solid rgba(0, 0, 0, 0);*/
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+tr > th, td[id*="invoiceTitleTotal-"], td[id*="groupHeaderRow-"] {
+    background-color: rgba(0, 64, 77, 0.07);
+}
+td[id*="groupHeaderRow-"]{
+	text-align: right;
+}
+td[id*="toolRow"] > a {
+    text-decoration: none;
+}
+td[id*="toolRow"] > a:hover {
+    text-decoration: underline;
+}
+td[id*="toolRow"]{
+	border-bottom: solid 15px rgba(0,0,0,0);
+}
+tr#section, td[id*="invoiceTitleTotal-"], td[id*="groupHeaderRow-"] {
+    font-size: 115%;
+}
+#chargeTools h2 {
+	color: #003D4C;
+	font-weight: bold;
+}
+p.first, p.second {
+    font-size: 80%;
+    font-weight: normal;
+    margin: 0;
+}
+.ordItems {
+    font-size: 60%;
+}
+.ordItems th {
+    padding: 0;
+}
+.ordItems td {
+    padding: 1px;
+    font-weight: normal;
+}

@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<xs:schema version="1.0"
+			xmlns:ad="http://localhost/ampfg/files/addressTypes.xsd"
+		   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		   elementFormDefault="qualified">
+	 <xs:import schemaLocation="addressTypes.xsd"
+	namespace="http://localhost/ampfg/files/addressTypes.xsd" />
+
+	<xs:element name="Body">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Credentials">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="company" type="xs:string"/>
+							<xs:element name="token" type="TokenType"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Orders">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Order" type="OrderType" minOccurs="1" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element> 
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="OrderType">
+		<xs:sequence>
+			<xs:element name="billing_company" type="xs:string" minOccurs ="0" maxOccurs ="1"/>
+			<xs:element name="first_name" type="xs:string" minOccurs ="0" maxOccurs ="1"/>
+			<xs:element name="last_name" type="xs:string" minOccurs ="0" maxOccurs ="1"/>
+			<xs:element name="phone" type="xs:string" minOccurs ="0" maxOccurs ="1"/>
+			<xs:element name="billing_address" type="xs:string" minOccurs ="0" maxOccurs ="1"/>
+			<xs:element name="billing_address2" type="xs:string" minOccurs ="0" maxOccurs ="1"/>
+			<xs:element name="billing_city" type="xs:string" minOccurs ="0" maxOccurs ="1"/>
+			<xs:element name="billing_state" type="ad:StateType" minOccurs ="0" maxOccurs ="1"/>
+			<xs:element name="billing_zip" type="ad:ZipType" minOccurs ="0" maxOccurs ="1"/>
+			<xs:element name="billing_country" type="ad:CountryType" minOccurs ="0" maxOccurs ="1"/>
+			<xs:element name="order_reference" type="xs:string" minOccurs ="0" maxOccurs ="1"/>
+			<xs:element name="note" type="xs:string" minOccurs ="0" maxOccurs ="1"/>
+			<xs:element name="OrderItems">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="OrderItem" type="OrderItemType" minOccurs="1" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Shipments" type="ShipmentType" minOccurs="1" maxOccurs="1">
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="OrderItemType">
+		<xs:sequence>
+			<xs:element name="catalog_id" type="xs:string" minOccurs ="0" maxOccurs ="1"/>
+			<xs:element name="customer_item_code" type="xs:string" minOccurs ="0" maxOccurs ="1"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="quantity" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ShipmentType">
+		<xs:sequence>
+			<xs:element name="billing" type="xs:string"/>
+			<xs:element name="carrier" type="xs:string"/>
+			<xs:element name="method" type="xs:string"/>
+			<xs:element name="billing_account" type="xs:string" minOccurs ="0" maxOccurs ="1"/>
+			<xs:element name="first_name" type="xs:string"/>
+			<xs:element name="last_name" type="xs:string"/>
+			<xs:element name="email" type="xs:string" minOccurs ="0" maxOccurs ="1"/>
+			<xs:element name="phone" type="xs:string"/>
+			<xs:element name="company" type="xs:string"/>
+			<xs:element name="address" type="xs:string"/>
+			<xs:element name="address2" type="xs:string" minOccurs ="0" maxOccurs ="1"/>
+			<xs:element name="city" type="xs:string"/>
+			<xs:element name="state" type="ad:StateType"/>
+			<xs:element name="zip" type="ad:ZipType"/>
+			<xs:element name="country" type="ad:CountryType"/>
+			<xs:element name="tpb_company" type="xs:string" minOccurs ="0" maxOccurs ="1"/>
+			<xs:element name="tpb_address" type="xs:string" minOccurs ="0" maxOccurs ="1"/>
+			<xs:element name="tpb_city" type="xs:string" minOccurs ="0" maxOccurs ="1"/>
+			<xs:element name="tpb_state" type="xs:string" minOccurs ="0" maxOccurs ="1"/>
+			<xs:element name="tpb_zip" type="xs:string" minOccurs ="0" maxOccurs ="1"/>
+			<xs:element name="tpb_phone" type="xs:string" minOccurs ="0" maxOccurs ="1"/>
+		</xs:sequence>
+	</xs:complexType>
+													
+	<xs:simpleType name="TokenType">
+		<xs:restriction base="xs:string">
+			<!--<xs:pattern value="[a-f0-9]{36}" />-->
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>

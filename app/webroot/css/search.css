@@ -1,0 +1,80 @@
+div.search.user > div > p {
+    font-size: 85%;
+    margin: 0;
+}
+div.search.user > div > p > span.decoration {
+    color: #888;
+    display: inline-block;
+	width: 150px;
+	text-align: right;
+	margin-right: 10px;
+}
+div.search.user h4 {
+    background-color: #EEEEEE;
+    margin: 0 0 3px;
+    padding: 3px 14px;
+}
+div.search.user > h4 > a {
+	/*text-decoration: none;*/
+	color: #003d4c;
+}
+div.search.user > h4 > a:hover {
+	text-decoration: underline;
+	color: #367889;
+}
+div.search h3 {
+    background-color: #ddd;
+}
+div.search.user {
+    margin: 10px;
+}
+.highlight {
+	background-color: #FFF246;
+}
+div.tools div, div.tools input, div.tools label {
+    margin: 0;
+    padding: 0;
+}
+div.tools label {
+    margin: 0;
+    padding: 0;
+}
+div.tools label {
+    font-size: 80%;
+    padding-left: 6px;
+}
+div.tools input {
+    /*margin-top: 3px;*/
+}
+p#filter {
+    background-color: #CCCCCC;
+    font-size: 90%;
+    margin: -0.5em;
+    padding: 4px;
+    width: 102%;
+}
+div.tools {
+    border: thin solid #CCCCCC;
+    position: absolute;
+    z-index: 500;
+    width: 235px;
+	background-color: white;
+}
+div.tools div.filter {
+    margin-top: 11px;
+}
+p.filter {
+    margin-bottom: 0;
+    margin-left: -5px;
+}
+form#UserSearchForm > div.submit {
+    float: right;
+    margin-top: -14px;
+}
+form#UserSearchForm {
+    border-bottom: thick solid #5BA150;
+    padding-bottom: 48px;
+}
+#filterSave {
+	color: firebrick;
+}

@@ -1,0 +1,115 @@
+/* 
+    Document   : ampfg_grain
+    Created on : Oct 9, 2013, 4:30:15 PM
+    Author     : jasont
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+/*.addressDisplay {
+    font-size: 80%;
+}*/
+
+span.decoration{
+    background-color: #DDDDDD;
+    border-radius: 10px 10px 10px 10px;
+    display: inline-block;
+    font-size: 72%;
+    margin-right: 5px;
+    padding: 1px 4px 3px 0;
+    text-align: right;
+    width: 25%;
+}
+p.decoration{
+    margin-top: 2px;
+    margin-bottom: 1px;
+}
+div.row{
+    margin-left: 50px;
+    width: 800px;
+}
+h3.grainDisplay {
+    background-color: #DDDDDD;
+    border-radius: 10px 10px 10px 10px;
+    margin: 24px 0 0;
+    padding: 4px 15px;
+    font-size: 20px;
+}
+.grainNew, .grainEdit, .grainDelete, .grainDetail {
+    float: right;
+    font-size: 11px;
+    display: inline-block;
+}
+
+table .grainNew, table .grainEdit, table .grainDelete, table .grainDetail {
+    /*float: right;*/
+    font-size: 11px;
+    display: inline-block;
+    margin: 0;
+}
+
+div > .grainNew, div > .grainEdit, div > .grainDetail {
+    margin: 7px 10px 0 0;
+}
+div[class*="Display"] > button.grainEdit, div[class*="Display"] > button.grainNew {
+    margin-right: 63%;
+}
+th {
+    background: none repeat scroll 0 0 #E8E8E8;
+    border: medium none;
+    border-radius: 10px 10px 10px 10px;
+    color: #5A5A5A;
+    font-size: 12px;
+    padding: 4px 0 4px 12px;
+}
+.owner, .owner > p {
+    background-color: #E8E8E8;
+    border-radius: 10px 10px 10px 10px;
+    color: #555555;
+    margin: 0;
+    padding: 0 10px;
+    vertical-align: middle;
+}
+
+h2 > img.folder {
+    height: 20px;
+    padding: 0 8px;
+}
+
+div.view > h2 > img.filler {
+    height: 20px;
+    margin: 0 8px;
+    width: 20px;
+}
+div.customersDisplay > div.checkbox {
+    margin-left: 0;
+}
+div.pull_fee input {
+    width: 50%;
+}
+#PricePullFeesForm > button {
+    font-size: 80%;
+    margin: -5px 42px 10px 0;
+}
+span > select {
+    margin-bottom: -5px;
+}
+div.invoiceLines {
+	-moz-column-count: 3;
+	column-count: 3;
+	-webkit-column-count: 3;
+    margin-top: 12px;
+}
+div.invoiceLines li {
+	margin-bottom: 4px;
+}
+.invoicePrintButton {
+    padding: 1px 2px;
+}
+span.invoiceNumber {
+	cursor: pointer;
+}

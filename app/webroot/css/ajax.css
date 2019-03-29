@@ -1,0 +1,184 @@
+.hide {
+    display: none;
+}
+/*.start {
+background-color: #D2B48C;
+    border: medium solid firebrick;
+    border-radius: 30px 30px 30px 30px;
+    color: #B22222;
+    display: block;
+    font-size: 140%;
+    opacity: 0.9;
+    padding: 25px 50px;
+    position: absolute;
+    z-index: 3056;
+}*/
+.start {
+background-color: #DDDDDD;
+    border: medium solid #003D4C;
+    border-radius: 13px;
+    color: #B22222;
+    display: block;
+    font-size: 140%;
+    opacity: 0.9;
+    padding: 25px 50px;
+    position: absolute;
+    z-index: 3056;
+}
+/* ========================================
+FORM FORMATS FOR TREE EDIT FORM
+=========================================*/
+div.view form.grainVersion {
+    background: none repeat scroll 0 0 #DDDDDD;
+    border: medium solid #003D4C;
+    border-radius: 13px;
+    display: block;
+    padding: 16px;
+    width: auto;
+}
+.treeEdit > form, form.grainVersion {
+    background: none repeat scroll 0 0 #DDDDDD;
+    border: medium solid #003D4C;
+    border-radius: 13px 13px 13px 13px;
+    display: none;
+    padding: 16px;
+    width: 55%;
+	z-index: 500;
+}
+/*.treeEdit > form > fieldset > div.ajaxPull > legend {
+    background-color: #A0522D;
+    border-radius: 10px 10px 0 0;
+    color: #FFFFFF;
+    font-size: 120%;
+    margin: -16px 17px 5px -16px;
+    padding: 13px 20px 13px 13px;
+    text-align: center;
+    width: 100%;
+}*/
+#treeFormLegend {
+    background-color: #003D4C;
+    border-radius: 10px 10px 0 0;
+    color: #FFFFFF;
+    font-size: 120%;
+    margin: -16px 17px 5px -16px;
+    padding: 13px 20px 13px 13px;
+    text-align: center;
+    width: 100%;
+}
+div.input {
+    margin: 4px 0;
+}
+div.input.checkbox, div.input.radio, .permissions div.checkbox, .advanced div.radio, .advanced div.checkbox {
+    margin-left: 26%;
+}
+.treeEdit label, form.grainVersion label {
+    display: inline-block;    
+}
+div.input > label, div.select > label, label[for="ItemPrice"] {
+    width: 25%;
+    text-align: right;
+    padding-right: 5px;
+}
+label[for='ItemUnitDescription']{
+    margin: 0 5px;
+}
+.ItemPrice.ItemUnitDescription > input {
+    width: 30%;
+}
+.ItemPrice.ItemUnitDescription {
+    margin: 4px 0;
+}
+div.select > label {
+    padding-right: 6px;
+}
+div.permissions > div.checkbox, div.advanced {
+    display: none;
+}
+div.permissions > label, p.advanced, legend.toggle {
+    background: none repeat scroll 0 0 #003D4C;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    margin-bottom: 0;
+    margin-top: 5px;
+    padding: 5px;
+    width: 97%;
+}
+
+p.instruction {
+    cursor: auto;
+}
+div.input.select > select {
+    width: 73%;
+}
+div.input input{
+    width: 72%;
+}
+div.input textarea{
+    width: 73%;
+    height: 5em;
+}
+.input.checkbox > input, .input.radio > input {
+    width: auto;
+    padding-right: 5px;
+}
+.input.checkbox > label, div.checkbox > label {
+    padding-left: 5px;
+    text-align: left;
+    width: 75%;
+}
+.input.radio > label, div.radio > label {
+    padding-left: 5px;
+    text-align: left;
+    /*width: 30%;*/
+}
+/*button, form.grainVersion input[type="submit"] {
+    background: none repeat scroll 0 0 #DDDDDD;
+    border-radius: 5px;
+    font-size: 117%;
+    margin-right: 42px;
+    margin-top: 10px;
+    padding: 3px;
+}*/
+
+.ajaxEditPull > img {
+    border: medium solid #8C6E00;
+    border-radius: 13px 13px 13px 13px;
+    left: -172px;
+    position: absolute;
+    top: -2px;
+}
+
+.overlay {
+    background: none repeat scroll 0 0 #FFFFFF;
+    margin-left: -15px;
+    opacity: 0.85;
+    position: absolute;
+    z-index: 490;
+	cursor: pointer;
+}
+.overlayWarning {
+	text-align: center;
+    font-size: 150%;
+    font-weight: bold;
+    padding-top: 83px;
+	cursor: inherit;
+}
+button#newCustomer {
+	margin: -10px 0 20px -9px;
+/*    margin-bottom: 20px;
+    margin-left: -9px;
+    margin-top: -10px;*/
+}
+div.ajaxPull.ajaxEditPull p {
+    background-color: #003D4C;
+    color: #FFFFFF;
+    margin: 12px 0 5px;
+    padding: 4px 12px;
+}
+.access div.checkbox {
+    font-size: 93%;
+}
+.access div.checkbox:last-of-type {
+    margin-bottom: 8px;
+}

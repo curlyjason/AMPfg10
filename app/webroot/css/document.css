@@ -1,0 +1,29 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 28, 2014, 5:50:02 PM
+    Author     : jasont
+*/
+
+#docTools td:nth-child(1) {
+    width: 90%;
+}
+#docTools label {
+    display: inline-block;
+    width: 22%;
+}
+#DocumentSaveForm button {
+    margin-top: 0;
+}
+p[id*="editDoc"] {
+    margin-bottom: 0.5em;
+}
+#DocumentSaveForm button {
+    margin-top: 0;
+}
+p[id*="editDoc"] {
+    margin-bottom: 0.5em;
+}

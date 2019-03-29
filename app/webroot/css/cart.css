@@ -1,0 +1,275 @@
+td.cartItem:first-of-type img {
+    width: 80px;
+    height: 60px;
+}
+input.submit[type="image"] {
+    width: auto;
+}
+.checkoutCell {
+    width: 71%;
+}
+.payPalButton, .googleButton {
+    display: none;
+}
+form.grainVersion {
+    display: block;
+    padding: 16px;
+    width: auto;
+    margin-left: 20px;
+}
+div.input {
+    margin: 4px 0;
+}
+form.grainVersion label {
+    display: inline-block;    
+}
+div.input > label, div.select > label {
+    width: 25%;
+    text-align: right;
+    padding-right: 5px;
+}
+div.textarea > label {
+    text-align: left;
+}
+div.select > label {
+    padding-right: 6px;
+}
+div.input.select > select {
+    width: 73%;
+}
+div.input input{
+    width: 70%;
+}
+div.input textarea{
+    width: 73%;
+    height: 5em;
+}
+.input.checkbox > input, .input.radio > input {
+    width: auto;
+    padding-right: 5px;
+}
+.input.checkbox > label, .input.radio > label, div.checkbox > label {
+    padding-left: 5px;
+    text-align: left;
+    width: auto;
+}
+div.input.checkbox, div.input.radio, .permissions div.checkbox, .advanced div.radio, .advanced div.checkbox {
+    margin-left: 26%;
+}
+.overCommitted {
+    font-weight: bold;
+    color: firebrick;
+}
+.overCommitted:before {
+	content: '(';
+}
+.overCommitted:after {
+	content: ')';
+}
+input, textarea {
+    font-size: 100%;
+    width: 52%;
+}
+/* TABLE GENERICS */
+table {
+    margin-left: 5%;
+    width: 95%;
+    margin-top: 2px;
+}
+table {
+    border-collapse: collapse;
+}
+table th {
+    background-color: #C0C0C0;
+    border: medium none;
+    border-radius: 9px;
+    color: #FFFFFF;
+	padding:5px 5px 5px 10px;
+	font-weight: normal;
+}
+table.notFirst > tbody > tr:first-child{
+    display: none;
+}
+table.notFirst {
+    margin-top: 0;
+    margin-bottom: 0;
+    border-top: none;
+}
+table.first {
+    margin-bottom: 0;
+}
+table td {
+    border-left: medium solid #FFFFFF;
+    padding: 4px 0 4px 12px;
+}
+table td.sumary {
+    /*border-left: thin solid #858585;*/
+    padding: 4px 0 4px 12px;
+}
+tableItems {
+    border: 2px solid #BDBDBD;
+    border-collapse: collapse;
+    margin-bottom: 0;
+    margin-top: 0;
+    font-size: 120%;
+}
+table tdItems {
+    padding: 0;
+    background-color: #BDBDBD
+}
+tableItems th {
+    background-color: #BDBDBD;
+}
+
+/* WRAPPER TABLE WIDTHS */
+table > tbody > tr > td:nth-child(1) {
+    width: 7%;
+}
+table > tbody > tr > td:nth-child(2) {
+    width: 60%;
+}
+table > tbody > tr > td:nth-child(3) {
+    width: 15%;
+}
+table > tbody > tr > td:nth-child(4) {
+    width: 15%;
+}
+table > tbody > tr > td:nth-child(5) {
+    width: 15%;
+}
+table > tbody > tr > td:nth-child(6) {
+    width: 15%;
+}
+table > tbody > tr > td:nth-child(7) {
+    width: 5%;
+}
+table > tbody > tr > td.summary:nth-child(1) {
+    width: 77%;
+}
+table > tbody > tr > td.summary:nth-child(2) {
+    width: 27%;
+}
+
+/*Address Page Stuff*/
+div.displayAddresses {
+/*	 columns:auto 2;
+	-webkit-columns:auto 2;  Safari and Chrome 
+	-moz-columns:2 auto;  Firefox */
+}
+
+/*div.billingAddressElement {
+    margin-bottom: 30px;
+}
+div.shippingMethod {
+    width: 59%;
+}
+div.billingAddress {
+    margin-left: 55%;
+    position: absolute;
+    width: 40%;
+
+}
+div.addressSelectors {
+	float: left;
+	width: 45%;
+}*/
+div.addressClosingButtons > button, button.checkout {
+	background: #dcdcdc;
+    color: #FFFFFF;
+    float: right;
+    font-size: 150%;
+    text-shadow: none;
+	margin-top: 20px;
+}
+div.addressClosingButtons > .addressSubmit, button.checkout {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#5CB85C), to(#008000));
+	background-image: -webkit-linear-gradient(top, #5CB85C, #008000);
+	background-image: -moz-linear-gradient(top, #5CB85C, #008000);
+	background-image: -ms-linear-gradient(top, #5CB85C, #008000);
+	background-image: -o-linear-gradient(top, #5CB85C, #008000);
+	background-image: linear-gradient(top, #5CB85C, #008000);
+}
+
+div.addressClosingButtons > .addressCancel {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#EE3322), to(#9F0000));
+	background-image: -webkit-linear-gradient(top, #EE3322, #9F0000);
+	background-image: -moz-linear-gradient(top, #EE3322, #9F0000);
+	background-image: -ms-linear-gradient(top, #EE3322, #9F0000);
+	background-image: -o-linear-gradient(top, #EE3322, #9F0000);
+	background-image: linear-gradient(top, #EE3322, #9F0000);
+	margin-right: 20px;
+}
+div.addressClosingButtons{
+	margin-right: 6%;
+}
+
+div.addressSection{
+	width: 600px;
+}
+div.reviewAddresses {
+    height: 275px;
+    position: relative;
+}
+div.reviewBillingAddress {
+	float: left;
+	width: 40%;
+}
+div.reviewBillingAddress span.decoration{
+	width: 30%
+}
+div.reviewShippingAddress span.decoration{
+	width: 15%
+}
+div.orderSummary {
+    margin-top: 15px;
+}
+div.reviewOrderItems {
+    margin-right: 5%;
+	clear: both;
+}
+div.reviewClosingButtons > button {
+	background: #dcdcdc;
+    color: #FFFFFF;
+    float: right;
+    font-size: 150%;
+    text-shadow: none;
+	margin-top: 20px;
+}
+div.reviewClosingButtons > button.orderReviewSubmitButton{
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#5CB85C), to(#008000));
+	background-image: -webkit-linear-gradient(top, #5CB85C, #008000);
+	background-image: -moz-linear-gradient(top, #5CB85C, #008000);
+	background-image: -ms-linear-gradient(top, #5CB85C, #008000);
+	background-image: -o-linear-gradient(top, #5CB85C, #008000);
+	background-image: linear-gradient(top, #5CB85C, #008000);
+}
+
+div.reviewClosingButtons > button.orderReviewBackButton {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#EE3322), to(#9F0000));
+	background-image: -webkit-linear-gradient(top, #EE3322, #9F0000);
+	background-image: -moz-linear-gradient(top, #EE3322, #9F0000);
+	background-image: -ms-linear-gradient(top, #EE3322, #9F0000);
+	background-image: -o-linear-gradient(top, #EE3322, #9F0000);
+	background-image: linear-gradient(top, #EE3322, #9F0000);
+	margin-right: 20px;
+}
+
+div#shipmentTools div.input {
+	margin: 0;
+	padding: 1px;
+}
+
+div#shipmentTools button.addressEditCancel {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#EE3322), to(#9F0000));
+	background-image: -webkit-linear-gradient(top, #EE3322, #9F0000);
+	background-image: -moz-linear-gradient(top, #EE3322, #9F0000);
+	background-image: -ms-linear-gradient(top, #EE3322, #9F0000);
+	background-image: -o-linear-gradient(top, #EE3322, #9F0000);
+	background-image: linear-gradient(top, #EE3322, #9F0000);
+	margin-right: 20px;
+}
+
+div#shipmentTools form.grainVersion {
+	margin: 0;
+	padding: 0;
+}

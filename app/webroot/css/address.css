@@ -1,0 +1,44 @@
+/* 
+    Created on : Aug 19, 2014, 5:57:41 PM
+    Author     : jasont
+*/
+
+/* ===================================
+Document upload table
+====================================*/
+table > tbody > tr > td:nth-child(1) {
+    width: 80%;
+}
+table > tbody > tr > td:nth-child(2) {
+    width: 20%;
+}
+tr div.textarea > label {
+	text-align: right;
+	vertical-align: top;
+}
+table .flash-msg button {
+	display: none;
+}
+/* ===================================
+Toggle-labels show/hide inputs
+====================================*/
+label.toggle:hover {
+     text-decoration: underline;
+}
+
+label.toggle:after {
+     content: " ~";
+}
+
+
+select.addressSelect option {
+    color: black;
+    font-size: 120%;
+    padding-left: 12px;
+}
+select.addressSelect optgroup {
+    color: #999;
+    font-size: 80%;
+    font-weight: normal;
+    padding: 5px 0 0 5px;
+}

@@ -1,0 +1,158 @@
+.item {
+    border-bottom: thin solid #D2B48C;
+    clear: both;
+    height: 136px;
+    margin-bottom: 5px;
+    position: relative;
+}
+.item > img {
+    float: left;
+    margin-right: 10px;
+}
+.addToCartForm {
+    bottom: 3px;
+    clear: none;
+    font-size: 85%;
+    margin-right: 0;
+    position: absolute;
+    right: 3px;
+    text-align: right;
+    width: 200px;
+}
+/*button.addtocart {
+    float: right;
+    font-size: 80%;
+    margin-right: 0;
+    margin-top: 3px;
+}*/
+.addToCartForm div.input {
+    clear: none;
+    float: right;
+}
+.addToCartForm div.input p {
+    margin-bottom: 4px;
+}
+.addToCartForm div.input input {
+    width: 15%;
+}
+div.item div.description {
+    height: 120px;
+    overflow: auto;
+    width: 65%;
+}
+div.item div.description > p {
+    font-size: 90%;
+}
+.overCommitted {
+    font-weight: bold;
+    color: firebrick;
+}
+.overCommitted:before {
+	content: '(';
+}
+.overCommitted:after {
+	content: ')';
+}
+
+div.pagination.snap {
+    position: fixed;
+    top: 64px;
+    z-index: 10001;
+	padding-top:1px;
+}
+
+div.pagination.snap > div.folders, div.pagination.unsnap > div.folders{
+    float: left;
+    margin-right: 10px;
+}
+
+div.pagination {
+    margin-top: -44px;
+    position: absolute;
+	width: 100%;
+	background-color: #fff;
+	z-index: 10;
+}
+
+.currentPaginationLink.paginationLink {
+    background: none repeat scroll 0 0 #003D4C;
+    color: #FFFFFF;
+    margin: -2px;
+    padding: 2px;
+}
+
+div.pagination div.input.select {
+    display: inline;
+    margin-left: 10px;
+}
+div.pagination div.input.select > select {
+    font-size: 80%;
+    width: 100px;
+}
+.input.text.quantity {
+    font-size: 100%;
+	line-height: 150%;
+    width: 200px;
+}
+div.countAlert {
+    margin-right: 7px;
+    margin-top: 7px;
+}
+
+/* *************************************************
+FOLDERS IN THIS CATALOG
+js detects the presence of this div and 
+adds padding to div.item top to make room for this
+************************************************* */
+
+div.item {
+    /*padding-top: 26px;*/
+}
+div.folders > ul {
+    display: none;
+	padding: 10px 0;
+}
+div.folders {
+    background-color: #CCCCCC;
+    padding: 4px 15px;
+    /*position: absolute;*/
+    top: 0;
+    font-size: 80%;
+}
+div.folders > p {
+    margin: 0;
+    padding: 0;
+}
+div.folders:hover > ul {
+    display: block;
+}
+div.folders a {
+	font-weight: normal;
+	text-decoration: none;
+	color: #367889;
+}
+div.folders a:hover {
+	text-decoration: underline;
+	color: #003D4C;
+}
+.cart-msg{
+    float: right;
+    width: 300px;
+	position: fixed;
+}
+.item > img {
+    height: 130px;
+}
+a.reveal.toggle {
+    padding: 0;
+}
+.description > h4 {
+    margin-bottom: 0;
+}
+div[class*="revealComponents"] {
+    background-color: #F5F5F5;
+    margin-left: 24px;
+}
+div.pagination + div.item {
+    padding-top: 26px;
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<note
+	xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+	xsi:noNamespaceSchemaLocation='file:/Library/WebServer/Documents/ampfg/app/webroot/files/note.xsd'>
+	<to></to>
+	<from></from>
+	<heading></heading>
+	<body></body>
+
+</note>

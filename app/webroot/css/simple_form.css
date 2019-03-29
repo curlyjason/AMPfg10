@@ -1,0 +1,23 @@
+/* 
+    Document   : simple_form
+    Created on : Jan 13, 2014, 12:39:36 PM
+    Author     : dondrake
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+label {
+	display: inline-block;
+	width: 17%;
+	font-size: 90%;
+	text-align: right;
+	margin-right: 1em;
+}
+input {
+	display: inline-block;
+	width: 59%;
+	font-size: 90%;
+}

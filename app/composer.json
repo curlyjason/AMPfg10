@@ -1,0 +1,19 @@
+{
+    "name": "AMPfg10",
+    "config": {
+        "vendor-dir": "Vendor/"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.* || 5.*",
+        "josegonzalez/cakephp-upload": "2.x-dev",
+        "dompdf/dompdf" : "0.6.*",
+        "cakephp/debug_kit" : "^2.2.0",
+        "maurymmarques/markdown-plugin": "dev-master"
+    },
+    "extra": {
+        "installer-paths": {
+            "Plugin/Markdown": ["maurymmarques/markdown-plugin"]
+        }
+    }
+}
+

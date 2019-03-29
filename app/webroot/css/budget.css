@@ -1,0 +1,67 @@
+/* 
+    Document   : budget
+    Created on : Dec 6, 2013, 2:08:38 PM
+    Author     : jasont
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/*=========================================
+HEADER BUDGET
+=========================================*/
+#header div#budget_status > div.negative span.decoration {
+    background-color: firebrick;
+    color: white;
+}
+#header div#budget_status > div span.decoration {
+}
+#header > div#budget_status {
+    float: right;
+    width: 190px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-size: 72%;
+}
+#header > div#budget_status > div {
+    margin-bottom: 1px;
+}
+#header div#budget_status span.decoration {
+    color: #003d4c;
+    width: 70%;
+    opacity: .9;
+    border-radius: 10px 10px 10px 10px;
+    display: inline-block;
+    margin-right: 5px;
+    padding: 1px 4px 3px 0;
+    text-align: right;
+    border: thin solid #ccc;
+    background-color: #DDDDDD;
+}
+#header div#budget_status p.decoration {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+/*span.decoration{
+    background-color: #DDDDDD;
+    width: 25%;
+}*/
+
+/*=========================================
+BUDGET INDICATOR
+=========================================*/
+span.positive {
+    color: green;
+}
+span.negative {
+    color: firebrick;
+    font-weight: bold;
+}
+span.flyout {
+    background-color: #F5DEB3;
+    border: thin solid #A52A2A;
+    border-radius: 5px;
+    margin-left: -14px;
+    margin-top: 5px;
+    padding: 5px;
+    position: absolute;
+}

@@ -1,0 +1,162 @@
+/* ========================================
+Reset forms to basic, compressed design
+=========================================*/
+fieldset legend, label, select, input, textArea, input[type="submit"], option {
+    font-size: 100%;
+}
+form div, fieldset, label, input, textArea, input[type="checkbox"], form div.submit, form .submit input[type="submit"], input[type="submit"], .actions ul li a, .actions a, option, input[type="radio"], .radio label {
+    margin: 0;
+    padding: 0;
+}
+form div {
+    clear: both;
+}
+label {
+    display: inline;
+}
+.radio label, input[type="radio"] {
+    line-height: normal;
+}
+input, textArea {
+    width: auto;
+}
+input[type="checkbox"], input[type="radio"] {
+    float: none;
+}
+form .submit input[type="submit"], form .submit input[type="submit"]:hover, input[type="submit"], .actions ul li a, .actions a {
+    background: none;
+    border: none;
+    color: black;
+    border-radius: none;
+    box-shadow: none;
+    text-shadow: none;
+}
+.pricingUnits > input {
+    width: 15%;
+}
+.pricing {
+	 columns:100px 3;
+	-webkit-columns:100px 3; /* Safari and Chrome */
+	-moz-columns:100px 3; /* Firefox */
+}
+div.pricing label {
+    display: block;
+    font-size: 80%;
+    text-align: left;
+    width: auto;
+}
+div.itemBlock span.decoration {
+    display: inline-block;
+    padding-right: 5px;
+    text-align: right;
+    width: 25%;
+}
+span.text {
+    padding: 3px;
+    width: 72%;
+}
+p.decoration {
+    margin: 4px 0;
+}
+div.pricing img {
+    padding: 4px;
+}
+/*div.locations > ul {
+    display: none;
+	position: absolute;
+	background-color: white;
+	border: thin solid black;
+	border-radius: 10px;
+	padding: 10px 10px 10px 15px;
+	margin-top: -15px
+}
+div.locations > p:hover + ul,
+div.locations > ul:hover {
+    display: block;
+}
+div.locations .locationEditText {
+    font-size: 75%;
+    font-style: italic;
+}*/
+input.indent-1, option.indent-1 {
+    margin-left: 1em;
+}
+input.indent-2, option.indent-2 {
+    margin-left: 2em;
+}
+input.indent-3, option.indent-3 {
+    margin-left: 3em;
+}
+input.indent-4, option.indent-4 {
+    margin-left: 4em;
+}
+input.indent-5, option.indent-5 {
+    margin-left: 5em;
+}
+input.indent-6, option.indent-6 {
+    margin-left: 6em;
+}
+input.indent-7, option.indent-7 {
+    margin-left: 7em;
+}
+input.indent-8, option.indent-8 {
+    margin-left: 8em;
+}
+input.indent-9, option.indent-9 {
+    margin-left: 9em;
+}
+input.indent-10, option.indent-10 {
+    margin-left: 10em;
+}
+fieldset.kitFields.hide.help {
+    margin-left: 26%;
+}
+.kitFields.hide.help label {
+    padding-left: 6px;
+    width: 95%;
+}
+.kitFields.hide.help > div#CanOrderComponents {
+    margin: 9px 0 0;
+}
+div.shipmentAddOns label {
+    display: inline-block;
+	width: 10%;
+	text-align: right;
+	padding-right: 5px;
+}
+div.shipmentAddOns div.input {
+    margin-bottom: 5px;
+}
+button.big {
+	background: #dcdcdc;
+    color: #FFFFFF;
+    float: right;
+    font-size: 150%;
+    text-shadow: none;
+	margin: 20px 10px 0px 10px;
+}
+button.regular {
+	background: #858585;
+    color: #FFFFFF;
+    float: right;
+    text-shadow: none;
+	margin: 20px 10px 0px 10px;
+}
+button.green {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#5CB85C), to(#008000));
+	background-image: -webkit-linear-gradient(top, #5CB85C, #008000);
+	background-image: -moz-linear-gradient(top, #5CB85C, #008000);
+	background-image: -ms-linear-gradient(top, #5CB85C, #008000);
+	background-image: -o-linear-gradient(top, #5CB85C, #008000);
+	background-image: linear-gradient(top, #5CB85C, #008000);
+}
+
+button.red {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#EE3322), to(#9F0000));
+	background-image: -webkit-linear-gradient(top, #EE3322, #9F0000);
+	background-image: -moz-linear-gradient(top, #EE3322, #9F0000);
+	background-image: -ms-linear-gradient(top, #EE3322, #9F0000);
+	background-image: -o-linear-gradient(top, #EE3322, #9F0000);
+	background-image: linear-gradient(top, #EE3322, #9F0000);
+	margin-right: 20px;
+}

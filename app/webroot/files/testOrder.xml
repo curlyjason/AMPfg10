@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Body
+	xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+	xsi:noNamespaceSchemaLocation='file:/Library/WebServer/Documents/ampfg/app/webroot/files/xmlOrder.xsd'>
+	<Credentials>
+		<company>INVALID</company>
+		<token>INVALID</token>
+	</Credentials>
+	<Order>
+		<billing_company>INVALID</billing_company>
+		<first_name>INVALID</first_name>
+		<last_name>INVALID</last_name>
+		<phone>INVALID</phone>
+		<billing_address>INVALID</billing_address>
+		<billing_address2>INVALID</billing_address2>
+		<billing_city>INVALID</billing_city>
+		<billing_state>INVALID</billing_state>
+		<billing_zip>INVALID</billing_zip>
+		<billing_country>INVALID</billing_country>
+		<note>INVALID</note>
+		<OrderItems>
+			<OrderItem>
+				<index>INVALID</index>
+				<catalog_id>INVALID</catalog_id>
+				<name>INVALID</name>
+				<quantity>INVALID</quantity>
+			</OrderItem>
+			<OrderItem>
+				<index>INVALID</index>
+				<catalog_id>INVALID</catalog_id>
+				<name>INVALID</name>
+				<quantity>INVALID</quantity>
+			</OrderItem>
+			<OrderItem>
+				<index>INVALID</index>
+				<catalog_id>INVALID</catalog_id>
+				<name>INVALID</name>
+				<quantity>INVALID</quantity>
+			</OrderItem>
+		</OrderItems>
+		<Shipments>
+			<billing>INVALID</billing>
+			<carrier>INVALID</carrier>
+			<method>INVALID</method>
+			<billing_account>INVALID</billing_account>
+			<fedex_acct>INVALID</fedex_acct>
+			<ups_acct>INVALID</ups_acct>
+			<first_name>INVALID</first_name>
+			<last_name>INVALID</last_name>
+			<email>INVALID</email>
+			<phone>INVALID</phone>
+			<company>INVALID</company>
+			<address>INVALID</address>
+			<address2>INVALID</address2>
+			<city>INVALID</city>
+			<state>INVALID</state>
+			<zip>INVALID</zip>
+			<country>INVALID</country>
+			<tpb_company>INVALID</tpb_company>
+			<tpb_address>INVALID</tpb_address>
+			<tpb_city>INVALID</tpb_city>
+			<tpb_state>INVALID</tpb_state>
+			<tpb_zip>INVALID</tpb_zip>
+			<tpb_phone>INVALID</tpb_phone>
+		</Shipments>
+	</Order>
+
+</Body>

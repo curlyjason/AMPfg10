@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<xs:schema version="1.0"
+			xmlns:ad="http://localhost/ampfg/files/addressTypes.xsd"
+		   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		   elementFormDefault="qualified">
+	 <xs:import schemaLocation="addressTypes.xsd"
+	namespace="http://localhost/ampfg/files/addressTypes.xsd" />
+
+	<xs:element name="Body">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Credentials">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="company" type="xs:string"/>
+							<xs:element name="token" type="TokenType"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Orders">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="OrderNumbers" type="OrderNumberType" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element name="OrderReferences" type="OrderReferenceType" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element> 
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="OrderNumberType">
+		<xs:sequence>
+			<xs:element name="order_number" type="xs:string" minOccurs ="0" maxOccurs ="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="OrderReferenceType">
+		<xs:sequence>
+			<xs:element name="order_reference" type="xs:string" minOccurs ="0" maxOccurs ="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:simpleType name="TokenType">
+		<xs:restriction base="xs:string">
+			<!--<xs:pattern value="[a-f0-9]{36}" />-->
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>

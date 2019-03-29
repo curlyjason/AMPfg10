@@ -1,0 +1,111 @@
+tr[id*="row"] {
+    border-top: medium solid;
+}
+table tr:nth-child(4n+2), table tr:nth-child(4n+3) {
+    background: none repeat scroll 0 0 #FFFFFF;
+}
+table tr:nth-child(4n), table tr:nth-child(4n+1) {
+    background: none repeat scroll 0 0 #e5e5e5;
+}
+.cartItem.checkboxTool {
+    font-size: 150%;
+}
+.cartItem.checkboxTool input {
+    height: 16px;
+    margin-top: 4px;
+    width: 30px;
+}
+.detailLink {
+    font-size: 150%;
+}
+td.cartItem Input.numeric {
+    font-size: 100%;
+    width: 74%;
+}
+.cartItem.checkboxTool {
+    padding: 5px 1px 1px;
+}
+span.itemName {
+    font-size: 70%;
+}
+.locNum {
+    color: #003D4C;
+    font-size: 120%;
+    font-weight: bold;
+}
+.cartQuantity {
+    font-size: 150%;
+}
+/* WRAPPER TABLE WIDTHS */
+table.order > tbody > tr > td:nth-child(1) {
+    width: 22%;
+}
+table.order > tbody > tr > td:nth-child(2) {
+    width: 8%;
+}
+table.order > tbody > tr > td:nth-child(3) {
+    width: 10%;
+}
+table.order > tbody > tr > td:nth-child(4) {
+    width: 15%;
+}
+table.order > tbody > tr > td:nth-child(5) {
+    width: 15%;
+}
+table.order > tbody > tr > td:nth-child(6) {
+    width: 10%;
+}
+table.order > tbody > tr > td:nth-child(7) {
+    width: 15%;
+}
+
+
+/* ORDER ITEM TABLE WIDTHS */
+table.warehouseItems th:first-child {
+    border-left: none;
+}
+table.warehouseItems.Order > tbody > tr > td:nth-child(1) {
+    width: 22%;
+}
+table.warehouseItems.Order > tbody > tr > td:nth-child(2) {
+    width: 8%;
+}
+table.warehouseItems.Order > tbody > tr > td:nth-child(3) {
+    width: 10%;
+}
+table.warehouseItems.Order > tbody > tr > td:nth-child(4) {
+    width: 15%;
+}
+table.warehouseItems.Order > tbody > tr > td:nth-child(5) {
+    width: 15%;
+}
+table.warehouseItems.Order > tbody > tr > td:nth-child(6) {
+    width: 10%;
+}
+table.warehouseItems.Order > tbody > tr > td:nth-child(7) {
+    width: 15%;
+}
+
+/* REPLENISHMENT ITEM TABLE WIDTHS */
+table.warehouseItems.Replenishment > tbody > tr > td:nth-child(1) {
+    width: 2%;
+}
+table.warehouseItems.Replenishment > tbody > tr > td:nth-child(2) {
+    width: 20%;
+}
+table.warehouseItems.Replenishment > tbody > tr > td:nth-child(3) {
+    width: 10%;
+}
+table.warehouseItems.Replenishment > tbody > tr > td:nth-child(4) {
+    width: 20%;
+}
+table.warehouseItems.Replenishment > tbody > tr > td:nth-child(5) {
+    width: 48%;
+}
+table.warehouseItems.Replenishment > tbody > tr > td:nth-child(6) {
+    width: 5%;
+}
+
+.cartItem.cartQuantity li {
+	font-size: 50%;
+}

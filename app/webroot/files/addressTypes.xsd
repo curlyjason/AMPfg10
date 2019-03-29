@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<xs:schema version="1.0"
+			targetNamespace="http://localhost/ampfg/files/addressTypes.xsd"
+		   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		   elementFormDefault="qualified">
+	
+	<xs:simpleType name="StateType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z]{2}" />
+		</xs:restriction>
+	</xs:simpleType>
+		
+	<xs:simpleType name="ZipType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{5}(-[0-9]{4})?" />
+		</xs:restriction>
+	</xs:simpleType>
+		
+	<xs:simpleType name="CountryType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z]{2}" />
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>

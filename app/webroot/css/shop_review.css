@@ -1,0 +1,37 @@
+/* 
+    Created on : Aug 29, 2014, 2:01:22 PM
+    Author     : jasont
+*/
+div.orderReview h2{
+	margin-top: .4em;
+	margin-bottom: .1em;
+}
+div.reviewAddresses{
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+	}
+	
+	div.docList dl{
+		background: none;
+		line-height: normal;
+	}
+	div.docList dt, div.docList dd{
+		line-height: normal;
+		background: none;
+	}
+	div.docList dt{
+		width: auto;
+		background: none;
+		margin-top: .2em;
+	}
+	div.docList dt:first-of-type{
+		margin-top: 0;
+	}
+	div.docList dd{
+		margin: 0 0 0 2em;
+		font-size: 90%;
+	}
+	div.docList p{
+		margin: 0 0 .1em 0;
+	}

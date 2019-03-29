@@ -1,0 +1,8 @@
+CT=Australian Capital Territory
+NS=New South Wales
+NT=Northern Territory
+QL=Queensland
+SA=South Australia
+TS=Tasmania
+VI=Victoria
+WA=Western Australia

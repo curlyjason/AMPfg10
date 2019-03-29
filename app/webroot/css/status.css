@@ -1,0 +1,222 @@
+#collapseAll {
+    font-size: 75%;
+    margin-left: 29%;
+    margin-top: -30px;
+    position: absolute;
+    text-decoration: none;
+}
+#collapseAll:hover {
+    text-decoration: underline;
+}
+
+table {
+    margin-left: 5%;
+    width: 95%;
+    margin-top: 2px;
+    font-size: 12px;
+}
+table.order {
+    border: medium solid #858585;
+    border-collapse: collapse;
+}
+table.order th {
+    background-color: #858585;
+    border-left: thin solid #FFFFFF;
+    border-radius: 0 0 0 0;
+    color: #FFFFFF;
+}
+table.order.notFirst > tbody > tr:first-child{
+    display: none;
+}
+table.order.notFirst {
+    margin-top: 0;
+    margin-bottom: 0;
+    border-top: none;
+}
+table.order.first {
+    margin-bottom: 0;
+}
+table.order td {
+    border-left: thin solid #858585;
+    padding: 4px 0 4px 12px;
+}
+table.orderItems {
+    border: 2px solid #BDBDBD;
+    border-collapse: collapse;
+    font-size: 90%;
+    margin-bottom: 0;
+    margin-left: 2%;
+    margin-top: 0;
+    width: 98%;
+}
+table.order td.orderItems {
+    padding: 0;
+    background-color: #BDBDBD
+}
+table.orderItems th {
+    background-color: #BDBDBD;
+}
+
+/* WRAPPER TABLE WIDTHS */
+table.order > tbody > tr > td:nth-child(1) {
+    width: 22%;
+}
+table.order > tbody > tr > td:nth-child(2) {
+    width: 8%;
+}
+table.order > tbody > tr > td:nth-child(3) {
+    width: 10%;
+}
+table.order > tbody > tr > td:nth-child(4) {
+    width: 15%;
+}
+table.order > tbody > tr > td:nth-child(5) {
+    width: 15%;
+}
+table.order > tbody > tr > td:nth-child(6) {
+    width: 10%;
+}
+table.order > tbody > tr > td:nth-child(7) {
+    width: 15%;
+}
+
+/* ORDER ITEM TABLE WIDTHS */
+table.orderItems th:first-child {
+    border-left: none;
+}
+table.orderItems.Order > tbody > tr > td:nth-child(1) {
+    width: 5%;
+}
+table.orderItems.Order > tbody > tr > td:nth-child(2) {
+    width: 30%;
+}
+table.orderItems.Order > tbody > tr > td:nth-child(3) {
+    width: 30%;
+}
+table.orderItems.Order > tbody > tr > td:nth-child(4) {
+    width: 15%;
+}
+table.orderItems.Order > tbody > tr > td:nth-child(5) {
+    width: 15%;
+}
+table.orderItems.Order > tbody > tr > td:nth-child(6) {
+    width: 5%;
+}
+
+/* REPLENISHMENT ITEM TABLE WIDTHS */
+table.orderItems.Replenishment > tbody > tr > td:nth-child(1) {
+    width: 5%;
+}
+table.orderItems.Replenishment > tbody > tr > td:nth-child(2) {
+    width: 27%;
+}
+table.orderItems.Replenishment > tbody > tr > td:nth-child(3) {
+    width: 27%;
+}
+table.orderItems.Replenishment > tbody > tr > td:nth-child(4) {
+    width: 25%;
+}
+table.orderItems.Replenishment > tbody > tr > td:nth-child(5) {
+    width: 10%;
+}
+table.orderItems.Replenishment > tbody > tr > td:nth-child(6) {
+    width: 5%;
+}
+
+td.cartItem Input.numeric {
+    font-size: 100%;
+    width: 33%;
+}
+table tr.highlight {
+    background-color: yellow;
+}
+button.toggle {
+    left: 10px;
+    position: absolute;
+}
+.tools > a {
+    display: inline-block;
+    font-size: 73%;
+    padding: 0 4px;
+    text-decoration: none;
+}
+.tools > a:hover {
+    background-color : #003D4C;
+    color: #ccc;
+    text-decoration: underline;
+}
+table.order td.tools {
+    padding-left: 21px;
+    padding-top: 3px;
+}
+span.calcQty {
+    font-size: 80%;
+    cursor: pointer;
+}
+
+/* REPLEN PRICE CELL */
+.po_price input {
+    display: inline-block;
+    font-size: 90%;
+    padding: 0;
+}
+.po_price input.unit, .po_price input.po_quantity {
+    width: 14%;
+}
+.po_price input.price {
+    width: 26%;
+}
+td.cartItem input[id*="quantity-"] {
+    width: 15%;
+}
+
+/*THIS DUPLICATES AMP FG FORM STYLES*/
+
+div.locations > ul {
+    margin-left: 0;
+    margin-top: -12px;
+    width: 110%;
+}
+/*div.locations > p:hover + ul,
+div.locations > ul:hover {
+    display: block;
+}*/
+div.locations .locationEditText {
+    font-size: 75%;
+    font-style: italic;
+	cursor: pointer;
+}
+
+td.locations {
+	width: 50%;
+}
+.statusNoteLabel {
+    color: #B22222;
+    font-weight: bold;
+}
+div.statusNote {
+}
+div.statusNote:hover > div.statusNoteText {
+    display: block;
+}
+p.orderAfter > .calcQty {
+    color: #808080;
+    font-size: 62%;
+}
+a[id*="statusNote-"] {
+    color: #B22222;
+    margin-left: 15px;
+    text-decoration: none;
+}
+a[id*="statusNote-"]:hover {
+    text-decoration: underline;
+}
+
+.editShipment {
+    font-size: 80%;
+    margin-right: 5%;
+    text-decoration: none;
+}
+div.countAlert[bind="click.fetchDocuments"]{
+	cursor: pointer;
+}

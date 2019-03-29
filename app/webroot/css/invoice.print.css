@@ -1,0 +1,332 @@
+/* 
+    Document   : accumulator.print
+    Created on : Apr 22, 2014, 2:05:14 PM
+    Author     : jasont
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+* {
+	color: black;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+@page { margin: .5in; }
+body { margin: .5in; }
+html { margin: .5in; }
+/*@page {
+	margin: .5in;
+}*/
+/*div.page, div.page-x {
+    height: 10in;
+    width: 8.5in;
+}*/
+
+/* *************************************************** 
+  Starter settings for divs
+  These get refined for special circumstances
+*************************************************** */
+
+/* section wrapper, needs sizing and content */
+div.section{
+    border: thin solid #CCCCCC;	
+}
+div.right {
+	left: 4in;
+    /*float: right;*/
+}
+div.left {
+	left: 0;
+    /*float: left;*/
+}
+/* when a section has columns, these two styles make them. width comes later */
+div.split {
+	border-right: thin solid #ccc;
+	/*height: 100%*/
+}
+div.split:last-of-type {
+	border-right: none;
+}
+/* sections get .25in, gray header bars */
+div.header {
+	height: .25in;
+	background-color: #eee;
+	border-bottom: thin solid #ccc;
+/*	padding-top: 3px;*/
+}
+div.header p, div.type h1 {
+	font-weight: bold;
+	text-align: center;
+}
+div.type h1 {
+	padding-top: 5px;
+}
+div.header p {
+	font-size: 90%;
+	padding-top: 5px;
+}
+div.reference_block, div.type {
+/*	clear: right;
+    float: right;*/
+    height: 0.5in;
+    margin-bottom: 0.125in;
+    /*padding: 0.125in;*/
+    width: 3.5in;
+	position: absolute;
+	left: 4in;
+}
+div.type {
+	background-color: #ddd;
+	top: 0;
+}
+div.reference_block {
+	top: 0.625in;
+}
+div#amp {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+div#amp p{
+	font-size: 120%;
+	padding: 2px;
+}
+div.page_header {
+	width: 100%;
+	height: .25in;
+	clear: both;
+	text-align: right;
+	font-variant: small-caps;
+}
+/* *************************************************** 
+  Refinements for the addresss section
+*************************************************** */
+/* the sizing for an address section */
+div.address {
+	position: absolute;
+	top: 1.375in;
+    clear: right;
+    height: 1.375in;
+    width: 3.5in;
+	margin-bottom: .25in;
+}
+div.address div.content_block {
+    padding: 5px 12px;
+}
+
+.section.address.right.replenishment {
+    visibility: hidden;
+}
+/* *************************************************** 
+  Refinements for the reference block
+*************************************************** */
+/* the sizing and position for the reference block */
+div.reference_block {
+    border: thin solid #CCCCCC;
+/*	clear: right;
+    float: right;
+    height: 0.5in;
+    margin-bottom: 0.125in;
+    padding: 0.125in;
+    width: 3.5in;*/
+}
+div.split {
+	/*height: 100%;*/
+}
+div.reference_block div.split {
+	width: 49%;
+}
+div.reference_block div.content_block, div.reference_block div.header {
+	height: .25in;
+}
+div.reference_block div.content_block p {
+	padding-top: 3px;
+	text-align: center;
+}
+/* *************************************************** 
+  Line item section
+*************************************************** */
+div.accumulator {
+	position: absolute;
+	top: 3in;
+	border: none;
+	width: 7.5in;
+	height: 4in;
+	border: thin solid #ccc;
+}
+div.page-x div.accumulator {
+	margin: 0;
+	height: 100%;
+}
+div.summary {
+	position: absolute;
+    border: thin solid #CCCCCC;
+	top: 2.875in;
+    height: 0.5in;
+    margin-bottom: 0.125in;
+    width: 7.5in;
+}
+div.accumulator div.header {
+	border-bottom: thin solid #ccc;
+}
+div.accumulator div.split:first-of-type {
+	clear: left;
+}
+div.line {
+	height: .25in;
+	border-bottom: thin solid #eee;
+	/*border-top: none;*/
+}
+div.accumulator div.header p, div.summary div.header p {
+	text-align: left;
+	padding-left: 8px;
+}
+div.accumulator div.line p, div.summary div.content_block p {
+	padding-left: 8px;
+	padding-top: 3px;
+}
+/* *************************************************** 
+  Order Line item section
+*************************************************** */
+/*div.accumulator div.split:nth-of-type(1) {  # 
+	width: 5%;
+}
+div.accumulator div.split:nth-of-type(2) {  qty 
+	width: 30%;
+}
+div.accumulator div.split:nth-of-type(3) {  code 
+	width: 15%
+}
+div.accumulator div.split:nth-of-type(4) {  name 
+	width: 15%;
+}
+div.accumulator div.split:nth-of-type(5) {  loc 
+	width: 15%;
+}
+div.accumulator div.split:nth-of-type(6) {  loc 
+	width: 20%;
+}*/
+div.summary div.content_block {
+	height: 50%;
+}
+/*div.summary div.split {
+	width: 30%;
+}*/
+
+div.reference_block div.split.Two {
+	position: absolute;
+	left: 51%;
+	/*top: 0;*/
+}
+div.reference_block div.header div.split.Two{
+	top: 0;
+}
+div.reference_block div.content_block div.split.Two{
+	top: .25in;
+}
+div.summary div.split, div.accumulator div.split {
+	position: absolute;
+}
+div.summary div.header div.split{
+	top: 0;
+}
+div.summary div.content_block div.split{
+	top: 0.25in;
+}
+div.summary div.split.One {
+	left: 0;
+}
+div.summary div.split.Two {
+	left: 40%;
+}
+div.summary div.split.Three {
+	left: 80%;
+}
+div.summary div.split.Four {
+	left: 42%;
+}
+div.summary div.split.Five {
+	left: 56%;
+}
+div.summary div.split.Six {
+	left: 70%;
+}
+div.summary div.split.Seven {
+	display: none;
+}
+/*div.accumulator div.split.One {
+	left: 0;
+}
+div.accumulator div.split.Two {
+	left: 5%;
+}
+div.accumulator div.split.Three {
+	left: 12%;
+}
+div.accumulator div.split.Four {
+	left: 25%;
+}*/
+table, div.topMatter{
+	position: relative;
+}
+div.topMatter {
+	height: 3.625in;
+}
+/* *************************************************** 
+  Additional pages
+*************************************************** */
+div.page-x {
+	page-break-before: always;
+	/*height: 10.875in;*/
+	/*margin-bottom: 1.25in;*/
+}
+
+td {
+	border-bottom: thin solid #ddd;
+}
+
+invoiceLines > tr > td:nth-child(1) {
+    width: 2%;
+}
+invoiceLines > tr > td:nth-child(2) {
+    width: 60%;
+}
+invoiceLines > tr > td:nth-child(3) {
+    width: 7%;
+}
+invoiceLines > tr > td:nth-child(4) {
+    width: 10%;
+}
+invoiceLines > tr > td:nth-child(5) {
+    width: 7%;
+}
+invoiceLines > tr > td:nth-child(6) {
+    width: 25%;
+}
+invoiceLines > tr > td:nth-child(7) {
+    display: none;
+}
+p.first, p.second {
+    font-size: 80%;
+    font-weight: normal;
+    margin: 0;
+}
+.ordItems {
+    font-size: 60%;
+    width: 60%;
+}
+.ordItems th {
+    padding: 0;
+    text-align: left;
+    background: #ddd;
+}
+.ordItems td {
+    padding: 1px;
+    font-weight: normal;
+    border: thin solid #ddd;
+}

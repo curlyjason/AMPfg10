@@ -1,0 +1,94 @@
+/*
+Grid setup for the page
+*/
+div.itemImports {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-areas:
+		'upload upload upload'
+		'map preview preview';
+	grid-gap: 2rem;
+}
+div.upload {
+	grid-area: upload;
+	border-bottom: black thin solid;
+}
+div.map {
+	grid-area: map;
+}
+div.preview {
+	grid-area: preview;
+}
+
+/*
+The preview block with the various preview input controls
+*/
+div.preview fieldset {
+	padding: 0;
+	margin-left: 0;
+}
+div.input.text {
+	display: inline-block;
+	width: 10rem;
+	margin: 0 1rem 0 0;
+}
+input#header_row {
+	display: inline-block;
+}
+label#first_row_header_label{
+	display: inline-block;
+}
+
+/*
+The sample block inside preview showing a formatted, mapped example
+*/
+div.sample {
+	margin-top: 2rem;
+	h1 {
+		margin-bottom: 1rem;
+	}
+}
+div.sample p {
+	font-weight: bold;
+}
+div.sample p span.label {
+	display: inline-block;
+	width: 10rem;
+	text-align: right;
+	padding-right: .5rem;
+	font-weight: normal;
+}
+
+/*
+PREVIEW PAGE STYLES
+*/
+span.required, span.user {
+	display: block;
+}
+span.user {
+	font-weight: normal;
+	font-size: 60%;
+}
+td.unused {
+	color: slategray;
+	font-size: 80%;
+}
+
+span.company_name{
+	margin-top: 2rem;
+	font-size: 200%;
+	font-weight: bold;
+}
+td.catalog {
+	border-bottom: darkslateblue thin solid;
+	background-color: lightgrey;
+	font-size: 80%;
+}
+
+/*
+ERROR PAGE STYLES
+ */
+
+.error {
+	color: crimson;
+}

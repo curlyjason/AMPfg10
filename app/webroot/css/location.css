@@ -1,0 +1,11 @@
+div.locations > ul > li {
+    font-size: 85%;
+    padding: 0;
+}
+h4.locationsHeader {
+    color: black;
+    cursor: pointer;
+}
+div.locations > ul{
+	margin-top: 0;
+}

@@ -1,0 +1,43 @@
+/* 
+    Created on : Sep 9, 2014, 1:35:19 PM
+    Author     : jasont
+*/
+h4 {
+	background-color: transparent;
+    background: none repeat scroll 0 0 #fff;
+    color: #e32;
+    font-family: "Gill Sans","lucida grande",helvetica,arial,sans-serif;
+    font-size: 130%;
+}
+img.folder {
+    width: 15px;
+}
+div.sidebarInstructions h4:first-of-type {
+	margin-top: 20px;
+}
+
+div.sidebarInstructions li {
+	white-space: normal;
+	font-size: 85%
+}
+
+div.sidebarInstructions h4 {
+	margin-bottom: 0;
+}
+
+select#customers {
+    font-size: 100%;
+    width: 174px;
+}
+
+select, legend, label {
+	font-size: 100%;
+}
+
+fieldset {
+	padding: 0;
+}
+
+input[type="radio"] {
+    margin: 4px 8px;
+}
