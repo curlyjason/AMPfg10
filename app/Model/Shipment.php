@@ -32,7 +32,7 @@ class Shipment extends AppModel {
     public $validate = array(
         'first_name' => array(
             'required' => array(
-                'rule' => array('notEmpty'),
+                'rule' => array('notBlank'),
                 'message' => 'A first name is required'
             )
         ),
@@ -42,7 +42,7 @@ class Shipment extends AppModel {
 //                'message' => 'A properly formatted email address is required'
 //            ),
             'required' => array(
-                'rule' => array('notEmpty'),
+                'rule' => array('notBlank'),
                 'message' => 'An email is required'
             )
         ),
@@ -52,66 +52,66 @@ class Shipment extends AppModel {
 //                'message' => 'A properly formatted phone number is required'
 //            ),
             'required' => array(
-                'rule' => array('notEmpty'),
+                'rule' => array('notBlank'),
                 'message' => 'A phone number is required'
             )
         ),
         'address' => array(
             'required' => array(
-                'rule' => array('notEmpty'),
+                'rule' => array('notBlank'),
                 'message' => 'An address is required'
             )
         ),
         'city' => array(
             'required' => array(
-                'rule' => array('notEmpty'),
+                'rule' => array('notBlank'),
                 'message' => 'A city is required'
             )
         ),
         'state' => array(
             'required' => array(
-                'rule' => array('notEmpty'),
+                'rule' => array('notBlank'),
                 'message' => 'A state or province is required'
             )
         ),
         'country' => array(
             'required' => array(
-                'rule' => array('notEmpty'),
+                'rule' => array('notBlank'),
                 'message' => 'A country is required'
             )
         ),
         'zip' => array(
             'zipcode' => array(
 //                'rule' => array('postal', null, 'all'),
-                'rule' => array('notEmpty'),
+                'rule' => array('notBlank'),
                 'message' => 'A properly formatted zip/postal code is required'
             )
 //            'required' => array(
-//                'rule' => array('notEmpty'),
+//                'rule' => array('notBlank'),
 //                'message' => 'A zip/postal code is required'
 //            )
         ),
         'carrier' => array(
             'required' => array(
-                'rule' => array('notEmpty'),
+                'rule' => array('notBlank'),
                 'message' => 'A carrier is required'
             )
         ),
         'method' => array(
             'required' => array(
-                'rule' => array('notEmpty'),
+                'rule' => array('notBlank'),
                 'message' => 'A method is required'
             )
         ),
         'billing' => array(
             'required' => array(
-                'rule' => array('notEmpty'),
+                'rule' => array('notBlank'),
                 'message' => 'A billing type is required'
             )
         ),
 //        'tax_rate_id' => array(
 //            'required' => array(
-//                'rule' => array('notEmpty'),
+//                'rule' => array('notBlank'),
 //                'message' => 'A tax jurisdiction'
 //            )
 //        ),
