@@ -34,8 +34,8 @@ class Replenishment extends AppModel {
 	 */
 	public $validate = array(
 		'status' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
+			'notBlank' => array(
+				'rule' => array('notBlank'),
 			)
 		)
 	);

@@ -65,7 +65,7 @@ class Customer extends AppModel {
 	public $validate = array(
 		'customer_code' => array(
 			'required' => array(
-				'rule' => array('notEmpty'),
+				'rule' => array('notBlank'),
 				'message' => 'An EPMS customer ID is required'
 			)
 		),

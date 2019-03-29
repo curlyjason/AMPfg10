@@ -13,8 +13,8 @@ class TaxRate extends AppModel {
  */
 	public $validate = array(
 		'tax_jurisdiction' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
+			'notBlank' => array(
+				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -23,8 +23,8 @@ class TaxRate extends AppModel {
 			),
 		),
 		'tax_rate' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
+			'notBlank' => array(
+				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,

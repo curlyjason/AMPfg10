@@ -13,7 +13,7 @@ class Price extends AppModel {
 	public $validate = array(
 		'max_qty' => array(
 			'required' => array(
-				'rule' => array('notEmpty'),
+				'rule' => array('notBlank'),
 				'message' => 'A maximum quantity is required'
 			),
 			'number' => array(
@@ -23,7 +23,7 @@ class Price extends AppModel {
 		),
 		'min_qty' => array(
 			'required' => array(
-				'rule' => array('notEmpty'),
+				'rule' => array('notBlank'),
 				'message' => 'A minumum quantity is required'
 			),
 			'numeric' => array(
@@ -33,7 +33,7 @@ class Price extends AppModel {
 		),
 		'price' => array(
 			'required' => array(
-				'rule' => array('notEmpty'),
+				'rule' => array('notBlank'),
 				'message' => 'A price is required'
 			),
 			'numeric' => array(

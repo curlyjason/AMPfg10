@@ -19,53 +19,53 @@ class Order extends AppModel {
      */
     public $validate = array(
         'first_name' => array(
-            'notempty' => array(
-                'rule' => array('notempty'),
+            'notBlank' => array(
+                'rule' => array('notBlank'),
             ),
         ),
         'status' => array(
-            'notempty' => array(
-                'rule' => array('notempty'),
+            'notBlank' => array(
+                'rule' => array('notBlank'),
             ),
         ),
         'billing_address' => array(
-            'notempty' => array(
-                'rule' => array('notempty'),
+            'notBlank' => array(
+                'rule' => array('notBlank'),
             ),
         ),
         'billing_city' => array(
-            'notempty' => array(
-                'rule' => array('notempty'),
+            'notBlank' => array(
+                'rule' => array('notBlank'),
             ),
         ),
         'billing_zip' => array(
-            'notempty' => array(
-                'rule' => array('notempty'),
+            'notBlank' => array(
+                'rule' => array('notBlank'),
             ),
         ),
         'billing_state' => array(
-            'notempty' => array(
-                'rule' => array('notempty'),
+            'notBlank' => array(
+                'rule' => array('notBlank'),
             ),
         ),
         'address' => array(
-            'notempty' => array(
-                'rule' => array('notempty'),
+            'notBlank' => array(
+                'rule' => array('notBlank'),
             ),
         ),
         'city' => array(
-            'notempty' => array(
-                'rule' => array('notempty'),
+            'notBlank' => array(
+                'rule' => array('notBlank'),
             ),
         ),
         'zip' => array(
-            'notempty' => array(
-                'rule' => array('notempty'),
+            'notBlank' => array(
+                'rule' => array('notBlank'),
             ),
         ),
         'state' => array(
-            'notempty' => array(
-                'rule' => array('notempty'),
+            'notBlank' => array(
+                'rule' => array('notBlank'),
             ),
         ),
         'order_item_count' => array(
@@ -74,8 +74,8 @@ class Order extends AppModel {
             ),
         ),
         'order_type' => array(
-            'notempty' => array(
-                'rule' => array('notempty'),
+            'notBlank' => array(
+                'rule' => array('notBlank'),
             ),
         )
     ); // </editor-fold>
