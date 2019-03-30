@@ -28,3 +28,6 @@ app/tmp/*
 /app/tmp/cache/cake_toolbar_cachec037c307a0495ae8c6e1b0c79a6139a8
 /app/tmp/cache/models/AMPfg10_cake_model_default_fg10_catalogs_users
 app/View/Emails/notifications/*
+/app/.DS_Store
+/nbproject
+/.DS_Store
