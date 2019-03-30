@@ -31,3 +31,17 @@ app/View/Emails/notifications/*
 /app/.DS_Store
 /nbproject
 /.DS_Store
+/lib/sebastian
+*.DS_Store*
+/app/tmp/cache/models/AMPfg10_cake_model_default_fg10_user_registries
+/lib/phpunit
+/lib/phpdocumentor
+/lib/phpspec
+/app/tmp/cache/models/AMPfg10_cake_model_default_fg10_preferences
+/app/Plugin/Markdown
+/app/tmp/cache/cake_toolbar_cache
+/lib/phenx
+/app/Config/database.php
+/lib/webmozart
+/lib/symfony
+/app/Plugin/Upload

@@ -1,0 +1,167 @@
+
+## BAKING TABLE TESTS
+====================================================================
+bin/cake bake.bake test table ArtStacks
+bin/cake bake.bake test --fixtures app.art_stacks,app.artworks,app.editions,app.formats,app.pieces,app.dispositions_pieces table ArtStacks
+bin/cake bake.bake test table RolodexCards
+
+## BAKING ENTITY TESTS
+====================================================================
+bin/cake bake.bake test entity ArtStack
+
+## BAKING CONTROLLER TESTS
+====================================================================
+bin/cake bake.bake test controller Addresses
+
+## BAKING CUSTOM FOLDER TESTS
+====================================================================
+bin/cake bake.bake test ModLib StackSet
+
+## TESTING
+====================================================================
+
+### App\Lib
+--------------------------------------------------------------------
+cd /Library/WebServer/Documents/AMPfg10/app
+
+# App\Controller
+vendor/bin/phpunit test tests/TestCase/Controller/AddressesControllerTest.php
+# App\Lib
+vendor/bin/phpunit test tests/TestCase/Lib/RangeTest.php
+# table
+vendor/bin/phpunit test tests/TestCase/Model/Table/ArtStacksTableTest.php
+# Model\Lib
+vendor/bin/phpunit test tests/TestCase/Model/Lib/StackSetTest.php
+# behaviors
+vendor/bin/phpunit test tests/TestCase/Model/Behavior/StringQueryBehaviorTest.php
+# entity
+vendor/bin/phpunit test tests/TestCase/Model/Entity/AddressTest.php
+
+
+## COMMANDS TO BAKE FIXTURES
+====================================================================
+
+### Big record sets
+--------------------------------------------------------------------
+bin/cake bake fixture --records --count 77 Addresses //puts real address data in test files
+bin/cake bake fixture --records --count 19 Artworks
+bin/cake bake fixture --records --count 9 Members //there were some minor edits after bake
+bin/cake bake fixture --records --conditions 'member_id IN (3,4,5,6)' Groups // didn't work
+
+### One complete artwork stack set
+--------------------------------------------------------------------
+//These set up the Test artwork with multiple editions and multiple formats in an eddition
+bin/cake bake fixture --records --count 1 --conditions id=19 --table artworks ArtStackArt
+bin/cake bake fixture --records --conditions artwork_id=19 --count 3 --table editions ArtStackEdition
+bin/cake bake fixture --records --conditions 'edition_id IN (35, 36)' --count 3 --table formats ArtStackFormat
+bin/cake bake fixture --records --conditions 'edition_id IN (35, 36)' --count 100 --table pieces ArtStackPiece
+
+//This bakes a stub
+bin/cake bake fixture --count 1 --table art_stacks ArtStacks
+
+//These pull in full record sets to test
+bin/cake bake fixture --records --count 306 --table dispositions_pieces DispositionsPieces
+bin/cake bake fixture --records --count 985 --table pieces Pieces
+bin/cake bake fixture --records --count 985 --table formats Formats
+bin/cake bake fixture --records --count 985 --table editions Editions
+bin/cake bake fixture --records --count 985 --table artworks Artworks
+
+## Help for bake fixture
+====================================================================
+
+bin/cake bake.bake fixture --help
+Generate fixtures for use with the test suite. You can use `bake fixture
+all` to bake all fixtures.
+
+Usage:
+cake bake.bake fixture [subcommand] [options] [<name>]
+
+Subcommands:
+
+all  Bake all fixture files for tables in the chosen connection.
+
+To see help on a subcommand use `cake bake.bake fixture [subcommand] --help`
+
+Options:
+
+--conditions      The SQL snippet to use when importing records.
+                  (default: 1=1)
+--connection, -c  The datasource connection to get data from.
+                  (default: default)
+--count, -n       When using generated data, the number of records to
+                  include in the fixture(s). (default:
+                  1)
+--force, -f       Force overwriting existing files without prompting.
+--help, -h        Display this help.
+--plugin, -p      Plugin to bake into.
+--quiet, -q       Enable quiet output.
+--records, -r     Generate a fixture with records from the non-test
+                  database. Used with --count and --conditions to limit
+                  which records are added to the fixture.
+--schema, -s      Create a fixture that imports schema, instead of
+                  dumping a schema snapshot into the fixture.
+--table           The table name if it does not follow conventions.
+--theme, -t       The theme to use when baking code. (choices:
+                  Bake|Migrations)
+--verbose, -v     Enable verbose output.
+
+Arguments:
+
+name  Name of the fixture to bake (without the `Fixture` suffix). You
+      can use Plugin.name to bake plugin fixtures.
+      (optional)
+
+## Help for bake test
+====================================================================
+I MODIFIED A CORE FILE TO BAKE TESTS FROM NON-STANDARD DIRECTORIES
+in vendor/cakephp Bake\Shell\Task TestTask.php
+I modified the public $classTypes and public $classSuffixes properties. Records are lost, but it looks like these were added:
+    public $classTypes = [
+-->		'Lib' => 'Lib',
+-->		'ModLib' => 'Model\Lib',
+        'Entity' => 'Model\Entity',
+    public $classSuffixes = [
+-->		'Lib' => '',
+-->		'ModLib' => '',
+        'Entity' => '',
+
+bin/cake bake.bake test --help
+Bake test case skeletons for classes.
+
+Usage:
+cake bake.bake test [options] [<Entity|Table|Controller|Component|Behavior|Helper|Shell|Task|ShellHelper|Cell|Form|Mailer|Command|entity|table|controller|component|behavior|helper|shell|task|shell_helper|cell|form|mailer|command>] [<name>]
+
+Options:
+
+--all             Bake all classes of the given type
+--connection, -c  The datasource connection to get data from.
+                  (default: default)
+--fixtures        A comma separated list of fixture names you want to
+                  include.
+--force, -f       Force overwriting existing files without prompting.
+--help, -h        Display this help.
+--no-fixture      Select if you want to bake without fixture.
+--plugin, -p      Plugin to bake into.
+--prefix          Use when baking tests for prefixed controllers.
+--quiet, -q       Enable quiet output.
+--theme, -t       The theme to use when baking code. (choices:
+                  Bake|Migrations)
+--verbose, -v     Enable verbose output.
+
+Arguments:
+
+type  Type of class to bake, can be any of the following: controller,
+      model, helper, component or behavior.
+      (optional) (choices:
+      Entity|Table|Controller|Component|Behavior|Helper|Shell|Task|ShellHelper|Cell|Form|Mailer|Command|entity|table|controller|component|behavior|helper|shell|task|shell_helper|cell|form|mailer|command)
+name  An existing class to bake tests for. (optional)
+
+## Apigen documentation
+## From another project. But should be editable
+====================================================================
+cd/Library/WebServer/Documents/StudioManagerScratch
+
+/Applications/Apigen/apigen.phar generate --source /Library/WebServer/Documents/StudioManagerScratch/src --destination /Users/dondrake/Dropbox/projx_Origami_StudioManager/apigenDocs --title StudioManagerScratch --charset UTF-8 --todo  --template-theme=bootstrap
+
+/Applications/Apigen/apigen.phar generate --source /Library/WebServer/Documents/StudioManagerScratch/src --destination /Library/WebServer/Documents/OStructures/webroot/apigen --title StudioManagerScratch --charset UTF-8 --todo  --template-theme=bootstrap
+
