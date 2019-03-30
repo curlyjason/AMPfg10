@@ -1137,20 +1137,44 @@ class Order extends AppModel {
         // get the order data
         $order = $this->find('first', array(
             'conditions' => array('Order.id' => $id),
-            'fields' => array('created', 'order_number', 'order_reference', 'total', 'billing_company',
-                'billing_address', 'billing_address2', 'billing_city',
-                'billing_zip', 'billing_state', 'billing_country', 'ship_date', 'note', 'user_customer_id'),
+            'fields' => array(
+				'created', 
+				'order_number', 
+				'order_reference', 
+				'total', 
+				'billing_company',
+                'billing_address', 
+				'billing_address2', 
+				'billing_city',
+                'billing_zip', 
+				'billing_state', 
+				'billing_country', 
+				'ship_date', 
+				'note', 
+				'user_customer_id'),
             'contain' => array(
                 'User' => array(
-                    'fields' => array('first_name', 'last_name', 'username')
+                    'fields' => array(
+						'first_name', 
+						'last_name', 
+						'username')
                 ),
                 'Shipment' => array(
                     'fields' => array(
-                        'first_name', 'last_name', 'company',
-                        'email', 'phone',
-                        'address', 'address2',
-                        'city', 'zip', 'state', 'country',
-                        'carrier', 'method', 'billing'
+                        'first_name', 
+						'last_name', 
+						'company',
+                        'email', 
+						'phone',
+                        'address', 
+						'address2',
+                        'city', 
+						'zip', 
+						'state', 
+						'country',
+                        'carrier', 
+						'method', 
+						'billing'
                     )
                 ),
                 'OrderItem' => array(
@@ -1162,7 +1186,10 @@ class Order extends AppModel {
                 )
             )
         ));
-        $customer_type = ClassRegistry::init('Customer')->field('customer_type', array('Customer.user_id' => $order['Order']['user_customer_id'] ));
+        $customer_type = ClassRegistry::init('Customer')
+				->field(
+						'customer_type', 
+						array('Customer.user_id' => $order['Order']['user_customer_id'] ));
         $items = $this->assemblePrintLineItems($order['OrderItem']);
         $firstPageLines = 500;
         $pg1 = array_slice($items, 0, $firstPageLines);
