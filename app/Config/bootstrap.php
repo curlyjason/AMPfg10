@@ -1,4 +1,21 @@
 <?php
+// TO ENABLE TESTING
+//FROM
+//https://book.cakephp.org/2.0/en/development/testing.html#run-tests-from-command-line
+//To be able to work with PHP 7, it is required to install the version 5, 
+//and you’ll need to setup the autoloader, and work around an issue in 
+//Composer’s autoloader. In your Config/bootstrap.php file add the following:
+
+// Load Composer autoload.
+require APP . 'Vendor/autoload.php';
+
+// Remove and re-prepend CakePHP's autoloader as Composer thinks it is the
+// most important.
+// See: http://goo.gl/kKVJO7
+spl_autoload_unregister(array('App', 'load'));
+spl_autoload_register(array('App', 'load'), true, true);
+
+
 /**
  * This file is loaded automatically by the app/webroot/index.php file after core.php
  *
