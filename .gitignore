@@ -45,3 +45,7 @@ app/View/Emails/notifications/*
 /lib/webmozart
 /lib/symfony
 /app/Plugin/Upload
+/app/webroot/img/image/img_file/.DS_Store
+/app/webroot/.DS_Store
+/app/webroot/img/image/.DS_Store
+/app/webroot/img/.DS_Store
