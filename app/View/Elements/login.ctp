@@ -1,9 +1,10 @@
 <div class="users form">
     <?php echo $this->Session->flash('auth');
     echo $this->fetch('timeout');
-    echo $this->Form->create('User', array(
-        'controller' => 'users', 'action' => 'login'
-    ));
+    echo $this->Form->create('User', [
+            'url' => ['controller' => 'users', 'action' => 'login']
+
+    ]);
     echo '<fieldset>';
 		echo $this->Html->tag('legend', 'Please enter your username and password');
 		echo $this->Form->input('username', array('tabindex' => 1));
