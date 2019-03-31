@@ -94,7 +94,7 @@ class UsersController extends AppController {
      * Then destroy the session
      */
     private function closeUserSession() {
-        $this->saveCart();
+//        $this->saveCart();
         $this->eradicateEditLocks();
         $this->unregisterPublicUser();
         $this->releaseUserRecord();
