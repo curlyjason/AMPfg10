@@ -38,6 +38,18 @@ class FileExtension
 		return !empty($match) ? $match : FALSE ;
 	}
 	
+	public static function getExtension($haystack, $dot = TRUE){
+		$matches = self::hasExtension($haystack);
+		if (!$matches) {
+			$result = '';
+		} elseif ($dot) {
+			$result = $matches[0];
+		} else {
+			$result = $matches[1];
+		}
+		return $result;
+	}
+	
 	/**
 	 * Does haystack end in '.pdf'
 	 * 
@@ -55,16 +67,22 @@ class FileExtension
 		return $result;
 	}
 	
-	public static function getExtension($haystack, $dot = TRUE){
+	/**
+	 * Does haystack end in '.pdf'
+	 * 
+	 * @param string $haystack
+	 * @return boolean
+	 */
+	public static function isHtml($haystack) {
+		$result = FALSE;
 		$matches = self::hasExtension($haystack);
 		if (!$matches) {
-			$result = '';
-		} elseif ($dot) {
-			$result = $matches[0];
-		} else {
-			$result = $matches[1];
+			$result = FALSE;
+		} elseif ($matches[1] === 'html') {
+			$result = TRUE;
 		}
 		return $result;
 	}
+	
 	
 }
