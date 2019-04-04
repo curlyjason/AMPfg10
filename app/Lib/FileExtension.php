@@ -34,7 +34,7 @@ class FileExtension
 	 * @return array|FALSE
 	 */
 	public static function hasExtension($haystack) {
-		preg_match('/\.([a-zA-Z]{3})$/', $haystack, $match);
+		preg_match('/\.([a-zA-Z]{3-4})$/', $haystack, $match);
 		return !empty($match) ? $match : FALSE ;
 	}
 	
