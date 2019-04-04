@@ -1,5 +1,7 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('FileExtension', 'Lib');
+
 /**
  * Replenishments Controller
  *
@@ -468,9 +470,9 @@ class ReplenishmentsController extends AppController {
     }
 
     public function printReplenishment($id) {
-        if(isset($this->request->params['ext']) && $this->request->params['ext'] == 'pdf'){
+        if(FileExtension::hasExtension($id)){
             $this->layout = 'default';
-            $id = str_replace('.pdf', '', $id);
+            $id = FileExtension::stripExtension($id);
         } else {
             $this->layout = 'print_accumulator';
         }

@@ -3,6 +3,7 @@ App::uses('AppController', 'Controller');
 App::uses('CakeEvent', 'Event');
 App::uses('OrderStatusEvent', 'Lib');
 App::uses('NotificationFileHandler', 'Lib/Notifiers');
+App::uses('FileExtension', 'Lib');
 
 /**
  * Orders Controller
@@ -219,9 +220,9 @@ class OrdersController extends AppController {
     }
 
     public function printOrder($id) {
-        if(isset($this->request->params['ext']) && $this->request->params['ext'] == 'pdf'){
+        if(FileExtension::hasExtension($id)){
             $this->layout = 'default';
-            $id = str_replace('.pdf', '', $id);
+            $id = FileExtension::stripExtension($id);
         } else {
             $this->layout = 'print_accumulator';
         }
@@ -1062,9 +1063,9 @@ class OrdersController extends AppController {
     }
 
     public function activity($start, $end, $customer) {
-        if(isset($this->request->params['ext']) && $this->request->params['ext'] == 'pdf'){
+        if(FileExtension::hasExtension($customer)){
             $this->layout = 'default';
-            $customer = str_replace('.pdf', '', $customer);
+            $customer = FileExtension::stripExtension($customer);
         }
         $start = date('Y-m-d H:i:s', $start);
         $end = date('Y-m-d H:i:s', $end);

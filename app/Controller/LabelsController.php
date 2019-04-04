@@ -1,5 +1,7 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('FileExtension', 'Lib');
+
 /**
  * Labels Controller
  *
@@ -169,9 +171,9 @@ class LabelsController extends AppController {
 	}
 	
 	public function printLabel($id) {
-		if(isset($this->request->params['ext']) && $this->request->params['ext'] == 'pdf'){
+		if(FileExtension::hasExtension($id)){
 			$this->layout = '4x6';
-			$id = str_replace('.pdf', '', $id);
+			$id = FileExtension::stripExtension($id);
 		}
 		$items = $this->Label->fetchLabel($id);
 		$order = $this->Label->Order->getOrderForPrint($items['Label']['order_id']);

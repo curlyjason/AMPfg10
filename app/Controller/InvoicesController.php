@@ -1,6 +1,7 @@
 <?php
 
 App::uses('AppController', 'Controller');
+App::uses('FileExtension', 'Lib');
 
 /**
  * Invoices Controller
@@ -225,8 +226,8 @@ class InvoicesController extends AppController {
 	public function viewOldInvoice($invoiceId) {
 		set_time_limit(300);
 		$this->layout = 'default';
-		if(isset($this->request->params['ext']) && $this->request->params['ext'] == 'pdf'){
-			$invoiceId = str_replace('.pdf', '', $invoiceId);
+		if(FileExtension::hasExtension($invoiceId)){
+			$invoiceId = FileExtension::stripExtension($invoiceId);
 		} else {
 			$this->request->params['ext'] == 'pdf';
 		}
