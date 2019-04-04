@@ -1,9 +1,14 @@
 <?php
+App::uses('FileExtension', 'Lib');
 //$this->FgHtml->ddd($this->viewPath);
 //$this->FgHtml->ddd($this->viewVars);
 $tools = ($this->layout == 'ajax') ? TRUE : FALSE;
 
-if (in_array('view', $this->params['pass']) || (isset($this->params['ext']) && $this->params['ext'] == 'pdf')) {
+/**
+ * @todo discover what the new pdf-condition detection should be 
+ *		because the old params['ext'] is gone
+ */
+if (in_array('view', $this->params['pass']) || FileExtension::isPdf('missingHaystack')) {
 	$mode = 'view';
 } else {
 	$mode = 'edit';
@@ -13,8 +18,12 @@ $rows = array();
 $label = ucfirst(isset($label) ? $label : $index);
 $customer = isset($invoiceCustomer['User']['username']) ? $invoiceCustomer['User']['username'] . ' ' : '';
 
+/**
+ * @todo discover what the new pdf-condition detection should be 
+ *		because the old params['ext'] is gone
+ */
 if ($this->layout !== 'ajax') {
-	if($this->params['ext'] == 'pdf'){
+	if(FileExtension::isPdf('missingHaystack')){
 		$cs = 6;
 	} else {
 		$cs = 7;
@@ -59,7 +68,11 @@ if($this->layout != 'ajax'){
 	}
 }
 
-if ($this->params['ext'] == 'pdf') {
+/**
+ * @todo discover what the new pdf-condition detection should be 
+ *		because the old params['ext'] is gone
+ */
+if (FileExtension::isPdf('missingHaystack')) {
 	$rows[] = $this->Invoice->makePdfToolRow($index, $label, $invoiceTotals);
 } else {
 	$rows[] = $this->Invoice->makeToolRow($tools, $index, $invoiceContext, $mode, $index, $label, $invoiceTotals);

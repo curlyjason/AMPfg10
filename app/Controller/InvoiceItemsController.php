@@ -1,6 +1,7 @@
 <?php
 
 App::uses('AppController', 'Controller');
+App::uses('FileExtension', 'Lib');
 
 /**
  * InvoiceItems Controller
@@ -171,9 +172,9 @@ class InvoiceItemsController extends AppController {
         if($alias === NULL || preg_match('/[0-9a-f\-]+/',$id) == 0){
             exit();
         }
-		if(isset($this->request->params['ext']) && $this->request->params['ext'] == 'pdf'){
+		if(FileExtension::hasExtension($alias)){
 			$this->layout = 'default';
-			$alias = str_replace('.pdf', '', $alias);
+			$alias = FileExtension::stripExtension($alias);
 		}
 		$this->fetchContext($id, $alias);
 		if($alias == 'OrderItem'){

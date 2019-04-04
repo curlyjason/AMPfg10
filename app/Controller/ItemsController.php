@@ -3,6 +3,8 @@ App::uses('AppController', 'Controller');
 App::uses('Catalog', 'View/Helper');
 App::uses('Folder', 'Utility');
 App::uses('File', 'Utility');
+App::uses('FileExtension', 'Lib');
+
 /**
  * Items Controller
  *
@@ -441,9 +443,9 @@ class ItemsController extends AppController {
 		$start = date('Y-m-d H:i:s', $start);
 		$end = date('Y-m-d H:i:s', $end);
 		//note here
-		if(isset($this->request->params['ext']) && $this->request->params['ext'] == 'pdf'){
+		if(FileExtension::hasExtension($customer)){
 			$this->layout = 'default';
-			$customer = str_replace('.pdf', '', $customer);
+			$customer = FileExtension::stripExtension($customer);
 		}
 		$this->report['customer'] = $customer;
 		

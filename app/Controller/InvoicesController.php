@@ -1,6 +1,7 @@
 <?php
 
 App::uses('AppController', 'Controller');
+App::uses('FileExtension', 'Lib');
 
 /**
  * Invoices Controller
@@ -168,8 +169,6 @@ class InvoicesController extends AppController {
 			$this->Session->setFlash('The invoice did not save. Please try again', 'flash_error');
 		}
 		$this->set('invoiceId', $this->Invoice->id);
-//		$this->request->params['ext'] = 'pdf';
-//		$this->viewOldInvoice($this->Invoice->id);
 		$this->set('showInvoicePDF', $this->Invoice->id);
 		// temporary destination
 		$this->redirect(array('controller' => 'users', 'action' => 'edit_userGrain', $cust_id, $this->secureHash($cust_id), $this->Invoice->id));
@@ -222,13 +221,16 @@ class InvoicesController extends AppController {
         }        
 	}
 	
+	/**
+	 * @todo Line 235 sets request::params['ext'] which is abandoned
+	 * 
+	 * @param string $invoiceId
+	 */
 	public function viewOldInvoice($invoiceId) {
 		set_time_limit(300);
 		$this->layout = 'default';
-		if(isset($this->request->params['ext']) && $this->request->params['ext'] == 'pdf'){
-			$invoiceId = str_replace('.pdf', '', $invoiceId);
-		} else {
-			$this->request->params['ext'] == 'pdf';
+		if(FileExtension::hasExtension($invoiceId)){
+			$invoiceId = FileExtension::stripExtension($invoiceId);
 		}
 		$invoice = $this->Invoice->fetchInvoice($invoiceId);
 		$total = $this->Invoice->fetchInvoiceTotal($invoiceId);

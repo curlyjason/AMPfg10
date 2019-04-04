@@ -197,16 +197,12 @@ class DocumentsController extends AppController {
 	/**
 	 * Download file based upon provided link
 	 * 
-	 * @param string $path the path to the file item
+ 	 * @param string $path the path to the file item
 	 * @return file the downloaded file
  	 */
 	public function sendFile($path) {
-		$ext = '';
 		$path = implode('/', func_get_args());
-		if (isset($this->request->params['ext'])) {
-			$ext = '.' . $this->request->params['ext'];
-		}
-		$this->response->file($path . $ext, array('download' => TRUE));
+		$this->response->file($path, array('download' => TRUE));
 		// Return response object to prevent controller from trying to render
 		// a view
 		return $this->response;

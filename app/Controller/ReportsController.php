@@ -90,12 +90,15 @@ class ReportsController extends AppController {
 	 * In the case of the PDF view, we pass the customer list and sort to the function
 	 * In the case of the screen view, these parameters are passed on TRD
 	 * 
+	 * @todo discover what the new pdf-condition detection should be 
+	 *		because the old params['ext'] is gone
+	 * 
 	 * @param string $pdfData the customer list for PDF view
 	 * @param string $sort the sort criteria for PDF view
 	 */
 	public function inventoryStateReport($pdfData = NULL, $sort = NULL) {
 		set_time_limit(300);
-		if(isset($this->request->params['ext']) && $this->request->params['ext'] == 'pdf'){
+		if(FileExtension::isPdf('missingHaystack')){
 			$this->layout = 'default';
 			$pdfArray = explode('-', $pdfData);
 			foreach ($pdfArray as $id) {

@@ -2,6 +2,7 @@
 
 App::uses('FgHtml', '/View/Helper');
 App::uses('Form', '/Helper');
+App::uses('FileExtension', 'Lib');
 
 /**
  * CakePHP Helper
@@ -45,7 +46,11 @@ class InvoiceHelper extends FgHtmlHelper {
 			'subtotal',
 			'remove'
 		);
-		if($this->params['ext'] == 'pdf'){
+/**
+ * @todo discover what the new pdf-condition detection should be 
+ *		because the old params['ext'] is gone
+ */
+		if(FileExtension::isPdf('missingHaystack')){
 			array_pop($headerRow);
 		}
 		return $headerRow;
@@ -164,7 +169,11 @@ class InvoiceHelper extends FgHtmlHelper {
 					array('class' => 'invoiceRemove'))
 			);
 		}
-		if($this->params['ext'] == 'pdf'){
+/**
+ * @todo discover what the new pdf-condition detection should be 
+ *		because the old params['ext'] is gone
+ */
+		if(FileExtension::isPdf('missingHaystack')){
 			array_pop($chargeRow);
 		}
 		return $chargeRow;
