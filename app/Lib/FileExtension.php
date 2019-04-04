@@ -21,7 +21,7 @@ class FileExtension
 		if ($matches) {
 			$result = str_replace($matches[0], '', $haystack);
 		}
-		return $haystack;
+		return $result;
 	}
 	
 	/**
@@ -34,7 +34,7 @@ class FileExtension
 	 * @return array|FALSE
 	 */
 	public static function hasExtension($haystack) {
-		preg_match('/\.([a-zA-Z]{3-4})$/', $haystack, $match);
+		preg_match('/\.([a-zA-Z]{3,4})$/', $haystack, $match);
 		return !empty($match) ? $match : FALSE ;
 	}
 	
@@ -49,7 +49,7 @@ class FileExtension
 		$matches = self::hasExtension($haystack);
 		if (!$matches) {
 			$result = FALSE;
-		} elseif ($matches[1] === 'pfd') {
+		} elseif ($matches[1] === 'pdf') {
 			$result = TRUE;
 		}
 		return $result;
