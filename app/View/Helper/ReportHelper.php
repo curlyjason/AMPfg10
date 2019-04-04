@@ -1,6 +1,7 @@
 <?php
 
 App::uses('FgHtml', '/View/Helper');
+App::uses('FileExtension', 'Lib');
 
 /**
  * CakePHP Helper
