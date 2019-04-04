@@ -64,7 +64,7 @@ class InvoiceHelper extends FgHtmlHelper {
 		}
 		
 		$toolRow = array(
-			array($this->firstToolCell($context), array('class' => 'cellOne', 'id' => String::uuid())),
+			array($this->firstToolCell($context), array('class' => 'cellOne', 'id' => CakeText::uuid())),
 			array($buttons, array('class' => 'invoiceToolButtons')),
 			array($newTool, array('class' => 'invoiceTool', 'colspan' => 2, 'id' => 'toolRow-' . $index)),
 			array("Subtotal $title",array('class' => 'invoiceTitle', 'id' => 'groupHeaderRow-' . $orderId)),
