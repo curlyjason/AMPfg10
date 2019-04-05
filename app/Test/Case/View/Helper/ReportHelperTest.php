@@ -293,4 +293,15 @@ class ReportHelperTest extends CakeTestCase
 <tr><td class="spacer"></td> <td colspan="3"><table><tr><th>Item</th> <th>Qty</th> <th>Unit</th> <th>Price</th> <th>Subtotal</th></tr><tr><td class="orderItem">first item</td> <td>1</td> <td>ea</td> <td>0.00</td> <td>0.00</td></tr></table></td></tr>';
 		$this->assertTrue($actual === $expected);
 	}
+	
+	public function testReportOrderShippedStatus()
+	{
+		$this->order['Order']['status'] = 'Shipped';
+		$this->order['Shipment'][0]['tracking'] = 'tracking_number';
+		
+		$actual = $this->ReportHelper->reportOrder($this->orderId, (new ReportOrder($this->order)));
+		$expected = '<tr><th>Order #</th> <th>Ordered By</th> <th>Date</th> <th>Status</th></tr><tr><td class="Order">1902-AEKE</td> <td>Jason Tempestini</td> <td>2019-02-08</td> <td>Shipped: tracking_number</td></tr>
+<tr><td class="spacer"></td> <td colspan="3"><table><tr><th>Item</th> <th>Qty</th> <th>Unit</th> <th>Price</th> <th>Subtotal</th></tr><tr><td class="orderItem">first item</td> <td>1</td> <td>ea</td> <td>0.00</td> <td>0.00</td></tr></table></td></tr>';
+		$this->assertTrue($actual === $expected);
+	}
 }
