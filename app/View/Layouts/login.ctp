@@ -63,8 +63,8 @@ $this->end();
         <div id="container">
             <?php 
 //			$this->element('header', array('cakeDescription' => $cakeDescription, 'adminLoginUsers' => $adminLoginUsers));
-			echo $this->FgHtml->div('header', NULL, array('id' => 'header'));
-			echo $this->FgHtml->image('AMP_PrintResp_logo_300.png');
+			echo $this->Html->div('header', NULL, array('id' => 'header'));
+			echo $this->Html->image('AMP_PrintResp_logo_300.png');
 			echo $this->Html->tag('h1', $this->Html->link(' AMP FG System - Login', 'http://www.ampprinting.com'));
 //			echo $this->fetch('header');
 //			echo $this->element('menu', $menuItems);
@@ -76,7 +76,7 @@ $this->end();
 				echo $this->Session->flash();
 				echo $this->Session->flash('auth');
                 if (isset($pageHeading)) {
-                    echo $this->FgHtml->tag('h1', $pageHeading);
+                    echo $this->Html->tag('h1', $pageHeading);
                 }
                 echo $this->fetch('content');
                 ?>

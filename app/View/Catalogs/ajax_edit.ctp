@@ -44,9 +44,9 @@ if ($action[0] != 'add_') {
 
 //setup image
 if (isset($this->request->data['Item']['Image'][0]['img_file'])) {
-    $image = $this->FgHtml->image('image' . DS . 'img_file' . DS . $this->request->data['Item']['Image'][0]['id'] . DS . 'x160y120_' . $this->request->data['Item']['Image'][0]['img_file'], array('id' => 'ajaxEditImage'));
+    $image = $this->Html->image('image' . DS . 'img_file' . DS . $this->request->data['Item']['Image'][0]['id'] . DS . 'x160y120_' . $this->request->data['Item']['Image'][0]['img_file'], array('id' => 'ajaxEditImage'));
 } else {
-    $image = $this->FgHtml->image('image' . DS . 'img_file' . DS . 'no' . DS . 'x160y120_' . 'image.jpg', array('id' => 'ajaxEditImage'));
+    $image = $this->Html->image('image' . DS . 'img_file' . DS . 'no' . DS . 'x160y120_' . 'image.jpg', array('id' => 'ajaxEditImage'));
 };
 
 //base warning variables
@@ -73,14 +73,14 @@ if ($action[0] == 'add_') {
 // OPENING DIV TO MAKE COMPATIBLE WITH USER ADD FORM FILTERING
 //============================================================
 
-echo $this->FgHtml->div('ajaxEditPull', NULL);
+echo $this->Html->div('ajaxEditPull', NULL);
 
 	echo $image;
 	//============================================================
 	// CATALOG INPUTS, ALWAYS AVAILABLE
 	//============================================================
 
-	echo $this->FgHtml->tag('legend', __('Add Catalog Item'), array(
+	echo $this->Html->tag('legend', __('Add Catalog Item'), array(
 		'id' => 'treeFormLegend'
 	));
 
@@ -123,19 +123,19 @@ echo $this->FgHtml->div('ajaxEditPull', NULL);
 	//============================================================
 
 	if (!$folder) {
-		echo $this->FgHtml->div('nonFolder', null);
+		echo $this->Html->div('nonFolder', null);
 		
 		// <editor-fold defaultstate="collapsed" desc="Kit Preference section">
 			//Kit Preferences
 		$kitType = (isset($this->request->data['Catalog']['type'])) ? $this->request->data['Catalog']['type'] : '';
 		$parentType = (isset($this->request->data['ParentCatalog']['type'])) ? $this->request->data['ParentCatalog']['type'] : '';
 			if ($kitType & KIT || (($kitType & COMPONENT) && ($parentType &	ORDER_COMPONENT)) || ($action[0] == 'add_' && $kitType & (COMPONENT | ORDER_COMPONENT))) {
-				echo $this->FgHtml->div('kitBlock', null);
+				echo $this->Html->div('kitBlock', null);
 			} else {
-				echo $this->FgHtml->div('kitBlock hide', null);
+				echo $this->Html->div('kitBlock hide', null);
 			}
-			echo $this->FgHtml->tag('legend', __('Kit Preferences'), array('class' => 'toggle', 'id' => 'kitFields'));
-			echo $this->FgHtml->tag('fieldset', null, array('class' => 'kitFields hide help', 'help' => 'Kit Preferences'));
+			echo $this->Html->tag('legend', __('Kit Preferences'), array('class' => 'toggle', 'id' => 'kitFields'));
+			echo $this->Html->tag('fieldset', null, array('class' => 'kitFields hide help', 'help' => 'Kit Preferences'));
 				$options = array(
 					INVENTORY_BOTH => 'Inventory Kits and Components Both',
 					INVENTORY_KIT => 'Inventory Kits Only',
@@ -160,7 +160,7 @@ echo $this->FgHtml->div('ajaxEditPull', NULL);
 		//</editor-fold>
 		
 		if (empty($this->request->data['Catalog']['id'])) {
-			echo $this->FgHtml->para('advanced instruction', 'Item source for this catalog entry');
+			echo $this->Html->para('advanced instruction', 'Item source for this catalog entry');
 				echo $this->FgForm->input('Item.source', array(
 					'options' => array('New', 'Existing'),
 					'type' => $radioType,
@@ -177,9 +177,9 @@ echo $this->FgHtml->div('ajaxEditPull', NULL);
 		}
 
 	//Item Block
-		echo $this->FgHtml->div('itemBlock', null);
-			echo $this->FgHtml->tag('legend', __('Item'), array('class' => 'toggle', 'id' => 'item'));
-			echo $this->FgHtml->tag('fieldset', null, array('class' => 'item'));
+		echo $this->Html->div('itemBlock', null);
+			echo $this->Html->tag('legend', __('Item'), array('class' => 'toggle', 'id' => 'item'));
+			echo $this->Html->tag('fieldset', null, array('class' => 'item'));
 				echo $this->Form->input('Item.id', array('type' => 'hidden'));
 				echo $this->Form->input('Catalog.id', array('type' => 'hidden'));
 				echo $this->Form->input('Catalog.item_code');
@@ -190,9 +190,9 @@ echo $this->FgHtml->div('ajaxEditPull', NULL);
 
 	//Inventory State
 		if ($action[0] != 'add_') {
-			echo $this->FgHtml->div('inventoryStateBlock', null);
-				echo $this->FgHtml->tag('legend', __('Inventory State'), array('class' => 'toggle', 'id' => 'inventoryState'));
-				echo $this->FgHtml->tag('fieldset', null, array('class' => 'inventoryState hide'));
+			echo $this->Html->div('inventoryStateBlock', null);
+				echo $this->Html->tag('legend', __('Inventory State'), array('class' => 'toggle', 'id' => 'inventoryState'));
+				echo $this->Html->tag('fieldset', null, array('class' => 'inventoryState hide'));
 
 					$params = array(
 						'alias' => 'Catalog',
@@ -210,9 +210,9 @@ echo $this->FgHtml->div('ajaxEditPull', NULL);
 		}
 
 	//Pricing & Units
-		echo $this->FgHtml->div('pricingBlock', null);
-			echo $this->FgHtml->tag('legend', __('Pricing & Units'), array('class' => 'toggle', 'id' => 'pricingUnits'));
-			echo $this->FgHtml->tag('fieldset', null, array('class' => 'pricingUnits hide'));
+		echo $this->Html->div('pricingBlock', null);
+			echo $this->Html->tag('legend', __('Pricing & Units'), array('class' => 'toggle', 'id' => 'pricingUnits'));
+			echo $this->Html->tag('fieldset', null, array('class' => 'pricingUnits hide'));
 					echo $this->FgForm->input('Catalog.sell_unit', array(
 						'default' => 'ea',
 						'label' => 'Sell Unit',
@@ -249,16 +249,16 @@ echo $this->FgHtml->div('ajaxEditPull', NULL);
 					));
 					echo $this->FgForm->input('Item.po_item_code', array('label' => 'PO item code'));
 
-					echo $this->FgHtml->image('transparent.png');
+					echo $this->Html->image('transparent.png');
 
 //				echo '</div>'; //close pricing
 			echo '</fieldset>';//close pricingUnits
 		echo '</div>';//close pricingBlock
 
 	//Inventory Triggers
-		echo $this->FgHtml->div('inventoryBlock', null);
-			echo $this->FgHtml->tag('legend', __('Inventory Trigger Levels'), array('class' => 'toggle', 'id' => 'inventory'));
-			echo $this->FgHtml->tag('fieldset', null, array('class' => 'inventory hide'));
+		echo $this->Html->div('inventoryBlock', null);
+			echo $this->Html->tag('legend', __('Inventory Trigger Levels'), array('class' => 'toggle', 'id' => 'inventory'));
+			echo $this->Html->tag('fieldset', null, array('class' => 'inventory hide'));
 				echo $this->FgForm->input('Item.reorder_level', array(
 					'label' => 'Reorder at',
 					'default' => 1
@@ -278,9 +278,9 @@ echo $this->FgHtml->div('ajaxEditPull', NULL);
 		echo '</div>';//close inventoryBlock
 		
 			//Image Upload
-		echo $this->FgHtml->div('imageBlock', null);
-			echo $this->FgHtml->tag('legend', __('Image Upload'), array('class' => 'toggle', 'id' => 'image'));
-			echo $this->FgHtml->tag('fieldset', null, array('class' => 'image hide'));
+		echo $this->Html->div('imageBlock', null);
+			echo $this->Html->tag('legend', __('Image Upload'), array('class' => 'toggle', 'id' => 'image'));
+			echo $this->Html->tag('fieldset', null, array('class' => 'image hide'));
 				echo $image;
 				$imageLabel = ($image) ? 'Replace Image' : 'Choose Image';
 				echo $this->FgForm->input('Image.img_file', array(

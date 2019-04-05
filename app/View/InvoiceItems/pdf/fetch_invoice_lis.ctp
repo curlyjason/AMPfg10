@@ -45,7 +45,7 @@ echo $this->FgForm->create();
 			</div>
 		</div>
 
-	<h2>Invoice for <?php echo $invoiceCustomer['Customer']['name'] ?> Total: <?php echo $this->FgHtml->tag('span',$this->Number->currency($invoiceTotal), array('id' => 'invoiceTotal')); ?></h2>
+	<h2>Invoice for <?php echo $invoiceCustomer['Customer']['name'] ?> Total: <?php echo $this->Html->tag('span',$this->Number->currency($invoiceTotal), array('id' => 'invoiceTotal')); ?></h2>
 <?php
 	}
 ?>

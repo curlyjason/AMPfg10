@@ -1,14 +1,14 @@
 <?php
 $this->start('css');
-echo $this->FgHtml->css('ampfg_grain');
-echo $this->FgHtml->css('status');
+echo $this->Html->css('ampfg_grain');
+echo $this->Html->css('status');
 $this->end();
 
 $this->start('script');
-echo $this->FgHtml->script('grain');
-echo $this->FgHtml->script('order');
-echo $this->FgHtml->script('status');
-echo $this->FgHtml->script('warehouse');
+echo $this->Html->script('grain');
+echo $this->Html->script('order');
+echo $this->Html->script('status');
+echo $this->Html->script('warehouse');
 $this->end();
 
 if (!isset($replenishmentList)) {

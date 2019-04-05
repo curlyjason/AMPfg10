@@ -1,7 +1,11 @@
 <?php
 
-App::uses('FgHtml', '/View/Helper');
+App::uses('FgHtmlHelper', 'View/Helper');
+App::uses('HtmlHelper', 'Cake/View/Helpler');
 App::uses('FileExtension', 'Lib');
+App::uses('Hash', 'Utility');
+App::uses('ReportOrder', 'Model/Entity');
+App::uses('ItemEntity', 'Model/Entity');
 
 /**
  * CakePHP Helper
@@ -12,6 +16,8 @@ class ReportHelper extends FgHtmlHelper {
 	public $userGroup = '';
 	
 	public $rows = array();
+	
+	public $helpers = ['Html'];
 	
 	/**
 	 * Produce a table block based upon a provided string and it's iterator of orders
@@ -25,47 +31,63 @@ class ReportHelper extends FgHtmlHelper {
 			return;
 		}
 		$rows = array();
-		echo $this->tag('table', NULL, array('class' => $status));
+		echo $this->Html->tag('table', NULL, array('class' => $status));
 		$rows[] = array(array('Status: ' . $status, array('colspan' => 4, 'class' => 'Status')));
-		echo $this->tableCells($rows);
+		echo $this->Html->tableCells($rows);
 		foreach ($orders as $orderId => $order) {
-			$this->reportOrder($orderId, $order);
+			echo $this->reportOrder($orderId, (new ReportOrder($order)));
 		}
 		echo '</table>';
 	}
 	
 	public function reportOrder($orderId, $order) {
-		$rows = array();
-		$status = ($order['Order']['status'] == 'Shipped') ? 'Shipped: ' . $order['Shipment'][0]['tracking'] : $order['Order']['status'];
-		$rows[] = array(
-			array($order['Order']['order_number'], array('class' => 'Order')),
-			$order['User']['name'],
-			date('Y-m-d',strtotime($order['Order']['created'])),
-			$status
-		);
-		$rows[] = array(
-			array('', array('class' => 'spacer')),
-			array($this->reportOrderItem($order['OrderItem']), array('colspan' => 3)));
-		$headers = array('Order #', 'Ordered By', 'Date', 'Status');
-		echo $this->tableHeaders($headers);
-		echo $this->tableCells($rows);
+		$rows = [];
+		$rows[] = 
+		[ 
+			$this->plusClass($order->orderNumber(), 'Order'),
+			$order->userName(),
+			$order->created(),
+			($order->status() == 'Shipped') 
+				? "Shipped: {$order->tracking()}" 
+				: $order->status()
+		];
+		
+		$rows[] = 
+		[
+			$this->plusClass('', 'spacer'),
+			$this->plusColspan($this->reportOrderItem($order->items()), 3),
+		];
+		
+		return $this->Html->tableHeaders(
+				['Order #', 'Ordered By', 'Date', 'Status']) 
+				. $this->Html->tableCells($rows);
+	}
+	
+	private function plusClass($data, $class)
+	{
+		return [$data, ['class'=>$class]];
+	}
+	
+	private function plusColspan($data, $span)
+	{
+		return [$data, ['colspan'=>$span]];
 	}
 	
 	public function reportOrderItem($orderItem) {
 		$rows = array();
 		$headers = array('Item', 'Qty', 'Unit', 'Price', 'Subtotal');
 		foreach ($orderItem as $key => $product) {
-			$rows[] = array(
-				array($product['name'], array('class' => 'orderItem')),
+			$rows[] = [
+				$this->plusClass($product['name'], 'orderItem'),
 				$product['quantity'],
 				$product['sell_unit'],
 				$product['price'],
 				$product['subtotal']
-			);
+			];
 		}
 		$return  = '<table>' .
-				$this->tableHeaders($headers) .
-				$this->tableCells($rows) .
+				$this->Html->tableHeaders($headers) .
+				$this->Html->tableCells($rows) .
 				'</table>';
 		return $return;
 	}

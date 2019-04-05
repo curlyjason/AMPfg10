@@ -1,5 +1,5 @@
 <?php
-echo $this->FgHtml->div($class, null);
+echo $this->Html->div($class, null);
 
 if ($class == 'observerDisplay') {;
     $modelAlias = 'Observer';
@@ -18,7 +18,7 @@ if (($modelAlias === 'Observer' && $group === 'Admins') || ($modelAlias === 'Use
 	$tool = false;
 }
 echo ($tool) ? $this->FgForm->newRequestButton() : '';
-echo $this->FgHtml->tag('h3', $heading, array('class' => 'grainDisplay'));
+echo $this->Html->tag('h3', $heading, array('class' => 'grainDisplay'));
 
 // parse location records into a cake tableCells compatible array
 $tableArray = array();
@@ -36,7 +36,7 @@ if ($grain[$modelAlias] != array()) {
     $rows = array();
 }
 
-echo $this->FgHtml->tag('Table', null, array('class' => 'order'));
+echo $this->Html->tag('Table', null, array('class' => 'order'));
 echo $this->Html->tableHeaders($headers);
 echo $this->FgHtml->tableCells($rows)
 ?>

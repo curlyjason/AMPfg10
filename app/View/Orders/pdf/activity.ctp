@@ -14,7 +14,7 @@
 $c = count($data);
 
 if($c==0){
-	echo $this->FgHtml->tag('h2', "There are no orders for $customerName.");
+	echo $this->Html->tag('h2', "There are no orders for $customerName.");
 } else {
 	$key = key($data);
 	$custIds = array_keys($data);

@@ -1,10 +1,10 @@
 <?php
 $this->start('script');
-	echo $this->FgHtml->script('invoice');
+	echo $this->Html->script('invoice');
 $this->end();
 $this->start('css');
-	echo $this->FgHtml->css('invoice');
-	echo $this->FgHtml->css('ampfg_forms');
+	echo $this->Html->css('invoice');
+	echo $this->Html->css('ampfg_forms');
 $this->end();
 
         echo "<script type=\"text/javascript\">
@@ -57,7 +57,7 @@ echo $this->Html->tag('table', NULL, array('id' => 'invoice'));
 echo '</table>';
 echo $this->FgForm->end();
 if (!$this->request->is('ajax')) {
-	echo $this->FgHtml->div('reviewClosingButtons', NULL);
+	echo $this->Html->div('reviewClosingButtons', NULL);
 	if (isset($this->request->params['pass'][2])) {
 		echo $this->Form->button('<- Edit', array(
 			'class' => 'invoiceBackButton big red',

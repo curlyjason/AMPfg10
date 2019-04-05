@@ -10,9 +10,9 @@
 	</div>
 	<div id="amp" class="left">
 		<?php
-		echo $this->FgHtml->para(null, $data['customer_type'] == 'AMP' ? "AMP Printing + Graphics" : "Gold Medal Press");
-		echo $this->FgHtml->para(null, '6955 Sierra Court');
-		echo $this->FgHtml->para(null, 'Dublin, CA 94568');
+		echo $this->Html->para(null, $data['customer_type'] == 'AMP' ? "AMP Printing + Graphics" : "Gold Medal Press");
+		echo $this->Html->para(null, '6955 Sierra Court');
+		echo $this->Html->para(null, 'Dublin, CA 94568');
 		?>
 	</div>
 	<!-- REFERENCE BLOCK -->
@@ -74,10 +74,10 @@
 		echo '</table>';
 		echo '<table class="footerNote">';
 		$note = preg_replace("/\n/", "<\p><p class='note' style='font-size: 10pt; font-weight: bold; text-align: left;'>", $data['note']);
-		$tableNote = $this->FgHtml->para('note', $note, array('style' => 'font-size: 10pt; font-weight: bold; text-align: left;'));
+		$tableNote = $this->Html->para('note', $note, array('style' => 'font-size: 10pt; font-weight: bold; text-align: left;'));
 		echo $this->FgHtml->tableHeaders(array('Note'), array('style' => 'background-color: #ccc;'), array('style' => 'font-size: 8pt; text-align: left; padding: 1pt;'));
 		echo $this->FgHtml->tableCells(array('note' => $tableNote));
-//		echo $this->FgHtml->para('note', $data['note']);
+//		echo $this->Html->para('note', $data['note']);
 		echo '</table>';
 		?>
 	</div>

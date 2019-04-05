@@ -35,7 +35,7 @@ foreach ($menuItems as $index => $node) {
 }
 $cartCount = count($this->Session->read('Shop.OrderItem'));
 $cartCountWrapper = '(<span id="cartCount">' . $cartCount . '</span>)';
-    echo $this->Html->tag('li', $this->FgHtml->link("Cart $cartCountWrapper", array(
+    echo $this->Html->tag('li', $this->Html->link("Cart $cartCountWrapper", array(
         'controller' => 'shop', 'action' => 'cart'), array(
 //        'id' => 'cartbutton',
         'escape' => false)),

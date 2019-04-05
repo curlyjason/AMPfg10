@@ -4,19 +4,19 @@
 $this->extend('base');
 
 $this->start('script');
-echo $this->FgHtml->script('trees');
+echo $this->Html->script('trees');
 $this->end();
 
 $this->start('contentCore');
 
-echo $this->FgHtml->div('sidebar', NULL);
-echo $this->FgHtml->div('hide overlay', NULL);
-echo $this->FgHtml->para('overlayWarning', 'click to refresh sidebar');
+echo $this->Html->div('sidebar', NULL);
+echo $this->Html->div('hide overlay', NULL);
+echo $this->Html->para('overlayWarning', 'click to refresh sidebar');
 echo '</div>'; //closing div overlay
 echo $this->fetch('sidebar');
 echo '</div>'; //closing div sidebar
 
-echo $this->FgHtml->div('view', NULL);
+echo $this->Html->div('view', NULL);
 echo $this->Session->flash();
 echo $this->Session->flash('auth');
 //1. Common/manage_tree_object (fetch of editTree)

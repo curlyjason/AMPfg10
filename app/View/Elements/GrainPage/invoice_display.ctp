@@ -1,7 +1,7 @@
 <?php
-echo $this->FgHtml->div('invoiceDisplay', null);
+echo $this->Html->div('invoiceDisplay', null);
 
-echo $this->FgHtml->tag('h3', $heading, array('class' => 'grainDisplay'));
+echo $this->Html->tag('h3', $heading, array('class' => 'grainDisplay'));
 
 // parse location records into a cake tableCells compatible array
 $tableArray = array();
@@ -36,7 +36,7 @@ if ($grain['Invoice'] != array()) {
     $rows = array();
 }
 
-//echo $this->FgHtml->tag('Table', null, array('class' => 'order'));
+//echo $this->Html->tag('Table', null, array('class' => 'order'));
 //echo $this->Html->tableHeaders($headers);
 //echo $this->FgHtml->tableCells($rows)
 ?>

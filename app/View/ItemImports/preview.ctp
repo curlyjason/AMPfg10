@@ -1,6 +1,6 @@
 <?php
-echo $this->FgHtml->script('itemPreview');
-echo $this->FgHtml->css('itemImport');
+echo $this->Html->script('itemPreview');
+echo $this->Html->css('itemImport');
 
 $this->start('sidebar');
 echo $this->element('sidebar_tree', array('controller' => $controller, 'tree' => $tree, 'rootNodes' => $rootNodes));
@@ -10,7 +10,7 @@ pr($ItemRegistry->reportErrors());
 ?>
 <?= $this->FgForm->create('ItemImports', array('action' => 'saveItems')); ?>
 <?= $this->FgForm->input('catalog.parent_id', array('type' => 'hidden', 'default' => 'unset')); ?>
-<?= $this->FgHtml->tag('span', 'Select a Destination Catalog on Left',['class' => 'company_name']); ?>
+<?= $this->Html->tag('span', 'Select a Destination Catalog on Left',['class' => 'company_name']); ?>
 <?= $this->FgForm->end('Submit'); ?>
 
 <table>

@@ -23,7 +23,7 @@ $row = array();
     }
     
     echo $this->FgForm->create('Price');
-    echo $this->FgHtml->tag('table', null, array('customer_id' => $customer_id));
+    echo $this->Html->tag('table', null, array('customer_id' => $customer_id));
 	echo $this->FgHtml->tableHeaders(array('', 'Minimum', 'Maximum', 'Price', 'X'));
 	echo $this->FgHtml->tableCells($row);
     echo '</table>';

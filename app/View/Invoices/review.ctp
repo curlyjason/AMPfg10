@@ -1,21 +1,21 @@
 <?php
 
 echo $this->start('css');
-echo $this->FgHtml->css('ampfg_grain');
-echo $this->FgHtml->css('cart');
+echo $this->Html->css('ampfg_grain');
+echo $this->Html->css('cart');
 echo $this->end('css');
 
 echo $this->start('script');
-echo $this->FgHtml->script('invoice.js');
+echo $this->Html->script('invoice.js');
 echo $this->end('script');
 
-echo $this->FgHtml->div('invoiceReview', NULL);
-	echo $this->FgHtml->div('reviewBillingAddress', NULL);
+echo $this->Html->div('invoiceReview', NULL);
+	echo $this->Html->div('reviewBillingAddress', NULL);
 		echo $this->FgHtml->decoratedTag('Job Number', 'p', $invoice['Order']['job_number']);
 		echo $this->FgHtml->decoratedTag('Customer', 'p', $invoice['Customer']['name']);
 		echo $this->FgHtml->decoratedTag('Date', 'p', $this->Time->format($invoice['Order']['creation'], '%b %d, %Y'));
-		echo $this->FgHtml->div('orderSummary', NULL);
-			echo $this->FgHtml->tag('h2', 'Order Summary');
+		echo $this->Html->div('orderSummary', NULL);
+			echo $this->Html->tag('h2', 'Order Summary');
 			echo $this->FgHtml->decoratedTag('Total Items: ', 'p', $invoice['Order']['order_item_count']);
 			echo $this->FgHtml->decoratedTag('Handling: ', 'p', $invoice['Order']['handling']);
 			echo $this->FgHtml->decoratedTag('Total ', 'p', $invoice['Order']['total']);
@@ -23,8 +23,8 @@ echo $this->FgHtml->div('invoiceReview', NULL);
 		echo '</div>';//close orderSummary div
 	echo '</div>';//close billingAddress div
 
-	echo $this->FgHtml->div('reviewOrderItems', NULL);
-		echo $this->FgHtml->tag('h2', 'Order Items');
+	echo $this->Html->div('reviewOrderItems', NULL);
+		echo $this->Html->tag('h2', 'Order Items');
 
 		$headerRow = array('#', 'Item', 'Price', 'Quantity', 'Subtotal');
 
@@ -61,7 +61,7 @@ echo $this->FgHtml->div('invoiceReview', NULL);
 	
 		echo $this->Form->create('Order');
 
-	echo $this->FgHtml->div('reviewClosingButtons', NULL);
+	echo $this->Html->div('reviewClosingButtons', NULL);
 		echo $this->Form->button('Confirm Order', array('type' => 'submit', 'class' => 'orderReviewSubmitButton', 'ecape' => false));
 		echo $this->Form->button('<- Address', array('class' => 'orderReviewBackButton', 'ecape' => false, 'type' => 'button', 'bind' => 'click.reviewBackButton'));
 	echo '</div>';//close buttons div

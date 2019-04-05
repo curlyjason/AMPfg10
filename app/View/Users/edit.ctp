@@ -35,7 +35,7 @@
         echo $this->Form->input('role', array('options' => $roles, 'empty' => true));
         echo $this->Form->input('parent_id', array('options' => $parent_ids));
 		
-		echo $this->FgHtml->div('nonFolder', NULL);
+		echo $this->Html->div('nonFolder', NULL);
 			$this->FgHtml->setSelected($user_selected);// insure current access is checked
 			echo '<p id="UserAccess" class="toggle">User Group Access</p>';
 			echo '<div class="UserAccess access hide">';

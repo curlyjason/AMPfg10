@@ -1,5 +1,5 @@
 <?php
-echo $this->FgHtml->div('hiddenAddresses hide', NULL);
+echo $this->Html->div('hiddenAddresses hide', NULL);
 	echo $this->FgForm->input('Order.order_item_count', array('type' => 'hidden'));
 	echo $this->FgForm->input('Order.quantity', array('type' => 'hidden'));
 	echo $this->FgForm->input('Order.weight', array('type' => 'hidden'));

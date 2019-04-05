@@ -1,11 +1,11 @@
 <?php
 $this->start('css');
-echo $this->FgHtml->css('ampfg_grain');
-echo $this->FgHtml->css('status');
+echo $this->Html->css('ampfg_grain');
+echo $this->Html->css('status');
 $this->end();
 
 $this->start('script');
-echo $this->FgHtml->script('grain');
+echo $this->Html->script('grain');
 $this->end();
 
 $manager = $this->Session->read('Auth.User.access') === 'Manager';

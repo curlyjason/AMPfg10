@@ -7,7 +7,7 @@
 $this->start('editTree');//start of editTree block
 
 echo $this->Session->flash();
-echo $this->FgHtml->div('treeEdit', NULL);//start of treeEdit div
+echo $this->Html->div('treeEdit', NULL);//start of treeEdit div
 if (isset($editTree)) {
     
     $treeType = ($lock) ? 'plain' : $controller.'Edit';

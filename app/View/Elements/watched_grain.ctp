@@ -16,7 +16,7 @@ foreach ($data as $status => $orders) {
     $displayStatus = Inflector::classify($status);
     $count = count($orders);
     echo '<div>';
-    echo $this->FgHtml->tag('h3', "$prefix $status (<span class='count'>$count</span>)", array(
+    echo $this->Html->tag('h3', "$prefix $status (<span class='count'>$count</span>)", array(
         'id' => "Watch$status",
         'class' => 'grainDisplay toggle ' . $isFirst,
 		'style' => "background-color:rgb($r,221,$g)"

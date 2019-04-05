@@ -23,7 +23,7 @@
 	// table vars finished
 	
 	echo $openForm;
-	echo $this->FgHtml->tag('table', NULL, array('id' => 'Documents', 'change' => 'false'));
+	echo $this->Html->tag('table', NULL, array('id' => 'Documents', 'change' => 'false'));
 	echo $this->FgHtml->tableHeaders($headers);
 	if (!empty($this->request->data['Document'])) {
 		$c = count($this->request->data['Document']);
