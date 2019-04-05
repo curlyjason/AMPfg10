@@ -1,10 +1,10 @@
 <?php
 $this->start('script');
-	echo $this->FgHtml->script('invoice');
+	echo $this->Html->script('invoice');
 $this->end();
 $this->start('css');
-	echo $this->FgHtml->css('invoice');
-	echo $this->FgHtml->css('ampfg_forms');
+	echo $this->Html->css('invoice');
+	echo $this->Html->css('ampfg_forms');
 $this->end();
 
         echo "<script type=\"text/javascript\">

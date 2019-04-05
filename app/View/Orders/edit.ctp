@@ -2,12 +2,12 @@
 //debug($this->request->data);
 
 echo $this->start('css');
-echo $this->FgHtml->css('ampfg_forms');
-echo $this->FgHtml->css('ampfg_grain');
+echo $this->Html->css('ampfg_forms');
+echo $this->Html->css('ampfg_grain');
 echo $this->end('css');
 
 echo $this->start('script');
-echo $this->FgHtml->script('form');
+echo $this->Html->script('form');
 echo $this->end('script');
 
 $order = $this->request->data['Order'];

@@ -1,23 +1,23 @@
 <?php
 $this->start('css');
-	echo $this->FgHtml->css('ampfg_grain');
-	echo $this->FgHtml->css('status');
-	echo $this->FgHtml->css('cart');
-	echo $this->FgHtml->css('warehouse_status');
-	echo $this->FgHtml->css('document');
-	echo $this->FgHtml->css('ampfg_forms');
-	echo $this->FgHtml->css('location');
+	echo $this->Html->css('ampfg_grain');
+	echo $this->Html->css('status');
+	echo $this->Html->css('cart');
+	echo $this->Html->css('warehouse_status');
+	echo $this->Html->css('document');
+	echo $this->Html->css('ampfg_forms');
+	echo $this->Html->css('location');
 $this->end();
 
 $this->start('script');
-	echo $this->FgHtml->script('grain');
-	echo $this->FgHtml->script('status');
-	echo $this->FgHtml->script('warehouse');
-	echo $this->FgHtml->script('invoice');
-	echo $this->FgHtml->script('shipment');
-	echo $this->FgHtml->script('shop_address');
-	echo $this->FgHtml->script('documents');
-	echo $this->FgHtml->script('location');
+	echo $this->Html->script('grain');
+	echo $this->Html->script('status');
+	echo $this->Html->script('warehouse');
+	echo $this->Html->script('invoice');
+	echo $this->Html->script('shipment');
+	echo $this->Html->script('shop_address');
+	echo $this->Html->script('documents');
+	echo $this->Html->script('location');
 $this->end();
 
 if (!isset($pullList)) {

@@ -44,9 +44,9 @@ if ($action[0] != 'add_') {
 
 //setup image
 if (isset($this->request->data['Item']['Image'][0]['img_file'])) {
-    $image = $this->FgHtml->image('image' . DS . 'img_file' . DS . $this->request->data['Item']['Image'][0]['id'] . DS . 'x160y120_' . $this->request->data['Item']['Image'][0]['img_file'], array('id' => 'ajaxEditImage'));
+    $image = $this->Html->image('image' . DS . 'img_file' . DS . $this->request->data['Item']['Image'][0]['id'] . DS . 'x160y120_' . $this->request->data['Item']['Image'][0]['img_file'], array('id' => 'ajaxEditImage'));
 } else {
-    $image = $this->FgHtml->image('image' . DS . 'img_file' . DS . 'no' . DS . 'x160y120_' . 'image.jpg', array('id' => 'ajaxEditImage'));
+    $image = $this->Html->image('image' . DS . 'img_file' . DS . 'no' . DS . 'x160y120_' . 'image.jpg', array('id' => 'ajaxEditImage'));
 };
 
 //base warning variables
@@ -249,7 +249,7 @@ echo $this->Html->div('ajaxEditPull', NULL);
 					));
 					echo $this->FgForm->input('Item.po_item_code', array('label' => 'PO item code'));
 
-					echo $this->FgHtml->image('transparent.png');
+					echo $this->Html->image('transparent.png');
 
 //				echo '</div>'; //close pricing
 			echo '</fieldset>';//close pricingUnits

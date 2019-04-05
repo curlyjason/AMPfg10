@@ -5,14 +5,14 @@
 //$this->FgHtml->ddd($itemData, 'itemData');
 //$this->FgHtml->ddd($otherVendors, 'otherVendors');
 $this->start('css');
-echo $this->FgHtml->css('ampfg_grain');
-echo $this->FgHtml->css('ampfg_forms');
-echo $this->FgHtml->css('replenishment');
+echo $this->Html->css('ampfg_grain');
+echo $this->Html->css('ampfg_forms');
+echo $this->Html->css('replenishment');
 $this->end();
 
 $this->start('script');
-echo $this->FgHtml->script('replenishment');
-echo $this->FgHtml->script('form');
+echo $this->Html->script('replenishment');
+echo $this->Html->script('form');
 $this->end();
 
 $this->start('jsGlobalVars');

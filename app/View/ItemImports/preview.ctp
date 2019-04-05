@@ -1,6 +1,6 @@
 <?php
-echo $this->FgHtml->script('itemPreview');
-echo $this->FgHtml->css('itemImport');
+echo $this->Html->script('itemPreview');
+echo $this->Html->css('itemImport');
 
 $this->start('sidebar');
 echo $this->element('sidebar_tree', array('controller' => $controller, 'tree' => $tree, 'rootNodes' => $rootNodes));

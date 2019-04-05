@@ -4,7 +4,7 @@
 $this->extend('base');
 
 $this->start('script');
-echo $this->FgHtml->script('trees');
+echo $this->Html->script('trees');
 $this->end();
 
 $this->start('contentCore');

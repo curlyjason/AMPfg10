@@ -1,6 +1,6 @@
 <?php
-    echo $this->FgHtml->script('itemImport');
-    echo $this->FgHtml->css('itemImport');
+    echo $this->Html->script('itemImport');
+    echo $this->Html->css('itemImport');
     if (isset($ItemRegistry))
     {
         $uploadPrompt = 'Upload a different CSV file of new items';

@@ -5,7 +5,7 @@ echo $this->Html->div('msg', '', array(
     'id' => 'msg'
 ));
 
-echo $this->FgHtml->image('AMP_PrintResp_logo_300.png');
+echo $this->Html->image('AMP_PrintResp_logo_300.png');
 echo $this->Html->tag('h1', $this->Html->link($cakeDescription . 'Welcome: ' . $this->Session->read('Auth.User.name') . ' - Your role: ' . $this->Session->read('Auth.User.role'), 'http://www.ampprinting.com'));
 if ($this->layout != 'simple' && $this->layout != 'base') {
 	echo $this->element('budget_status');

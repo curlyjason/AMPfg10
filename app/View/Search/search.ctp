@@ -3,10 +3,10 @@ $this->start('css');
 	echo $this->Html->css('search');
 	echo $this->Html->css('status');
 	echo $this->Html->css('shopping');
-	echo $this->FgHtml->css('invoice');
-	echo $this->FgHtml->css('cart');
-	echo $this->FgHtml->css('document');
-	echo $this->FgHtml->css('ampfg_forms');
+	echo $this->Html->css('invoice');
+	echo $this->Html->css('cart');
+	echo $this->Html->css('document');
+	echo $this->Html->css('ampfg_forms');
 
 $this->end();
 
@@ -17,9 +17,9 @@ $this->start('script');
 	echo $this->Html->script('status');
 	echo $this->Html->script('invoice');
 	echo $this->Html->script('addToCart');
-	echo $this->FgHtml->script('shipment');
-	echo $this->FgHtml->script('shop_address');
-	echo $this->FgHtml->script('documents');
+	echo $this->Html->script('shipment');
+	echo $this->Html->script('shop_address');
+	echo $this->Html->script('documents');
 	
 $this->end();
 

@@ -11,11 +11,11 @@ if (count($customers) > 1) {
 
 //	$this->FgHtml->ddd($data, 'data');
 $this->start('css');
-	echo $this->FgHtml->css('report');
+	echo $this->Html->css('report');
 $this->end();
 
 $this->start('script');
-	echo $this->FgHtml->script('report');
+	echo $this->Html->script('report');
 $this->end();
 
 echo $this->Html->link(__('PDF'), array('controller' => 'orders', 'action' => 'activity', 'ext' => 'pdf', strtotime($start), strtotime($end), $customer), array('target' => '_blank'));

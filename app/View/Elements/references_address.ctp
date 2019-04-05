@@ -1,6 +1,6 @@
 <?php
 echo $this->start('script');
-echo $this->FgHtml->script('documents.js');
+echo $this->Html->script('documents.js');
 echo $this->end('script');
 
 echo $this->Html->div('referencesAddress hide', NULL, array('bind' => 'validate.validateReferencesAddress'));

@@ -61,7 +61,7 @@ $index = "t$index";
 	<td class="invoiceRemove">
 		<?php echo $this->Html->para($editLabelClass, 'Edit', array('id' => "editDoc$index")); ?>
 		<span id="remove-<?php echo $index; ?>" class="remove">
-			<?php echo $this->FgHtml->image('icon-remove.gif', array('alt' => 'Remove', 'bind' => 'click.deleteRow')); ?>
+			<?php echo $this->Html->image('icon-remove.gif', array('alt' => 'Remove', 'bind' => 'click.deleteRow')); ?>
 		</span>
 	</td>
 </tr>

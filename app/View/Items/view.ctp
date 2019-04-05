@@ -5,7 +5,7 @@ Items don't have the proper data context to detail out the product under conside
 
 
 <div class="items view">
-    <?php echo $this->FgHtml->script(array('addtocart.js'), array('inline' => false)); ?>
+    <?php echo $this->Html->script(array('addtocart.js'), array('inline' => false)); ?>
     
     <h1><?php echo $item['Item']['name']; ?></h1>
 
@@ -13,7 +13,7 @@ Items don't have the proper data context to detail out the product under conside
 
         <div class="col col-lg-7">
             <?php 
-            echo $this->FgHtml->image('image' . DS . 'img_file' . DS . $item['Image'][0]['id'] . DS . 'x500y375_' . $item['Image'][0]['img_file']);
+            echo $this->Html->image('image' . DS . 'img_file' . DS . $item['Image'][0]['id'] . DS . 'x500y375_' . $item['Image'][0]['img_file']);
             ?>
         </div>
 

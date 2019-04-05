@@ -17,11 +17,11 @@ if (count($customers) > 1) {
 }
 
 $this->start('css');
-	echo $this->FgHtml->css('report');
+	echo $this->Html->css('report');
 $this->end();
 
 $this->start('script');
-	echo $this->FgHtml->script('report');
+	echo $this->Html->script('report');
 $this->end();
 
 echo $this->element('Item/activity');

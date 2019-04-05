@@ -1,22 +1,22 @@
 <?php
 $this->start('css');
-	echo $this->FgHtml->css('ampfg_grain');
-	echo $this->FgHtml->css('status');
-	echo $this->FgHtml->css('invoice');
-	echo $this->FgHtml->css('cart');
-	echo $this->FgHtml->css('document');
-	echo $this->FgHtml->css('ampfg_forms');
+	echo $this->Html->css('ampfg_grain');
+	echo $this->Html->css('status');
+	echo $this->Html->css('invoice');
+	echo $this->Html->css('cart');
+	echo $this->Html->css('document');
+	echo $this->Html->css('ampfg_forms');
 $this->end();
 
 $this->start('script');
-	echo $this->FgHtml->script('grain');
-	echo $this->FgHtml->script('order');
-	echo $this->FgHtml->script('status');
-	echo $this->FgHtml->script('help');
-	echo $this->FgHtml->script('invoice.js');
-	echo $this->FgHtml->script('shipment');
-	echo $this->FgHtml->script('shop_address');
-	echo $this->FgHtml->script('documents');
+	echo $this->Html->script('grain');
+	echo $this->Html->script('order');
+	echo $this->Html->script('status');
+	echo $this->Html->script('help');
+	echo $this->Html->script('invoice.js');
+	echo $this->Html->script('shipment');
+	echo $this->Html->script('shop_address');
+	echo $this->Html->script('documents');
 $this->end();
 
 if(!isset($editGrain)){

@@ -4,13 +4,13 @@
 //$this->end();
 
 echo $this->start('css');
-echo $this->FgHtml->css('ampfg_forms');
-echo $this->FgHtml->css('ampfg_grain');
+echo $this->Html->css('ampfg_forms');
+echo $this->Html->css('ampfg_grain');
 echo $this->end('css');
 
 //echo $this->start('script');
-////echo $this->FgHtml->script('shop_address.js');
-//echo $this->FgHtml->script('shipment.js');
+////echo $this->Html->script('shop_address.js');
+//echo $this->Html->script('shipment.js');
 //echo $this->end('script');
 
 $shipment = $this->request->data['Shipment'];

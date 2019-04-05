@@ -8,7 +8,7 @@
 // **************************************************
 
 $this->start('script');
-echo $this->FgHtml->script('addtocart');
+echo $this->Html->script('addtocart');
 $this->end();
 
 //

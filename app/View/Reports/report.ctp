@@ -1,6 +1,6 @@
 <?php 
 $this->start('script');
-	echo $this->FgHtml->script('report');
+	echo $this->Html->script('report');
 $this->end();
 
 echo $this->FgForm->create();

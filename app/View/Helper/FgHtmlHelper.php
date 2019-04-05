@@ -384,7 +384,7 @@ class FgHtmlHelper extends AppHelper {
 				$marker = 'transparent.png';
 				$attributes = array('class' => 'filler');
 			}
-			$expandTool = $this->image($marker, $attributes);
+			$expandTool = $this->Html->image($marker, $attributes);
         }
         if (strpos($this->action, 'Grain') === false) {
             $altAction = $this->action . 'Grain';
@@ -437,7 +437,7 @@ class FgHtmlHelper extends AppHelper {
 				$marker = 'transparent.png';
 				$attributes = array('class' => 'filler');
 			}
-			$expandTool = $this->image($marker, $attributes);
+			$expandTool = $this->Html->image($marker, $attributes);
         }
 
 		if(isset($marker) && $marker === 'transparent.png') {
@@ -471,9 +471,9 @@ class FgHtmlHelper extends AppHelper {
      */
     public function outputGroupAttributes($folder, $active) {
         $classVar = ($active) ? 'Active' : 'Inactive';
-        $classVar .= ($folder) ? $this->image('folder.png', array(
+        $classVar .= ($folder) ? $this->Html->image('folder.png', array(
                     'class' => 'folder'
-                )) : $this->image('transparent.png', array(
+                )) : $this->Html->image('transparent.png', array(
                     'class' => 'filler'
         ));
         return $classVar;
@@ -596,7 +596,7 @@ class FgHtmlHelper extends AppHelper {
 				$marker = 'transparent.png';
 				$attributes = array('class' => 'filler');
 			}
-			$expandTool = $this->image($marker, $attributes);
+			$expandTool = $this->Html->image($marker, $attributes);
         }
         
         //Variable setup
@@ -632,7 +632,7 @@ class FgHtmlHelper extends AppHelper {
 		}
 		
         //Set image class & return element
-        $img = $this->image('gear.png', array(
+        $img = $this->Html->image('gear.png', array(
             'class' => $gearClass
         ));
         return $expandTool . $img .
