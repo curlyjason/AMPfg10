@@ -94,7 +94,7 @@ class ReportOrder
 	 * @return array Items for the order
 	 */
 	public function items() {
-		return $$this->order['OrderItem'];
+		return $this->order['OrderItem'];
 	}
 
 }
