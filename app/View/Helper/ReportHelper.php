@@ -40,28 +40,26 @@ class ReportHelper extends FgHtmlHelper {
 		echo '</table>';
 	}
 	
-	public function reportOrder($orderId, $orderObj) {
-		$order = $orderObj->raw();
-		$rows = array();
-		$status = ($orderObj->status() == 'Shipped') 
-				? 'Shipped: ' . $orderObj->tracking() 
-				: $orderObj->status();
-		
+	public function reportOrder($orderId, $order) {
+		$rows = [];
 		$rows[] = 
 		[ 
-			$this->plusClass($orderObj->orderNumber(), 'Order'),
-			$orderObj->userName(),
-			$orderObj->orderCreated(),
-			$status
+			$this->plusClass($order->orderNumber(), 'Order'),
+			$order->userName(),
+			$order->orderCreated(),
+			($order->status() == 'Shipped') 
+				? "Shipped: {$order->tracking()}" 
+				: $order->status()
 		];
 		
 		$rows[] = 
 		[
 			$this->plusClass('', 'spacer'),
-			$this->plusColspan($this->reportOrderItem($order['OrderItem']), 3),
+			$this->plusColspan($this->reportOrderItem($order->item()), 3),
 		];
-		$headers = array('Order #', 'Ordered By', 'Date', 'Status');
-		return $this->Html->tableHeaders($headers)
+		
+		return $this->Html->tableHeaders(
+				['Order #', 'Ordered By', 'Date', 'Status']) 
 				. $this->Html->tableCells($rows);
 	}
 	
