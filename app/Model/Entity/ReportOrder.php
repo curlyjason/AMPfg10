@@ -32,6 +32,7 @@ class ReportOrder
 	}
 	
 	public function orderCreated()
+	public function created()
 	{
 		return date('Y-m-d',strtotime($this->order['Order']['created']));
 	}
@@ -47,6 +48,7 @@ class ReportOrder
 	}
 	
 	public function item() {
+	public function items() {
 		return $$this->order['OrderItem'];
 	}
 

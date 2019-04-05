@@ -46,7 +46,7 @@ class ReportHelper extends FgHtmlHelper {
 		[ 
 			$this->plusClass($order->orderNumber(), 'Order'),
 			$order->userName(),
-			$order->orderCreated(),
+			$order->created(),
 			($order->status() == 'Shipped') 
 				? "Shipped: {$order->tracking()}" 
 				: $order->status()
@@ -55,7 +55,7 @@ class ReportHelper extends FgHtmlHelper {
 		$rows[] = 
 		[
 			$this->plusClass('', 'spacer'),
-			$this->plusColspan($this->reportOrderItem($order->item()), 3),
+			$this->plusColspan($this->reportOrderItem($order->items()), 3),
 		];
 		
 		return $this->Html->tableHeaders(
