@@ -48,7 +48,7 @@ class StoreHelper extends AppHelper {
 			} else {
 				$label = 'There are no components for this kit';
 			}
-			return $this->FgHtml->link($label, '', array('class'=>'reveal toggle', 'id' => 'revealComponents'.$entry['Catalog']['id']));
+			return $this->Html->link($label, '', array('class'=>'reveal toggle', 'id' => 'revealComponents'.$entry['Catalog']['id']));
 		} else {
 			return '';
 		}

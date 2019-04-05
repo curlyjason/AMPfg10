@@ -1,5 +1,5 @@
 <?php
-echo $this->FgHtml->div('catalogPermissionDisplay',null,array(
+echo $this->Html->div('catalogPermissionDisplay',null,array(
 	'id' => $this->FgHtml->secureSelect($grain['User']['id'])
     ));
 
@@ -21,7 +21,7 @@ if ($grain[$modelAlias] != array()) {
 } else {
     $rows = array();
 }
-echo $this->FgHtml->div('target', '&nbsp;'); //empty div to receive the edit form
+echo $this->Html->div('target', '&nbsp;'); //empty div to receive the edit form
 echo $this->FgHtml->tag('Table', null, array('class' => 'order'));
 echo $this->FgHtml->tableCells($rows)
 ?>

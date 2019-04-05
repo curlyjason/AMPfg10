@@ -2,7 +2,7 @@
 	$query = (isset($query)) ? $query : ''; // used to highlight search results
 	
 	// WRAPPER DIV =========================================
-	echo $this->FgHtml->div('item', null);
+	echo $this->Html->div('item', null);
 
 		// IMAGE
 		if (isset($entry['Item']['Image'][0]['id'])) {
@@ -28,7 +28,7 @@
 		echo '<div class="description">';
 			echo $this->FgHtml->tag(
 					'h4', 
-					$this->FgHtml->link(
+					$this->Html->link(
 							$this->Text->highlight($entry['Catalog']['name'], $query), 
 							array('controller' => 'catalogs', 'action' => 'view', $entry['Catalog']['id']), 
 							array('escape' => FALSE)
@@ -51,7 +51,7 @@
 	if ($entry['Catalog']['type'] & KIT) {
 		// This entry is a KIT, so we'll output the components
 		// all collapsed. The 'Expose' trigger is with the Kit name
-		echo $this->FgHtml->div('hide revealComponents'.$entry['Catalog']['id'], NULL);
+		echo $this->Html->div('hide revealComponents'.$entry['Catalog']['id'], NULL);
 			foreach ($entry['Catalog']['Components'] as $index => $component) {
 				echo $this->element('store_grain', array('entry' => $component));
 			}

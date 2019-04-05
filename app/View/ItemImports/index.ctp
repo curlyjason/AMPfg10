@@ -13,7 +13,7 @@
 	<div class="upload">
 		<h2><?= __('Item Imports'); ?> </h2>
 		<?= $this->FgForm->create('ItemImports', array('type' => 'file')); ?>
-		<?= $this->FgHtml->div('imageBlock'); ?>
+		<?= $this->Html->div('imageBlock'); ?>
 		<?= $this->FgHtml->tag('fieldset'); ?>
 		<?=
             $this->FgForm->input('File.filename', array(

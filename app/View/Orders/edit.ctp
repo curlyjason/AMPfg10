@@ -14,7 +14,7 @@ $order = $this->request->data['Order'];
 $shipment = $this->request->data['Shipment'][0];
 $orderItem = $this->request->data['OrderItem'];
 
-echo $this->FgHtml->div('orderStatus', NULL);
+echo $this->Html->div('orderStatus', NULL);
 echo $this->FgHtml->tag('h2', 'Order No: ' . $order['order_number']);
 echo $this->FgHtml->tag('h2', 'Order Status: ' . $order['status']);
 //echo $this->FgHtml->statusCheckbox($this->request->data);
@@ -24,7 +24,7 @@ echo $this->Form->create('Order', array(
     'class' => 'grainVersion'
 ));
 
-echo $this->FgHtml->div('billingAddress', NULL);
+echo $this->Html->div('billingAddress', NULL);
 echo $this->FgHtml->tag('h2', 'Billing');
 echo $this->FgHtml->decoratedTag('Company', 'p', $order['billing_company']);
 echo $this->FgHtml->decoratedTag('Address', 'p', $order['billing_address']);
@@ -36,7 +36,7 @@ echo $this->FgHtml->decoratedTag('City, State ZIP', 'p', $csz);
 echo $this->FgHtml->decoratedTag('Country', 'p', $order['billing_country']);
 echo '</div>';
 
-echo $this->FgHtml->div('shippingAddress', NULL);
+echo $this->Html->div('shippingAddress', NULL);
 echo $this->FgHtml->tag('h2', 'Shipping Address');
 echo $this->FgHtml->decoratedTag('Name', 'p', $shipment['first_name'] . ' ' . $shipment['last_name']);
 echo $this->FgHtml->decoratedTag('Email', 'p', $shipment['email']);
@@ -53,7 +53,7 @@ echo $this->Form->input('Shipment.0.tracking', array('class' => 'form-control'))
 echo $this->Form->input('Shipment.0.shipment_cost', array('class' => 'form-control'));
 echo '</div>';
 
-echo $this->FgHtml->div('shippingMethod', NULL);
+echo $this->Html->div('shippingMethod', NULL);
 echo $this->FgHtml->tag('h2', 'Shipping Method');
 echo $this->FgHtml->decoratedTag('Carrier', 'p', $shipment['carrier']);
 echo $this->FgHtml->decoratedTag('Method', 'p', $shipment['method']);

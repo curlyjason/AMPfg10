@@ -1,5 +1,5 @@
 <?php
-echo $this->FgHtml->div('invoiceDisplay', null);
+echo $this->Html->div('invoiceDisplay', null);
 
 echo $this->FgHtml->tag('h3', $heading, array('class' => 'grainDisplay'));
 

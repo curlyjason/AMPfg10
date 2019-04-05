@@ -26,7 +26,7 @@ $this->end();
 echo $this->FgForm->create('User', array('class' => 'help', 'help' => 'Search'));
 echo $this->FgForm->input('search');
 
-	echo $this->FgHtml->div('tools', null);
+	echo $this->Html->div('tools', null);
 	echo $this->FgHtml->para('toggle', 'Advanced Search', array('id' => 'filter'));
 	echo $this->Form->input('filter', array(
 		'options' => $filters,
@@ -36,7 +36,7 @@ echo $this->FgForm->input('search');
 		'selected' => $defaultFilters,
 		'div' => array('class' => 'filter hide'))); // classes for ajax form toggle hooks
 //	echo $this->FgHtml->para('filter hide', 
-//			$this->FgHtml->link('Save these settings as my default', array(
+//			$this->Html->link('Save these settings as my default', array(
 //				'action' => 'searchFilterPreference'),
 //				array('bind' => 'click.searchPreference')));
 	echo '</div>';

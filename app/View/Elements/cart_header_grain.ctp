@@ -1,6 +1,6 @@
 <?php
 
-echo $this->FgHtml->div('cartHeaderGrain', null);
+echo $this->Html->div('cartHeaderGrain', null);
 if ($this->Session->read('Shop.Order.shop') != 1) {
     echo $this->FgHtml->tag('h3', 'You have no open shopping cart.', array('class' => 'grainDisplay'));
 } else {

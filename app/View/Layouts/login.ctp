@@ -63,7 +63,7 @@ $this->end();
         <div id="container">
             <?php 
 //			$this->element('header', array('cakeDescription' => $cakeDescription, 'adminLoginUsers' => $adminLoginUsers));
-			echo $this->FgHtml->div('header', NULL, array('id' => 'header'));
+			echo $this->Html->div('header', NULL, array('id' => 'header'));
 			echo $this->FgHtml->image('AMP_PrintResp_logo_300.png');
 			echo $this->Html->tag('h1', $this->Html->link(' AMP FG System - Login', 'http://www.ampprinting.com'));
 //			echo $this->fetch('header');

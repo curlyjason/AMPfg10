@@ -24,9 +24,9 @@ if (!isset($pullList)) {
     $pullList = array();
 }
 
-echo $this->FgHtml->link('Collapse all', '#', array('id' => 'collapseAll'));
+echo $this->Html->link('Collapse all', '#', array('id' => 'collapseAll'));
 
-echo $this->FgHtml->div('debug', '');
+echo $this->Html->div('debug', '');
 
 foreach ($pullList as $status => $orders) {
 	//skip any statuses that have no orders in them

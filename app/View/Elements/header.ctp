@@ -1,7 +1,7 @@
 <?php
 
 $this->start('header');
-echo $this->FgHtml->div('msg', '', array(
+echo $this->Html->div('msg', '', array(
     'id' => 'msg'
 ));
 
@@ -19,20 +19,20 @@ $this->start('AccountTools');
 		$logAction = 'login';
 	}
     echo '<p>'.
-	    $this->FgHtml->link(Inflector::classify($logAction),
+	    $this->Html->link(Inflector::classify($logAction),
 			array('id' => $logAction, 'controller' => 'users', 'action' => $logAction),
 			array('')
 	    ).
 	 '</p>';    
 if ($this->layout != 'base' && $this->layout != 'simple') {
     echo '<p>'.
-	    $this->FgHtml->link('Reset Password',
+	    $this->Html->link('Reset Password',
 			array('controller' => 'users', 'action' => 'resetPassword'),
 			array('')
 	    ).
 	 '</p>';    
     echo '<p>'.
-	    $this->FgHtml->link('Edit my account information',array(
+	    $this->Html->link('Edit my account information',array(
 	    'controller' => 'users',
 	    'action' => 'edit_userGrain',
 	    $this->Session->read('Auth.User.id'),
@@ -40,7 +40,7 @@ if ($this->layout != 'base' && $this->layout != 'simple') {
 	    '?' => array('ancestors' => $this->FgHtml->editAccountUrl($this->Session->read('Auth.User.ancestor_list'))))).
 	 '</p>';
     echo '<p>'.
-	    $this->FgHtml->link('Make this my home page<span></span>',
+	    $this->Html->link('Make this my home page<span></span>',
 			array(''),
 			array('id' => 'homePref', 'controller' => $this->request->controller, 'action' => $this->request->action, 'escape' => false)
 	    ).

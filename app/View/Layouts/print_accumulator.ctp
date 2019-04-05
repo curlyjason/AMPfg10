@@ -96,7 +96,7 @@
 			<div id="line_items">
 				<?php
 					foreach ($page as $index => $line) {
-						echo $this->FgHtml->div('line', null);
+						echo $this->Html->div('line', null);
 							echo $this->Accumulator->columns($line);
 						echo '</div>';
 					}	

@@ -1,6 +1,6 @@
 <?php
 
-echo $this->FgHtml->div('userPermissionDisplay',null,array(
+echo $this->Html->div('userPermissionDisplay',null,array(
 	'id' => $this->FgHtml->secureSelect($grain['User']['id'])
     ));
 
@@ -19,7 +19,7 @@ if ($grain[$modelAlias] != array()) {
 } else {
     $rows = array();
 }
-echo $this->FgHtml->div('target', '&nbsp;'); //empty div to receive the edit form
+echo $this->Html->div('target', '&nbsp;'); //empty div to receive the edit form
 echo $this->FgHtml->tag('Table', null, array('class' => 'order'));
 //echo $this->Html->tableHeaders($headers);
 echo $this->FgHtml->tableCells($rows);

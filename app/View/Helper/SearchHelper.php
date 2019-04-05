@@ -50,8 +50,8 @@ class SearchHelper extends StatusHelper {
 				$hitLines[] = $this->FgHtml->decoratedTag('User ' . Inflector::humanize($field), 'p', $this->Text->highlight($value, $query));
 			}
 		}
-		$link = $this->FgHtml->link($this->FgHtml->discoverName($user['User']), $this->userLink($user['User']['id']));
-		return "\r".$this->FgHtml->div('search user', "\r\t".$this->FgHtml->tag('h4',"\r\t\t".$link."\r\t")."\r\t" . $this->FgHtml->div(null, "\r\t\t".implode("\r\t\t", $hitLines)."\r\t") . "\r") . "\r";
+		$link = $this->Html->link($this->FgHtml->discoverName($user['User']), $this->userLink($user['User']['id']));
+		return "\r".$this->Html->div('search user', "\r\t".$this->FgHtml->tag('h4',"\r\t\t".$link."\r\t")."\r\t" . $this->Html->div(null, "\r\t\t".implode("\r\t\t", $hitLines)."\r\t") . "\r") . "\r";
 		// http://localhost/amp-fg/users/edit_userGrain/3/fcbe2cb721ddef6ab525cdb6438dc92b04e93770
 	}
 	

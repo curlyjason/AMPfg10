@@ -1,5 +1,5 @@
 <?php
-echo $this->FgHtml->div('vendorDisplay', null);
+echo $this->Html->div('vendorDisplay', null);
 
     $modelAlias = 'Address';
     $name = 'name';
@@ -15,7 +15,7 @@ $tableArray = array();
         $dButtonAttr = array('id' => 'd' . $buttonId, 'bind' => 'click.addressDelete');
         $eButtonAttr = array('id' => 'e' . $buttonId);
         $location = $vendor['city'] . ', ' . $vendor['state'];
-		$hash = $this->FgHtml->div('userDisplay', null, array('id' => $this->FgHtml->secureSelect($vendor['id'])));
+		$hash = $this->Html->div('userDisplay', null, array('id' => $this->FgHtml->secureSelect($vendor['id'])));
         $rows[] = array(
             $hash . $vendor['epms_vendor_id'],
             $vendor[$name],

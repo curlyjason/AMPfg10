@@ -18,7 +18,7 @@ if (stristr($this->request->params['action'], 'Edit')) {
 if ($alias == 'Observer') {
     echo $this->Form->input('user_id', array('type' => 'hidden'));
 	
-	echo $this->FgHtml->div('input select', NULL);
+	echo $this->Html->div('input select', NULL);
 		echo $this->FgHtml->tag('label', 'User Observer', array('for' => 'ObserverUserObserverId'));
 		// this is the email only list
 		echo $this->FgHtml->tag('select', null, array(
@@ -34,7 +34,7 @@ if ($alias == 'Observer') {
 } else {
 	
 	
-	echo $this->FgHtml->div('input select', NULL);
+	echo $this->Html->div('input select', NULL);
 		echo $this->FgHtml->tag('label', 'User Observer', array('for' => 'ObserverUserObserverId'));
 		// this is the anybody list
 		echo $this->FgHtml->tag('select', null, array(

@@ -1,7 +1,7 @@
 <?php 
 debug('Hey! It\'s YOU! You use tree_edit_tree');
 //echo $this->Session->flash();
-//echo $this->FgHtml->div('treeEdit', NULL);
+//echo $this->Html->div('treeEdit', NULL);
 //if (isset($editTree)) {
 //    if(!$lock){
 //        $this->start('script');

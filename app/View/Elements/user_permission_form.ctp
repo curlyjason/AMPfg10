@@ -1,6 +1,6 @@
 <?php
 
-echo $this->FgHtml->div('userPermissionForm', NULL);
+echo $this->Html->div('userPermissionForm', NULL);
 echo $this->Session->flash();
 echo $this->FgForm->create('User', array('class' => 'grainVersion'));
 echo $this->FgForm->input('User.id', array('type' => 'hidden'));

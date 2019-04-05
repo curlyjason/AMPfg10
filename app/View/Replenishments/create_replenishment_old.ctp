@@ -24,7 +24,7 @@ echo $this->FgForm->input('po_item_code', array('type' => 'hidden'));
 
 //$this->FgHtml->ddd($itemData['vendorAccess'], 'vendorAccess');
 
-echo $this->FgHtml->div('sidebar', NULL);
+echo $this->Html->div('sidebar', NULL);
 	$this->FgForm->input('po_item_code', array('type' => 'hidden'));
 	echo $this->FgHtml->tag('fieldset', NULL, array('id' => 'replenishmentTools'));
 		echo $this->FgHtml->tag('h2', 'Create Replenishment');
@@ -57,12 +57,12 @@ echo $this->FgHtml->div('sidebar', NULL);
 			'bind' => 'change.expandCreateReplenishmentScope'
 		));
 		
-		echo '<p>'.$this->FgHtml->link('New Vendor', array(
+		echo '<p>'.$this->Html->link('New Vendor', array(
 			'controller' => 'addresses', 
 			'action' => 'manageVendors'))
 			. $this->FgHtml->tag('span', ' (reloads page)', array('class' => 'hint')).'</p>';
 
-		echo $this->FgHtml->div('search', NULL);
+		echo $this->Html->div('search', NULL);
 			echo $this->FgForm->input('search', array(
 				'bind' => 'change.findItemsForReplenishments'
 			));
@@ -79,13 +79,13 @@ echo $this->FgHtml->div('sidebar', NULL);
 
 	echo $this->FgHtml->tag('fieldset', NULL, array('id' => 'vendorSection'));
 	echo $this->FgHtml->tag('h2', 'Vendors & Items');
-	echo $this->FgHtml->div(NULL, '', array('id' => 'findResult'));
+	echo $this->Html->div(NULL, '', array('id' => 'findResult'));
 	// Output each vendor (as a radio button)
 	// and the items from that vendor (as checkboxes)
 	foreach ($lowStock as $vendor => $items) {
 
 		// wrap the vendor block for easy dom traversal
-		echo $this->FgHtml->div('vendorSection', NULL);
+		echo $this->Html->div('vendorSection', NULL);
 		$vndr = preg_replace('/[^a-zA-Z0-9]*/', '', $vendor);
 
 		// the vendor
@@ -107,7 +107,7 @@ echo $this->FgHtml->div('sidebar', NULL);
 		));
 
 		// a div to contain the vendor's items
-		echo $this->FgHtml->div("ItemGroup$vndr hide items", NULL);
+		echo $this->Html->div("ItemGroup$vndr hide items", NULL);
 
 			foreach ($items as $index => $item) {
 				echo $this->FgForm->input("ReplenishmentItemCk.$count.item_id", array(
@@ -124,7 +124,7 @@ echo $this->FgHtml->div('sidebar', NULL);
 	echo '</div>'; // end of vendorSection div
 	}
 	echo $this->FgForm->input('totalCount', array('type' => 'hidden', 'value' => $count));
-	echo $this->FgHtml->div('otherVendors', null);
+	echo $this->Html->div('otherVendors', null);
 		echo $this->FgHtml->para('', 'Other possible vendors');
 		foreach ($otherVendors as $vendor) {
 			echo $this->FgForm->input("Replenishment.vendor_id", array('type' => 'radio', 'options' => array($vendor['Vendor']['id'] => "PO for {$vendor['Vendor']['name']}"), 'value' => $vendor['Vendor']['id']));
@@ -133,10 +133,10 @@ echo $this->FgHtml->div('sidebar', NULL);
 	echo '</fieldset>';
 echo '</div>'; // end of sidebar
 
-echo $this->FgHtml->div('view', NULL);
-		echo $this->FgHtml->div('vendorAddress', NULL);
+echo $this->Html->div('view', NULL);
+		echo $this->Html->div('vendorAddress', NULL);
 			echo $this->FgHtml->tag('h2', 'Vendor Address');
-			echo $this->FgHtml->div('address', NULL);
+			echo $this->Html->div('address', NULL);
 			echo $this->FgHtml->decoratedTag('Company', 'p', 'On Choice', array('class' => 'decoration Company'));
 			echo $this->FgHtml->decoratedTag('Address', 'p', ' ', array('class' => 'decoration Address'));
 			echo $this->FgHtml->decoratedTag('City, State ZIP', 'p', ' ', array('class' => 'decoration Csz'));
@@ -149,7 +149,7 @@ echo $this->FgHtml->div('view', NULL);
 			echo $this->Form->input('Replenishment.vendor_country', array('class' => 'vendor', 'type' => 'hidden', 'field_name' => 'country'));
 		echo '</div>'; //close vendorAddress div
 	echo '</div>'; //close address div
-	echo $this->FgHtml->div('replenishmentClosingButtons');
+	echo $this->Html->div('replenishmentClosingButtons');
 		echo $this->FgForm->button('Cancel', array(
 			'type' => 'button',
 			'bind' => 'click.basicCancelButton',

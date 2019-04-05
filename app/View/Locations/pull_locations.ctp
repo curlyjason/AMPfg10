@@ -1,5 +1,5 @@
 <?php
-echo $this->FgHtml->div('locationForm', NULL);
+echo $this->Html->div('locationForm', NULL);
 $row = array();
 //if (!empty($locations)) {
 //	foreach ($locations as $index => $record) {

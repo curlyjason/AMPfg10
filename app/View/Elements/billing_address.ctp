@@ -1,5 +1,5 @@
 <?php
-echo $this->FgHtml->div('billingAddress', NULL, array('bind' => 'validate.validateBillingAddress'));
+echo $this->Html->div('billingAddress', NULL, array('bind' => 'validate.validateBillingAddress'));
 	$address = $billingAddress['Address'];
 	echo $this->FgHtml->decoratedTag('Customer Name', 'p', $billingAddress['Customer']['name']);
 	echo $this->FgHtml->decoratedTag('Address', 'p', $address['address']);

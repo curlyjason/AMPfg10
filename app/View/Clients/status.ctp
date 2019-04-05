@@ -29,7 +29,7 @@ if(!isset($watchedOrders)){
 
 if (isset($editGrain)) {
 	
-	echo $this->FgHtml->link('Collapse all', '#', array('id' => 'collapseAll'));
+	echo $this->Html->link('Collapse all', '#', array('id' => 'collapseAll'));
 
     echo $this->element('cart_header_grain');
     

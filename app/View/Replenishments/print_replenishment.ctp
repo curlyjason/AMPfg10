@@ -30,7 +30,7 @@
 
 	$this->start('line_items');
 	foreach ($data['items'] as $item) {
-		echo $this->FgHtml->div('line', null);
+		echo $this->Html->div('line', null);
 		$this->Accumulator->columns($item);
 		echo '</div>';
 	}	

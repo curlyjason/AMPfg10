@@ -8,7 +8,7 @@ if ($customerFlag && ($group === 'Staff' || $group === 'Admins') && $access === 
 if ($access === 'Manager' || $owner) {
 	echo $this->FgForm->editRequestButton(array('class' => $class));
 }
-echo $this->FgHtml->div('userDisplay',null,array(
+echo $this->Html->div('userDisplay',null,array(
     'id' => $this->FgHtml->secureSelect($grain['User']['id'])
     ));
  if (!$customerFlag) {

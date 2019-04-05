@@ -48,7 +48,7 @@ if (isset($this->request->data['Customer']['id'])) {
 		echo $this->Html->tag('fieldset'); // Opening fieldset
 			$marker = 'Charge-' . $userId;
 			echo $this->Html->tag('legend', __('Rental and Pull Charges'), array('id' => $marker, 'class' => 'toggle'));
-			echo $this->FgHtml->div($marker . ' hide', NULL);
+			echo $this->Html->div($marker . ' hide', NULL);
 				echo $this->Form->input('Customer.rent_qty');
 				echo $this->Form->input('Customer.rent_unit');
 				echo $this->Form->input('Customer.rent_price');
@@ -61,7 +61,7 @@ if (isset($this->request->data['Customer']['id'])) {
 echo $this->Html->tag('fieldset'); // Opening fieldset
 $marker = 'ShippingAccounts-' . $userId;
 echo $this->Html->tag('legend', __('Shipping Accounts'), array('id' => $marker, 'class' => 'toggle'));
-echo $this->FgHtml->div($marker . ' hide', NULL);
+echo $this->Html->div($marker . ' hide', NULL);
 echo $this->Form->input('Address.fedex_acct', array('label' => 'FedEx Acct'));
 echo $this->Form->input('Address.ups_acct', array('label' => 'UPS Acct'));
 echo '</div>'; // close toggling div
@@ -70,7 +70,7 @@ echo '</fieldset>'; //close fieldset
 echo $this->Html->tag('fieldset'); // Opening fieldset
 $marker = 'Prefs-' . $userId;
 echo $this->Html->tag('legend', __('Preferences'), array('id' => $marker, 'class' => 'toggle'));
-echo $this->FgHtml->div($marker . ' hide', NULL);
+echo $this->Html->div($marker . ' hide', NULL);
 echo $this->FgForm->folderCheck('Customer', 'allow_backorder', array('label' => 'Allow customer to backorder items'));
 echo $this->FgForm->folderCheck('Customer', 'allow_direct_pay', array('label' => 'Allow customer to pay directly for items'));
 echo $this->FgForm->folderCheck('Customer', 'release_hold', array('label' => 'Require staff member to release all orders'));

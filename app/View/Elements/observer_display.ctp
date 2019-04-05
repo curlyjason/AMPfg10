@@ -1,5 +1,5 @@
 <?php
-echo $this->FgHtml->div($class, null);
+echo $this->Html->div($class, null);
 
 if ($class == 'observerDisplay') {;
     $modelAlias = 'Observer';

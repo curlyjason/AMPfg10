@@ -57,7 +57,7 @@ echo $this->Html->tag('table', NULL, array('id' => 'invoice'));
 echo '</table>';
 echo $this->FgForm->end();
 if (!$this->request->is('ajax')) {
-	echo $this->FgHtml->div('reviewClosingButtons', NULL);
+	echo $this->Html->div('reviewClosingButtons', NULL);
 	if (isset($this->request->params['pass'][2])) {
 		echo $this->Form->button('<- Edit', array(
 			'class' => 'invoiceBackButton big red',
