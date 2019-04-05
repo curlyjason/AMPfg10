@@ -1,7 +1,10 @@
 <?php
 
-App::uses('FgHtml', '/View/Helper');
+App::uses('FgHtmlHelper', 'View/Helper');
+App::uses('HtmlHelper', 'Cake/View/Helpler');
 App::uses('FileExtension', 'Lib');
+App::uses('Hash', 'Utility');
+App::uses('ReportOrder', 'Model/Entity');
 
 /**
  * CakePHP Helper
@@ -12,6 +15,8 @@ class ReportHelper extends FgHtmlHelper {
 	public $userGroup = '';
 	
 	public $rows = array();
+	
+	public $helpers = ['Html'];
 	
 	/**
 	 * Produce a table block based upon a provided string and it's iterator of orders
@@ -29,26 +34,44 @@ class ReportHelper extends FgHtmlHelper {
 		$rows[] = array(array('Status: ' . $status, array('colspan' => 4, 'class' => 'Status')));
 		echo $this->tableCells($rows);
 		foreach ($orders as $orderId => $order) {
-			$this->reportOrder($orderId, $order);
+			$this->reportOrder($orderId, (new ReportOrder($order)));
 		}
 		echo '</table>';
 	}
 	
-	public function reportOrder($orderId, $order) {
+	public function reportOrder($orderId, $orderObj) {
+		$order = $orderObj->raw();
 		$rows = array();
-		$status = ($order['Order']['status'] == 'Shipped') ? 'Shipped: ' . $order['Shipment'][0]['tracking'] : $order['Order']['status'];
-		$rows[] = array(
-			array($order['Order']['order_number'], array('class' => 'Order')),
-			$order['User']['name'],
-			date('Y-m-d',strtotime($order['Order']['created'])),
+		$status = ($orderObj->status() == 'Shipped') 
+				? 'Shipped: ' . $orderObj->tracking() 
+				: $orderObj->status();
+		
+		$rows[] = 
+		[ 
+			$this->plusClass($orderObj->orderNumber(), 'Order'),
+			$orderObj->userName(),
+			$orderObj->orderCreated(),
 			$status
-		);
-		$rows[] = array(
-			array('', array('class' => 'spacer')),
-			array($this->reportOrderItem($order['OrderItem']), array('colspan' => 3)));
+		];
+		
+		$rows[] = 
+		[
+			$this->plusClass('', 'spacer'),
+			$this->plusColspan($this->reportOrderItem($order['OrderItem']), 3),
+		];
 		$headers = array('Order #', 'Ordered By', 'Date', 'Status');
-		echo $this->tableHeaders($headers);
-		echo $this->tableCells($rows);
+		return $this->Html->tableHeaders($headers)
+				. $this->Html->tableCells($rows);
+	}
+	
+	private function plusClass($data, $class)
+	{
+		return [$data, ['class'=>$class]];
+	}
+	
+	private function plusColspan($data, $span)
+	{
+		return [$data, ['colspan'=>$span]];
 	}
 	
 	public function reportOrderItem($orderItem) {
@@ -64,8 +87,8 @@ class ReportHelper extends FgHtmlHelper {
 			);
 		}
 		$return  = '<table>' .
-				$this->tableHeaders($headers) .
-				$this->tableCells($rows) .
+				$this->Html->tableHeaders($headers) .
+				$this->Html->tableCells($rows) .
 				'</table>';
 		return $return;
 	}
