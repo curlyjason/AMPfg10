@@ -80,7 +80,7 @@ echo $this->Html->div('ajaxEditPull', NULL);
 	// CATALOG INPUTS, ALWAYS AVAILABLE
 	//============================================================
 
-	echo $this->FgHtml->tag('legend', __('Add Catalog Item'), array(
+	echo $this->Html->tag('legend', __('Add Catalog Item'), array(
 		'id' => 'treeFormLegend'
 	));
 
@@ -134,8 +134,8 @@ echo $this->Html->div('ajaxEditPull', NULL);
 			} else {
 				echo $this->Html->div('kitBlock hide', null);
 			}
-			echo $this->FgHtml->tag('legend', __('Kit Preferences'), array('class' => 'toggle', 'id' => 'kitFields'));
-			echo $this->FgHtml->tag('fieldset', null, array('class' => 'kitFields hide help', 'help' => 'Kit Preferences'));
+			echo $this->Html->tag('legend', __('Kit Preferences'), array('class' => 'toggle', 'id' => 'kitFields'));
+			echo $this->Html->tag('fieldset', null, array('class' => 'kitFields hide help', 'help' => 'Kit Preferences'));
 				$options = array(
 					INVENTORY_BOTH => 'Inventory Kits and Components Both',
 					INVENTORY_KIT => 'Inventory Kits Only',
@@ -178,8 +178,8 @@ echo $this->Html->div('ajaxEditPull', NULL);
 
 	//Item Block
 		echo $this->Html->div('itemBlock', null);
-			echo $this->FgHtml->tag('legend', __('Item'), array('class' => 'toggle', 'id' => 'item'));
-			echo $this->FgHtml->tag('fieldset', null, array('class' => 'item'));
+			echo $this->Html->tag('legend', __('Item'), array('class' => 'toggle', 'id' => 'item'));
+			echo $this->Html->tag('fieldset', null, array('class' => 'item'));
 				echo $this->Form->input('Item.id', array('type' => 'hidden'));
 				echo $this->Form->input('Catalog.id', array('type' => 'hidden'));
 				echo $this->Form->input('Catalog.item_code');
@@ -191,8 +191,8 @@ echo $this->Html->div('ajaxEditPull', NULL);
 	//Inventory State
 		if ($action[0] != 'add_') {
 			echo $this->Html->div('inventoryStateBlock', null);
-				echo $this->FgHtml->tag('legend', __('Inventory State'), array('class' => 'toggle', 'id' => 'inventoryState'));
-				echo $this->FgHtml->tag('fieldset', null, array('class' => 'inventoryState hide'));
+				echo $this->Html->tag('legend', __('Inventory State'), array('class' => 'toggle', 'id' => 'inventoryState'));
+				echo $this->Html->tag('fieldset', null, array('class' => 'inventoryState hide'));
 
 					$params = array(
 						'alias' => 'Catalog',
@@ -211,8 +211,8 @@ echo $this->Html->div('ajaxEditPull', NULL);
 
 	//Pricing & Units
 		echo $this->Html->div('pricingBlock', null);
-			echo $this->FgHtml->tag('legend', __('Pricing & Units'), array('class' => 'toggle', 'id' => 'pricingUnits'));
-			echo $this->FgHtml->tag('fieldset', null, array('class' => 'pricingUnits hide'));
+			echo $this->Html->tag('legend', __('Pricing & Units'), array('class' => 'toggle', 'id' => 'pricingUnits'));
+			echo $this->Html->tag('fieldset', null, array('class' => 'pricingUnits hide'));
 					echo $this->FgForm->input('Catalog.sell_unit', array(
 						'default' => 'ea',
 						'label' => 'Sell Unit',
@@ -257,8 +257,8 @@ echo $this->Html->div('ajaxEditPull', NULL);
 
 	//Inventory Triggers
 		echo $this->Html->div('inventoryBlock', null);
-			echo $this->FgHtml->tag('legend', __('Inventory Trigger Levels'), array('class' => 'toggle', 'id' => 'inventory'));
-			echo $this->FgHtml->tag('fieldset', null, array('class' => 'inventory hide'));
+			echo $this->Html->tag('legend', __('Inventory Trigger Levels'), array('class' => 'toggle', 'id' => 'inventory'));
+			echo $this->Html->tag('fieldset', null, array('class' => 'inventory hide'));
 				echo $this->FgForm->input('Item.reorder_level', array(
 					'label' => 'Reorder at',
 					'default' => 1
@@ -279,8 +279,8 @@ echo $this->Html->div('ajaxEditPull', NULL);
 		
 			//Image Upload
 		echo $this->Html->div('imageBlock', null);
-			echo $this->FgHtml->tag('legend', __('Image Upload'), array('class' => 'toggle', 'id' => 'image'));
-			echo $this->FgHtml->tag('fieldset', null, array('class' => 'image hide'));
+			echo $this->Html->tag('legend', __('Image Upload'), array('class' => 'toggle', 'id' => 'image'));
+			echo $this->Html->tag('fieldset', null, array('class' => 'image hide'));
 				echo $image;
 				$imageLabel = ($image) ? 'Replace Image' : 'Choose Image';
 				echo $this->FgForm->input('Image.img_file', array(

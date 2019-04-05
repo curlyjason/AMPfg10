@@ -17,7 +17,7 @@ $hasPages = (!empty($this->request->params['paging']['Catalog']['pageCount']) &&
 
 
 $this->start('pagination');
-		echo $this->FgHtml->tag('paginationLabel', 'page: ');
+		echo $this->Html->tag('paginationLabel', 'page: ');
 	if (!$hasPages) {
 		echo '1';
 		
@@ -61,7 +61,7 @@ foreach ($shopItems as $index => $entry) {
 		// This makes a list of folders in this catalog level
 		// CURRENTLY UNSUPPORTED BY THE QUERY, ONLY ITEMS ARE FOUND
 		$this->start('folders');
-		echo $this->FgHtml->tag('li');
+		echo $this->Html->tag('li');
 		echo $this->FgHtml->secureLink($entry['Catalog']['name'], $entry['Catalog']['id'], array('controller' => 'catalogs', 'action' => 'shopping'));
 		echo '</li>';
 		$this->end();

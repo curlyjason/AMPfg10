@@ -13,7 +13,7 @@ $summary =  $this->Html->para(null, 'Order Total: ' . $this->Html->tag('span', $
 
 	if (empty($shop['OrderItem'])){
 
-    echo $this->FgHtml->tag('h2','Shopping Cart is empty');
+    echo $this->Html->tag('h2','Shopping Cart is empty');
 	
 	}else{
 

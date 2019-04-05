@@ -8,7 +8,7 @@ echo ($access === 'Manager') ? $this->FgForm->editRequestButton() : '';
 
 $modelAlias = 'UserManaged';
 
-echo $this->FgHtml->tag('h3', $heading, array('class' => 'grainDisplay'));
+echo $this->Html->tag('h3', $heading, array('class' => 'grainDisplay'));
 
 // parse location records into a cake tableCells compatible array
 $tableArray = array();
@@ -20,7 +20,7 @@ if ($grain[$modelAlias] != array()) {
     $rows = array();
 }
 echo $this->Html->div('target', '&nbsp;'); //empty div to receive the edit form
-echo $this->FgHtml->tag('Table', null, array('class' => 'order'));
+echo $this->Html->tag('Table', null, array('class' => 'order'));
 //echo $this->Html->tableHeaders($headers);
 echo $this->FgHtml->tableCells($rows);
 echo '</table>';

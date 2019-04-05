@@ -15,7 +15,7 @@ echo $this->Html->div('invoiceReview', NULL);
 		echo $this->FgHtml->decoratedTag('Customer', 'p', $invoice['Customer']['name']);
 		echo $this->FgHtml->decoratedTag('Date', 'p', $this->Time->format($invoice['Order']['creation'], '%b %d, %Y'));
 		echo $this->Html->div('orderSummary', NULL);
-			echo $this->FgHtml->tag('h2', 'Order Summary');
+			echo $this->Html->tag('h2', 'Order Summary');
 			echo $this->FgHtml->decoratedTag('Total Items: ', 'p', $invoice['Order']['order_item_count']);
 			echo $this->FgHtml->decoratedTag('Handling: ', 'p', $invoice['Order']['handling']);
 			echo $this->FgHtml->decoratedTag('Total ', 'p', $invoice['Order']['total']);
@@ -24,7 +24,7 @@ echo $this->Html->div('invoiceReview', NULL);
 	echo '</div>';//close billingAddress div
 
 	echo $this->Html->div('reviewOrderItems', NULL);
-		echo $this->FgHtml->tag('h2', 'Order Items');
+		echo $this->Html->tag('h2', 'Order Items');
 
 		$headerRow = array('#', 'Item', 'Price', 'Quantity', 'Subtotal');
 

@@ -13,7 +13,7 @@ echo $this->FgForm->input('Shipment.order_id', array('type' => 'hidden'));
 echo $this->Html->div('displayAddresses', NULL);
 	echo $this->Html->div('billingAddress', NULL);
 		echo $this->Html->div('shippingMethod', NULL);
-			echo $this->FgHtml->tag('h2', 'Shipping Method');
+			echo $this->Html->tag('h2', 'Shipping Method');
 			echo $this->FgForm->input ('Shipment.billing', array(
 				'class' => 'form-control',
 //				'value' => 'Sender',
@@ -85,7 +85,7 @@ echo $this->Html->div('displayAddresses', NULL);
 	echo '</div>';//close billing address div
 
 	echo $this->Html->div('addressSelectors', NULL);
-		echo $this->FgHtml->tag('h2', 'Shipping Address');
+		echo $this->Html->tag('h2', 'Shipping Address');
 		echo $this->Session->flash('validationError');
 		if(!empty($myAddresses)){
 			echo $this->Form->input('myAddresses', array('empty' => 'Select an Address', 'class' => 'addressSelect'));

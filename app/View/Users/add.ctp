@@ -4,7 +4,7 @@
         <?php
         // ============================= START FIELDS FOR AJAX TREE EDIT ADD FORM
         echo $this->Html->tag('div', null, array('class' => 'ajaxPull ajaxEditPull'));
-        echo $this->FgHtml->tag('legend', __('Add User'), array(
+        echo $this->Html->tag('legend', __('Add User'), array(
             'id' => 'treeFormLegend'
         ));
         ?>

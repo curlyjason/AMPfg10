@@ -21,8 +21,8 @@ echo $this->FgForm->input('po_item_code', array('type' => 'hidden'));
 
 echo $this->Html->div('sidebar', NULL);
 	$this->FgForm->input('po_item_code', array('type' => 'hidden'));
-	echo $this->FgHtml->tag('fieldset', NULL, array('id' => 'replenishmentTools'));
-		echo $this->FgHtml->tag('h2', 'Create Replenishment');
+	echo $this->Html->tag('fieldset', NULL, array('id' => 'replenishmentTools'));
+		echo $this->Html->tag('h2', 'Create Replenishment');
 		echo $this->Form->input('Replenishment.status', array(
 			'type' => 'hidden',
 			'value' => 'Open'
@@ -38,7 +38,7 @@ echo $this->Html->div('sidebar', NULL);
 
 	$count = 0;
 	$name = isset($this->request->params['pass'][0]) ? 'for<br />' . $vendors[$this->request->params['pass'][0]] : '';
-	echo $this->FgHtml->tag('h2', "Items $name");
+	echo $this->Html->tag('h2', "Items $name");
 	echo $this->Html->div(NULL, NULL, array('id' => 'findResult'));
 		// Output each vendor (as a radio button)
 		// and the items from that vendor (as checkboxes)
@@ -68,7 +68,7 @@ echo $this->Html->div('view', NULL);
 			'class' => 'btn replenishmentSubmit'));
 	echo '</div>';//close replenishmentClosingButtons
 
-	echo $this->FgHtml->tag('h2', 'Replenishment Items');
+	echo $this->Html->tag('h2', 'Replenishment Items');
 echo '</div>'; //close
 echo $this->FgForm->end();
 ?>

@@ -20,7 +20,7 @@ h2 {
 }
 </style>
 <?php
-echo $this->FgHtml->tag('h2', 'Inventory Levels Report');
+echo $this->Html->tag('h2', 'Inventory Levels Report');
 echo $this->FgForm->create('Reports', array('action' => 'inventoryStateReport'));
 echo $this->FgHtml->para('tip', 'Select a sort order');
 echo $this->FgForm->radio('sort', array(

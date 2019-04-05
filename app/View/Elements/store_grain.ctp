@@ -26,7 +26,7 @@
 //	echo $this->Form->end();
 
 		echo '<div class="description">';
-			echo $this->FgHtml->tag(
+			echo $this->Html->tag(
 					'h4', 
 					$this->Html->link(
 							$this->Text->highlight($entry['Catalog']['name'], $query), 
@@ -38,8 +38,8 @@
 //            echo $this->FgHtml->markdown($this->Text->highlight($entry['Item']['description'] . '<br />' . $entry['Item']['description_2'], $query));
 //            echo $this->FgHtml->
             echo '<ul>';
-            echo $this->FgHtml->tag('li','Item Code: ' . $entry['Catalog']['item_code']);
-            echo $this->FgHtml->tag('li','Customer Item Code: ' . $entry['Catalog']['customer_item_code']);
+            echo $this->Html->tag('li','Item Code: ' . $entry['Catalog']['item_code']);
+            echo $this->Html->tag('li','Customer Item Code: ' . $entry['Catalog']['customer_item_code']);
             echo '</ul>';
             echo $this->FgHtml->markdown($this->Text->highlight($entry['Catalog']['description'], $query));
 		echo '</div>';

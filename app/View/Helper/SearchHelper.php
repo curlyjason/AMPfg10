@@ -51,7 +51,7 @@ class SearchHelper extends StatusHelper {
 			}
 		}
 		$link = $this->Html->link($this->FgHtml->discoverName($user['User']), $this->userLink($user['User']['id']));
-		return "\r".$this->Html->div('search user', "\r\t".$this->FgHtml->tag('h4',"\r\t\t".$link."\r\t")."\r\t" . $this->Html->div(null, "\r\t\t".implode("\r\t\t", $hitLines)."\r\t") . "\r") . "\r";
+		return "\r".$this->Html->div('search user', "\r\t".$this->Html->tag('h4',"\r\t\t".$link."\r\t")."\r\t" . $this->Html->div(null, "\r\t\t".implode("\r\t\t", $hitLines)."\r\t") . "\r") . "\r";
 		// http://localhost/amp-fg/users/edit_userGrain/3/fcbe2cb721ddef6ab525cdb6438dc92b04e93770
 	}
 	

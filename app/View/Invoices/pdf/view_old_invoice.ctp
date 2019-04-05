@@ -3,7 +3,7 @@
 //	die;
 	$this->extend('invoice_accumulator');
 	$this->start('type');
-		echo $this->FgHtml->tag('h1', ucfirst($type));
+		echo $this->Html->tag('h1', ucfirst($type));
 	$this->end();
 
 	$this->start('address_billing');

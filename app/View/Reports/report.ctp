@@ -23,7 +23,7 @@ if (count($customers) > 1) {
 }
 $lastMonth = date('m', time() - MONTH);
 $year = date('Y', time() - MONTH);
-echo $this->FgHtml->tag('label', 'Enter a date range', array('for' => 'UserStartMonthMonth'));
+echo $this->Html->tag('label', 'Enter a date range', array('for' => 'UserStartMonthMonth'));
 echo $this->FgForm->month('start_month', array('empty' => 'Start Month', 'value' => $lastMonth));
 echo $this->FgForm->year('start_year', 2013, date('Y',time()), array('empty' => 'Year', 'value' => $year));
 echo '&nbsp;&nbsp;';

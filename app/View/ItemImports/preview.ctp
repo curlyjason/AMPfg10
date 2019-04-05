@@ -10,7 +10,7 @@ pr($ItemRegistry->reportErrors());
 ?>
 <?= $this->FgForm->create('ItemImports', array('action' => 'saveItems')); ?>
 <?= $this->FgForm->input('catalog.parent_id', array('type' => 'hidden', 'default' => 'unset')); ?>
-<?= $this->FgHtml->tag('span', 'Select a Destination Catalog on Left',['class' => 'company_name']); ?>
+<?= $this->Html->tag('span', 'Select a Destination Catalog on Left',['class' => 'company_name']); ?>
 <?= $this->FgForm->end('Submit'); ?>
 
 <table>

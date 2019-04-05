@@ -16,19 +16,19 @@ echo $this->end('css');
 $shipment = $this->request->data['Shipment'];
 
 echo $this->Html->div('orderNumber', NULL);
-	echo $this->FgHtml->tag('h2', 'Order');
+	echo $this->Html->tag('h2', 'Order');
 	echo $this->FgHtml->decoratedTag('Order No.', 'p', $shipment['shipment_code']);
 echo '</div>';
 
 echo $this->Html->div('shipmentContact', NULL);
-	echo $this->FgHtml->tag('h2', 'Contact');
+	echo $this->Html->tag('h2', 'Contact');
 	echo $this->FgHtml->decoratedTag('Name', 'p', $shipment['first_name']. ' ' . $shipment['last_name']);
 	echo $this->FgHtml->decoratedTag('Email', 'p', $shipment['email']);
 	echo $this->FgHtml->decoratedTag('Phone', 'p', $shipment['phone']);
 echo '</div>';
 
 echo $this->Html->div('shippingAddress', NULL);
-	echo $this->FgHtml->tag('h2', 'Shipping');
+	echo $this->Html->tag('h2', 'Shipping');
 	echo $this->FgHtml->decoratedTag('Company', 'p', $shipment['company'], array('class' => 'decoration ShipmentCompany'));
 	echo $this->FgHtml->decoratedTag('Address', 'p', $shipment['address'], array('class' => 'decoration AddressCompany'));
 	if(!empty($shipment['address2'])){
@@ -48,7 +48,7 @@ echo $this->Form->create('Shipment', array('class' => 'grainVersion'));
 	echo $this->FgForm->input('Shipment.order_id', array('type' => 'hidden'));
 
 	echo $this->Html->div('shipmentAddOns', NULL);
-		echo $this->FgHtml->tag('h2', 'Cost & Tracking');
+		echo $this->Html->tag('h2', 'Cost & Tracking');
 		echo $this->Form->input('Shipment.shipment_cost', array('class' => 'form-control', 'label' => 'Shipping Charge'));
 		echo $this->Form->input('Shipment.tracking', array('class' => 'form-control', 'label' => 'Tracking No.'));
 	echo '</div>';

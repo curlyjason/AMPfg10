@@ -20,7 +20,7 @@ $role = $this->Session->read('Auth.User.role');
 
 echo $this->Html->div('helpText float', NULL, array('id' => 'helpText'));//open help window div
 	echo $this->FgHtml->para('close', 'X', array('bind' => 'click.closeHelp'));
-	echo $this->FgHtml->tag('h2', 'Edit ' . $this->request->data['Help']['name']);
+	echo $this->Html->tag('h2', 'Edit ' . $this->request->data['Help']['name']);
 	echo $this->Html->div('helpEditBox', NULL);
 		echo $this->FgForm->create();
 		echo $this->FgForm->input('Help.id', array ('type' => 'hidden'));

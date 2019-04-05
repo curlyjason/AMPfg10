@@ -6,7 +6,7 @@ echo $this->Html->div('vendorDisplay', null);
     $headers = array('ID', 'Name', 'Location', 'Tools');
     $idPrefix = 'vendor';
     
-//echo $this->FgHtml->tag('h3', $heading, array('class' => 'grainDisplay'));
+//echo $this->Html->tag('h3', $heading, array('class' => 'grainDisplay'));
 
 // parse location records into a cake tableCells compatible array
 $tableArray = array();
@@ -24,7 +24,7 @@ $tableArray = array();
                 );
     }
 
-echo $this->FgHtml->tag('Table', null, array('class' => 'vendor'));
+echo $this->Html->tag('Table', null, array('class' => 'vendor'));
 echo $this->Html->tableHeaders($headers);
 echo $this->FgHtml->tableCells($rows)
 ?>

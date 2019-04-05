@@ -20,7 +20,7 @@ $role = $this->Session->read('Auth.User.role');
 
 echo $this->Html->div('helpText float', NULL, array('id' => 'helpText'));//open help window div
 	echo $this->FgHtml->para('close', 'X', array('bind' => 'click.closeHelp'));
-	echo $this->FgHtml->tag('h2', $helpText['Help']['name']);
+	echo $this->Html->tag('h2', $helpText['Help']['name']);
 	echo $this->Html->div('helpTextMarkdown', NULL);
 		echo $this->FgHtml->markdown($helpText['Help']['help']);
 	echo '</div>';//close helpTextMarkdown div

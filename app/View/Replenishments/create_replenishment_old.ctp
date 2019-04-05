@@ -26,8 +26,8 @@ echo $this->FgForm->input('po_item_code', array('type' => 'hidden'));
 
 echo $this->Html->div('sidebar', NULL);
 	$this->FgForm->input('po_item_code', array('type' => 'hidden'));
-	echo $this->FgHtml->tag('fieldset', NULL, array('id' => 'replenishmentTools'));
-		echo $this->FgHtml->tag('h2', 'Create Replenishment');
+	echo $this->Html->tag('fieldset', NULL, array('id' => 'replenishmentTools'));
+		echo $this->Html->tag('h2', 'Create Replenishment');
 		
 		echo $this->FgForm->input('Replenishment.status', array(
 			'options' => array(
@@ -53,14 +53,14 @@ echo $this->Html->div('sidebar', NULL);
 			'legend' => false,
 			'label' => FALSE,
 			'before' => 'Expand range: ',
-			'after' => $this->FgHtml->tag('span', ' (reloads page)', array('class' => 'hint')),
+			'after' => $this->Html->tag('span', ' (reloads page)', array('class' => 'hint')),
 			'bind' => 'change.expandCreateReplenishmentScope'
 		));
 		
 		echo '<p>'.$this->Html->link('New Vendor', array(
 			'controller' => 'addresses', 
 			'action' => 'manageVendors'))
-			. $this->FgHtml->tag('span', ' (reloads page)', array('class' => 'hint')).'</p>';
+			. $this->Html->tag('span', ' (reloads page)', array('class' => 'hint')).'</p>';
 
 		echo $this->Html->div('search', NULL);
 			echo $this->FgForm->input('search', array(
@@ -77,8 +77,8 @@ echo $this->Html->div('sidebar', NULL);
 
 	$count = 0;
 
-	echo $this->FgHtml->tag('fieldset', NULL, array('id' => 'vendorSection'));
-	echo $this->FgHtml->tag('h2', 'Vendors & Items');
+	echo $this->Html->tag('fieldset', NULL, array('id' => 'vendorSection'));
+	echo $this->Html->tag('h2', 'Vendors & Items');
 	echo $this->Html->div(NULL, '', array('id' => 'findResult'));
 	// Output each vendor (as a radio button)
 	// and the items from that vendor (as checkboxes)
@@ -92,7 +92,7 @@ echo $this->Html->div('sidebar', NULL);
 		echo $this->FgForm->input("Replenishment.vendor_id", array('type' => 'radio', 'options' => array($items[0]['Vendor']['id'] => "PO for $vendor"), 'value' => $vendor));
 
 		// a reveal tool for the vendor's items
-		echo $this->FgHtml->para('reveal', $this->FgHtml->tag('span', 'Reveal', array(
+		echo $this->FgHtml->para('reveal', $this->Html->tag('span', 'Reveal', array(
 					'class' => 'toggle', 'id' => "ItemGroup$vndr"
 				))
 				. ' these ' . count($items) . ' items.');
@@ -135,7 +135,7 @@ echo '</div>'; // end of sidebar
 
 echo $this->Html->div('view', NULL);
 		echo $this->Html->div('vendorAddress', NULL);
-			echo $this->FgHtml->tag('h2', 'Vendor Address');
+			echo $this->Html->tag('h2', 'Vendor Address');
 			echo $this->Html->div('address', NULL);
 			echo $this->FgHtml->decoratedTag('Company', 'p', 'On Choice', array('class' => 'decoration Company'));
 			echo $this->FgHtml->decoratedTag('Address', 'p', ' ', array('class' => 'decoration Address'));
@@ -162,7 +162,7 @@ echo $this->Html->div('view', NULL);
 
 	echo '</div>';//close replenishmentClosingButtons
 
-	echo $this->FgHtml->tag('h2', 'Replenishment Items');
+	echo $this->Html->tag('h2', 'Replenishment Items');
 echo '</div>'; //close
 echo $this->FgForm->end();
 ?>

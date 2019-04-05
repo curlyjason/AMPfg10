@@ -84,7 +84,7 @@ class FgHtmlHelper extends AppHelper {
      * The hash will allow user/session values to be used to 
      * validate the id when the form arrives back at the server
      * 
-     * Accepts all standard Html->link params
+     * Accepts all standard $this->Html->link params
      * 
      * @param type $title
      * @param type $id The id to carry in the link
@@ -95,7 +95,7 @@ class FgHtmlHelper extends AppHelper {
      */
     public function secureLink($title, $id, $url = array(), $options = array(), $confirmMessage = false) {
         $url = array_merge($url, array($id, $this->secureHash($id)));
-        return $this->link($title, $url, $options, $confirmMessage);
+        return $this->Html->link($title, $url, $options, $confirmMessage);
     }
 
     /**
@@ -342,7 +342,7 @@ class FgHtmlHelper extends AppHelper {
      */
     private function outputGroupUlSelect($params) {
         extract($params);
-        return $this->tag('ul', NULL, array());
+        return $this->Html->tag('ul', NULL, array());
     }
 
     /**
@@ -353,7 +353,7 @@ class FgHtmlHelper extends AppHelper {
      */
     private function outputGroupLiSelect($node, $params) {
         extract($params);
-        return $this->tag('li', NULL, $attributes);
+        return $this->Html->tag('li', NULL, $attributes);
     }
 
     /**
@@ -443,7 +443,7 @@ class FgHtmlHelper extends AppHelper {
 		if(isset($marker) && $marker === 'transparent.png') {
 			return '';
 		}
-        $mainLink = $this->link($node['name'], $node['id'], array('action' => ''));
+        $mainLink = $this->Html->link($node['name'], $node['id'], array('action' => ''));
 
 
         return $expandTool . ' ' . $mainLink;
@@ -493,7 +493,7 @@ class FgHtmlHelper extends AppHelper {
     private function outputGroupUlPlain($params) {
         extract($params);
         $keys = array_keys($group);
-        return $this->tag('ul', NULL, array(
+        return $this->Html->tag('ul', NULL, array(
                     'id' => $this->secureSelect($group[$keys[0]]['parent_id'], 'ul'),
                     'class' => 'plain'));
     }
@@ -514,7 +514,7 @@ class FgHtmlHelper extends AppHelper {
 		if (isset($node['type'])) {
 			$attributes['type'] = $node['type'];
 		}
-        return $this->tag('li', NULL, $attributes);
+        return $this->Html->tag('li', NULL, $attributes);
     }
 
     /**
@@ -543,7 +543,7 @@ class FgHtmlHelper extends AppHelper {
         $keys = array_keys($group);
 		$targetType = $parentNodeType & (KIT | FOLDER | PRODUCT | COMPONENT);
 		$class = ($targetType > 0 ? str_replace('li', 'ul', $this->types[$targetType]) : '') . ($targetType != KIT ? ' sort' : '');
-        return $this->tag('ul', NULL, array(
+        return $this->Html->tag('ul', NULL, array(
 				'id' => $this->secureSelect($group[$keys[0]]['parent_id'], 'ul'),
 				'class' => trim($class)
 			));
@@ -568,7 +568,7 @@ class FgHtmlHelper extends AppHelper {
 			$targetType = $node['type'] & (KIT | FOLDER | PRODUCT | COMPONENT);
 			$attributes['class'] = $class . $this->types[$targetType];
 		}
-        return $this->tag('li', NULL, $attributes);
+        return $this->Html->tag('li', NULL, $attributes);
     }
 
     /**
@@ -636,7 +636,7 @@ class FgHtmlHelper extends AppHelper {
             'class' => $gearClass
         ));
         return $expandTool . $img .
-                $this->tag('span', $name . $watchers);
+                $this->Html->tag('span', $name . $watchers);
     }
 
     //============================================================
@@ -687,7 +687,7 @@ class FgHtmlHelper extends AppHelper {
 		}
 		$name = $this->discoverName($node);
 		$class = 'indent-' . (substr_count($node['ancestor_list'], ',')-1);
-		echo $this->tag('option', $name, array(
+		echo $this->Html->tag('option', $name, array(
 			'value' => $node['id'],
 			'class' => $class,
 			'selected' => isset($this->selected[$node['id']])
@@ -708,7 +708,7 @@ class FgHtmlHelper extends AppHelper {
     public function countAlert($count, $title = false, $threshold = 1, $options=array()) {
         if ($count > $threshold) {
 			$attributes = ($title) ? array('title' => $title) : array();
-            return $this->div('countAlert', $this->div('warning', '') . $this->para('warning', $count, $attributes), $options);
+            return$this->Html->div('countAlert',$this->Html->div('warning', '') . $this->para('warning', $count, $attributes), $options);
         } else {
             return '';
         }
@@ -729,9 +729,9 @@ class FgHtmlHelper extends AppHelper {
     public function decoratedTag($label, $name, $text = null, $options = array('class' => 'decoration')) {
 		$defaultOptions = array('class' => 'decoration');
 		$options = array_merge($defaultOptions, $options);
-        $guts = $this->tag('span', $label . ': ', $options);
-        $text = $this->tag('span', $text, array('class' => 'text'));
-        return $this->tag($name, $guts . $text, $options);
+        $guts = $this->Html->tag('span', $label . ': ', $options);
+        $text = $this->Html->tag('span', $text, array('class' => 'text'));
+        return $this->Html->tag($name, $guts . $text, $options);
     }
 
     /**
@@ -809,7 +809,7 @@ class FgHtmlHelper extends AppHelper {
      */
     private function setAddressGrainRowArray($leaf, &$tableArray, $editAccess) {
         // pre assemble concatenated address
-        $addressDisplay = $this->tag('span', $leaf['address'] . "<br />"
+        $addressDisplay = $this->Html->tag('span', $leaf['address'] . "<br />"
                 . $leaf['city'] . " " . $leaf['state'], array('class' => 'addressDisplay')
         );
         // pre assemble tools for final cell
@@ -876,16 +876,16 @@ class FgHtmlHelper extends AppHelper {
     public function budgetIndicator($budget){
         $indicator = null;
         if ($budget['use_budget']) {
-            $budget_amount = $this->tag('span', $budget['remaining_budget'], array('class' => 'flyout hide'));
+            $budget_amount = $this->Html->tag('span', $budget['remaining_budget'], array('class' => 'flyout hide'));
             $over = stristr($budget['remaining_budget'], '-');
             $overClass = $over ? ' negative' : ' positive';
-            $indicator .= $this->tag('span', ' [$]' . $budget_amount, array('class' => 'indicator budget-'. $budget['id'] . $overClass));
+            $indicator .= $this->Html->tag('span', ' [$]' . $budget_amount, array('class' => 'indicator budget-'. $budget['id'] . $overClass));
         }
         if ($budget['use_item_budget']){
-            $item_budget_amount = $this->tag('span', $budget['remaining_item_budget'], array('class' => 'flyout hide'));
+            $item_budget_amount = $this->Html->tag('span', $budget['remaining_item_budget'], array('class' => 'flyout hide'));
             $over = stristr($budget['remaining_item_budget'], '-');
             $overClass = $over ? ' negative' : ' positive';
-            $indicator .=  $this->tag('span', ' [#]' . $item_budget_amount, array('class' => 'indicator itembudget-'. $budget['id'] . $overClass));
+            $indicator .=  $this->Html->tag('span', ' [#]' . $item_budget_amount, array('class' => 'indicator itembudget-'. $budget['id'] . $overClass));
         }
         return $indicator;
     }
@@ -928,10 +928,10 @@ class FgHtmlHelper extends AppHelper {
     public function unitName($item, $alias) {
 	if ($alias == 'Order' || $alias == 'Catalog') {
 		// TODO::DELETE
-	    return $this->tag('span', $item['Catalog']['sell_unit'], array('class' => "inv_unit{$item['Item']['id']}"));
+	    return $this->Html->tag('span', $item['Catalog']['sell_unit'], array('class' => "inv_unit{$item['Item']['id']}"));
 	} else {
 	    // Replenishment
-	    return $this->tag('span', $item['po_unit'], array('class' => "po_unit{$item['id']}"));
+	    return $this->Html->tag('span', $item['po_unit'], array('class' => "po_unit{$item['id']}"));
 	}
     }
 
@@ -1067,16 +1067,16 @@ class FgHtmlHelper extends AppHelper {
 				: $this->available['title_attr'];
 		
 		// assemble the 3 spans that are the update-able units
-		$availSpan = $this->tag('span',$avail, array('class' => 'avail'.$idHook.$availableClass));
-		$sellSpan = $this->tag('span',$this->available['sell_quantity'], array('class' => 'sell'.$idHook));
-		$unitSpan = $this->tag('span',$this->available['sell_unit'], array('class' => 'unit'.$idHook));
+		$availSpan = $this->Html->tag('span',$avail, array('class' => 'avail'.$idHook.$availableClass));
+		$sellSpan = $this->Html->tag('span',$this->available['sell_quantity'], array('class' => 'sell'.$idHook));
+		$unitSpan = $this->Html->tag('span',$this->available['sell_unit'], array('class' => 'unit'.$idHook));
 		
 		// build up the the final display string from all the bits
 		$of = $this->available['sell_unit'] === 'ea' 
 				? "$unitSpan"
 				: "$unitSpan of $sellSpan";
 		
-	    $available = $this->tag('span', 
+	    $available = $this->Html->tag('span', 
 			"Available: $availSpan/$of",
 					array(
 						'class' => 'calcQty',
@@ -1137,21 +1137,21 @@ class FgHtmlHelper extends AppHelper {
 				: $this->pending['title_attr'];
 		
 		// assemble the 3 spans that are the update-able units
-		$pendSpan = $this->tag('span',$pend, array('class' => 'pend'.$idHook));
+		$pendSpan = $this->Html->tag('span',$pend, array('class' => 'pend'.$idHook));
 		if ($this->pending['catalog_id']) {
-			$sellSpan = $this->tag('span', $this->pending['sell_quantity'], array('class' => 'poqty' . $idHook));
-			$unitSpan = $this->tag('span', $this->pending['sell_unit'], array('class' => 'pounit' . $idHook));
+			$sellSpan = $this->Html->tag('span', $this->pending['sell_quantity'], array('class' => 'poqty' . $idHook));
+			$unitSpan = $this->Html->tag('span', $this->pending['sell_unit'], array('class' => 'pounit' . $idHook));
 		} else {
 			// with no catalog, we're looking at the Item, always 1 each
-			$sellSpan = $this->tag('span', '1', array('class' => 'poqty' . $idHook));
-			$unitSpan = $this->tag('span', 'ea', array('class' => 'pounit' . $idHook));
+			$sellSpan = $this->Html->tag('span', '1', array('class' => 'poqty' . $idHook));
+			$unitSpan = $this->Html->tag('span', 'ea', array('class' => 'pounit' . $idHook));
 		}
 		// build up the the final display string from all the bits
 		$of = $this->pending['po_unit'] === 'ea' 
 				? "$sellSpan $unitSpan"
 				: "$unitSpan of $sellSpan";
 		
-	    $pending = $this->tag('span', 
+	    $pending = $this->Html->tag('span', 
 			"{$this->pending['name']}: $pendSpan | $of", 
 					array(
 						'class' => 'calcQty',
@@ -1202,27 +1202,27 @@ class FgHtmlHelper extends AppHelper {
 		
 		//accumulate $opening
 		$count = count($data);
-		$edit = $this->tag('span', ' (click to edit)  ', array ('class' => 'locationEditText', 'bind' => 'click.editLocations'));
-		$opening = $this->div('locations', NULL, array('itemId' => $itemId));
+		$edit = $this->Html->tag('span', ' (click to edit)  ', array ('class' => 'locationEditText', 'bind' => 'click.editLocations'));
+		$opening =$this->Html->div('locations', NULL, array('itemId' => $itemId));
 		if($ptag){
 				$opening .= $this->decoratedTag('Locations', 'p', $count . $edit);
 		} else {
 			$opening .= $this->para('locTitle', $count . $edit);
 		}
-		$opening .= $this->tag('ul', NULL);
+		$opening .= $this->Html->tag('ul', NULL);
 		
 		//accumulate items
 		foreach ($data as $index => $location) {
 			//setup digit spans
-			$rowNum = ($location['row']) ? $this->tag('span', $location['row'], array('class' => 'locNum')) : '';
-			$binNum = ($location['bin']) ? $this->tag('span', $location['bin'], array('class' => 'locNum')) : '';
+			$rowNum = ($location['row']) ? $this->Html->tag('span', $location['row'], array('class' => 'locNum')) : '';
+			$binNum = ($location['bin']) ? $this->Html->tag('span', $location['bin'], array('class' => 'locNum')) : '';
 			//setup vars for accumulation
 			$row = ($location['row']) ? ' R-'.$rowNum : '';
 			$bin = ($location['bin']) ? ' B-'.$binNum : '';
 			//accumulate all element
 			$loc = $location['building'] . $row . $bin;
 			//create an output as an li
-			$output .= $this->tag('li', $loc);
+			$output .= $this->Html->tag('li', $loc);
 		}
 		
 		//accumulate $closing

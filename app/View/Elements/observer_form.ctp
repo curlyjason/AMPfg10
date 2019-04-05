@@ -19,13 +19,13 @@ if ($alias == 'Observer') {
     echo $this->Form->input('user_id', array('type' => 'hidden'));
 	
 	echo $this->Html->div('input select', NULL);
-		echo $this->FgHtml->tag('label', 'User Observer', array('for' => 'ObserverUserObserverId'));
+		echo $this->Html->tag('label', 'User Observer', array('for' => 'ObserverUserObserverId'));
 		// this is the email only list
-		echo $this->FgHtml->tag('select', null, array(
+		echo $this->Html->tag('select', null, array(
 			'id' => 'ObserverUserObserverId',
 			'name' => 'data[Observer][user_observer_id]'
 		));
-			echo $this->FgHtml->tag('option', 'Select an observer', array('value' => ''));
+			echo $this->Html->tag('option', 'Select an observer', array('value' => ''));
 			$this->FgHtml->setSelected(array($selectedUser));
 			echo $this->FgHtml->recursiveTree('observer', $userObservers, $rootNodes);
 		echo '</select>';
@@ -35,13 +35,13 @@ if ($alias == 'Observer') {
 	
 	
 	echo $this->Html->div('input select', NULL);
-		echo $this->FgHtml->tag('label', 'User Observer', array('for' => 'ObserverUserObserverId'));
+		echo $this->Html->tag('label', 'User Observer', array('for' => 'ObserverUserObserverId'));
 		// this is the anybody list
-		echo $this->FgHtml->tag('select', null, array(
+		echo $this->Html->tag('select', null, array(
 			'id' => 'ObserverUserId',
 			'name' => 'data[Observer][user_id]'
 		));
-			echo $this->FgHtml->tag('option', 'Select an observed user', array('value' => ''));
+			echo $this->Html->tag('option', 'Select an observed user', array('value' => ''));
 			$this->FgHtml->setSelected(array($selectedUser));
 			echo $this->FgHtml->recursiveTree('observed', $userObservers, $rootNodes);
 		echo '</select>';
