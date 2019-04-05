@@ -304,4 +304,24 @@ class ReportHelperTest extends CakeTestCase
 <tr><td class="spacer"></td> <td colspan="3"><table><tr><th>Item</th> <th>Qty</th> <th>Unit</th> <th>Price</th> <th>Subtotal</th></tr><tr><td class="orderItem">first item</td> <td>1</td> <td>ea</td> <td>0.00</td> <td>0.00</td></tr></table></td></tr>';
 		$this->assertTrue($actual === $expected);
 	}
+	
+	public function testReportOrderMultiItem()
+	{
+		$this->order['OrderItem'][] = [
+			'name' => 'first item',
+			'quantity' => '2',
+			'sell_quantity' => '2',
+			'each_quantity' => '2',
+			'sell_unit' => 'ea',
+			'weight' => '0.00',
+			'price' => '0.00',
+			'subtotal' => '2.00',
+		];
+		
+		$actual = $this->ReportHelper->reportOrder($this->orderId, (new ReportOrder($this->order)));
+		$expected = '<tr><th>Order #</th> <th>Ordered By</th> <th>Date</th> <th>Status</th></tr><tr><td class="Order">1902-AEKE</td> <td>Jason Tempestini</td> <td>2019-02-08</td> <td>Submitted</td></tr>
+<tr><td class="spacer"></td> <td colspan="3"><table><tr><th>Item</th> <th>Qty</th> <th>Unit</th> <th>Price</th> <th>Subtotal</th></tr><tr><td class="orderItem">first item</td> <td>1</td> <td>ea</td> <td>0.00</td> <td>0.00</td></tr>
+<tr><td class="orderItem">first item</td> <td>2</td> <td>ea</td> <td>0.00</td> <td>2.00</td></tr></table></td></tr>';
+		$this->assertTrue($actual === $expected);
+	}
 }
