@@ -24,9 +24,9 @@
 			</div>
 			<div id="amp" class="left">
 				<?php
-				echo $this->FgHtml->para(null, 'Amp Printing + Graphics');
-				echo $this->FgHtml->para(null, '6955 Sierra Court');
-				echo $this->FgHtml->para(null, 'Dublin, CA 94568');
+				echo $this->Html->para(null, 'Amp Printing + Graphics');
+				echo $this->Html->para(null, '6955 Sierra Court');
+				echo $this->Html->para(null, 'Dublin, CA 94568');
 				?>
 			</div>
 			<!-- REFERENCE BLOCK -->
@@ -96,7 +96,7 @@
 			<div id="line_items">
 				<?php
 					foreach ($page as $index => $line) {
-						echo $this->FgHtml->div('line', null);
+						echo $this->Html->div('line', null);
 							echo $this->Accumulator->columns($line);
 						echo '</div>';
 					}	

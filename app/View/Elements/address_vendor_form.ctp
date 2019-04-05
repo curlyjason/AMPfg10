@@ -25,7 +25,7 @@
 	echo $this->FgForm->countryInput('Address',$countryList);
     echo $this->FgForm->activeRadio('Address');
     
-    echo $this->FgHtml->tag('h2', 'Billing contact information');
+    echo $this->Html->tag('h2', 'Billing contact information');
     echo $this->FgForm->input('Address.first_name');
     echo $this->FgForm->input('Address.last_name');
     echo $this->FgForm->input('Address.email');

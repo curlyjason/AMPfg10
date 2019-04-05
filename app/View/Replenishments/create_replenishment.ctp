@@ -1,13 +1,13 @@
 <?php
 $this->start('css');
-echo $this->FgHtml->css('ampfg_grain');
-echo $this->FgHtml->css('ampfg_forms');
-echo $this->FgHtml->css('replenishment');
+echo $this->Html->css('ampfg_grain');
+echo $this->Html->css('ampfg_forms');
+echo $this->Html->css('replenishment');
 $this->end();
 
 $this->start('script');
-echo $this->FgHtml->script('replenishment');
-echo $this->FgHtml->script('form');
+echo $this->Html->script('replenishment');
+echo $this->Html->script('form');
 $this->end();
 
 $this->start('jsGlobalVars');
@@ -19,10 +19,10 @@ echo $this->FgForm->create();
 echo $this->FgForm->input('po_item_code', array('type' => 'hidden'));
 
 
-echo $this->FgHtml->div('sidebar', NULL);
+echo $this->Html->div('sidebar', NULL);
 	$this->FgForm->input('po_item_code', array('type' => 'hidden'));
-	echo $this->FgHtml->tag('fieldset', NULL, array('id' => 'replenishmentTools'));
-		echo $this->FgHtml->tag('h2', 'Create Replenishment');
+	echo $this->Html->tag('fieldset', NULL, array('id' => 'replenishmentTools'));
+		echo $this->Html->tag('h2', 'Create Replenishment');
 		echo $this->Form->input('Replenishment.status', array(
 			'type' => 'hidden',
 			'value' => 'Open'
@@ -38,8 +38,8 @@ echo $this->FgHtml->div('sidebar', NULL);
 
 	$count = 0;
 	$name = isset($this->request->params['pass'][0]) ? 'for<br />' . $vendors[$this->request->params['pass'][0]] : '';
-	echo $this->FgHtml->tag('h2', "Items $name");
-	echo $this->FgHtml->div(NULL, NULL, array('id' => 'findResult'));
+	echo $this->Html->tag('h2', "Items $name");
+	echo $this->Html->div(NULL, NULL, array('id' => 'findResult'));
 		// Output each vendor (as a radio button)
 		// and the items from that vendor (as checkboxes)
 		foreach ($itemData as $key => $item) {
@@ -55,8 +55,8 @@ echo $this->FgHtml->div('sidebar', NULL);
 	echo '</div>'; // end of findResult div
 echo '</div>'; // end of sidebar
 
-echo $this->FgHtml->div('view', NULL);
-	echo $this->FgHtml->div('replenishmentClosingButtons', NULL);
+echo $this->Html->div('view', NULL);
+	echo $this->Html->div('replenishmentClosingButtons', NULL);
 		echo $this->FgForm->button('Cancel', array(
 			'type' => 'button',
 			'bind' => 'click.basicCancelButton',
@@ -68,7 +68,7 @@ echo $this->FgHtml->div('view', NULL);
 			'class' => 'btn replenishmentSubmit'));
 	echo '</div>';//close replenishmentClosingButtons
 
-	echo $this->FgHtml->tag('h2', 'Replenishment Items');
+	echo $this->Html->tag('h2', 'Replenishment Items');
 echo '</div>'; //close
 echo $this->FgForm->end();
 ?>

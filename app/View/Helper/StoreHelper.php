@@ -48,7 +48,7 @@ class StoreHelper extends AppHelper {
 			} else {
 				$label = 'There are no components for this kit';
 			}
-			return $this->FgHtml->link($label, '', array('class'=>'reveal toggle', 'id' => 'revealComponents'.$entry['Catalog']['id']));
+			return $this->Html->link($label, '', array('class'=>'reveal toggle', 'id' => 'revealComponents'.$entry['Catalog']['id']));
 		} else {
 			return '';
 		}
@@ -122,7 +122,7 @@ class StoreHelper extends AppHelper {
 				'bind' => 'click.addToCart'));
 		} else {
 			$output[] = "$priceBlock<p>{$this->FgHtml->calculatedQuantity($entry,'Catalog')}</p>";
-			$output[] = $this->FgHtml->para('noAdd', $message);
+			$output[] = $this->Html->para('noAdd', $message);
 		}
 		
 		$output[] = $this->FgForm->end();

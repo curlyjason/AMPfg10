@@ -5,6 +5,7 @@ App::uses('HtmlHelper', 'Cake/View/Helpler');
 App::uses('FileExtension', 'Lib');
 App::uses('Hash', 'Utility');
 App::uses('ReportOrder', 'Model/Entity');
+App::uses('ItemEntity', 'Model/Entity');
 
 /**
  * CakePHP Helper
@@ -30,11 +31,11 @@ class ReportHelper extends FgHtmlHelper {
 			return;
 		}
 		$rows = array();
-		echo $this->tag('table', NULL, array('class' => $status));
+		echo $this->Html->tag('table', NULL, array('class' => $status));
 		$rows[] = array(array('Status: ' . $status, array('colspan' => 4, 'class' => 'Status')));
-		echo $this->tableCells($rows);
+		echo $this->Html->tableCells($rows);
 		foreach ($orders as $orderId => $order) {
-			$this->reportOrder($orderId, (new ReportOrder($order)));
+			echo $this->reportOrder($orderId, (new ReportOrder($order)));
 		}
 		echo '</table>';
 	}
@@ -78,13 +79,13 @@ class ReportHelper extends FgHtmlHelper {
 		$rows = array();
 		$headers = array('Item', 'Qty', 'Unit', 'Price', 'Subtotal');
 		foreach ($orderItem as $key => $product) {
-			$rows[] = array(
-				array($product['name'], array('class' => 'orderItem')),
+			$rows[] = [
+				$this->plusClass($product['name'], 'orderItem'),
 				$product['quantity'],
 				$product['sell_unit'],
 				$product['price'],
 				$product['subtotal']
-			);
+			];
 		}
 		$return  = '<table>' .
 				$this->Html->tableHeaders($headers) .

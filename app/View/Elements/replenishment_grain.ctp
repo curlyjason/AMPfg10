@@ -5,7 +5,7 @@ $displayStatus = $data[$arrayIndex[0]]['Replenishment']['status'] . ' Replenishm
 $count = count($replenishmentList[$group]);
 $toggler = Inflector::classify($displayStatus);
 echo '<div>';
-echo $this->FgHtml->tag('h3', "$displayStatus (<span class='count'>$count</span>)", array(
+echo $this->Html->tag('h3', "$displayStatus (<span class='count'>$count</span>)", array(
     'id' => $toggler, //"WatchReplenishment",
     'class' => 'grainDisplay toggle'
 ));

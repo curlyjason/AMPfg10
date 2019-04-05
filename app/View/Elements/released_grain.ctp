@@ -4,7 +4,7 @@ $arrayIndex = array_keys($data);
 $displayStatus = $data[$arrayIndex[0]]['Order']['status'];
 $count = count($pullList[$group]);
 echo '<div>';
-echo $this->FgHtml->tag('h3', "$displayStatus (<span class='count'>$count</span>)", array(
+echo $this->Html->tag('h3', "$displayStatus (<span class='count'>$count</span>)", array(
     'id' => "Watch$displayStatus",
     'class' => 'grainDisplay toggle'
 ));

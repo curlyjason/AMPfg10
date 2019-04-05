@@ -2,7 +2,7 @@
 //debug($product);
 ?>
 <div class="catalogs view">
-    <?php echo $this->FgHtml->script(array('addtocart.js'), array('inline' => false)); ?>
+    <?php echo $this->Html->script(array('addtocart.js'), array('inline' => false)); ?>
     
     <h1><?php echo $product['Catalog']['name']; ?></h1>
 
@@ -11,7 +11,7 @@
         <div class="col col-lg-7">
             <?php 
 				if (isset($product['Item']['Image'][0])) {
-					echo $this->FgHtml->image('image' . DS . 'img_file' . DS . $product['Item']['Image'][0]['id'] . DS . 'x500y375_' . $product['Item']['Image'][0]['img_file']);
+					echo $this->Html->image('image' . DS . 'img_file' . DS . $product['Item']['Image'][0]['id'] . DS . 'x500y375_' . $product['Item']['Image'][0]['img_file']);
 				}            
 			?>
         </div>

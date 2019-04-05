@@ -1,13 +1,13 @@
 <?php
 $this->start('css');
-    echo $this->FgHtml->css('ampfg_grain');
-    echo $this->FgHtml->css('ampfg_forms');
+    echo $this->Html->css('ampfg_grain');
+    echo $this->Html->css('ampfg_forms');
 $this->end();
 
 $this->start('script');
-    echo $this->FgHtml->script('grain');
-    echo $this->FgHtml->script('form');
-    echo $this->FgHtml->script('formUser');
+    echo $this->Html->script('grain');
+    echo $this->Html->script('form');
+    echo $this->Html->script('formUser');
 $this->end();
 
     echo $this->element('replenishment_header_grain', array(

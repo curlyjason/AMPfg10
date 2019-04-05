@@ -22,7 +22,7 @@ if (preg_match('/^edit_user/', $this->request->params['action'])) { //if this te
 //} elseif ($this->request->params['action'] == 'edit_catalog') {
 //    $this->extend('/AppAjax/edit_tree'); //this creates an editing version of tree
 //    $this->start('script');
-//    echo $this->FgHtml->script('formCatalog');
+//    echo $this->Html->script('formCatalog');
 //    $this->end();
 }
 
@@ -40,12 +40,12 @@ if (!isset($vendorGrain)) {
 //============================================================
 
 $this->start('css');
-echo $this->FgHtml->css('ajax');
-echo $this->FgHtml->css('ampfg_forms');
+echo $this->Html->css('ajax');
+echo $this->Html->css('ampfg_forms');
 $this->end();
 
 $this->start('script');
-echo $this->FgHtml->script('form');
+echo $this->Html->script('form');
 $this->end();
 
 //============================================================
@@ -104,6 +104,6 @@ if (isset($userEditFlag) && $userEditFlag) {
     ));
 } else {
     //Using cake's debug message styling to provide instructional content to users
-    echo $this->FgHtml->para('cake-debug', 'Select an item in the sidebar to work with here.');
+    echo $this->Html->para('cake-debug', 'Select an item in the sidebar to work with here.');
 }
 ?>

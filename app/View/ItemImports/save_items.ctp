@@ -1,13 +1,13 @@
 <?php
-echo $this->FgHtml->script('itemPreview');
-echo $this->FgHtml->css('itemImport');
+echo $this->Html->script('itemPreview');
+echo $this->Html->css('itemImport');
 
 $this->start('sidebar');
 echo $this->element('sidebar_tree', array('controller' => $controller, 'tree' => $tree, 'rootNodes' => $rootNodes));
 $this->end(); //end sidebar block
 
 $message = $ItemRegistry->successfulSaveCount . ' records were saved from the file ' . $ItemRegistry->importFileName();
-echo $this->FgHtml->tag('h1', $message);
+echo $this->Html->tag('h1', $message);
 
 if ($ItemRegistry->hasSaveErrors()) :
 ?>

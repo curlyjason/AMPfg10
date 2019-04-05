@@ -1,11 +1,11 @@
 <?php
-$this->FgHtml->div('findSection', NULL);
+$this->Html->div('findSection', NULL);
 	$count = $this->request->data['Replenishment']['totalCount'];
 //	$this->FgHtml->ddd($findItems, 'foundSetData');
 	
-	echo $this->FgHtml->tag('h3', 'Found Items');
+	echo $this->Html->tag('h3', 'Found Items');
 	// a div to contain the vendor's items
-	echo $this->FgHtml->div("foundItems", NULL);
+	echo $this->Html->div("foundItems", NULL);
 
 		foreach ($findItems as $index => $item) {
 			$dataItems[$item['Item']['id']] = $item;

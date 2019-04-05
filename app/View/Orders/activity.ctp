@@ -1,5 +1,5 @@
 <?php
-echo $this->FgHtml->tag('h1', 'Order Activity Report <br/>' . $customerName . ': <br/>' . date('M d, Y', strtotime($start)) . ' - ' . date('M d, Y', strtotime($end)));
+echo $this->Html->tag('h1', 'Order Activity Report <br/>' . $customerName . ': <br/>' . date('M d, Y', strtotime($start)) . ' - ' . date('M d, Y', strtotime($end)));
 if (count($customers) > 1) {
 	echo $this->FgForm->input('customers', array(
 		'type' => 'select',
@@ -11,11 +11,11 @@ if (count($customers) > 1) {
 
 //	$this->FgHtml->ddd($data, 'data');
 $this->start('css');
-	echo $this->FgHtml->css('report');
+	echo $this->Html->css('report');
 $this->end();
 
 $this->start('script');
-	echo $this->FgHtml->script('report');
+	echo $this->Html->script('report');
 $this->end();
 
 echo $this->Html->link(__('PDF'), array('controller' => 'orders', 'action' => 'activity', 'ext' => 'pdf', strtotime($start), strtotime($end), $customer), array('target' => '_blank'));
@@ -23,7 +23,7 @@ echo $this->Html->link(__('PDF'), array('controller' => 'orders', 'action' => 'a
 $c = count($data);
 
 if($c==0){
-	echo $this->FgHtml->tag('h2', "There are no orders for $customerName.");
+	echo $this->Html->tag('h2', "There are no orders for $customerName.");
 } else {
 	$key = key($data);
 	$custIds = array_keys($data);

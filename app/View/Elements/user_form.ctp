@@ -16,7 +16,7 @@
 			echo $this->Html->tag('fieldset'); // Opening fieldset
 			$marker = 'Budgets-' . $this->request->data['User']['id'];
 			echo $this->Html->tag('legend', __('Budgets'), array('id' => $marker, 'class' => 'toggle'));
-			echo $this->FgHtml->div($marker.' hide', NULL);
+			echo $this->Html->div($marker.' hide', NULL);
 				echo $this->FgForm->folderCheck('User', 'use_budget', array('class' => 'use_budget'));
 				if (isset($this->request->data['User']['use_budget'])) {
 					echo $this->FgForm->folderCheck('User', 'rollover_budget', array('class' => 'rollover_budget'));

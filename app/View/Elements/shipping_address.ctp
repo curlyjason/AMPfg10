@@ -1,5 +1,5 @@
 <?php
-echo $this->FgHtml->div('shippingAddress hide', NULL, array('bind' => 'validate.validateShippingAddress'));
+echo $this->Html->div('shippingAddress hide', NULL, array('bind' => 'validate.validateShippingAddress'));
 	echo $this->Session->flash('validationError');
     echo $this->Form->button('Clear Address', array('type' => 'button', 'class' => 'regular green', 'bind' => 'click.clearAddress'));
 	echo $this->Form->input('sameaddress', array('type' => 'checkbox', 'label' => 'Copy billing address to shipping'));
@@ -8,7 +8,7 @@ echo $this->FgHtml->div('shippingAddress hide', NULL, array('bind' => 'validate.
 	}
 	echo $this->Form->input('connectedAddresses', array('empty' => 'Select an Address', 'class' => 'addressSelect'));
 
-	echo $this->FgHtml->div('shippingInputs', NULL);
+	echo $this->Html->div('shippingInputs', NULL);
 		echo $this->Form->input('Shipment.first_name', array('class' => 'form-control', 'required' => true));
 		echo $this->Form->input('Shipment.last_name', array('class' => 'form-control'));
 		echo $this->Form->input('Shipment.email', array('type' => 'text', 'class' => 'form-control', 'placeholder' => "you@you.com, me@me.com, them@them.com"));

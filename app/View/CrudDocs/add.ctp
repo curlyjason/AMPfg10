@@ -1,4 +1,4 @@
-<?php echo $this->FgHtml->script('documents')?>
+<?php echo $this->Html->script('documents')?>
 <div class="documents form">
 <?php echo $this->Form->create('CrudDoc', array('type' => 'file')); ?>
 	<fieldset>

@@ -10,10 +10,10 @@ echo $this->Form->create('Shipment', array(
 echo $this->FgForm->input('Shipment.id', array('type' => 'hidden'));
 echo $this->FgForm->input('Shipment.order_id', array('type' => 'hidden'));
 
-echo $this->FgHtml->div('displayAddresses', NULL);
-	echo $this->FgHtml->div('billingAddress', NULL);
-		echo $this->FgHtml->div('shippingMethod', NULL);
-			echo $this->FgHtml->tag('h2', 'Shipping Method');
+echo $this->Html->div('displayAddresses', NULL);
+	echo $this->Html->div('billingAddress', NULL);
+		echo $this->Html->div('shippingMethod', NULL);
+			echo $this->Html->tag('h2', 'Shipping Method');
 			echo $this->FgForm->input ('Shipment.billing', array(
 				'class' => 'form-control',
 //				'value' => 'Sender',
@@ -45,9 +45,9 @@ echo $this->FgHtml->div('displayAddresses', NULL);
 				'options' => $Other,
 				'div' => false,
 				'label' => false));
-            echo $this->FgHtml->div ('thirdParty hide', NULL);
+            echo $this->Html->div ('thirdParty hide', NULL);
                 echo $this->FgForm->input ('Shipment.billing_account', array ('label' => 'Acct', 'class' => 'form-control'));
-                echo $this->FgHtml->div ('tpbAddress hide', NULL);
+                echo $this->Html->div ('tpbAddress hide', NULL);
 					echo $this->Form->input('Shipment.tpb_selector', array(
 						'type' => 'select',
 						'options' => $thirdParty,
@@ -68,7 +68,7 @@ echo $this->FgHtml->div('displayAddresses', NULL);
             echo $this->Form->input('Shipment.tracking', array('label' => 'Tracking Number'));
             echo $this->Form->input('Shipment.shipment_cost', array('label' => 'Shipment Cost'));
         }
-		echo $this->FgHtml->div('addressClosingButtons');
+		echo $this->Html->div('addressClosingButtons');
 			echo $this->FgForm->button('Save', array(
 				'type' => 'submit',
 				'bind' => 'click.saveShipment',
@@ -84,15 +84,15 @@ echo $this->FgHtml->div('displayAddresses', NULL);
 		echo '</div>';//close addressClosingButtons
 	echo '</div>';//close billing address div
 
-	echo $this->FgHtml->div('addressSelectors', NULL);
-		echo $this->FgHtml->tag('h2', 'Shipping Address');
+	echo $this->Html->div('addressSelectors', NULL);
+		echo $this->Html->tag('h2', 'Shipping Address');
 		echo $this->Session->flash('validationError');
 		if(!empty($myAddresses)){
 			echo $this->Form->input('myAddresses', array('empty' => 'Select an Address', 'class' => 'addressSelect'));
 		}
 		echo $this->Form->input('connectedAddresses', array('empty' => 'Select an Address', 'class' => 'addressSelect'));
 
-		echo $this->FgHtml->div('shippingInputs', NULL);
+		echo $this->Html->div('shippingInputs', NULL);
 			echo $this->Form->input('Shipment.first_name', array('class' => 'form-control', 'required' => true));
 			echo $this->Form->input('Shipment.last_name', array('class' => 'form-control'));
 			echo $this->Form->input('Shipment.email', array('type' => 'text', 'class' => 'form-control', 'placeholder' => "you@you.com, me@me.com, them@them.com"));

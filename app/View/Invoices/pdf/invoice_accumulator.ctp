@@ -10,9 +10,9 @@
 		</div>
 		<div id="amp" class="left">
 			<?php
-			echo $this->FgHtml->para(null, $data['customer_type'] == 'AMP' ? "AMP Printing + Graphics" : "Gold Medal Press");
-			echo $this->FgHtml->para(null, '6955 Sierra Court');
-			echo $this->FgHtml->para(null, 'Dublin, CA 94568');
+			echo $this->Html->para(null, $data['customer_type'] == 'AMP' ? "AMP Printing + Graphics" : "Gold Medal Press");
+			echo $this->Html->para(null, '6955 Sierra Court');
+			echo $this->Html->para(null, 'Dublin, CA 94568');
 			?>
 		</div>
 		<!-- REFERENCE BLOCK -->

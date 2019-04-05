@@ -1,26 +1,26 @@
 <?php 
 	
 	$this->start('type');
-		echo $this->FgHtml->tag('h1', ucfirst($type));
+		echo $this->Html->tag('h1', ucfirst($type));
 	$this->end();
 	
 //	$this->start('reference_block');
-//		echo $this->FgHtml->para(null, '01/25/14 | ACFG-1401');
+//		echo $this->Html->para(null, '01/25/14 | ACFG-1401');
 //	$this->end();
 
 	$this->start('address_billing');
-		echo $this->FgHtml->para(null, $data['billing'][0]);
-		echo $this->FgHtml->para(null, $data['billing'][1]);
-		echo ($data['billing'][2] == '') ? '' : $this->FgHtml->para(null, $data['billing'][2]);
-		echo $this->FgHtml->para(null, $data['billing'][3]);
+		echo $this->Html->para(null, $data['billing'][0]);
+		echo $this->Html->para(null, $data['billing'][1]);
+		echo ($data['billing'][2] == '') ? '' : $this->Html->para(null, $data['billing'][2]);
+		echo $this->Html->para(null, $data['billing'][3]);
 	$this->end();
 
 	$this->start('address_shipping');
 		if (!empty($data['shipping'])) {
-			echo $this->FgHtml->para(null, $data['shipping'][0]);
-			echo $this->FgHtml->para(null, $data['shipping'][1]);
-			echo ($data['shipping'][2] == '') ? '' : $this->FgHtml->para(null, $data['shipping'][2]);
-			echo $this->FgHtml->para(null, $data['shipping'][3]);
+			echo $this->Html->para(null, $data['shipping'][0]);
+			echo $this->Html->para(null, $data['shipping'][1]);
+			echo ($data['shipping'][2] == '') ? '' : $this->Html->para(null, $data['shipping'][2]);
+			echo $this->Html->para(null, $data['shipping'][3]);
 		}
 	$this->end();
 	
@@ -30,7 +30,7 @@
 
 	$this->start('line_items');
 	foreach ($data['items'] as $item) {
-		echo $this->FgHtml->div('line', null);
+		echo $this->Html->div('line', null);
 		$this->Accumulator->columns($item);
 		echo '</div>';
 	}	

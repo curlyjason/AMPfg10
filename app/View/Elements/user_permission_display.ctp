@@ -1,6 +1,6 @@
 <?php
 
-echo $this->FgHtml->div('userPermissionDisplay',null,array(
+echo $this->Html->div('userPermissionDisplay',null,array(
 	'id' => $this->FgHtml->secureSelect($grain['User']['id'])
     ));
 
@@ -8,7 +8,7 @@ echo ($access === 'Manager') ? $this->FgForm->editRequestButton() : '';
 
 $modelAlias = 'UserManaged';
 
-echo $this->FgHtml->tag('h3', $heading, array('class' => 'grainDisplay'));
+echo $this->Html->tag('h3', $heading, array('class' => 'grainDisplay'));
 
 // parse location records into a cake tableCells compatible array
 $tableArray = array();
@@ -19,8 +19,8 @@ if ($grain[$modelAlias] != array()) {
 } else {
     $rows = array();
 }
-echo $this->FgHtml->div('target', '&nbsp;'); //empty div to receive the edit form
-echo $this->FgHtml->tag('Table', null, array('class' => 'order'));
+echo $this->Html->div('target', '&nbsp;'); //empty div to receive the edit form
+echo $this->Html->tag('Table', null, array('class' => 'order'));
 //echo $this->Html->tableHeaders($headers);
 echo $this->FgHtml->tableCells($rows);
 echo '</table>';

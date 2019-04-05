@@ -95,7 +95,7 @@ $this->end();
 				echo $this->Session->flash();
 				echo $this->Session->flash('auth');
                 if (isset($pageHeading)) {
-                    echo $this->FgHtml->tag('h1', $pageHeading);
+                    echo $this->Html->tag('h1', $pageHeading);
                 }
                 echo $this->fetch('contentCore');
                 ?>

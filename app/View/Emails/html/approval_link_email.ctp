@@ -12,26 +12,26 @@ if (!$overbudget && $inStock === TRUE) {
 			'status' => 'Approve'
 		))
 	);
-	echo $this->FgHtml->para('', "Click this link to $approvalLink.");
+	echo $this->Html->para('', "Click this link to $approvalLink.");
 } else {
 	$reviewLink = $this->Html->link("Order {$recordData['order_number']}", array(
 		'controller' => 'clients', 'action' => 'status', $recordData['id'], 'full_base' => true)
 	);
 
 	if ($overbudget) {
-		echo $this->FgHtml->para('', "There were budget overages on this order. Resolve before approval.");
+		echo $this->Html->para('', "There were budget overages on this order. Resolve before approval.");
 	}
 	if (is_string($inStock)) {
-		echo $this->FgHtml->para('', "$inStock.");
+		echo $this->Html->para('', "$inStock.");
 	}
-	echo $this->FgHtml->para('', "Use this link to review $reviewLink.");
+	echo $this->Html->para('', "Use this link to review $reviewLink.");
 	//http://localhost/amp-fg/clients/status/52d6d16d-26e0-4d1f-9870-038447139427
 
 }
 
 if ($approverCount > 1) {
-	echo $this->FgHtml->para('', "You are one of $approverCount approvers.");
+	echo $this->Html->para('', "You are one of $approverCount approvers.");
 } else {
-	echo $this->FgHtml->para('', "You are the only person who can approve this order");
+	echo $this->Html->para('', "You are the only person who can approve this order");
 }
 ?>

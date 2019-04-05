@@ -1,7 +1,7 @@
 <?php
-echo $this->FgHtml->div('shippingMethod hide', NULL, array('bind' => 'validate.validateShippingMethod'));
+echo $this->Html->div('shippingMethod hide', NULL, array('bind' => 'validate.validateShippingMethod'));
 
-	echo $this->FgHtml->link('Set as default shipping for this company', array('controller' => 'users', 'action' => 'defaultShipping'), array('id' => 'shippingDefault'));
+	echo $this->Html->link('Set as default shipping for this company', array('controller' => 'users', 'action' => 'defaultShipping'), array('id' => 'shippingDefault'));
 
 	echo $this->FgForm->input ('Shipment.billing', array(
 		'class' => 'form-control',
@@ -33,9 +33,9 @@ echo $this->FgHtml->div('shippingMethod hide', NULL, array('bind' => 'validate.v
 		'options' => $Other,
 		'div' => false,
 		'label' => false));
-	echo $this->FgHtml->div ('thirdParty hide', NULL);
+	echo $this->Html->div ('thirdParty hide', NULL);
 		echo $this->FgForm->input ('Shipment.billing_account', array ('label' => 'Acct', 'class' => 'form-control'));
-		echo $this->FgHtml->div ('tpbAddress hide', NULL);
+		echo $this->Html->div ('tpbAddress hide', NULL);
 			echo $this->Form->input('Shipment.tpb_selector', array(
 				'type' => 'select',
 				'options' => $thirdParty,

@@ -1,6 +1,6 @@
 <?php
-    echo $this->FgHtml->script('itemImport');
-    echo $this->FgHtml->css('itemImport');
+    echo $this->Html->script('itemImport');
+    echo $this->Html->css('itemImport');
     if (isset($ItemRegistry))
     {
         $uploadPrompt = 'Upload a different CSV file of new items';
@@ -13,8 +13,8 @@
 	<div class="upload">
 		<h2><?= __('Item Imports'); ?> </h2>
 		<?= $this->FgForm->create('ItemImports', array('type' => 'file')); ?>
-		<?= $this->FgHtml->div('imageBlock'); ?>
-		<?= $this->FgHtml->tag('fieldset'); ?>
+		<?= $this->Html->div('imageBlock'); ?>
+		<?= $this->Html->tag('fieldset'); ?>
 		<?=
             $this->FgForm->input('File.filename', array(
                 'type' => 'file',
@@ -84,7 +84,7 @@
             <?php
 				$errors = $ItemRegistry->ReportErrors();
 				foreach ($errors['messages'] as $message) {
-					echo $this->FgHtml->para('error', $message);
+					echo $this->Html->para('error', $message);
 				}
 				unset($errors['messages']);
 				pr($errors);

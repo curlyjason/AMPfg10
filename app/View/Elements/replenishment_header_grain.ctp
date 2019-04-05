@@ -14,7 +14,7 @@ foreach ($data as $user => $statuses) {
 //            $displayHeading = sprintf($namedHeading, $displayName, $displayStatus, $count);
 //        }
 //	echo '<div>';
-//        echo $this->FgHtml->tag('h3', sprintf($displayHeading, $displayStatus), array(
+//        echo $this->Html->tag('h3', sprintf($displayHeading, $displayStatus), array(
 //            'id' => $status . $user,
 //            'class' => 'grainDisplay toggle ' . $isFirst
 //        ));

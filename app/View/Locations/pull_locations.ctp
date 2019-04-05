@@ -1,5 +1,5 @@
 <?php
-echo $this->FgHtml->div('locationForm', NULL);
+echo $this->Html->div('locationForm', NULL);
 $row = array();
 //if (!empty($locations)) {
 //	foreach ($locations as $index => $record) {
@@ -15,7 +15,7 @@ $row = array();
 //}
 
 echo $this->FgForm->create('Location');
-	echo $this->FgHtml->tag('table', null, array('id' => 'locationTable'));
+	echo $this->Html->tag('table', null, array('id' => 'locationTable'));
 	echo $this->FgHtml->tableHeaders(array('', 'Building', 'Row', 'Bin', 'X'));
 if (!empty($locations)) {
 	$this->request->data = $locations;

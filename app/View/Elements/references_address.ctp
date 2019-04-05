@@ -1,9 +1,9 @@
 <?php
 echo $this->start('script');
-echo $this->FgHtml->script('documents.js');
+echo $this->Html->script('documents.js');
 echo $this->end('script');
 
-echo $this->FgHtml->div('referencesAddress hide', NULL, array('bind' => 'validate.validateReferencesAddress'));
+echo $this->Html->div('referencesAddress hide', NULL, array('bind' => 'validate.validateReferencesAddress'));
 	echo '<fieldset id="optionalFields">';
 	
 		echo $this->FgForm->input('Order.reference_approval', array('type' => 'hidden'));

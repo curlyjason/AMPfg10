@@ -1,12 +1,12 @@
 <?php
-echo $this->FgHtml->div('vendorDisplay', null);
+echo $this->Html->div('vendorDisplay', null);
 
     $modelAlias = 'Address';
     $name = 'name';
     $headers = array('ID', 'Name', 'Location', 'Tools');
     $idPrefix = 'vendor';
     
-//echo $this->FgHtml->tag('h3', $heading, array('class' => 'grainDisplay'));
+//echo $this->Html->tag('h3', $heading, array('class' => 'grainDisplay'));
 
 // parse location records into a cake tableCells compatible array
 $tableArray = array();
@@ -15,7 +15,7 @@ $tableArray = array();
         $dButtonAttr = array('id' => 'd' . $buttonId, 'bind' => 'click.addressDelete');
         $eButtonAttr = array('id' => 'e' . $buttonId);
         $location = $vendor['city'] . ', ' . $vendor['state'];
-		$hash = $this->FgHtml->div('userDisplay', null, array('id' => $this->FgHtml->secureSelect($vendor['id'])));
+		$hash = $this->Html->div('userDisplay', null, array('id' => $this->FgHtml->secureSelect($vendor['id'])));
         $rows[] = array(
             $hash . $vendor['epms_vendor_id'],
             $vendor[$name],
@@ -24,7 +24,7 @@ $tableArray = array();
                 );
     }
 
-echo $this->FgHtml->tag('Table', null, array('class' => 'vendor'));
+echo $this->Html->tag('Table', null, array('class' => 'vendor'));
 echo $this->Html->tableHeaders($headers);
 echo $this->FgHtml->tableCells($rows)
 ?>

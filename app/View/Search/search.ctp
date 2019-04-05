@@ -3,10 +3,10 @@ $this->start('css');
 	echo $this->Html->css('search');
 	echo $this->Html->css('status');
 	echo $this->Html->css('shopping');
-	echo $this->FgHtml->css('invoice');
-	echo $this->FgHtml->css('cart');
-	echo $this->FgHtml->css('document');
-	echo $this->FgHtml->css('ampfg_forms');
+	echo $this->Html->css('invoice');
+	echo $this->Html->css('cart');
+	echo $this->Html->css('document');
+	echo $this->Html->css('ampfg_forms');
 
 $this->end();
 
@@ -17,17 +17,17 @@ $this->start('script');
 	echo $this->Html->script('status');
 	echo $this->Html->script('invoice');
 	echo $this->Html->script('addToCart');
-	echo $this->FgHtml->script('shipment');
-	echo $this->FgHtml->script('shop_address');
-	echo $this->FgHtml->script('documents');
+	echo $this->Html->script('shipment');
+	echo $this->Html->script('shop_address');
+	echo $this->Html->script('documents');
 	
 $this->end();
 
 echo $this->FgForm->create('User', array('class' => 'help', 'help' => 'Search'));
 echo $this->FgForm->input('search');
 
-	echo $this->FgHtml->div('tools', null);
-	echo $this->FgHtml->para('toggle', 'Advanced Search', array('id' => 'filter'));
+	echo $this->Html->div('tools', null);
+	echo $this->Html->para('toggle', 'Advanced Search', array('id' => 'filter'));
 	echo $this->Form->input('filter', array(
 		'options' => $filters,
 		'type' => 'select',
@@ -35,8 +35,8 @@ echo $this->FgForm->input('search');
 		'label' => false,
 		'selected' => $defaultFilters,
 		'div' => array('class' => 'filter hide'))); // classes for ajax form toggle hooks
-//	echo $this->FgHtml->para('filter hide', 
-//			$this->FgHtml->link('Save these settings as my default', array(
+//	echo $this->Html->para('filter hide', 
+//			$this->Html->link('Save these settings as my default', array(
 //				'action' => 'searchFilterPreference'),
 //				array('bind' => 'click.searchPreference')));
 	echo '</div>';
