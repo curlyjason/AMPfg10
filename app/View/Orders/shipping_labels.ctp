@@ -31,16 +31,6 @@ if (!empty($labelList)) {
 				array('id' => "li-$labelId"));
 	}
 }
-//$c = 0;
-//while ($c++ < 6) {
-//	echo $this->Html->tag('li',$this->Form->button("Lable $c", array('bind' => 'click.editLabel')) . $this->Html->image('icon-remove', array('bind' => 'click.removeLabel')),
-//			array('id' => "li-"));
-//}
 echo '</ul>';
 
 $this->end();
-?>
-
-<div id="detailLabel">
-	<?php // echo $this->element('edit_shipping_label', array('items' => $order['items'])) ?>
-</div>
