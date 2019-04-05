@@ -1,7 +1,6 @@
 <?php
 
-App::uses('HtmlHelper', 'app/lib/Cake/View/Helper');
-App::uses('FgForm', 'Cake/View/Helper');
+App::uses('FgFormHelper', 'Cake/View/Helper');
 App::uses('Session', 'Helper');
 App::uses('Number', 'Helper');
 App::uses('Time', 'Helper');
@@ -11,11 +10,11 @@ App::uses('AppHelper', 'View/Helper');
  * CakePHP Helper
  * @author dondrake
  */
-class FgHtmlHelper extends HtmlHelper {
+class FgHtmlHelper extends AppHelper {
 
 	// <editor-fold defaultstate="collapsed" desc="Properties">
 
-	public $helpers = array('FgForm', 'Markdown.Markdown', 'Session', 'Number', 'Time');
+	public $helpers = array('Html', 'FgForm', 'Markdown.Markdown', 'Session', 'Number', 'Time');
 
 	/**
 	 * Array to verify that all the nodes output for a requested tree
