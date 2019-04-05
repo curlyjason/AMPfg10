@@ -46,6 +46,8 @@ class ReportOrder
 		return $this->order['Shipment'][0]['tracking'];
 	}
 	
-	
+	public function item() {
+		return $$this->order['OrderItem'];
+	}
 
 }
