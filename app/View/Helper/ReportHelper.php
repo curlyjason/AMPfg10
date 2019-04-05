@@ -31,11 +31,11 @@ class ReportHelper extends FgHtmlHelper {
 			return;
 		}
 		$rows = array();
-		echo $this->tag('table', NULL, array('class' => $status));
+		echo $this->Html->tag('table', NULL, array('class' => $status));
 		$rows[] = array(array('Status: ' . $status, array('colspan' => 4, 'class' => 'Status')));
-		echo $this->tableCells($rows);
+		echo $this->Html->tableCells($rows);
 		foreach ($orders as $orderId => $order) {
-			$this->reportOrder($orderId, (new ReportOrder($order)));
+			echo $this->reportOrder($orderId, (new ReportOrder($order)));
 		}
 		echo '</table>';
 	}
