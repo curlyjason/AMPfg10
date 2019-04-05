@@ -122,7 +122,7 @@ class StoreHelper extends AppHelper {
 				'bind' => 'click.addToCart'));
 		} else {
 			$output[] = "$priceBlock<p>{$this->FgHtml->calculatedQuantity($entry,'Catalog')}</p>";
-			$output[] = $this->FgHtml->para('noAdd', $message);
+			$output[] = $this->Html->para('noAdd', $message);
 		}
 		
 		$output[] = $this->FgForm->end();

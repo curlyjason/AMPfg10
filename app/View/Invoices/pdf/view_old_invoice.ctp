@@ -7,11 +7,11 @@
 	$this->end();
 
 	$this->start('address_billing');
-		echo $this->FgHtml->para(null, $data['billing'][0]);
-		echo $this->FgHtml->para(null, $data['billing'][1]);
-		echo ($data['billing'][2] == '') ? '' : $this->FgHtml->para(null, $data['billing'][2]);
-		echo ($data['billing'][3] == '') ? '' : $this->FgHtml->para(null, $data['billing'][3]);
-		echo $this->FgHtml->para(null, $data['billing'][4]);
+		echo $this->Html->para(null, $data['billing'][0]);
+		echo $this->Html->para(null, $data['billing'][1]);
+		echo ($data['billing'][2] == '') ? '' : $this->Html->para(null, $data['billing'][2]);
+		echo ($data['billing'][3] == '') ? '' : $this->Html->para(null, $data['billing'][3]);
+		echo $this->Html->para(null, $data['billing'][4]);
 	$this->end();
 
 	$this->start('accumulator_row');

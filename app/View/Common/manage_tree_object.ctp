@@ -104,6 +104,6 @@ if (isset($userEditFlag) && $userEditFlag) {
     ));
 } else {
     //Using cake's debug message styling to provide instructional content to users
-    echo $this->FgHtml->para('cake-debug', 'Select an item in the sidebar to work with here.');
+    echo $this->Html->para('cake-debug', 'Select an item in the sidebar to work with here.');
 }
 ?>

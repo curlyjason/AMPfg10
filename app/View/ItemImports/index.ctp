@@ -84,7 +84,7 @@
             <?php
 				$errors = $ItemRegistry->ReportErrors();
 				foreach ($errors['messages'] as $message) {
-					echo $this->FgHtml->para('error', $message);
+					echo $this->Html->para('error', $message);
 				}
 				unset($errors['messages']);
 				pr($errors);

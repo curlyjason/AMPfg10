@@ -92,7 +92,7 @@ echo $this->Html->div('sidebar', NULL);
 		echo $this->FgForm->input("Replenishment.vendor_id", array('type' => 'radio', 'options' => array($items[0]['Vendor']['id'] => "PO for $vendor"), 'value' => $vendor));
 
 		// a reveal tool for the vendor's items
-		echo $this->FgHtml->para('reveal', $this->Html->tag('span', 'Reveal', array(
+		echo $this->Html->para('reveal', $this->Html->tag('span', 'Reveal', array(
 					'class' => 'toggle', 'id' => "ItemGroup$vndr"
 				))
 				. ' these ' . count($items) . ' items.');
@@ -125,7 +125,7 @@ echo $this->Html->div('sidebar', NULL);
 	}
 	echo $this->FgForm->input('totalCount', array('type' => 'hidden', 'value' => $count));
 	echo $this->Html->div('otherVendors', null);
-		echo $this->FgHtml->para('', 'Other possible vendors');
+		echo $this->Html->para('', 'Other possible vendors');
 		foreach ($otherVendors as $vendor) {
 			echo $this->FgForm->input("Replenishment.vendor_id", array('type' => 'radio', 'options' => array($vendor['Vendor']['id'] => "PO for {$vendor['Vendor']['name']}"), 'value' => $vendor['Vendor']['id']));
 		}

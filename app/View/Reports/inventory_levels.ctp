@@ -22,12 +22,12 @@ h2 {
 <?php
 echo $this->Html->tag('h2', 'Inventory Levels Report');
 echo $this->FgForm->create('Reports', array('action' => 'inventoryStateReport'));
-echo $this->FgHtml->para('tip', 'Select a sort order');
+echo $this->Html->para('tip', 'Select a sort order');
 echo $this->FgForm->radio('sort', array(
 		'name' => 'Name', 
 		'item_code' => 'Amp #', 
 		'customer_item_code' => 'Customer #'),
 	array('value' => 'name', 'legend' => FALSE));
-echo $this->FgHtml->para('tip', 'Select multiple customers by using Shift-click and Control-click');
+echo $this->Html->para('tip', 'Select multiple customers by using Shift-click and Control-click');
 echo $this->FgForm->select('customer', $customers, array('multiple' => TRUE));
 echo $this->FgForm->end('Submit');

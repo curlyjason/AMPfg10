@@ -160,7 +160,7 @@ echo $this->Html->div('ajaxEditPull', NULL);
 		//</editor-fold>
 		
 		if (empty($this->request->data['Catalog']['id'])) {
-			echo $this->FgHtml->para('advanced instruction', 'Item source for this catalog entry');
+			echo $this->Html->para('advanced instruction', 'Item source for this catalog entry');
 				echo $this->FgForm->input('Item.source', array(
 					'options' => array('New', 'Existing'),
 					'type' => $radioType,

@@ -708,7 +708,7 @@ class FgHtmlHelper extends AppHelper {
     public function countAlert($count, $title = false, $threshold = 1, $options=array()) {
         if ($count > $threshold) {
 			$attributes = ($title) ? array('title' => $title) : array();
-            return$this->Html->div('countAlert',$this->Html->div('warning', '') . $this->para('warning', $count, $attributes), $options);
+            return$this->Html->div('countAlert',$this->Html->div('warning', '') . $this->Html->para('warning', $count, $attributes), $options);
         } else {
             return '';
         }
@@ -846,7 +846,7 @@ class FgHtmlHelper extends AppHelper {
         $recordId = $records['User']['id'];
         $count = count($temp);
         $ownerName = $this->discoverName($records['User']);
-        $user = $this->para('label', "Owner: $ownerName ($count)");
+        $user = $this->Html->para('label', "Owner: $ownerName ($count)");
         $userArray[] = array(
             array(
                 $user, array(
@@ -1207,7 +1207,7 @@ class FgHtmlHelper extends AppHelper {
 		if($ptag){
 				$opening .= $this->decoratedTag('Locations', 'p', $count . $edit);
 		} else {
-			$opening .= $this->para('locTitle', $count . $edit);
+			$opening .= $this->Html->para('locTitle', $count . $edit);
 		}
 		$opening .= $this->Html->tag('ul', NULL);
 		

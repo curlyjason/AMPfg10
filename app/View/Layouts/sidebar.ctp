@@ -11,7 +11,7 @@ $this->start('contentCore');
 
 echo $this->Html->div('sidebar', NULL);
 echo $this->Html->div('hide overlay', NULL);
-echo $this->FgHtml->para('overlayWarning', 'click to refresh sidebar');
+echo $this->Html->para('overlayWarning', 'click to refresh sidebar');
 echo '</div>'; //closing div overlay
 echo $this->fetch('sidebar');
 echo '</div>'; //closing div sidebar

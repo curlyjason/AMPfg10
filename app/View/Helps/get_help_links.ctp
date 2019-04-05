@@ -36,10 +36,10 @@ foreach ($help as $key => $record) {
 	}
 	if ($role == 'Admins Manager' && preg_match('/^zz/', $record['Help']['name'])) {
 		//new help link
-		echo $this->FgHtml->para('', $this->Html->link($record['Help']['name'], array('controller' => 'helps', 'action' => 'displayHelp', $record['Help']['tag']), array('bind' => 'click.displayHelp')).$editLink);							
+		echo $this->Html->para('', $this->Html->link($record['Help']['name'], array('controller' => 'helps', 'action' => 'displayHelp', $record['Help']['tag']), array('bind' => 'click.displayHelp')).$editLink);							
 	} elseif(!preg_match('/^zz/', $record['Help']['name'])) {
 		//existing help link
-		echo $this->FgHtml->para('', $this->Html->link($record['Help']['name'], array('controller' => 'helps', 'action' => 'displayHelp', $record['Help']['tag']), array('bind' => 'click.displayHelp')).$editLink);		
+		echo $this->Html->para('', $this->Html->link($record['Help']['name'], array('controller' => 'helps', 'action' => 'displayHelp', $record['Help']['tag']), array('bind' => 'click.displayHelp')).$editLink);		
 	}
 }
 ?>
