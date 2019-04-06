@@ -50,7 +50,7 @@ class ItemImportHelper extends AppHelper {
 		$delimeter = '</td> ';
 		$map = $registry->ItemImportMap;
 		$data = $registry->getMappedRecord($registry->current());
-		$trNode = $this->FgHtml->tableCells([$data]);
+		$trNode = $this->Html->tableCells([$data]);
 		
 		$cells = explode($delimeter, $trNode);
 		$numberOfCells = $this->countColumns($registry);

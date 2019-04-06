@@ -26,7 +26,7 @@ $tableArray = array();
 
 echo $this->Html->tag('Table', null, array('class' => 'vendor'));
 echo $this->Html->tableHeaders($headers);
-echo $this->FgHtml->tableCells($rows)
+echo $this->Html->tableCells($rows)
 ?>
 </table>
 </div>

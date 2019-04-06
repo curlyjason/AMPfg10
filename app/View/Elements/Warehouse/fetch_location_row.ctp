@@ -12,5 +12,5 @@
 		$this->FgForm->input("$index.Location.bin", array('div' => false, 'label' => false, 'class' => 'bin', 'options' =>array_combine(range(1,$binMax,1),range(1,$binMax,1)))),
 		$this->Html->tag('span', /* $this->Html->image('icon-remove') */ '', array('class' => 'remove', 'location_id' => $locId))
 	);
-echo $this->FgHtml->tableCells($row);
+echo $this->Html->tableCells($row);
 ?>
