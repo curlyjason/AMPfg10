@@ -94,7 +94,7 @@ class UsersController extends AppController {
      * Then destroy the session
      */
     private function closeUserSession() {
-//        $this->saveCart();
+        $this->saveCart();
         $this->eradicateEditLocks();
         $this->unregisterPublicUser();
         $this->releaseUserRecord();
@@ -202,6 +202,33 @@ class UsersController extends AppController {
         } else {
             $ids[$index] = $id;
         }
+    }
+
+    /**
+     * Save the current cart's session on logout/timeout
+     * 
+     * Execute a find to determine if this user has a cart record
+     * If there is one, save the current session id to the user record
+     * for cart retreival on login.
+     */
+    protected function saveCart() {
+//        //init the cart class & find any existing cart
+//        $this->Cart = ClassRegistry::init('Cart');
+//        $existing = $this->Cart->find('first', array(
+//            'recursive' => -1,
+//            'conditions' => array(
+//                'Cart.sessionid' => $this->Session->id()
+//            )
+//        ));
+//        if ($existing) {
+//            //if there is a cart, save it's session id to the user record
+//            $this->User->Behaviors->disable('ThinTree');
+//            $cart['User']['id'] = $this->Auth->user('id');
+//            $cart['User']['cart_session'] = $this->Session->id();
+//            $this->User->save($cart);
+//            $this->User->Behaviors->enable('ThinTree');
+//            $this->Session->destroy();
+//        }
     }
 
     /**
