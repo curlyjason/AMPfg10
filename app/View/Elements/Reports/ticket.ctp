@@ -1,5 +1,4 @@
 <?php 
-//	$this->extend('print_accumulator');
 	$this->start('type');
 		echo $this->Html->tag('h1', ucfirst($type));
 	$this->end();
