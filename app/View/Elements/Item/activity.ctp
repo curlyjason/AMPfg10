@@ -57,18 +57,18 @@ if (!empty($report['items'])) {
 		<tbody>
 	<?php
 	if (isset($this->Report->rows['active'])) {
-		echo $this->FgHtml->tableCells($activeSection);
-		echo $this->FgHtml->tableCells($this->Report->rows['active']);
+		echo $this->Html->tableCells($activeSection);
+		echo $this->Html->tableCells($this->Report->rows['active']);
 	}
 	
 	if (isset($this->Report->rows['inactive'])) {
-		echo $this->FgHtml->tableCells($inactiveSection);
-		echo $this->FgHtml->tableCells($this->Report->rows['inactive']);
+		echo $this->Html->tableCells($inactiveSection);
+		echo $this->Html->tableCells($this->Report->rows['inactive']);
 	}
 	
 	if (isset($this->Report->rows['notCreated'])) {
-		echo $this->FgHtml->tableCells($notSection);
-		echo $this->FgHtml->tableCells($this->Report->rows['notCreated']);
+		echo $this->Html->tableCells($notSection);
+		echo $this->Html->tableCells($this->Report->rows['notCreated']);
 	}
 	?>
 		</tbody>
