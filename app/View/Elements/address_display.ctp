@@ -6,7 +6,7 @@
     // parse location records into a cake tableCells compatible array
     $tableArray = $this->FgHtml->addressGrainRowsFrom($grain, $editAccess);
     echo $this->Html->tag('Table', null, array('class' => 'order'));
-    echo $this->FgHtml->tableCells($tableArray)
+    echo $this->Html->tableCells($tableArray)
     ?>
 </table>
 </div>

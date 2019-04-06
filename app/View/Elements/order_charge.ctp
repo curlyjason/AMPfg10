@@ -47,7 +47,7 @@ if ($this->layout !== 'ajax') {
 			array($this->fetch('itemTable'), array('colspan' => 3, 'class' => 'section'))
 		);
 	}
-	echo $this->FgHtml->tableCells(array($head));
+	echo $this->Html->tableCells(array($head));
 }
 echo $this->FgHtml->tableHeaders($this->Invoice->makeHeaderRow($index));
 //$rows[] = $this->Invoice->makeHeaderRow($index);
@@ -77,5 +77,5 @@ if (FileExtension::isPdf('missingHaystack')) {
 } else {
 	$rows[] = $this->Invoice->makeToolRow($tools, $index, $invoiceContext, $mode, $index, $label, $invoiceTotals);
 }
-echo $this->FgHtml->tableCells($rows);
+echo $this->Html->tableCells($rows);
 ?>

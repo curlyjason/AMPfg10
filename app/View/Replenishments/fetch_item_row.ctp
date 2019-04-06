@@ -70,8 +70,8 @@ $rows[] = array(
         array('class' => 'replenishmentItem', 'id' => 'subTotal-' . $item['Item']['id'])
     ),
 );
-$cells = $this->FgHtml->tableCells($rows);
+$cells = $this->Html->tableCells($rows);
 $c = $this->FgForm->end();
-echo json_encode(array('row' => $this->FgHtml->tableCells($rows)));
+echo json_encode(array('row' => $this->Html->tableCells($rows)));
 
 ?>

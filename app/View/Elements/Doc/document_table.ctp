@@ -32,6 +32,6 @@
 			echo($this->element('Doc/new_doc', array('index' => $i++)));
 		}
 	}
-	echo $this->FgHtml->tableCells($rows);
+	echo $this->Html->tableCells($rows);
 	echo '</table>';
 	echo $closeForm;

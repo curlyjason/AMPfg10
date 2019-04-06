@@ -67,7 +67,7 @@
 				}
 		echo '<table style="width: 7.5in";">';
 		echo $this->FgHtml->tableHeaders(array('line', 'Qty', 'Item', 'Name'), array('style' => 'background-color: #ccc;'), array('style' => 'font-size: 8pt; text-align: left; padding: 1pt;'));
-		echo $this->FgHtml->tableCells($rows);
+		echo $this->Html->tableCells($rows);
 //		for($i=0;$i<100;$i++){
 //			echo "<tr><td>$i</td></tr>";
 //		}
@@ -76,7 +76,7 @@
 		$note = preg_replace("/\n/", "<\p><p class='note' style='font-size: 10pt; font-weight: bold; text-align: left;'>", $data['note']);
 		$tableNote = $this->Html->para('note', $note, array('style' => 'font-size: 10pt; font-weight: bold; text-align: left;'));
 		echo $this->FgHtml->tableHeaders(array('Note'), array('style' => 'background-color: #ccc;'), array('style' => 'font-size: 8pt; text-align: left; padding: 1pt;'));
-		echo $this->FgHtml->tableCells(array('note' => $tableNote));
+		echo $this->Html->tableCells(array('note' => $tableNote));
 //		echo $this->Html->para('note', $data['note']);
 		echo '</table>';
 		?>
