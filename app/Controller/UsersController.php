@@ -692,7 +692,7 @@ class UsersController extends AppController {
 							$this->User->getOwnedUserRoots($id))
 				);
 			
-        }  elseif ($this->suppliedAndValid($id, $hash) === FASLE) {
+        }  elseif ($this->suppliedAndValid($id, $hash) === false) {
 			
             throw new ForbiddenException("Security validation failed on your" 
 				. "request for \r {$this->request->url}\rContact your admin "
