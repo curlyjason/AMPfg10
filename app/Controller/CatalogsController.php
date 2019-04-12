@@ -639,11 +639,8 @@ class CatalogsController extends AppController {
      */
     public function universalSave($data)
     {
-        debug($data);
         //setup data for saving
         $data = $this->assembleSaveArray($data);
-        debug($data);
-        die;
 
         $this->Catalog->create();
 
