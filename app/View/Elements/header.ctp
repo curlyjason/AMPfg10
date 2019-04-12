@@ -1,12 +1,17 @@
+<!--Element header.ctp-->
 <?php
 
 $this->start('header');
 echo $this->Html->div('msg', '', array(
     'id' => 'msg'
 ));
+?>
 
-echo $this->Html->image('AMP_PrintResp_logo_300.png');
-echo $this->Html->tag('h1', $this->Html->link($cakeDescription . 'Welcome: ' . $this->Session->read('Auth.User.name') . ' - Your role: ' . $this->Session->read('Auth.User.role'), 'http://www.ampprinting.com'));
+<!-- branded header -->
+	<?= $this->BrandedPages->header('general'); ?>
+<!-- END branded header -->
+
+<?php
 if ($this->layout != 'simple' && $this->layout != 'base') {
 	echo $this->element('budget_status');
 }
@@ -47,4 +52,4 @@ if ($this->layout != 'base' && $this->layout != 'simple') {
 	 '</p>';    
 }
 $this->end();
-?>
+<!--END Element header.ctp-->
