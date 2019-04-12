@@ -49,7 +49,7 @@ if ($this->layout !== 'ajax') {
 	}
 	echo $this->Html->tableCells(array($head));
 }
-echo $this->FgHtml->tableHeaders($this->Invoice->makeHeaderRow($index));
+echo $this->Html->tableHeaders($this->Invoice->makeHeaderRow($index));
 //$rows[] = $this->Invoice->makeHeaderRow($index);
 
 foreach ($data as $key => $charge) {

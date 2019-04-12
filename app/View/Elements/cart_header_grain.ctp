@@ -9,7 +9,7 @@ if ($this->Session->read('Shop.Order.shop') != 1) {
     echo $this->Html->tag('h3', 'Open Cart', array('class' => 'grainDisplay'));
 
     echo $this->Html->tag('Table', null);
-    echo $this->FgHtml->tableHeaders(array('Number of Items', 'Total Cost'));
+    echo $this->Html->tableHeaders(array('Number of Items', 'Total Cost'));
     $order = $this->Session->read('Shop.Order');
     echo $this->Html->tableCells(array(
         $order['order_item_count'],

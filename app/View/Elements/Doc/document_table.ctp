@@ -24,7 +24,7 @@
 	
 	echo $openForm;
 	echo $this->Html->tag('table', NULL, array('id' => 'Documents', 'change' => 'false'));
-	echo $this->FgHtml->tableHeaders($headers);
+	echo $this->Html->tableHeaders($headers);
 	if (!empty($this->request->data['Document'])) {
 		$c = count($this->request->data['Document']);
 		$i = 0;
