@@ -471,7 +471,7 @@ class ReplenishmentsController extends AppController {
 
     public function printReplenishment($id) {
         if(FileExtension::hasExtension($id)){
-            $this->layout = 'pdf/default';
+            $this->layout = 'default';
             $id = FileExtension::stripExtension($id);
         } else {
             $this->layout = 'print_accumulator';

@@ -20,8 +20,8 @@ class AccumulatorHelper extends FgHtmlHelper{
 		$i = 0;
 		if (is_array($columns)) {
 			foreach ($columns as $column) {
-				echo $this->div("split left $classes {$this->divCount[$i++]}", 
-					$this->para(null, $column), 					$attributes
+				echo $this->Html->div("split left $classes {$this->divCount[$i++]}", 
+					$this->Html->para(null, $column), 					$attributes
 				);
 
 			}

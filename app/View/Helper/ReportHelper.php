@@ -6,6 +6,8 @@ App::uses('FileExtension', 'Lib');
 App::uses('Hash', 'Utility');
 App::uses('ReportOrder', 'Model/Entity');
 App::uses('ItemEntity', 'Model/Entity');
+App::uses('Session', 'Helper');
+
 
 /**
  * CakePHP Helper
@@ -17,7 +19,7 @@ class ReportHelper extends FgHtmlHelper {
 	
 	public $rows = array();
 	
-	public $helpers = ['Html'];
+	public $helpers = ['Html', 'Session'];
 	
 	/**
 	 * Produce a table block based upon a provided string and it's iterator of orders
@@ -126,13 +128,10 @@ class ReportHelper extends FgHtmlHelper {
 	/**
 	 * Inventory Activity Report: snapshot (start state or end state)
 	 * 
-	 * @todo discover what the new pdf-condition detection should be 
-	 *		because the old params['ext'] is gone
-	 * 
 	 * @param string $mode process 'start' or 'end' snapshot
 	 */
 	public function activitySnapshot($mode) {
-		if(FileExtension::isPdf('missingHaystack')){
+        if(isset($this->request->params['ext']) && $this->request->params['ext'] == 'pdf'){
 			$style = 'background-color: grey; font-size: 60%; border: none; color: white; padding: 1pt;';
 		} else {
 			$style = '';
@@ -160,11 +159,9 @@ class ReportHelper extends FgHtmlHelper {
 	/**
 	 * Inventory Activity Report: a single activity line
 	 * 
-	 * @todo discover what the new pdf-condition detection should be 
-	 *		because the old params['ext'] is gone
 	 */
 	public function activityLine() {
-		if(FileExtension::isPdf('missingHaystack')){
+        if(isset($this->request->params['ext']) && $this->request->params['ext'] == 'pdf'){
 			$style = 'font-size: 60%;';
 		} else {
 			$style = '';

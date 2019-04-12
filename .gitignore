@@ -49,4 +49,10 @@ app/View/Emails/notifications/*
 /app/webroot/.DS_Store
 /app/webroot/img/image/.DS_Store
 /app/webroot/img/.DS_Store
-/app/View/.DS_Store
+/.idea/vcs.xml
+.idea
+.idea*
+.idea/*
+/.idea/workspace.xml
+app/Vendor/*
+/app/Vendor/dompdf/lib/fonts/log.htm

@@ -5,6 +5,7 @@ App::uses('Customer', 'Model');
 App::uses('User', 'Model');
 App::uses('AButton', 'Lib');
 App::uses('AssociateTableHelper', 'Helper');
+App::uses('FileExtension', 'Lib');
 
 /**
  * Addresses Controller
@@ -98,14 +99,14 @@ class ReportsController extends AppController {
 	 */
 	public function inventoryStateReport($pdfData = NULL, $sort = NULL) {
 		set_time_limit(300);
-		if(FileExtension::isPdf('missingHaystack')){
-			$this->layout = 'default';
-			$pdfArray = explode('-', $pdfData);
-			foreach ($pdfArray as $id) {
-				$this->request->data['Reports']['customer'][] = $id . '/' . $this->User->secureHash($id);
-			}
-			$this->request->data['Reports']['sort'] = $sort;
-		}
+        if(isset($this->request->params['ext']) && $this->request->params['ext'] == 'pdf'){
+            $this->layout = 'default';
+            $pdfArray = explode('-', $pdfData);
+            foreach ($pdfArray as $id) {
+                $this->request->data['Reports']['customer'][] = $id . '/' . $this->User->secureHash($id);
+            }
+            $this->request->data['Reports']['sort'] = $sort;
+        }
 		// 'all' or just some customers chosen
 		$cust = array();
 		if (in_array('1', $this->request->data['Reports']['customer'])) {

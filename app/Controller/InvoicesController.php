@@ -229,9 +229,6 @@ class InvoicesController extends AppController {
 	public function viewOldInvoice($invoiceId) {
 		set_time_limit(300);
 		$this->layout = 'default';
-		if(FileExtension::hasExtension($invoiceId)){
-			$invoiceId = FileExtension::stripExtension($invoiceId);
-		}
 		$invoice = $this->Invoice->fetchInvoice($invoiceId);
 		$total = $this->Invoice->fetchInvoiceTotal($invoiceId);
 //		$this->ddd($invoice, 'invoice');
