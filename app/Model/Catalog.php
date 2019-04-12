@@ -230,13 +230,42 @@ class Catalog extends AppModel {
 
     public function ensureUniqueCustomerItemCode($check)
     {
-        $allItems = $this->find('first', [
+        if(!isset($this->data['Catalog']['id']) || $this->data['Catalog']['id'] == ''){
+            $result = $this->checkNewItemHasUniqueCustomerItemCode($check);
+        } else {
+            $result = $this->checkExistingItemHasUniqueCustomerItemCode($check);
+        }
+        return $result;
+    }
+
+    private function checkNewItemHasUniqueCustomerItemCode($check)
+    {
+        $allItems = $this->findAllItemsWith($check['customer_item_code']);
+        return empty($allItems);
+    }
+
+    private function checkExistingItemHasUniqueCustomerItemCode($check)
+    {
+        $allItems = $this->findAllItemsWith($check['customer_item_code']);
+        if(empty($allItems)){
+            $result = true;
+        } elseif($allItems['Catalog']['id'] == $this->data['Catalog']['id']){
+            $result = true;
+        } else {
+            $result = false;
+        }
+        return $result;
+    }
+
+    private function findAllItemsWith($customerItemCode)
+    {
+        return $this->find('first', [
             'conditions' => [
                 'Catalog.customer_user_id' => $this->data['Catalog']['customer_user_id'],
-                'Catalog.customer_item_code' => $check['customer_item_code']
+                'Catalog.customer_item_code' => $customerItemCode
             ]
         ]);
-        return empty($allItems);
+
     }
 
     /**
