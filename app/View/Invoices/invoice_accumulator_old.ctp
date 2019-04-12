@@ -68,8 +68,8 @@
 	}
 
 	echo '<table style="width: 7.5in";">';
-	echo $this->FgHtml->tableHeaders(array('#', 'Desc', 'Qty', 'Unit', 'Price', 'Subtotal'), array('style' => 'background-color: #ccc;'), array('style' => 'font-size: 8pt; text-align: left; padding: 1pt;'));
-	echo $this->FgHtml->tableCells($rows);
+	echo $this->Html->tableHeaders(array('#', 'Desc', 'Qty', 'Unit', 'Price', 'Subtotal'), array('style' => 'background-color: #ccc;'), array('style' => 'font-size: 8pt; text-align: left; padding: 1pt;'));
+	echo $this->Html->tableCells($rows);
 	echo '</table>';
 	?>
 </div>

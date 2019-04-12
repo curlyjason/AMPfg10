@@ -221,7 +221,7 @@ class OrdersController extends AppController {
 
     public function printOrder($id) {
         if(FileExtension::hasExtension($id)){
-            $this->layout = 'default';
+            $this->layout = 'pdf/default';
             $id = FileExtension::stripExtension($id);
         } else {
             $this->layout = 'print_accumulator';

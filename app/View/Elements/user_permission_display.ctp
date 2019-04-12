@@ -22,7 +22,7 @@ if ($grain[$modelAlias] != array()) {
 echo $this->Html->div('target', '&nbsp;'); //empty div to receive the edit form
 echo $this->Html->tag('Table', null, array('class' => 'order'));
 //echo $this->Html->tableHeaders($headers);
-echo $this->FgHtml->tableCells($rows);
+echo $this->Html->tableCells($rows);
 echo '</table>';
 echo '</div>';
 ?>

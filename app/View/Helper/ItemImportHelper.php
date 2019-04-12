@@ -37,7 +37,7 @@ class ItemImportHelper extends AppHelper {
         foreach ($required_column_headers as $index => $header){
             $result[] = "<span class='required'>$header</span><span class='user'>{$registry->getMappedHeader()[$index]}</span>";
         }
-        return $this->FgHtml->tableHeaders($result);
+        return $this->Html->tableHeaders($result);
     }
     
 	/**
@@ -50,7 +50,7 @@ class ItemImportHelper extends AppHelper {
 		$delimeter = '</td> ';
 		$map = $registry->ItemImportMap;
 		$data = $registry->getMappedRecord($registry->current());
-		$trNode = $this->FgHtml->tableCells([$data]);
+		$trNode = $this->Html->tableCells([$data]);
 		
 		$cells = explode($delimeter, $trNode);
 		$numberOfCells = $this->countColumns($registry);

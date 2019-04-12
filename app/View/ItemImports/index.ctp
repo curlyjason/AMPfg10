@@ -31,7 +31,7 @@
         <div class="map">
 		<h2><?= __('Map your columns from <br/><strong><em>' . $ItemRegistry->importFileName()) .
 			'</em></strong><br/>to the required columns - '; ?> </h2>
-            <?= $this->FgForm->create('ItemImports', array('action' => 'preview')); ?>
+            <?= $this->FgForm->create('ItemImports', ['url' => ['controller' => 'itemImports', 'action' => 'preview']]); ?>
             <fieldset>
                 <?= $this->FgForm->label('first_row_headers', null, ['id' => 'first_row_header_label']) ?>
                 <?= $this->FgForm->checkbox('first_row_headers', ['default' => 0, 'id' => 'header_row']) ?>

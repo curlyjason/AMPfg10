@@ -20,7 +20,7 @@ pr($ItemRegistry->reportErrors());
     $ItemRegistry->rewind();
     while($ItemRegistry->valid()){
         echo $this->ItemImport->previewRow($ItemRegistry);
-//               echo $this->FgHtml->tableCells([$ItemRegistry->getMappedRecord($ItemRegistry->current())]);
+//               echo $this->Html->tableCells([$ItemRegistry->getMappedRecord($ItemRegistry->current())]);
         $ItemRegistry->next();
     }
     ?>
