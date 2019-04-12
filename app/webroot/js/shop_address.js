@@ -16,7 +16,7 @@ $(document).ready(function() {
 		$.ajax({
 			type: "POST",
 			dataType: "json",
-			url: webroot + controller + 'shippingPreference',
+			url: webroot + 'preferences/shippingPreference',
 			data: {
 				customer: $('#OrderUserCustomerId').val(),
 				address: $('#OrderSelectedAddress').val(),

@@ -420,7 +420,7 @@ $(document).ready(function() {
     
     $('#homePref').on('click', function(e){
         e.preventDefault();
-	$('#homePref > span').load(webroot + controller + 'homePreference/' + $(this).attr('controller') + '/' + $(this).attr('action'));
+	$('#homePref > span').load(webroot + 'preferences/homePreference/' + $(this).attr('controller') + '/' + $(this).attr('action'));
     })
 
     $('a[href*="item_peek"]').on('click', function(e){

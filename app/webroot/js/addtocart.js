@@ -16,7 +16,7 @@ $(document).ready(function() {
 	});
 	
 	$('#paginationLimit').on('change', function(){
-		$.get(webroot + controller + 'paginationLimitPreference/' + $(this).val() + getNow(),'d', function(data, textStatus, xh){
+		$.get(webroot + 'preferences/paginationLimitPreference/' + $(this).val() + getNow(),'d', function(data, textStatus, xh){
 			var loc = location.href.replace(/\/(.+page)[:0-9]+(.*)/,/$1:1$2/);
 			location.assign(loc);
 		});
