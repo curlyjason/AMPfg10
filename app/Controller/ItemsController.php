@@ -443,9 +443,8 @@ class ItemsController extends AppController {
 		$start = date('Y-m-d H:i:s', $start);
 		$end = date('Y-m-d H:i:s', $end);
 		//note here
-		if(FileExtension::hasExtension($customer)){
+        if(isset($this->request->params['ext']) && $this->request->params['ext'] == 'pdf'){
 			$this->layout = 'default';
-			$customer = FileExtension::stripExtension($customer);
 		}
 		$this->report['customer'] = $customer;
 		
@@ -459,9 +458,6 @@ class ItemsController extends AppController {
 		
 		$this->discoverNewestLogTime(); // sets report['endLimit']
 		$this->report['finalTime'] = strtotime($end);
-//			$this->ddd(date('F j, Y', $this->report['finalTime']), 'finalTime');
-//			$this->ddd(date('F j, Y', $this->report['firstTime']), 'firstTime');
-//			$this->ddd(date('F j, Y', $this->report['endLimit']), 'endLimit');
 		if ($this->report['finalTime'] >= $this->report['endLimit']) {
 			$this->report['finalTime'] = $this->report['endLimit'];
 			$this->logInventoryTotals();
@@ -700,18 +696,24 @@ class ItemsController extends AppController {
 	 * 
 	 * @return string - the year.month (xxxx.xx) of the oldest available log file
 	 */
-	public function discoverOldestLogTime() {
-		$this->autoRender = FALSE;
-		$dir = LOGS.'Inventory/inventory/';
-		if (!is_dir($dir)) {
-			if($dh = new Folder($dir, true, 0755)){
-				$dh->sort = TRUE;
-				$files = $dh->find('.*\.log');
-			}
-		}
-		preg_match('/inventory.(\d+.\d+)./', $files[0], $match);
-		$this->report['startLimit'] = strtotime(preg_replace('/(\d+).(\d+)/','$2/1/$1', $match[1]));
-	}
+    public function discoverOldestLogTime() {
+        $this->autoRender = FALSE;
+        $dir = LOGS.'Inventory/inventory/';
+        if (!is_dir($dir)) {
+            $dh = new Folder($dir, true, 0755);
+        } else {
+            $dh = new Folder($dir);
+        }
+
+        $dh->sort = TRUE;
+        $files = $dh->find('.*\.log');
+        if(!empty($files)){
+            preg_match('/inventory.(\d+.\d+)./', $files[0], $match);
+            $this->report['startLimit'] = strtotime(preg_replace('/(\d+).(\d+)/','$2/1/$1', $match[1]));
+        } else {
+            $this->report['startLimit'] = time();
+        }
+    }
 	
 	/**
 	 * Discover the latest possible date for a report end-date
