@@ -52,4 +52,5 @@ if ($this->layout != 'base' && $this->layout != 'simple') {
 	 '</p>';    
 }
 $this->end();
+?>
 <!--END Element header.ctp-->

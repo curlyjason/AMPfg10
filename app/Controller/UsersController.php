@@ -115,7 +115,7 @@ class UsersController extends AppController {
         $this->eradicateEditLocks();
         $this->unregisterPublicUser();
         $this->releaseUserRecord();
-        $this->savePreferences();
+        $this->LoadPreference->savePreferences();
         $this->Session->destroy();
     }
 
@@ -138,7 +138,7 @@ class UsersController extends AppController {
         $this->registerPublicUser();
         $this->flagUserRecord();
         $this->retreiveCart();
-        $this->retrievePreferences();
+        $this->LoadPreference->retrievePreferences();
         // check for login redirect preference
         $this->User->Budget->setBudget($this->Auth->user());
         $this->Session->write('Auth.User.budget_id', $this->User->Budget->getBudgetId($this->Auth->user('id')));

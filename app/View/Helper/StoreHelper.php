@@ -11,7 +11,7 @@
  */
 class StoreHelper extends AppHelper {
 
-	public $helpers = array('FgHtml', 'FgForm', 'Number', 'Session');
+	public $helpers = array('FgHtml', 'Html', 'FgForm', 'Number', 'Session');
 
 	public function __construct(View $View, $settings = array()) {
 		parent::__construct($View, $settings);

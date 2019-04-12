@@ -10,7 +10,7 @@ if ($variant === 'login') {
 
 }
 
-	echo $this->FgHtml->image($this->BrandedPages->logo());
+	echo $this->Html->image($this->BrandedPages->logo());
 	
 	echo $this->Html->tag('h1', 
 			$this->Html->link(
