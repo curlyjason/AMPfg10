@@ -28,7 +28,7 @@ class ItemsController extends AppController {
 		$this->accessPattern['Manager'] = array ('all');
 		$this->accessPattern['Buyer'] = array('index', 'listInventoryLevels', 'view');
 		$this->accessPattern['Guest'] = array('listInventoryLevels');
-		$this->accessPattern['Warehousese'] = array('listInventoryLevels');
+		$this->accessPattern['Warehouse'] = array('listInventoryLevels');
     }
 
     public function isAuthorized($user) {
@@ -703,8 +703,8 @@ class ItemsController extends AppController {
 	public function discoverOldestLogTime() {
 		$this->autoRender = FALSE;
 		$dir = LOGS.'Inventory/inventory/';
-		if (is_dir($dir)) {
-			if($dh = new Folder($dir)){
+		if (!is_dir($dir)) {
+			if($dh = new Folder($dir, true, 0755)){
 				$dh->sort = TRUE;
 				$files = $dh->find('.*\.log');
 			}
