@@ -1,7 +1,7 @@
 <?php
 
 App::uses('FgHtml', '/View/Helper');
-App::uses('Form', '/Helper');
+//App::uses('Form', '/Helper');
 App::uses('FileExtension', 'Lib');
 
 /**
@@ -11,6 +11,7 @@ App::uses('FileExtension', 'Lib');
 class InvoiceHelper extends FgHtmlHelper {
 	
 	public $rowIndex = 0;
+	public $helpers = ['Html', 'Form', 'Number'];
 
 	/**
 	 * Assemble the title row for the group of invoice items
@@ -27,7 +28,7 @@ class InvoiceHelper extends FgHtmlHelper {
 			array($title,
 				array('class' => 'invoiceTitle', 'colspan' => 5, 'id' => 'groupHeaderRow-' . $orderId)
 			),
-			array($this->tag(
+			array($this->Html->tag(
 						'span', $this->Number->currency($invoiceTotals[$orderId]), array('id' => 'groupHeaderTotal-' . $orderId)
 				),
 				array('class' => 'invoiceTitleTotal', 'id' => 'invoiceTitleTotal-' . $orderId, 'colspan' => 2)
@@ -46,11 +47,8 @@ class InvoiceHelper extends FgHtmlHelper {
 			'subtotal',
 			'remove'
 		);
-/**
- * @todo discover what the new pdf-condition detection should be 
- *		because the old params['ext'] is gone
- */
-		if(FileExtension::isPdf('missingHaystack')){
+
+		if($this->params['ext'] == 'pdf'){
 			array_pop($headerRow);
 		}
 		return $headerRow;
@@ -58,12 +56,12 @@ class InvoiceHelper extends FgHtmlHelper {
 
 	public function makeToolRow($buttons = TRUE, $index = '', $context, $mode, $orderId, $title, $invoiceTotals) {
 		if ($buttons) {
-			$buttons = $this->FgForm->button('Done', array('type' => 'button', 'bind' => 'click.saveInvoiceCharges'));
+			$buttons = $this->Form->button('Done', array('type' => 'button', 'bind' => 'click.saveInvoiceCharges'));
 		} else {
 			$buttons = '';
 		}
 		if ($mode === 'edit') {
-			$newTool = $this->link('+ new charge', array(), array('bind' => 'click.addNewCharge'));
+			$newTool = $this->Html->link('+ new charge', array(), array('bind' => 'click.addNewCharge'));
 		} else {
 			$newTool = '';
 		}
@@ -73,7 +71,7 @@ class InvoiceHelper extends FgHtmlHelper {
 			array($buttons, array('class' => 'invoiceToolButtons')),
 			array($newTool, array('class' => 'invoiceTool', 'colspan' => 2, 'id' => 'toolRow-' . $index)),
 			array("Subtotal $title",array('class' => 'invoiceTitle', 'id' => 'groupHeaderRow-' . $orderId)),
-			array($this->tag('span', $this->Number->currency($invoiceTotals[$orderId]), array('id' => 'groupHeaderTotal-' . $orderId)),
+			array($this->Html->tag('span', $this->Number->currency($invoiceTotals[$orderId]), array('id' => 'groupHeaderTotal-' . $orderId)),
 			array('class' => 'invoiceTitleTotal', 'id' => 'invoiceTitleTotal-' . $orderId, 'colspan' => 2)
 			)
 		);
@@ -84,7 +82,7 @@ class InvoiceHelper extends FgHtmlHelper {
 		$toolRow = array(
 			array('', array('class' => 'spacer', 'colspan' => 3)),
 			array("Subtotal $title", array('class' => 'invoiceTitle', 'colspan' => 2)),
-			array($this->tag('span',  $this->Number->currency($invoiceTotals[$orderId]), array('class' => 'totals')), array())
+			array($this->Html->tag('span',  $this->Number->currency($invoiceTotals[$orderId]), array('class' => 'totals')), array())
 		);
 		return $toolRow;
 	}
@@ -99,7 +97,7 @@ class InvoiceHelper extends FgHtmlHelper {
 	public function firstToolCell($context){
 		$firstToolCell = '';
 		foreach ($context as $field => $value) {
-			$firstToolCell .= $this->FgForm->input($field, array('type' => 'hidden', 'value' => $value, 'id' => NULL));
+			$firstToolCell .= $this->Form->input($field, array('type' => 'hidden', 'value' => $value, 'id' => NULL));
 		}
 		return $firstToolCell;
 	}
@@ -114,7 +112,7 @@ class InvoiceHelper extends FgHtmlHelper {
 //		$this->ddd($charge, 'charge');
 		if ($mode != 'edit') {
 			$chargeRow = array(
-				array($this->tag('span', $index, array('class' => 'rowIndex rowNumberIndex')), array('class' => 'cellOne', 'id' => 'invoiceRow-' . $charge['id'])),
+				array($this->Html->tag('span', $index, array('class' => 'rowIndex rowNumberIndex')), array('class' => 'cellOne', 'id' => 'invoiceRow-' . $charge['id'])),
 				array($charge['description'], array('class' => 'invoiceDesc')),
 				array($charge['quantity'], array('class' => 'invoiceQty')),
 //				array($charge['unit'], array('class' => 'invoiceUnit')),
@@ -126,45 +124,45 @@ class InvoiceHelper extends FgHtmlHelper {
 			$chargeRow = array(
 				// row 1 (row number and hidden id/foreign-key data)
 				array(
-					$this->tag('span', $index, array('class' => 'rowIndex rowNumberIndex'))
-					. $this->FgForm->input(
+					$this->Html->tag('span', $index, array('class' => 'rowIndex rowNumberIndex'))
+					. $this->Form->input(
 							"InvoiceItem.$index.id", array('type' => 'hidden', 'value' => $charge['id']))
-					. $this->FgForm->input(
+					. $this->Form->input(
 							"InvoiceItem.$index.order_id", array('type' => 'hidden', 'value' => $charge['order_id']))
-					. $this->FgForm->input(
+					. $this->Form->input(
 							"InvoiceItem.$index.order_item_id", array('type' => 'hidden', 'value' => $charge['order_item_id']))
-					. $this->FgForm->input(
+					. $this->Form->input(
 							"InvoiceItem.$index.unit", array('type' => 'hidden', 'value' => 'ea'))
-					. $this->FgForm->input(
+					. $this->Form->input(
 							"InvoiceItem.$index.customer_id", array('type' => 'hidden', 'value' => $charge['customer_id'])),
 					array('class' => 'cellOne', 'id' => 'invoiceRow-' . $charge['id'], 'row' => $index)),
 				// row 2 (description input)
-				array($this->FgForm->input(
+				array($this->Form->input(
 							"InvoiceItem.$index.description", array('label' => FALSE, 'value' => $charge['description'], 'bind' => 'change.saveChange'
 					)),
 					array('class' => 'invoiceDesc')),
 				// row 3 (quantity input)
-				array($this->FgForm->input(
+				array($this->Form->input(
 							"InvoiceItem.$index.quantity", array('label' => FALSE, 'value' => $charge['quantity'], 'bind' => 'change.saveChange'
 					)),
 					array('class' => 'invoiceQty')),
 				// row 4 (unit input)
-//				array($this->FgForm->input(
+//				array($this->Form->input(
 //							"InvoiceItem.$index.unit", array('label' => FALSE, 'value' => $charge['unit'], 'bind' => 'change.saveChange'
 //					)),
 //					array('class' => 'invoiceUnit')),
 				// row 5 (price input)
-				array($this->FgForm->input(
+				array($this->Form->input(
 							"InvoiceItem.$index.price", array('label' => FALSE, 'value' => $charge['price'], 'bind' => 'change.saveChange'
 					)),
 					array('class' => 'invoicePrice')),
 				// row 6 (subtotal display)
-				array($this->tag(
+				array($this->Html->tag(
 							'span', $this->Number->currency($charge['subtotal']), array('id' => "chargeSubtotal-{$charge['id']}")
 					),
 					array('class' => 'invoiceSubTotal')),
 				// row 7 (delete row tool)
-				array($this->tag('span', '', array('class' => 'remove', 'id' => 'delete_' . $charge['id'],
+				array($this->Html->tag('span', '', array('class' => 'remove', 'id' => 'delete_' . $charge['id'],
 					)),
 					array('class' => 'invoiceRemove'))
 			);
@@ -173,7 +171,7 @@ class InvoiceHelper extends FgHtmlHelper {
  * @todo discover what the new pdf-condition detection should be 
  *		because the old params['ext'] is gone
  */
-		if(FileExtension::isPdf('missingHaystack')){
+		if($this->params['ext'] == 'pdf'){
 			array_pop($chargeRow);
 		}
 		return $chargeRow;
