@@ -6,6 +6,8 @@ App::uses('FileExtension', 'Lib');
 App::uses('Hash', 'Utility');
 App::uses('ReportOrder', 'Model/Entity');
 App::uses('ItemEntity', 'Model/Entity');
+App::uses('Session', 'Helper');
+
 
 /**
  * CakePHP Helper
@@ -17,7 +19,7 @@ class ReportHelper extends FgHtmlHelper {
 	
 	public $rows = array();
 	
-	public $helpers = ['Html'];
+	public $helpers = ['Html', 'Session'];
 	
 	/**
 	 * Produce a table block based upon a provided string and it's iterator of orders
