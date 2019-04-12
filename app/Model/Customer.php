@@ -57,7 +57,11 @@ class Customer extends AppModel {
 		'Vendor' => array(
 			'className' => 'Address',
 			'foreignKey' => 'customer_id'
-		)
+		),
+        'Logo' => [
+            'className' => 'Image',
+            'foreignKey' => 'image_id'
+        ]
 	);
 // </editor-fold>
 	
