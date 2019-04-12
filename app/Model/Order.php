@@ -522,8 +522,7 @@ class Order extends AppModel {
                 ],
                 'NOT' => [
                     ['Order.status' => 'Archived'],
-                    ['Order.status' => 'Invoiced'],
-                    ['Order.status' => 'Shipped']
+                    ['Order.status' => 'Invoiced']
                 ]
             ];
         }
