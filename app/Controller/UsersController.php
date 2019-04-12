@@ -220,6 +220,22 @@ class UsersController extends AppController {
             $ids[$index] = $id;
         }
     }
+	
+	/**
+	 * Was an id and hash provided and if so, was it valid
+	 * 
+	 * @param string $id
+	 * @param string $hash
+	 * @return mixed Null = not supplied, True = valid, False = invalid
+	 */
+	private function suppliedAndValid($id, $hash) {
+		if ($id != null && $hash != null) {
+			$result = $this->secureId($id, $hash);
+		} else {
+			$result = NULL;
+		}
+		return $result;
+	}
 
     /**
      * Save the current cart's session on logout/timeout
@@ -658,28 +674,54 @@ class UsersController extends AppController {
 
         return (!empty($customer)) ? true : false ;
     }
+	
+	
 
     public function edit_userGrain($id = null, $hash = null, $showInvoicePDF = null) {
+		
+        // The user has selected a tree node for detailed editing
+        if ($this->suppliedAndValid($id, $hash) === TRUE) {
+			
+            $this->set('editGrain', 
+					$this->User->find('first', 
+							array('conditions' => array('User.id' => $id))
+				));
+			
+            $this->set('addresses', 
+					$this->User->getAccessibleUserNodes(
+							$this->User->getOwnedUserRoots($id))
+				);
+			
+        }  elseif ($this->suppliedAndValid($id, $hash) === FASLE) {
+			
+            throw new ForbiddenException("Security validation failed on your" 
+				. "request for \r {$this->request->url}\rContact your admin "
+				. "for more information.");
+			
+        }
+		
         $this->layout = 'sidebar';
+		
         $access = $this->Auth->user('access');
         $group = $this->Auth->user('group');
         $owner = $this->Auth->user('id') == $id;
         $pageHeading = $title_for_layout = 'Detail Customers & Users';
         $invoices = $this->User->Invoice->fetchInvoices($id);
         $company_types = $this->User->Customer->company_types;
-        $this->set(compact('pageHeading', 'title_for_layout', 'access', 'owner', 'group', 'invoices', 'company_types'));
-//        $this->set('editGrain', 'stuff');
-        // The user has selected a tree node for detailed editing
-        if ($id != null && $hash != null && $this->secureId($id, $hash)) {
-            $this->set('editGrain', $this->User->find('first', array('conditions' => array('User.id' => $id))));
-            $this->set('addresses', $this->User->getAccessibleUserNodes($this->User->getOwnedUserRoots($id)));
-        } elseif ($id != null && $hash != null && !$this->secureId($id, $hash)) {
-            throw new ForbiddenException("Security validation failed on your request for \r
-		    {$this->request->url}\rContact your admin for more information.");
-        }
+		
+        $this->set(compact(
+				'access', 
+				'group', 
+				'owner', 
+				'pageHeading', 
+				'invoices', 
+				'company_types',
+				'showInvoicePDF',
+				'title_for_layout'
+			)
+		);
         // In all cases, get the side-panel selector tree data and send it to the view
         $this->prepareUserSidebar();
-        $this->set('showInvoicePDF', $showInvoicePDF);
         $this->render('/Common/manage_tree_object');
     }
 
