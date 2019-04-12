@@ -21,7 +21,7 @@ h2 {
 </style>
 <?php
 echo $this->Html->tag('h2', 'Inventory Levels Report');
-echo $this->FgForm->create('Reports', array('action' => 'inventoryStateReport'));
+echo $this->FgForm->create('Reports', ['url' => ['controller' => $this->request->controller, 'action' =>'inventoryStateReport']]);
 echo $this->Html->para('tip', 'Select a sort order');
 echo $this->FgForm->radio('sort', array(
 		'name' => 'Name', 
