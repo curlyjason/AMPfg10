@@ -1,5 +1,3 @@
-<!--<link type="text/css" href="cake.generic.css" rel="stylesheet" />-->
-<!--<link type="text/css" href="ampfg.css" rel="stylesheet" />-->
 <link type="text/css" href="accumulator.print.css" rel="stylesheet" />
 <div style="padding: .375in;">
 <div class="topMatter">
@@ -56,8 +54,6 @@
 		<?php
 		$rows = array();
 				foreach ($data['items'] as $item) {
-//					$this->FgHtml->ddd($item, 'item');
-//					die;
 					$rows[] = array(
 						array($item['#'], array('style' => 'font-size: 6pt;')),
 						array($item['quantity'], array('style' => 'font-size: 10pt;')),
@@ -66,30 +62,14 @@
 					);
 				}
 		echo '<table style="width: 7.5in";">';
-		echo $this->FgHtml->tableHeaders(array('line', 'Qty', 'Item', 'Name'), array('style' => 'background-color: #ccc;'), array('style' => 'font-size: 8pt; text-align: left; padding: 1pt;'));
+		echo $this->Html->tableHeaders(array('line', 'Qty', 'Item', 'Name'), array('style' => 'background-color: #ccc;'), array('style' => 'font-size: 8pt; text-align: left; padding: 1pt;'));
 		echo $this->Html->tableCells($rows);
-//		for($i=0;$i<100;$i++){
-//			echo "<tr><td>$i</td></tr>";
-//		}
 		echo '</table>';
 		echo '<table class="footerNote">';
 		$note = preg_replace("/\n/", "<\p><p class='note' style='font-size: 10pt; font-weight: bold; text-align: left;'>", $data['note']);
 		$tableNote = $this->Html->para('note', $note, array('style' => 'font-size: 10pt; font-weight: bold; text-align: left;'));
-		echo $this->FgHtml->tableHeaders(array('Note'), array('style' => 'background-color: #ccc;'), array('style' => 'font-size: 8pt; text-align: left; padding: 1pt;'));
+		echo $this->Html->tableHeaders(array('Note'), array('style' => 'background-color: #ccc;'), array('style' => 'font-size: 8pt; text-align: left; padding: 1pt;'));
 		echo $this->Html->tableCells(array('note' => $tableNote));
-//		echo $this->Html->para('note', $data['note']);
 		echo '</table>';
 		?>
 	</div>
-<!--		 PAGE 1 LINE ITEM SECTION HEADER
-		<div class="header">
-			<?php 
-				// this should loop through the first batch of line items
-				// possibly the first slice of X records
-//				echo $this->fetch('accumulator_row'); 
-			?>
-		</div>
-		 PAGE 1 LINE ITEMS 
-		<div id="line_items">
-			<?php // echo $this->fetch('line_items'); ?>
-		</div>-->

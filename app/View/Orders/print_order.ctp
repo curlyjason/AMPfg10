@@ -1,2 +1,2 @@
-<?php 
-	$this->element('Reports/ticket');
+<?php
+	$this->element('Reports/ticket', ['data' => $data]);
