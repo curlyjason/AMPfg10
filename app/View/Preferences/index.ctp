@@ -14,7 +14,7 @@
 		<td><?php echo h($preference['Preference']['id']); ?>&nbsp;</td>
 		<td><?php echo h($preference['Preference']['created']); ?>&nbsp;</td>
 		<td><?php echo h($preference['Preference']['modified']); ?>&nbsp;</td>
-		<td><?php echo h($preference['Preference']['prefs']); ?>&nbsp;</td>
+		<td><pre><?php print_r(unserialize($preference['Preference']['prefs'])); ?>&nbsp;</pre></td>
 		<td>
 			<?php echo $this->Html->link($preference['User']['id'], array('controller' => 'users', 'action' => 'view', $preference['User']['id'])); ?>
 		</td>
