@@ -61,15 +61,12 @@ $this->end();
         <div id="defeat" class="hide">
         </div>
         <div id="container">
-            <?php 
-//			$this->element('header', array('cakeDescription' => $cakeDescription, 'adminLoginUsers' => $adminLoginUsers));
-			echo $this->Html->div('header', NULL, array('id' => 'header'));
-			echo $this->Html->image('AMP_PrintResp_logo_300.png');
-			echo $this->Html->tag('h1', $this->Html->link(' AMP FG System - Login', 'http://www.ampprinting.com'));
-//			echo $this->fetch('header');
-//			echo $this->element('menu', $menuItems);
-			echo '</div>';
-			?>
+<!-- branded header -->
+            <?= $this->Html->div('header', NULL, array('id' => 'header')); ?>
+			<?= $this->BrandedPages->header('login'); ?>
+			</div>
+
+<!-- END branded header -->
 
             <div id="content">
                 <?php
