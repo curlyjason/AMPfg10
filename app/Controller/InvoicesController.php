@@ -228,7 +228,7 @@ class InvoicesController extends AppController {
 	 */
 	public function viewOldInvoice($invoiceId) {
 		set_time_limit(300);
-		$this->layout = 'pdf/default';
+		$this->layout = 'default';
 		if(FileExtension::hasExtension($invoiceId)){
 			$invoiceId = FileExtension::stripExtension($invoiceId);
 		}
