@@ -7,7 +7,9 @@ App::uses('AppController', 'Controller');
  */
 class PreferencesController extends AppController {
 
-    public function beforeFilter() {
+	public $components = array('LoadPreference');
+
+	public function beforeFilter() {
         parent::beforeFilter();
         $this->Auth->allow('add');
 		//establish access patterns
@@ -108,4 +110,56 @@ class PreferencesController extends AppController {
 		$this->Session->setFlash(__('Preference was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+	
+
+	/**
+	 * Set the current page to be this user's default home page
+	 * 
+	 * @param type $controller
+	 * @param type $action
+	 */
+	public function homePreference($controller, $action) {
+		$this->layout = 'ajax';
+		
+		$this->Session->write(
+				'Prefs.home', 
+				['controller' => $controller, 'action' => $action]);
+		$this->LoadPreference->savePreferences();
+		
+		$this->render('/Common/ajax');
+	}
+
+	/**
+	 * Save the current shipping values as preferences
+	 * 
+	 * These prefs will apply to the current customer for this users orders
+	 * This tool is only available from shop/address page
+	 * $this->request->data['customer'] is customer-userid of the Customer the controlls the Shop
+	 * $a is the id of the selected Address record (or 'customer' if there is none selected)
+	 */
+	public function shippingPreference() {
+		$this->layout = 'ajax';
+		
+		$a = ($this->request->data['address'] != '') 
+				? ".{$this->request->data['address']}" 
+				: '.customer';
+		$this->Session->write(
+				'Prefs.ship.' . $this->request->data['customer'] . $a
+				, $this->request->data['shipment']);
+		
+		$this->LoadPreference->savePreferences();
+		$this->render('/Common/ajax');
+	}
+
+	/**
+	 * Save the user's requested pagination limit
+	 * 
+	 * @param INT $limit, the requested limit
+	 */
+	public function paginationLimitPreference($limit) {
+		$this->autoRender = false;
+		$this->Session->write('Prefs.Catalog.paginationLimit', $limit);
+		$this->LoadPreference->savePreferences();
+	}
+	
 }
