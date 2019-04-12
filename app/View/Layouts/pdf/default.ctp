@@ -8,5 +8,5 @@ $dompdf->set_base_path(CSS);
 debug($content);
 $dompdf->load_html(utf8_decode($content_for_layout), Configure::read('App.encoding'));
 $dompdf->render();
-echo $dompdf->output();
+echo $dompdf->stream();
 ?>
