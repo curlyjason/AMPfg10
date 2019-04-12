@@ -4,7 +4,7 @@ $row = array();
 
 echo $this->FgForm->create('Location');
 	echo $this->Html->tag('table', null, array('id' => 'locationTable'));
-	echo $this->FgHtml->tableHeaders(array('', 'Building', 'Row', 'Bin', 'X'));
+	echo $this->Html->tableHeaders(array('', 'Building', 'Row', 'Bin', 'X'));
 if (!empty($locations)) {
 	$this->request->data = $locations;
 	foreach ($locations as $index => $record) {
