@@ -66,7 +66,8 @@ class AppController extends Controller {
 		'Js',
 		'FgHtml',
 		'FgForm',
-		'Markdown.Markdown'
+		'Markdown.Markdown',
+		'BrandedPages'
 	);
 	public $uses = array(
 		'User', 'Menu', 'Catalog', 'UserRegistry', 'Preference', 'Address', 'Gateway'
@@ -1104,78 +1105,7 @@ class AppController extends Controller {
 	// USER PREFERENCES AND CONVENIENCE AIDS
 	//============================================================
 
-	/**
-	 * 
-	 */
-	public function retrievePreferences() {
-		$prefs = $this->Preference->find('first', array('conditions' => array('Preference.user_id' => $this->Auth->user('id'))));
-		if ($prefs) {
-			$this->Session->write('Prefs', unserialize($prefs['Preference']['prefs']));
-			$this->Session->write('Prefs.id', $prefs['Preference']['id']);
-		}
-	}
 
-	/**
-	 * 
-	 */
-	public function savePreferences() {
-		if ($this->Session->read('Prefs')) {
-			$prefs['Preference']['prefs'] = serialize($this->Session->read('Prefs'));
-			$prefs['Preference']['id'] = $this->Session->read('Prefs.id');
-			$prefs['Preference']['user_id'] = $this->Auth->user('id');
-			$this->Preference->save($prefs);
-
-			// make sure even a brand new prefs record id gets into the session
-			// this could be handled in afterSave of Preference
-			$this->Session->write('Prefs.id', $this->Preference->id);
-		}
-	}
-
-	/**
-	 * Set the current page to be this user's default home page
-	 * 
-	 * @param type $controller
-	 * @param type $action
-	 */
-	public function homePreference($controller, $action) {
-		$this->layout = 'ajax';
-		$this->Session->write('Prefs.home', array('controller' => $controller, 'action' => $action));
-		$this->savePreferences();
-		$this->render('/Common/ajax');
-	}
-
-	/**
-	 * Save the current shipping values as preferences
-	 * 
-	 * These prefs will apply to the current customer for this users orders
-	 * This tool is only available from shop/address page
-	 * $this->request->data['customer'] is customer-userid of the Customer the controlls the Shop
-	 * $a is the id of the selected Address record (or 'customer' if there is none selected)
-	 */
-	public function shippingPreference() {
-		$a = ($this->request->data['address'] != '') ? ".{$this->request->data['address']}" : '.customer';
-		$this->layout = 'ajax';
-		$this->Session->write('Prefs.ship.' . $this->request->data['customer'] . $a, $this->request->data['shipment']);
-		$this->savePreferences();
-		$this->render('/Common/ajax');
-	}
-
-	public function searchFilterPreference($filter) {
-//		$this->autoRender = false;
-		$this->Session->write('Prefs.Search', $filter);
-		$this->savePreferences();
-	}
-	/**
-	 * Save the user's requested pagination limit
-	 * 
-	 * @param INT $limit, the requested limit
-	 */
-	public function paginationLimitPreference($limit) {
-		$this->autoRender = false;
-		$this->Session->write('Prefs.Catalog.paginationLimit', $limit);
-		$this->savePreferences();
-	}
-	
 	/**
 	 * Returns the shipmentBillingOptions property
 	 * 
