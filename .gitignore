@@ -54,3 +54,5 @@ app/View/Emails/notifications/*
 .idea*
 .idea/*
 /.idea/workspace.xml
+app/Vendor/*
+/app/Vendor/dompdf/lib/fonts/log.htm
