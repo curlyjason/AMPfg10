@@ -12,6 +12,7 @@ class SearchController extends AppController {
 	
 	public $uses = array('Customer', 'Order', 'Replenishment');
 
+	public $components = ['LoadPreference'];
 
 	/**
 	 * Master search filter list
@@ -74,7 +75,7 @@ class SearchController extends AppController {
 		if ($this->request->is('post')) {
 			
 			// filters are memorized every visit
-			$this->searchFilterPreference($this->request->data['filter']);
+			$this->LoadPreference->searchFilterPreference($this->request->data['filter']);
 
 			// capture users search parameters
 			$this->query = $this->request->data['User']['search'];
