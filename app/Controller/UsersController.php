@@ -571,11 +571,11 @@ class UsersController extends AppController {
             $pageHeading = $title_for_layout = 'Group & Organize Customers & Users';
             $this->set(compact('pageHeading', 'title_for_layout'));
             // The user has select a tree node for detailed editing
-            if ($id != null && $hash != null && $this->secureId($id, $hash)) {
+            if ($this->suppliedAndValid($id, $hash)) {
 
                 // true = sorry, can't edit this; false = go for it!!
                 // checkLock also locks this record for our edit if necessary
-                $this->set('lock', $this->checkLock($this->User, $id)); // this can force a switch to a view-only detail tree
+                $this->set('lock', $this->checkLock($this->User, $id) === TRUE); // this can force a switch to a view-only detail tree
                 $this->set('renderNode', $id);
                 $this->set('catalogEditFlag', false);
                 $this->set('userEditFlag', true);
@@ -596,7 +596,7 @@ class UsersController extends AppController {
                 $this->set('editTree', $this->detailTreeNodes($nodes));
 
                 // The requested node was invalid. A security problem.
-            } elseif ($id != null && $hash != null && !$this->secureId($id, $hash)) {
+            } elseif ($this->suppliedAndValid($id, $hash) === FALSE) {
                 // don't f with the data! That's a security violation!
                 throw new ForbiddenException("Security validation failed on your request for \r
 		    {$this->request->url}\rContact your admin for more information.");
@@ -756,13 +756,14 @@ class UsersController extends AppController {
     public function edit_catalog($id = null, $hash = null) {
         $this->layout = 'sidebar';
         $pageHeading = $title_for_layout = 'Manage Catalogs';
+		//override the normal path data used by js url constructors
         $controller = 'catalogs';
-        $this->set(compact('controller', 'pageHeading', 'title_for_layout')); //override the normal path data used by js url constructors
+        $this->set(compact('controller', 'pageHeading', 'title_for_layout')); 
 
         if (!empty($this->catalogRoots)) {
 
             // the user has requested a node be detailed for editing
-            if ($id != null && $hash != null && $this->secureId($id, $hash)) {
+            if ($this->suppliedAndValid($id, $hash) === TRUE) {
 
                 // true = sorry, can't edit this; false = go for it!!
                 // checkLock also locks this record for our edit if necessary
@@ -784,9 +785,12 @@ class UsersController extends AppController {
                     $this->redirect(array('controller' => 'users', 'action' => 'edit_catalog'));
                 }
                 $this->set('editTree', $nodes);
-            } elseif ($id != null && $hash != null && !$this->secureId($id, $hash)) {
-                throw new ForbiddenException("Security validation failed on your request for \r
-		{$this->request->url}\rContact your admin for more information.");
+				
+            } elseif ($this->suppliedAndValid($id, $hash) === FALSE) {
+				
+                throw new ForbiddenException("Security validation failed on "
+						. "your request for \r {$this->request->url}\r Contact "
+						. "your admin for more information.");
             }
 
             // In all cases, get the side-panel selector tree data and send it to the view
@@ -796,23 +800,35 @@ class UsersController extends AppController {
         }
     }
 
+	/**
+	 * 
+	 * @todo What can be made of the comments 'true = sorry...' missing call?
+	 *			see 'function edit_catalog(...' for example
+	 * @todo comment 'override the normal...' implies new home for this method
+	 * 
+	 * @param type $id
+	 * @param type $hash
+	 * @throws ForbiddenException
+	 */
     public function edit_catalogGrain($id = null, $hash = null) {
-
-        $this->layout = 'sidebar';
-        $this->set('controller', 'catalogs'); //override the normal path data used by js url constructors
         // the user has requested a node be detailed for editing
-        if ($id != null && $hash != null && $this->secureId($id, $hash)) {
+        if ($this->suppliedAndValid($id, $hash) === TRUE) {
+			// true = sorry, can't edit this; false = go for it!!
+			// checkLock also locks this record for our edit if necessary
+            $this->set('catalogGrain', 
+					$this->User->Catalog->find('all', 
+							array('conditions' => array('Catalog.id' => $id))
+					));
 //		
-//		// true = sorry, can't edit this; false = go for it!!
-//		// checkLock also locks this record for our edit if necessary
-            $this->set('catalogGrain', $this->User->Catalog->find('all', array('conditions' => array('Catalog.id' => $id))));
-//		
-        } elseif ($id != null && $hash != null && !$this->secureId($id, $hash)) {
-            throw new ForbiddenException("Security validation failed on your request for \r
-		{$this->request->url}\rContact your admin for more information.");
+        } elseif ($this->suppliedAndValid($id, $hash) === FALSE) {
+            throw new ForbiddenException("Security validation failed on your "
+					."request for \r {$this->request->url}\rContact your "
+					. "admin for more information.");
         }
 
-        // In all cases, get the side-panel selector tree data and send it to the view
+        $this->layout = 'sidebar';
+		//override the normal path data used by js url constructors
+        $this->set('controller', 'catalogs'); 
         $this->prepareCatalogSidebar();
         $this->render('/Common/manage_tree_object');
     }
