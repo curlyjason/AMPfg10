@@ -12,6 +12,7 @@ App::uses('AppController', 'Controller');
 App::uses('User', 'Helper');
 App::uses('Time', 'Helper');
 App::uses('EventObservers', 'Lib');
+//App::uses('AutomaticComponent', 'Component');
 
 /**
  * Users Controller
@@ -24,13 +25,12 @@ App::uses('EventObservers', 'Lib');
 class UsersController extends AppController {
 
 // <editor-fold defaultstate="collapsed" desc="Properties">
-    public $helpers = array('User', 'Time');
-
+	public $helpers = array('User', 'Time');
     public $displayField = 'username';
+	
+	public $components = array('Paginator', 'LoadPreference');
 
-    public $components = array('Paginator');
-
-    public $userprop = array('time', 'heals', 'all', 'booboos');
+	public $userprop = array('time', 'heals', 'all', 'booboos');
 // </editor-fold>
 
     public function beforeFilter() {
@@ -39,10 +39,27 @@ class UsersController extends AppController {
         $this->User->userId = $this->Auth->user('id');
         $roots = $this->User->userRoots = $this->Auth->user("UserRoots");
         $this->User->rootOwner = isset($roots[$this->User->ultimateRoot]);
-        //establish access
-        $this->accessPattern['Manager'] = array ('all');
-        $this->accessPattern['Buyer'] = array ('index', 'shop', 'listOrders', 'edit_userGrain', 'addressAdd', 'addressEdit', 'addressDelete', 'userEdit');
-        $this->accessPattern['Guest'] = array ('listOrders', 'addressAdd', 'addressEdit', 'edit_userGrain', 'addressDelete', 'userEdit');
+		//establish access
+		$this->accessPattern['Manager'] = ['all'];
+		$this->accessPattern['Buyer'] = 
+		[
+			'index', 
+			'shop', 
+			'listOrders', 
+			'edit_userGrain', 
+			'addressAdd', 
+			'addressEdit', 
+			'addressDelete', 
+			'userEdit'
+		];
+		$this->accessPattern['Guest'] = 
+		[
+			'listOrders', 
+			'addressAdd', 
+			'addressEdit', 
+			'edit_userGrain', 
+			'addressDelete', 
+			'userEdit'];
     }
 
     //============================================================
