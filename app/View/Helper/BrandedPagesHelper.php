@@ -25,6 +25,20 @@ class BrandedPagesHelper extends AppHelper
 	{
 		return 'AMP_PrintResp_logo_300.png';
 	}
+
+    public function superUglyHack($user_cutomer_id = 1, $customer_type = 'AMP')
+    {
+        if($user_customer_id == 275){
+            echo $this->FgHtml->para(null, "Xtracycle");
+            echo $this->FgHtml->para(null, '868 43rd St.');
+            echo $this->FgHtml->para(null, 'Oakland, CA 94608, U.S.A.');
+        } else {
+            echo $this->FgHtml->para(null, $customer_type == 'AMP' ? "AMP Printing + Graphics" : "Gold Medal Press");
+            echo $this->FgHtml->para(null, '6955 Sierra Court');
+            echo $this->FgHtml->para(null, 'Dublin, CA 94568');
+        }
+
+    }
 	
 //	array(
 //	'Config' => array(

@@ -14,7 +14,7 @@ class OrdersController extends AppController {
 
 // <editor-fold defaultstate="collapsed" desc="Properties">
     public $uses = array('Order', 'User', 'Price');
-    public $helpers = array('Accumulator', 'Report');
+    public $helpers = array('Accumulator', 'Report', 'BrandedPages');
 
     /**
      * The order record

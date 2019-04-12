@@ -1227,6 +1227,7 @@ class Order extends AppModel {
             'note' => $order['Order']['note'],
             'headerRow' => array('#', 'Qty', 'Code', 'Name'),
             'customer_type' => $customer_type,
+            'user_customer_id' => $order['Order']['user_customer_id'],
             'chunk' => $chunk,
             'shipping' => array(
                 "{$order['Shipment'][0]['first_name']} {$order['Shipment'][0]['last_name']}",
