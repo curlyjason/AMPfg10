@@ -31,6 +31,10 @@ class Customer extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
+        'Logo' => [
+            'className' => 'Image',
+            'foreignKey' => 'image_id'
+        ]
 	);
 	
     public $hasMany = array(
@@ -57,11 +61,7 @@ class Customer extends AppModel {
 		'Vendor' => array(
 			'className' => 'Address',
 			'foreignKey' => 'customer_id'
-		),
-        'Logo' => [
-            'className' => 'Image',
-            'foreignKey' => 'image_id'
-        ]
+		)
 	);
 // </editor-fold>
 	
