@@ -18,7 +18,10 @@ class CustomersController extends AppController {
             'folder' => 1,
             'parent_id' => ''
     ));
+	
     public $defaultCustomer = array();
+	
+	public $components = ['Flash'];
 
 	public function beforeFilter() {
         parent::beforeFilter();
@@ -164,20 +167,34 @@ class CustomersController extends AppController {
         if (!$this->Customer->exists($id)) {
             throw new NotFoundException(__('Invalid customer'));
         }
-        if ($this->request->is('post') || $this->request->is('put')) {
-			$this->request->data['Address']['name'] = $this->request->data['User']['username'];
-			$this->request->data['Address']['company'] = $this->request->data['User']['username'];
-            if ($this->Customer->saveAll($this->request->data)) {
-                $this->Session->setFlash(__('The customer has been saved'), 'flash_success');
+        if ($this->request->is('post') || $this->request->is('put')) 
+		{
+			
+			$this->request->data(
+					'Address.name', 
+					$this->request->data('User.username')
+				);
+			$this->request->data(
+					'Address.company', 
+					$this->request->data('User.username')
+				);
+
+            if ($this->Customer->saveAll($this->request->data)) 
+			{
+				
+				$this->Flash->success(__('The customer has been saved'));
                 $this->redirect($this->referer());
-            } else {
-                $this->Session->setFlash(__('The customer could not be saved. Please, try again.'), 'flash_error');
+            } 
+			else 
+			{
+                $this->Flash->error(__('The customer could not '
+						. 'be saved. Please, try again.'));
                 $this->redirect($this->referer());
             }
         } else {
-            $options = array('conditions' => array('Customer.id' => $id));
+            $options = ['conditions' => ['Customer.id' => $id]];
             $this->request->data = $this->Customer->find('first', $options);
-            $this->request->data['User']['id'] = $this->secureSelect($this->request->data['User']['id']);
+            $this->request->data('User.id') = $this->secureSelect($this->request->data['User']['id']);
             $this->request->data['User']['role'] = $this->secureSelect($this->request->data['User']['role']);
             $this->request->data['User']['parent_id'] = $this->secureSelect($this->request->data['User']['parent_id']);
 			$this->setBasicAddressSelects($this->request->data['Address']['country']);
