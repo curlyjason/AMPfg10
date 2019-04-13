@@ -7,11 +7,19 @@ $userId = $this->Session->read('Auth.User.id');
 /**
  * @todo Build a helper class for creating these image strings
  */
-debug($this->request->data['Logo']['img_file']);
+$style = 'margin-left: 25%';
 if (isset($this->request->data['Logo']['img_file'])) {
-	$logo = $this->Html->image('logo' . DS . 'img_file' . DS . $this->request->data['Logo']['id'] . DS . 'x160y120_' . $this->request->data['Logo']['img_file'], array('id' => 'ajaxEditImage'));
+	$logo = $this->Html->image(
+			'logo' . DS . 'img_file' . DS . 
+			$this->request->data['Logo']['id'] . DS . 
+			'x160y120_' . $this->request->data['Logo']['img_file'], 
+			['id' => 'ajaxEditImage', 'style' => $style]
+		);
 } else {
-	$logo = $this->Html->image('logo' . DS . 'img_file' . DS . 'no' . DS . 'x160y120_' . 'image.jpg', array('id' => 'ajaxEditImage'));
+	$logo = $this->Html->image('logo' . DS . 'img_file' . DS . 
+			'no' . DS . 'x160y120_' . 'image.jpg', 
+			['id' => 'ajaxEditImage', 'style' => $style]
+		);
 };
 
 
@@ -19,7 +27,7 @@ echo $this->Html->tag('fieldset'); // Opening fieldset
 
 echo $this->Html->tag('legend', __('Edit Customer'));
 
-echo $this->Form->input('customer_code', array('label' => 'EPMS Customer ID'));
+echo $this->Form->input('customer_code', ['label' => 'EPMS Customer ID']);
 
 // ============================= START USER FIELDS
 echo $this->Form->input('Customer.customer_type', array(		
@@ -28,22 +36,22 @@ echo $this->Form->input('Customer.customer_type', array(
 	'default' => 'AMP',
 	'label' => 'Customer Type'
 ));
-echo $this->Form->input('User.username', array('label' => 'Customer Name'));
-echo $this->Form->input('User.id', array('type' => 'hidden'));
-echo $this->Form->input('Customer.id', array('type' => 'hidden'));
-echo $this->Form->input('User.folder', array('type' => 'hidden'));
-echo $this->Form->input('User.role', array('type' => 'hidden'));
-echo $this->Form->input('User.parent_id', array('type' => 'hidden'));
-echo $this->Form->input('Address.id', array('type' => 'hidden'));
+echo $this->Form->input('User.username', ['label' => 'Customer Name']);
+echo $this->Form->input('User.id', ['type' => 'hidden']);
+echo $this->Form->input('Customer.id', ['type' => 'hidden']);
+echo $this->Form->input('User.folder', ['type' => 'hidden']);
+echo $this->Form->input('User.role', ['type' => 'hidden']);
+echo $this->Form->input('User.parent_id', ['type' => 'hidden']);
+echo $this->Form->input('Address.id', ['type' => 'hidden']);
 // ============================= END USER FIELDS
 // 
 // ============================= START ADDRESS FIELDS
-echo $this->Form->input('Address.type', array('type' => 'hidden','value' => 'shipping'));
+echo $this->Form->input('Address.type', ['type' => 'hidden','value' => 'shipping']);
 echo $this->Form->input('Address.address');
 echo $this->Form->input('Address.address2');
 echo $this->Form->input('Address.city');
 echo $this->FgForm->stateInput('Address', $stateList);
-echo $this->Form->input('Address.zip', array('label' => 'Postal code'));
+echo $this->Form->input('Address.zip', ['label' => 'Postal code']);
 echo $this->FgForm->countryInput('Address', $countryList);
 
 echo $this->Html->tag('legend', __('Primary Contact'));
@@ -59,7 +67,11 @@ if (isset($this->request->data['Customer']['id'])) {
 	if ($role == 'Admins Manager' || $role == 'Staff Manager') {
 		echo $this->Html->tag('fieldset'); // Opening fieldset
 			$marker = 'Charge-' . $userId;
-			echo $this->Html->tag('legend', __('Rental and Pull Charges'), array('id' => $marker, 'class' => 'toggle'));
+			echo $this->Html->tag(
+					'legend', 
+					__('Rental and Pull Charges'), 
+					['id' => $marker, 'class' => 'toggle']
+				);
 			echo $this->Html->div($marker . ' hide', NULL);
 				echo $this->Form->input('Customer.rent_qty');
 				echo $this->Form->input('Customer.rent_unit');
@@ -72,31 +84,69 @@ if (isset($this->request->data['Customer']['id'])) {
 //=========================== Shipping
 echo $this->Html->tag('fieldset'); // Opening fieldset
 $marker = 'ShippingAccounts-' . $userId;
-echo $this->Html->tag('legend', __('Shipping Accounts'), array('id' => $marker, 'class' => 'toggle'));
+echo $this->Html->tag(
+		'legend', 
+		__('Shipping Accounts'), 
+		['id' => $marker, 'class' => 'toggle']
+	);
 echo $this->Html->div($marker . ' hide', NULL);
-echo $this->Form->input('Address.fedex_acct', array('label' => 'FedEx Acct'));
-echo $this->Form->input('Address.ups_acct', array('label' => 'UPS Acct'));
+echo $this->Form->input('Address.fedex_acct', ['label' => 'FedEx Acct']);
+echo $this->Form->input('Address.ups_acct', ['label' => 'UPS Acct']);
 echo '</div>'; // close toggling div
 echo '</fieldset>'; //close fieldset
 //=========================== Preferences
 echo $this->Html->tag('fieldset'); // Opening fieldset
 $marker = 'Prefs-' . $userId;
-echo $this->Html->tag('legend', __('Preferences'), array('id' => $marker, 'class' => 'toggle'));
+echo $this->Html->tag(
+		'legend', 
+		__('Preferences'), 
+		['id' => $marker, 'class' => 'toggle']
+	);
 echo $this->Html->div($marker . ' hide', NULL);
-echo $this->FgForm->folderCheck('Customer', 'allow_backorder', array('label' => 'Allow customer to backorder items'));
-echo $this->FgForm->folderCheck('Customer', 'allow_direct_pay', array('label' => 'Allow customer to pay directly for items'));
-echo $this->FgForm->folderCheck('Customer', 'release_hold', array('label' => 'Require staff member to release all orders'));
+echo $this->FgForm->folderCheck(
+		'Customer', 
+		'allow_backorder', 
+		['label' => 'Allow customer to backorder items']
+	);
+echo $this->FgForm->folderCheck(
+		'Customer', 
+		'allow_direct_pay', 
+		['label' => 'Allow customer to pay directly for items']
+	);
+echo $this->FgForm->folderCheck(
+		'Customer', 
+		'release_hold', 
+		['label' => 'Require staff member to release all orders']
+	);
 if (!empty($this->request->data['Customer']['token'])) {
-	echo $this->FgHtml->decoratedTag('token:', 'p', $this->request->data['Customer']['token']);
+	echo $this->FgHtml->decoratedTag(
+			'token:', 
+			'p', 
+			$this->request->data['Customer']['token']
+		);
 	echo $this->FgForm->button('Update Token', array(
 		'type' => 'button',
 		'bind' => 'click.updateToken'
 	));
 }
+echo '</div>'; // close toggling div
+echo '</fieldset>'; //close fieldset
 //=========================== Logo
+echo $this->Html->tag('fieldset'); // Opening fieldset
+$marker = 'Brand-' . $userId;
+echo $this->Html->tag(
+		'legend', 
+		__('Branding options'), 
+		['class' => 'toggle', 'id' => 'logo']
+	);
 echo $this->Html->div('imageBlock', null);
-echo $this->Html->tag('legend', __('Logo Upload'), array('class' => 'toggle', 'id' => 'logo'));
-echo $this->Html->tag('fieldset', null, array('class' => 'logo hide'));
+echo $this->Html->tag('fieldset', null, ['class' => 'logo hide']);
+
+echo $this->Form->input('Preference.branding.company', ['label' => 'Comapany name']);
+echo $this->Form->input('Preference.branding.address1', ['label' => 'Address line 1']);
+echo $this->Form->input('Preference.branding.address2', ['label' => 'Address line 2']);
+echo $this->Form->input('Preference.branding.address3', ['label' => 'Address line 3']);
+
 echo $logo;
 $imageLabel = ($logo) ? 'Replace Logo' : 'Choose Logo';
 echo $this->Form->input('Logo.img_file', array(
@@ -105,7 +155,6 @@ echo $this->Form->input('Logo.img_file', array(
 ));
 echo '</fieldset>';//close image fieldset
 
-//echo $this->FgForm->folderCheck('Customer', 'taxable', array('label' => 'Check if customer pays sales tax'));
 echo '</div>'; // close toggling div
 echo '</fieldset>'; //close fieldset
 
