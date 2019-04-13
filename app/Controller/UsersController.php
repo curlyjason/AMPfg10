@@ -12,6 +12,7 @@ App::uses('AppController', 'Controller');
 App::uses('User', 'Helper');
 App::uses('Time', 'Helper');
 App::uses('EventObservers', 'Lib');
+App::uses('IdHashTrait', 'Lib/Trait');
 //App::uses('AutomaticComponent', 'Component');
 
 /**
@@ -24,6 +25,8 @@ App::uses('EventObservers', 'Lib');
  */
 class UsersController extends AppController {
 
+	use IdHashTrait;
+	
 // <editor-fold defaultstate="collapsed" desc="Properties">
 	public $helpers = array('User', 'Time');
     public $displayField = 'username';
@@ -180,47 +183,51 @@ class UsersController extends AppController {
         }
     }
 
-    /**
-     * Check a set of secure ids and strip hashes from the source data
-     *
-     * When permissions are included in User form data, they don't validate
-     * normally. This is our manual way of taking care of them
-     * array [
-     * 	    0 => 93/432abf349abf98934cc98c9c89a89a
-     * 	    1 => 89/08708b8089e098f098e890f083423f
-     * ]
-     * Operates on a reference of the original data, so no return necessary
-     *
-     * @todo Move this to a generalized security class
-     * @param array $ids an array of xx/xyzhash pairs to validate
-     */
-    private function validateIds(&$ids) {
-        if (!empty($ids)) {
-            foreach ($ids as $index => $id) {
-                $check = explode('/', $id);
-                if ($this->secureId($check[0], $check[1])) {
-                    $ids[$index] = $check[0];
-                } else {
-                    $ids[$index] = FALSE;
-                }
-            }
-        }
-    }
+//  <editor-fold defaultstate="collapsed" desc="MOVED TO IdHashTrait">
+	/**
+	 * Check a set of secure ids and strip hashes from the source data
+	 *
+	 * When permissions are included in User form data, they don't validate
+	 * normally. This is our manual way of taking care of them
+	 * array [
+	 * 	    0 => 93/432abf349abf98934cc98c9c89a89a
+	 * 	    1 => 89/08708b8089e098f098e890f083423f
+	 * ]
+	 * Operates on a reference of the original data, so no return necessary
+	 *
+	 * @todo Move this to a generalized security class
+	 * @param array $ids an array of xx/xyzhash pairs to validate
+	     */
+//	private function validateIds(&$ids)
+//	{
+//		if (!empty($ids)) {
+//			foreach ($ids as $index => $id) {
+//				$check = explode('/', $id);
+//				if ($this->secureId($check[0], $check[1])) {
+//					$ids[$index] = $check[0];
+//				} else {
+//					$ids[$index] = FALSE;
+//				}
+//			}
+//		}
+//	}
 
-    /**
-     * Not used at this point
-     * @todo Move this to a generalized security class
-     * @param type $id
-     */
-    private function validateId(&$id) {
-        $check = explode('/', $id);
-        if (count($check) == 2 && $this->secureId($check[0], $check[1])) {
-            $ids[$index] = $check[0];
-        } else {
-            $ids[$index] = $id;
-        }
-    }
-	
+	/**
+	 * Not used at this point
+	 * @todo Move this to a generalized security class
+	 * @param type $id
+	     */
+//	private function validateId(&$id)
+//	{
+//		$check = explode('/', $id);
+//		if (count($check) == 2 && $this->secureId($check[0], $check[1])) {
+//			$ids[$index] = $check[0];
+//		} else {
+//			$ids[$index] = $id;
+//		}
+//	}
+
+
 	/**
 	 * Was an id and hash provided and if so, was it valid
 	 * 
@@ -228,16 +235,19 @@ class UsersController extends AppController {
 	 * @param string $hash
 	 * @return mixed Null = not supplied, True = valid, False = invalid
 	 */
-	private function suppliedAndValid($id, $hash) {
-		if ($id != null && $hash != null) {
-			$result = $this->secureId($id, $hash);
-		} else {
-			$result = NULL;
-		}
-		return $result;
-	}
+//	private function suppliedAndValid($id, $hash)
+//	{
+//		if ($id != null && $hash != null) {
+//			$result = $this->secureId($id, $hash);
+//		} else {
+//			$result = NULL;
+//		}
+//		return $result;
+//	}
 
-    /**
+// </editor-fold>
+
+	/**
      * Save the current cart's session on logout/timeout
      * 
      * Execute a find to determine if this user has a cart record

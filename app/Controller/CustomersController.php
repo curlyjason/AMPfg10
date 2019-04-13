@@ -1,6 +1,7 @@
 <?php
 
 App::uses('AppController', 'Controller');
+App::uses('IdHashTrait', 'Lib/Trait');
 
 /**
  * Customers Controller
@@ -8,6 +9,8 @@ App::uses('AppController', 'Controller');
  * @property Customer $Customer
  */
 class CustomersController extends AppController {
+	
+	use IdHashTrait;
 
     public $defaultUser = array(
         'User' => array(

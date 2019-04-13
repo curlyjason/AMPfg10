@@ -496,6 +496,7 @@ class AppController extends Controller {
 		$this->flagUserRecord();
 	}
 
+// <editor-fold defaultstate="collapsed" desc="COPIED TO IdHasTrait">
 	/**
 	 * Verify that POSTed ID was not altered/spoofed
 	 *
@@ -504,7 +505,8 @@ class AppController extends Controller {
 	 * @return type
 	 * @throws BadMethodCallException
 	 */
-	public function secureData($data = null, $model = null) {
+	public function secureData($data = null, $model = null)
+	{
 		if (!is_array($data) || !key_exists('id', $data[$model]) || !key_exists('secure', $data[$model])) {
 			throw new BadMethodCallException('Missing security-check parameter(s) or expected array elements');
 		}
@@ -519,7 +521,8 @@ class AppController extends Controller {
 	 * @return boolean
 	 * @throws BadMethodCallException
 	 */
-	public function secureId($id = null, $hash = null) {
+	public function secureId($id = null, $hash = null)
+	{
 		if ($id === null || $hash === null) {
 			throw new BadMethodCallException('Missing security-check parameter(s).');
 		}
@@ -540,7 +543,8 @@ class AppController extends Controller {
 	 * @param string $id The record id to secure
 	 * @return string The secure has to use as a verification value
 	 */
-	public function secureHash($id) {
+	public function secureHash($id)
+	{
 		return sha1($id . AuthComponent::user('id') . AuthComponent::$sessionKey . Configure::read('Security.salt'));
 	}
 
@@ -553,7 +557,8 @@ class AppController extends Controller {
 	 * @param string $delimeter The delimeter to concat the string on, default to '/'
 	 * @return string The concatenation
 	 */
-	public function secureSelect($id, $delimeter = '/') {
+	public function secureSelect($id, $delimeter = '/')
+	{
 		return $id . $delimeter . $this->secureHash($id);
 	}
 
@@ -567,7 +572,8 @@ class AppController extends Controller {
 	 * @param string $delimeter The delimeter to concat the string on, default to '/'
 	 * @return array array (id, hash, true/false)
 	 */
-	public function validateSelect($securePair, $delimeter = '/') {
+	public function validateSelect($securePair, $delimeter = '/')
+	{
 		if (strstr($securePair, $delimeter) > '') {
 			$check = explode($delimeter, $securePair);
 			if (count($check == 2)) {
@@ -579,7 +585,8 @@ class AppController extends Controller {
 		return false;
 	}
 
-	//============================================================
+// </editor-fold>
+		//============================================================
 	// COMMON AJAX TOOLS FOR TREES (USER AND CATALOG)
 	//============================================================
 
