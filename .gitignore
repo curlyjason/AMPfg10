@@ -56,3 +56,4 @@ app/View/Emails/notifications/*
 /.idea/workspace.xml
 app/Vendor/*
 /app/Vendor/dompdf/lib/fonts/log.htm
+/app/tmp/cache/persistent/myapp_cake_core_cake_console_eng
