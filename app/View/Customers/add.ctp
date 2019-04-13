@@ -1,7 +1,7 @@
 <?php
 echo $this->Html->div('customers'); // Opening customer form div
 
-echo $this->Form->create('Customer', array('class' => 'grainVersion'));// Open Form
+echo $this->Form->create('Customer', array('class' => 'grainVersion', 'type' => 'file'));// Open Form
 
 echo $this->element('edit_customer_inputs', array(
     'data' => $tax_rate_id
