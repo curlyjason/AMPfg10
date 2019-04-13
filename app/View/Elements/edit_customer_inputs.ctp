@@ -7,10 +7,11 @@ $userId = $this->Session->read('Auth.User.id');
 /**
  * @todo Build a helper class for creating these image strings
  */
-if (isset($this->request->data['Customer']['Logo'][0]['img_file'])) {
-	$image = $this->Html->image('image' . DS . 'img_file' . DS . $this->request->data['Customer']['Logo'][0]['id'] . DS . 'x160y120_' . $this->request->data['Customer']['Logo'][0]['img_file'], array('id' => 'ajaxEditImage'));
+debug($this->request->data['Logo']['img_file']);
+if (isset($this->request->data['Logo']['img_file'])) {
+	$logo = $this->Html->image('logo' . DS . 'img_file' . DS . $this->request->data['Logo']['id'] . DS . 'x160y120_' . $this->request->data['Logo']['img_file'], array('id' => 'ajaxEditImage'));
 } else {
-	$image = $this->Html->image('image' . DS . 'img_file' . DS . 'no' . DS . 'x160y120_' . 'image.jpg', array('id' => 'ajaxEditImage'));
+	$logo = $this->Html->image('logo' . DS . 'img_file' . DS . 'no' . DS . 'x160y120_' . 'image.jpg', array('id' => 'ajaxEditImage'));
 };
 
 
@@ -96,8 +97,8 @@ if (!empty($this->request->data['Customer']['token'])) {
 echo $this->Html->div('imageBlock', null);
 echo $this->Html->tag('legend', __('Logo Upload'), array('class' => 'toggle', 'id' => 'logo'));
 echo $this->Html->tag('fieldset', null, array('class' => 'logo hide'));
-echo $image;
-$imageLabel = ($image) ? 'Replace Logo' : 'Choose Logo';
+echo $logo;
+$imageLabel = ($logo) ? 'Replace Logo' : 'Choose Logo';
 echo $this->Form->input('Logo.img_file', array(
 	'type' => 'file',
 	'label' => $imageLabel
