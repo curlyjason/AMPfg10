@@ -38,12 +38,6 @@ class User extends AppModel {
 				'message' => 'That username is taken. Try another.'
 			]
 		],
-//		'password' => array(
-//			'required' => array(
-//				'rule' => ['notBlank'],
-//				'message' => 'A password is required'
-//			)
-//		),
 		'role' => [
 			'valid' => [
 				'rule' => ['checkListHash', 'User', 'role'],
@@ -102,131 +96,63 @@ class User extends AppModel {
             'className' => 'Invoice',
             'foreignKey' => 'customer_id',
             'dependent' => false,
-            'conditions' => '',
-            'fields' => '',
-            'order' => '',
-            'limit' => '',
-            'offset' => '',
-            'exclusive' => '',
-            'finderQuery' => '',
-            'counterQuery' => ''
         ],
         'Time' => [
             'className' => 'Time',
             'foreignKey' => 'user_id',
             'dependent' => false,
             'conditions' => '',
-            'fields' => '',
-            'order' => '',
-            'limit' => '',
-            'offset' => '',
-            'exclusive' => '',
-            'finderQuery' => '',
-            'counterQuery' => ''
         ],
         'ChildUser' => [
             'className' => 'User',
             'foreignKey' => 'parent_id',
             'dependent' => true,
-            'conditions' => '',
-            'fields' => '',
-            'order' => '',
-            'limit' => '',
-            'offset' => '',
-            'exclusive' => '',
-            'finderQuery' => '',
-            'counterQuery' => ''
         ],
         'UserObserver' => [
             'className' => 'Observer',
             'foreignKey' => 'user_observer_id',
             'dependent' => true,
-            'conditions' => '',
-            'fields' => ['UserObserver.id', 'UserObserver.user_id', 'UserObserver.user_name', 'UserObserver.type'],
-            'order' => '',
-            'limit' => '',
-            'offset' => '',
-            'exclusive' => '',
-            'finderQuery' => '',
-            'counterQuery' => ''
+            'fields' => [
+				'UserObserver.id', 
+				'UserObserver.user_id', 
+				'UserObserver.user_name', 
+				'UserObserver.type'],
         ],
         'Observer' => [
             'className' => 'Observer',
             'foreignKey' => 'user_id',
             'dependent' => true,
-            'conditions' => '',
-            'fields' => ['Observer.id', 'Observer.user_observer_id', 'Observer.observer_name', 'Observer.type'],
+            'fields' => ['Observer.id', 
+				'Observer.user_observer_id', 
+				'Observer.observer_name', 
+				'Observer.type'],
             'order' => 'Observer.type',
-            'limit' => '',
-            'offset' => '',
-            'exclusive' => '',
-            'finderQuery' => '',
-            'counterQuery' => ''
         ],
         'Address' => [
             'className' => 'Address',
             'foreignKey' => 'user_id',
             'dependent' => true,
-            'conditions' => '',
-            'fields' => '',
-            'order' => '',
-            'limit' => '',
-            'offset' => '',
-            'exclusive' => '',
-            'finderQuery' => '',
-            'counterQuery' => ''
         ],
         'Budget' => [
             'className' => 'Budget',
             'foreignKey' => 'user_id',
             'dependent' => true,
             'conditions' => ['Budget.current' => true],
-            'fields' => '',
-            'order' => '',
-            'limit' => '',
-            'offset' => '',
-            'exclusive' => '',
-            'finderQuery' => '',
-            'counterQuery' => ''
         ],
         'Replenishment' => [
             'className' => 'Replenishment',
             'foreignKey' => 'user_id',
             'dependent' => false,
-            'conditions' => '',
-            'fields' => '',
-            'order' => '',
-            'limit' => '',
-            'offset' => '',
-            'exclusive' => '',
-            'finderQuery' => '',
-            'counterQuery' => ''
         ],
         'Order' => [
             'className' => 'Order',
             'foreignKey' => 'user_id',
             'dependent' => false,
-            'conditions' => '',
-            'fields' => '',
-            'order' => '',
-            'limit' => '',
-            'offset' => '',
-            'exclusive' => '',
-            'finderQuery' => '',
-            'counterQuery' => ''
         ],
         'OwnedCatalogs' => [
             'className' => 'Catalog',
             'foreignKey' => 'customer_user_id',
             'dependent' => false,
-            'conditions' => '',
-            'fields' => '',
-            'order' => '',
-            'limit' => '',
-            'offset' => '',
-            'exclusive' => '',
-            'finderQuery' => '',
-            'counterQuery' => ''
         ]
     ];
 
@@ -242,14 +168,6 @@ class User extends AppModel {
             'foreignKey' => 'user_id',
             'associationForeignKey' => 'catalog_id',
             'unique' => 'keepExisting',
-            'conditions' => '',
-            'fields' => '',
-            'order' => '',
-            'limit' => '',
-            'offset' => '',
-            'finderQuery' => '',
-            'deleteQuery' => '',
-            'insertQuery' => ''
         ],
         'UserManager' => [
             'className' => 'User',
@@ -258,14 +176,6 @@ class User extends AppModel {
             'associationForeignKey' => 'user_manager_id',
             'unique' => 'keepExisting',
 			'dependent' => true,
-            'conditions' => '',
-            'fields' => '',
-            'order' => '',
-            'limit' => '',
-            'offset' => '',
-            'finderQuery' => '',
-            'deleteQuery' => '',
-            'insertQuery' => ''
         ],
         'UserManaged' => [
             'className' => 'User',
@@ -273,14 +183,6 @@ class User extends AppModel {
             'foreignKey' => 'user_manager_id',
             'associationForeignKey' => 'user_managed_id',
             'unique' => 'keepExisting',
-            'conditions' => '',
-            'fields' => '',
-            'order' => '',
-            'limit' => '',
-            'offset' => '',
-            'finderQuery' => '',
-            'deleteQuery' => '',
-            'insertQuery' => ''
         ]
     ]; // </editor-fold>
 	
@@ -312,11 +214,20 @@ class User extends AppModel {
 			'Clients Guest',
 			'Warehouses Manager'],
 		'Clients Manager' => [
-			'Clients Manager', 'Clients Buyer', 'Clients Guest'],
+			'Clients Manager', 
+			'Clients Buyer', 
+			'Clients Guest'],
 		'Staff Buyer' => [
-			'Staff Buyer', 'Clients Buyer', 'Staff Guest', 'Clients Guest'],
-		'Clients Buyer' => ['Clients Buyer', 'Clients Guest'],
-		'Staff Guest' => ['Staff Guest', 'Clients Guest'],
+			'Staff Buyer', 
+			'Clients Buyer', 
+			'Staff Guest', 
+			'Clients Guest'],
+		'Clients Buyer' => [
+			'Clients Buyer', 
+			'Clients Guest'],
+		'Staff Guest' => [
+			'Staff Guest', 
+			'Clients Guest'],
 		'Clients Guest' => ['Clients Guest'],
 		'Warehouses Manager' => ['Warehouses Manager']
 	];
