@@ -157,6 +157,12 @@ class CustomersController extends AppController {
 
     /**
      * edit method
+	 * 
+	 * @todo The id, role, and parent_id are all hashed. role and 
+	 *		parent_id have validators that check and remove the hashing 
+	 *		but id does not. Since the save and validators are in the 
+	 *		path of all other system code, I did a local check/fix of 
+	 *		the id value as part of the conditional save decision
      *
      * @throws NotFoundException
      * @param string $id
@@ -167,9 +173,11 @@ class CustomersController extends AppController {
         if (!$this->Customer->exists($id)) {
             throw new NotFoundException(__('Invalid customer'));
         }
-        if ($this->request->is('post') || $this->request->is('put')) 
+        if (
+				($this->request->is('post') || $this->request->is('put'))
+				&& $this->validateRequestData('User.id')->isValid()
+			) 
 		{
-			
 			$this->request->data(
 					'Address.name', 
 					$this->request->data('User.username')
@@ -178,26 +186,24 @@ class CustomersController extends AppController {
 					'Address.company', 
 					$this->request->data('User.username')
 				);
-
             if ($this->Customer->saveAll($this->request->data)) 
 			{
-				
 				$this->Flash->success(__('The customer has been saved'));
                 $this->redirect($this->referer());
             } 
 			else 
 			{
-                $this->Flash->error(__('The customer could not '
-						. 'be saved. Please, try again.'));
+                $this->Flash->error(
+						__('The customer could not be saved. Please, try again.'));
                 $this->redirect($this->referer());
             }
         } else {
             $options = ['conditions' => ['Customer.id' => $id]];
             $this->request->data = $this->Customer->find('first', $options);
-            $this->request->data('User.id') = $this->secureSelect($this->request->data['User']['id']);
-            $this->request->data['User']['role'] = $this->secureSelect($this->request->data['User']['role']);
-            $this->request->data['User']['parent_id'] = $this->secureSelect($this->request->data['User']['parent_id']);
-			$this->setBasicAddressSelects($this->request->data['Address']['country']);
+            $this->secureRequestData('User.id');
+            $this->secureRequestData('User.role');
+            $this->secureRequestData('User.parent_id');
+			$this->setBasicAddressSelects($this->request->data('Address.country'));
         }
         $tax_rate_id = $this->Customer->Address->TaxRate->getTaxJurisdictionList();
 		$this->set('customer_type', $this->Customer->customer_type);

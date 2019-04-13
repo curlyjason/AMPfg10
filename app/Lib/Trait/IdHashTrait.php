@@ -1,4 +1,5 @@
 <?php
+App::uses('IdSecurityChip', 'Lib');
 
 /**
  * IdHashTrait
@@ -9,6 +10,35 @@
  */
 trait IdHashTrait
 {
+	
+	/**
+	 * Secure hash the property named in this->request->data()
+	 * 
+	 * Hashes the Request objects data value in place. 
+	 * 
+	 * @param string $path Dot notation path for data($path)
+	 */
+	public function secureRequestData($path)
+	{
+		$this->request->data(
+				$path, 
+				$this->secureSelectTakingOverTheWorld($this->request->data($path))
+			);
+	}
+	
+	/**
+	 * 
+	 * @param type $path
+	 * @return IdSecurityChip
+	 */
+	public function validateRequestData($path)
+	{
+		$IdSecurityChip = $this->validateSelectTakingOverTheWorld($this->request->data($path));
+		if ($IdSecurityChip->isValid()) {
+			$this->request->data($path, $IdSecurityChip->id());
+		}
+		return $IdSecurityChip;
+	}
 
 // <editor-fold defaultstate="collapsed" desc="FROM UsersController">
 	/**
@@ -143,7 +173,7 @@ trait IdHashTrait
 	 * @param string $delimeter The delimeter to concat the string on, default to '/'
 	 * @return string The concatenation
 	 */
-	public function secureSelect($id, $delimeter = '/') {
+	public function secureSelectTakingOverTheWorld($id, $delimeter = '/') {
 		return $id . $delimeter . $this->secureHash($id);
 	}
 
@@ -155,18 +185,20 @@ trait IdHashTrait
 	 *
 	 * @param string $id The value to secure
 	 * @param string $delimeter The delimeter to concat the string on, default to '/'
-	 * @return array array (id, hash, true/false)
+	 * @return IdSecurityChip ->id() ->hash() ->isValid()
 	 */
-	public function validateSelect($securePair, $delimeter = '/') {
+	public function validateSelectTakingOverTheWorld($securePair, $delimeter = '/') {
 		if (strstr($securePair, $delimeter) > '') {
 			$check = explode($delimeter, $securePair);
 			if (count($check == 2)) {
 				$check[2] = $this->secureId($check[0], $check[1]);
-				return $check;
+				$result = $check;
 			}
+		} else {
+			$this->Flash->error('An improperly formatted security string was found.');
+			$result = false;
 		}
-		$this->Flash->error('An improperly formatted security string was found.');
-		return false;
+		return new IdSecurityChip($result);
 	}
 	
 // </editor-fold>
