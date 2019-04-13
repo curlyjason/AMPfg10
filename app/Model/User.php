@@ -27,38 +27,38 @@ class User extends AppModel {
 	 *
 	 * @var array
 	     */
-	public $validate = array(
-		'username' => array(
-			'required' => array(
-				'rule' => array('notBlank'),
+	public $validate = [
+		'username' => [
+			'required' => [
+				'rule' => ['notBlank'],
 				'message' => 'A username is required'
-			),
-			'unique' => array(
-				'rule' => array('isUnique'),
+			],
+			'unique' => [
+				'rule' => ['isUnique'],
 				'message' => 'That username is taken. Try another.'
-			)
-		),
+			]
+		],
 //		'password' => array(
 //			'required' => array(
-//				'rule' => array('notBlank'),
+//				'rule' => ['notBlank'],
 //				'message' => 'A password is required'
 //			)
 //		),
-		'role' => array(
-			'valid' => array(
-				'rule' => array('checkListHash', 'User', 'role'),
+		'role' => [
+			'valid' => [
+				'rule' => ['checkListHash', 'User', 'role'],
 				'message' => 'Please enter a valid role',
 				'allowEmpty' => true
-			)
-		),
-		'parent_id' => array(
-			'valid' => array(
-				'rule' => array('checkListHash', 'User', 'parent_id'),
+			]
+		],
+		'parent_id' => [
+			'valid' => [
+				'rule' => ['checkListHash', 'User', 'parent_id'],
 				'message' => 'Please enter a valid parent',
 				'allowEmpty' => true
-			)
-		)
-	); // </editor-fold>
+			]
+		]
+	]; // </editor-fold>
 
 // <editor-fold defaultstate="collapsed" desc="Associations">
 	/**
@@ -66,39 +66,39 @@ class User extends AppModel {
      *
      * @var array
      */
-    public $belongsTo = array(
-        'ParentUser' => array(
+    public $belongsTo = [
+        'ParentUser' => [
             'className' => 'User',
             'foreignKey' => 'parent_id',
             'conditions' => '',
             'fields' => '',
             'order' => ''
-        )
-    );
+        ]
+    ];
 
     /**
      * hasOne associations
      *
      * @var array
      */
-    public $hasOne = array(
-        'Customer' => array(
+    public $hasOne = [
+        'Customer' => [
             'className' => 'Customer',
             'foreignKey' => 'user_id',
 			'dependent' => true,
             'conditions' => '',
             'fields' => '',
             'order' => ''
-        )
-    );
+        ]
+    ];
 
     /**
      * hasMany associations
      *
      * @var array
      */
-    public $hasMany = array(
-        'Invoice' => array(
+    public $hasMany = [
+        'Invoice' => [
             'className' => 'Invoice',
             'foreignKey' => 'customer_id',
             'dependent' => false,
@@ -110,8 +110,8 @@ class User extends AppModel {
             'exclusive' => '',
             'finderQuery' => '',
             'counterQuery' => ''
-        ),
-        'Time' => array(
+        ],
+        'Time' => [
             'className' => 'Time',
             'foreignKey' => 'user_id',
             'dependent' => false,
@@ -123,8 +123,8 @@ class User extends AppModel {
             'exclusive' => '',
             'finderQuery' => '',
             'counterQuery' => ''
-        ),
-        'ChildUser' => array(
+        ],
+        'ChildUser' => [
             'className' => 'User',
             'foreignKey' => 'parent_id',
             'dependent' => true,
@@ -136,34 +136,34 @@ class User extends AppModel {
             'exclusive' => '',
             'finderQuery' => '',
             'counterQuery' => ''
-        ),
-        'UserObserver' => array(
+        ],
+        'UserObserver' => [
             'className' => 'Observer',
             'foreignKey' => 'user_observer_id',
             'dependent' => true,
             'conditions' => '',
-            'fields' => array('UserObserver.id', 'UserObserver.user_id', 'UserObserver.user_name', 'UserObserver.type'),
+            'fields' => ['UserObserver.id', 'UserObserver.user_id', 'UserObserver.user_name', 'UserObserver.type'],
             'order' => '',
             'limit' => '',
             'offset' => '',
             'exclusive' => '',
             'finderQuery' => '',
             'counterQuery' => ''
-        ),
-        'Observer' => array(
+        ],
+        'Observer' => [
             'className' => 'Observer',
             'foreignKey' => 'user_id',
             'dependent' => true,
             'conditions' => '',
-            'fields' => array('Observer.id', 'Observer.user_observer_id', 'Observer.observer_name', 'Observer.type'),
+            'fields' => ['Observer.id', 'Observer.user_observer_id', 'Observer.observer_name', 'Observer.type'],
             'order' => 'Observer.type',
             'limit' => '',
             'offset' => '',
             'exclusive' => '',
             'finderQuery' => '',
             'counterQuery' => ''
-        ),
-        'Address' => array(
+        ],
+        'Address' => [
             'className' => 'Address',
             'foreignKey' => 'user_id',
             'dependent' => true,
@@ -175,12 +175,12 @@ class User extends AppModel {
             'exclusive' => '',
             'finderQuery' => '',
             'counterQuery' => ''
-        ),
-        'Budget' => array(
+        ],
+        'Budget' => [
             'className' => 'Budget',
             'foreignKey' => 'user_id',
             'dependent' => true,
-            'conditions' => array('Budget.current' => true),
+            'conditions' => ['Budget.current' => true],
             'fields' => '',
             'order' => '',
             'limit' => '',
@@ -188,8 +188,8 @@ class User extends AppModel {
             'exclusive' => '',
             'finderQuery' => '',
             'counterQuery' => ''
-        ),
-        'Replenishment' => array(
+        ],
+        'Replenishment' => [
             'className' => 'Replenishment',
             'foreignKey' => 'user_id',
             'dependent' => false,
@@ -201,8 +201,8 @@ class User extends AppModel {
             'exclusive' => '',
             'finderQuery' => '',
             'counterQuery' => ''
-        ),
-        'Order' => array(
+        ],
+        'Order' => [
             'className' => 'Order',
             'foreignKey' => 'user_id',
             'dependent' => false,
@@ -214,8 +214,8 @@ class User extends AppModel {
             'exclusive' => '',
             'finderQuery' => '',
             'counterQuery' => ''
-        ),
-        'OwnedCatalogs' => array(
+        ],
+        'OwnedCatalogs' => [
             'className' => 'Catalog',
             'foreignKey' => 'customer_user_id',
             'dependent' => false,
@@ -227,16 +227,16 @@ class User extends AppModel {
             'exclusive' => '',
             'finderQuery' => '',
             'counterQuery' => ''
-        )
-    );
+        ]
+    ];
 
     /**
      * hasAndBelongsToMany associations
      *
      * @var array
      */
-    public $hasAndBelongsToMany = array(
-        'Catalog' => array(
+    public $hasAndBelongsToMany = [
+        'Catalog' => [
             'className' => 'Catalog',
             'joinTable' => 'catalogs_users',
             'foreignKey' => 'user_id',
@@ -250,8 +250,8 @@ class User extends AppModel {
             'finderQuery' => '',
             'deleteQuery' => '',
             'insertQuery' => ''
-        ),
-        'UserManager' => array(
+        ],
+        'UserManager' => [
             'className' => 'User',
             'joinTable' => 'users_users',
             'foreignKey' => 'user_managed_id',
@@ -266,8 +266,8 @@ class User extends AppModel {
             'finderQuery' => '',
             'deleteQuery' => '',
             'insertQuery' => ''
-        ),
-        'UserManaged' => array(
+        ],
+        'UserManaged' => [
             'className' => 'User',
             'joinTable' => 'users_users',
             'foreignKey' => 'user_manager_id',
@@ -281,20 +281,20 @@ class User extends AppModel {
             'finderQuery' => '',
             'deleteQuery' => '',
             'insertQuery' => ''
-        )
-    ); // </editor-fold>
+        ]
+    ]; // </editor-fold>
 	
 // <editor-fold defaultstate="collapsed" desc="Properties">
-	public $actsAs = array(
+	public $actsAs = [
 		'ThinTree'
-	);
+	];
 
 	/**
 	 *
 	 * @var array User roles and the roles they can assign
 	     */
-	public $roles = array(
-		'Admins Manager' => array(
+	public $roles = [
+		'Admins Manager' => [
 			'Admins Manager',
 			'Staff Manager',
 			'Clients Manager',
@@ -302,24 +302,24 @@ class User extends AppModel {
 			'Clients Buyer',
 			'Staff Guest',
 			'Clients Guest',
-			'Warehouses Manager'),
-		'Staff Manager' => array(
+			'Warehouses Manager'],
+		'Staff Manager' => [
 			'Staff Manager',
 			'Clients Manager',
 			'Staff Buyer',
 			'Clients Buyer',
 			'Staff Guest',
 			'Clients Guest',
-			'Warehouses Manager'),
-		'Clients Manager' => array(
-			'Clients Manager', 'Clients Buyer', 'Clients Guest'),
-		'Staff Buyer' => array(
-			'Staff Buyer', 'Clients Buyer', 'Staff Guest', 'Clients Guest'),
-		'Clients Buyer' => array('Clients Buyer', 'Clients Guest'),
-		'Staff Guest' => array('Staff Guest', 'Clients Guest'),
-		'Clients Guest' => array('Clients Guest'),
-		'Warehouses Manager' => array('Warehouses Manager')
-	);
+			'Warehouses Manager'],
+		'Clients Manager' => [
+			'Clients Manager', 'Clients Buyer', 'Clients Guest'],
+		'Staff Buyer' => [
+			'Staff Buyer', 'Clients Buyer', 'Staff Guest', 'Clients Guest'],
+		'Clients Buyer' => ['Clients Buyer', 'Clients Guest'],
+		'Staff Guest' => ['Staff Guest', 'Clients Guest'],
+		'Clients Guest' => ['Clients Guest'],
+		'Warehouses Manager' => ['Warehouses Manager']
+	];
 	public $displayField = 'username';
 
 	/**
@@ -365,7 +365,7 @@ class User extends AppModel {
 	 *
 	 * @var array Accessible user nodes
 	     */
-	public $userRoots = array();
+	public $userRoots = [];
 	
 	public $query = '';
 	
@@ -383,7 +383,7 @@ class User extends AppModel {
 	 */
 	public $userQueryReplenishmentInList = false;
 	
-	public $customers = array();
+	public $customers = [];
 // </editor-fold>
 
 
@@ -409,7 +409,7 @@ class User extends AppModel {
      * @param type $options
      * @return boolean
      */
-    public function beforeSave($options = array()) {
+    public function beforeSave($options = []) {
         parent::beforeSave($options);
         // make sure new root level trees actually start from our 1 root
         if (isset($this->data[$this->alias]['parent_id']) && $this->data[$this->alias]['parent_id'] == '') {
@@ -434,9 +434,9 @@ class User extends AppModel {
     function afterSave($created, $options = []) {
         parent::afterSave($created, $options);
         if ($created && $this->data['User']['parent_id'] == $this->ultimateRoot && !$this->rootOwner) {
-            $permission = array(
-                'UserManager' => array('id' => $this->userId),
-            );
+            $permission = [
+                'UserManager' => ['id' => $this->userId],
+            ];
             if ($this->save($permission, false)) {
                 $this->refreshPermissions = true;
             }
@@ -467,8 +467,8 @@ class User extends AppModel {
      * @return type
      */
     public function getMyAddressesList($accessKey) {
-        $raw = $this->find('first', array('conditions' => array('User.id' => $accessKey)));
-        $myAddresses = array();
+        $raw = $this->find('first', ['conditions' => ['User.id' => $accessKey]]);
+        $myAddresses = [];
         foreach ($raw['Address'] as $index => $address) {
             $myAddresses[$address['id']] = $address['name'];
         }
@@ -487,7 +487,7 @@ class User extends AppModel {
         foreach ($raw as $index => $user) {
             if(count($user['Address'])>0) {
                 $name = $this->discoverName ($user['User']['id']);
-                $otherAddresses[$name] = array();
+                $otherAddresses[$name] = [];
                 foreach ($user['Address'] as $index => $address) {
                     $otherAddresses[$name][$address['id']] = $address['name'];
                 }
@@ -502,19 +502,19 @@ class User extends AppModel {
     }
 
     public function getThirdPartyBillingAddressesList($accessKey) {
-		$address = array();
+		$address = [];
 		$users = $this->getAccessibleUserInList();
 
-		$insecureAddresses = $this->Address->find('list', array(
-			'fields' => array('Address.id', 'Address.name'),
-			'conditions' => array('Address.user_id' => $users, array(
-				'OR' => array(
+		$insecureAddresses = $this->Address->find('list', [
+			'fields' => ['Address.id', 'Address.name'],
+			'conditions' => ['Address.user_id' => $users, [
+				'OR' => [
 					'Address.ups_acct > ' => 0,
 					'Address.fedex_acct > ' => 0
-				)
-			) ),
+				]
+			] ],
 			'recursive' => 1
-		));
+		]);
 		$transAddresses = array_flip($insecureAddresses);
 		foreach ($transAddresses as $key => $value) {
 			$address[$key] = $value . '/' . $this->secureHash($value);
@@ -533,13 +533,13 @@ class User extends AppModel {
 		if (!$id) {
 			$id = $this->userId;
 		}
-		$seedNodes = $this->UserObserver->find('list',array(
-			'fields' => array('user_id', 'user_id'),
-			'conditions' => array(
+		$seedNodes = $this->UserObserver->find('list',[
+			'fields' => ['user_id', 'user_id'],
+			'conditions' => [
 				'user_observer_id' => $id,
 				'type' => $type
-			)
-		));
+			]
+		]);
 		return $this->getInListFrom($seedNodes);
 	}
 	
@@ -550,12 +550,12 @@ class User extends AppModel {
      * @todo This will need to filter the roles based on the User's role
      * @return type
      */
-    public function getCatalogList($nodeList, $conditions = array()) {
+    public function getCatalogList($nodeList, $conditions = []) {
         if (empty($nodeList)) {
-            return array();
+            return [];
         }
         $raw = $this->getAccessibleCatalogNodes($nodeList, $conditions);
-        $secureList = array();
+        $secureList = [];
         foreach ($raw as $key => $node) {
             $id = $node['Catalog']['id'];
 			$count = substr_count($node['Catalog']['ancestor_list'], ',', 1);
@@ -572,11 +572,11 @@ class User extends AppModel {
      * @param int $id Id of the logged in user
      * @return array a secured drop list of Users
      */
-    public function getParentList($rootNodes, $conditions = array()) {
+    public function getParentList($rootNodes, $conditions = []) {
         if (empty($rootNodes)) {
-            return array();
+            return [];
         }
-		$returnArray = array();
+		$returnArray = [];
 		$loopCount = 1;
 		foreach ($rootNodes as $key => $id) {
 			$returnArray[$loopCount++] = $this->getFullNode($id, true, $conditions);
@@ -603,7 +603,7 @@ class User extends AppModel {
      */
     public function getPermittedList($accessKey, $type) {
         if (empty($accessKey)) {
-            return array();
+            return [];
         }
         if (!is_array($accessKey)) {
             if ($type == 'user') {
@@ -614,7 +614,7 @@ class User extends AppModel {
                 throw new BadMethodCallException('Unknown node type chosen: ' . $type . ' user or catalog expected.');
             }
         }
-        $secureList = array();
+        $secureList = [];
         foreach ($accessKey as $index => $fields) {
             $secureList[] = $fields['id'] . '/' . $this->secureHash($fields['id']);
         }
@@ -632,11 +632,11 @@ class User extends AppModel {
     public function getSecureList($accessKey, $type) {
         switch ($type) {
             case 'parent':
-                $conditions = array('User.active' => 1, 'User.folder' => 1);
+                $conditions = ['User.active' => 1, 'User.folder' => 1];
                 return $this->getParentList($accessKey, $conditions);
                 break;
             case 'catalog':
-                $conditions = array('Catalog.active' => 1, 'Catalog.folder' => 1);
+                $conditions = ['Catalog.active' => 1, 'Catalog.folder' => 1];
                 return $this->getCatalogList($accessKey, $conditions);
                 break;
             case 'role':
@@ -697,12 +697,12 @@ class User extends AppModel {
      * @param boolean $filter true = only organizational node, false = all
      * @return array|false The raw array or node records or false if no ownership
      */
-    public function getAccessibleUserNodes($rootNodes, $conditions = array()) {
+    public function getAccessibleUserNodes($rootNodes, $conditions = []) {
         if (empty($rootNodes)) {
-            return array();
+            return [];
         }
         // Pull all the allowed catalog records from all allowed nodes as a flat array
-        $assembleFlatNodes = array();
+        $assembleFlatNodes = [];
         foreach ($rootNodes as $key => $value) {
             $assembleFlatNodes = array_merge($assembleFlatNodes, ($this->getFullNode($value['id'], false, $conditions)));
         }
@@ -717,10 +717,10 @@ class User extends AppModel {
      * @param boolean $filter true = only records with no item_id, false = all
      * @return array|false The raw array or node records or false if no ownership
      */
-    public function getAccessibleCatalogNodes($rootNodes, $conditions = array()) {
+    public function getAccessibleCatalogNodes($rootNodes, $conditions = []) {
 
         // Pull all the allowed catalog records from all allowed nodes as a flat array
-        $assembleFlatNodes = array();
+        $assembleFlatNodes = [];
 			foreach ($rootNodes as $key => $value) {
 				$assembleFlatNodes = array_merge($assembleFlatNodes, ($this->Catalog->getFullNode($value['id'], false, $conditions)));
 			}
@@ -735,12 +735,12 @@ class User extends AppModel {
      */
     public function getOwnedCatalogRoots($id) {
         // Find the catalog nodes this user can see
-        $catalogs = $this->find('all', array(
-            'conditions' => array($this->escapeField() => $id),
-            'contain' => array('Catalog')
-        ));
+        $catalogs = $this->find('all', [
+            'conditions' => [$this->escapeField() => $id],
+            'contain' => ['Catalog']
+        ]);
         $result = $this->filterChildNodes($catalogs[0]['Catalog']);
-        $roots = (!empty($result)) ? $result : array();
+        $roots = (!empty($result)) ? $result : [];
         return $this->idIndexNodes($roots);
     }
 
@@ -752,12 +752,12 @@ class User extends AppModel {
      */
     public function getOwnedUserRoots($id) {
         // Find the catalog nodes this user can see
-        $users = $this->UserManager->find('all', array(
-            'conditions' => array('UserManager.id' => $id),
-            'contain' => array('UserManaged')
-        ));
+        $users = $this->UserManager->find('all', [
+            'conditions' => ['UserManager.id' => $id],
+            'contain' => ['UserManaged']
+        ]);
         $result = $this->filterChildNodes($users[0]['UserManaged']);
-        $roots = (!empty($result)) ? $result : array();
+        $roots = (!empty($result)) ? $result : [];
         return $this->idIndexNodes($roots);
     }
 
@@ -766,17 +766,17 @@ class User extends AppModel {
 		$users = $this->getAccessibleUserInList();
 		
 		// Setup conditions based upon $active
-		$conditions = array('Customer.user_id' => $users);
+		$conditions = ['Customer.user_id' => $users];
 		if($active == 1){
 			$conditions['User.active'] = 1;
 		}
 
-		$insecureCustomers = $this->Customer->find('list', array(
-			'fields' => array('Customer.user_id', 'Customer.name'),
+		$insecureCustomers = $this->Customer->find('list', [
+			'fields' => ['Customer.user_id', 'Customer.name'],
 			'conditions' => $conditions,
-			'order' => array('Customer.name'),
+			'order' => ['Customer.name'],
 			'recursive' => 1
-		));
+		]);
 		$transCustomers = array_flip($insecureCustomers);
 		foreach ($transCustomers as $key => $value) {
 			$customers[$key] = ($hash) ? $value . '/' . $this->secureHash($value) : $value;
@@ -793,7 +793,7 @@ class User extends AppModel {
      */
     public function filterChildNodes($data) {
         if (empty($data)) {
-            return array();
+            return [];
         }
         $result = $data2 = $data;
         foreach ($data as $index => $node) {
@@ -834,14 +834,14 @@ class User extends AppModel {
         if ($id == null) {
             return false;
         }
-        $names = $this->find('first', array(
-            'conditions' => array($this->escapeField() => $id),
-            'fields' => array(
+        $names = $this->find('first', [
+            'conditions' => [$this->escapeField() => $id],
+            'fields' => [
                 'username',
                 'name'
-            ),
+            ],
             'contain' => false
-        ));
+        ]);
         if (preg_match('/[A-za-z0-9]+/', $names['User']['name']) > 0) {
             return $names['User']['name'];
         } else {
@@ -874,21 +874,21 @@ class User extends AppModel {
      * @return array The IN list of user ids to use as a query condition
      */
     public function getInListFrom($nodes){
-		$in = array();
+		$in = [];
 		if($nodes && !empty($nodes)) {
 			$userRoots = array_keys($nodes);
 			foreach ($userRoots as $id){
 			$in[$id] = $id;
 			}
-			$options = array(
-			'fields' => array(
+			$options = [
+			'fields' => [
 				'User.id'
-			),
+			],
 			'contain' => false
-			);
-			$userSet = array();
+			];
+			$userSet = [];
 			foreach($userRoots as $root){
-			$userSet = array_merge($userSet, $this->getDecendents($root, false, array(), $options));
+			$userSet = array_merge($userSet, $this->getDecendents($root, false, [], $options));
 			}
 			foreach($userSet as $index => $one){
 			$in[$one['User']['id']] = $one['User']['id'];
@@ -906,7 +906,7 @@ class User extends AppModel {
      * @return array The IN list ($this->accessibleUserInList[ID] => ID)
      */
     public function getAncestorInList($id, $inclusive = TRUE) {
-	$in = array();
+	$in = [];
 	$group = false;
 	$ancestors = $this->getAncestors($id, $group);
 	if ($ancestors) {
@@ -935,28 +935,28 @@ class User extends AppModel {
 			$this->getAccessibleUserInList();
 		}
 		//perform find
-		$this->userQuery = $this->find('all', array(
-			'conditions' => array(
+		$this->userQuery = $this->find('all', [
+			'conditions' => [
 				'User.id' => $this->accessibleUserInList,
-				'OR' => array(
+				'OR' => [
 					'User.first_name LIKE' => "%{$query}%",
 					'User.last_name LIKE' => "%{$query}%",
 					'User.username LIKE' => "%{$query}%",
 					'User.name LIKE' => "%{$query}%",
-				)
-			),
-			'fields' => array(
+				]
+			],
+			'fields' => [
 				'id', 'first_name', 'last_name', 'name', 'username'
-			),
-			'contain' => array(
-				'Order' => array(
+			],
+			'contain' => [
+				'Order' => [
 					'fields' => 'Order.id'
-				),
-				'Replenishment' => array(
+				],
+				'Replenishment' => [
 					'fields' => 'Replenishment.id'
-				)
-			)
-		));
+				]
+			]
+		]);
 		
 		foreach ($this->userQuery as $index => $user) {
 			if(!empty($user['Order'])){
@@ -981,15 +981,15 @@ class User extends AppModel {
 	 * @return object
 	 */
 	public function inventoryReportCustomers($ids, $sortBy) {
-		$this->data = $this->find('all', array(
-			'conditions' => array(
+		$this->data = $this->find('all', [
+			'conditions' => [
 				'User.id' => $ids
-			),
+			],
 			'contain' => FALSE,
 			'order' => 'User.username'
-		));
+		]);
 		
-		return new CustomerCollection($this->data, array('path' => '{n}.User', 'sortBy' => $sortBy));
+		return new CustomerCollection($this->data, ['path' => '{n}.User', 'sortBy' => $sortBy]);
 	}
 	
 
