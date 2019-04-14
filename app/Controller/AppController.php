@@ -302,27 +302,29 @@ class AppController extends Controller {
 	 * @return array The conditions array
 	 */
 	public function setMenuConditions() {
-		$group = $this->readGroup();
-		$access = $this->readAccess();
-		switch ($group) {
+		$usersGroup = $this->Session->read('Auth.User.group');
+		$access = $this->Session->read('Auth.User.access');
+		
+		switch ($usersGroup) {
 			case 'Admins':
-				$this->menuConditions = array('1' => '1');
+				$this->menuConditions = ['1' => '1'];
 				break;
 			case 'Staff':
 				break;
 			case 'Clients':
                 //setup base query on guest
-				$this->menuConditions = $this->menuQueryCondition($group, 'Guest');
-				$this->childMenuConditions = $this->ChildMenuQueryCondition($group, 'Guest');
+				$this->addCondition($usersGroup, 'Guest', 'Menu');
+				$this->addCondition($usersGroup, 'Guest', 'ChildMenu');
+				
 				if ($access == 'Buyer' || $access == 'Manager') {
-					$this->menuConditions = $this->menuConditions + $this->menuQueryCondition($group, 'Buyer');
-					$this->childMenuConditions = $this->childMenuConditions + $this->childMenuQueryCondition($group, 'Buyer');
+					$this->addCondition($usersGroup, 'Buyer', 'Menu');
+					$this->addCondition($usersGroup, 'Buyer', 'ChildMenu');
 				}
+				
 				if ($access == 'Manager') {
-					$this->menuConditions = $this->menuConditions + $this->menuQueryCondition($group, 'Manager');
-					$this->childMenuConditions = $this->childMenuConditions + $this->childMenuQueryCondition($group, 'Manager');
+					$this->addCondition($usersGroup, 'Manager', 'Menu');
+					$this->addCondition($usersGroup, 'Manager', 'ChildMenu');
 				}
-				debug($this->menuConditions);
 				break;
 			default:
 				break;
@@ -330,29 +332,21 @@ class AppController extends Controller {
 	}
 
 	/**
-	 * Read the Users Access Level from Auth Session
-	 *
-	 * @return string The logged in users group
+	 * Set group/access conditions or Menu and ChildMenu queries
+	 * 
+	 * @param string $group The user's group
+	 * @param string $access The user's access level
+	 * @param string $table Menu or ChildMenu
 	 */
-	public function readAccess() {
-		return $this->Session->read('Auth.User.access');
-	}
-
-	/**
-	 * Read the Users Group from Auth Session
-	 *
-	 * @return string The logged in users group
-	 */
-	public function readGroup() {
-		return $this->Session->read('Auth.User.group');
-	}
-
-	public function menuQueryCondition($group, $access) {
-		return array('Menu.group' => $group, 'Menu.access' => $access);
-	}
-
-	public function childMenuQueryCondition($group, $access) {
-		return array('ChildMenu.group' => $group, 'ChildMenu.access' => $access);
+	private function addCondition($group, $access, $table) {
+		$conditions = lcfirst($table).'Conditions';
+		if (!isset($this->$conditions)) {
+			$this->$conditions = [];
+		}
+		$this->$conditions += [
+			"$table.group" => $group,
+			"$table.access" => $access
+		];
 	}
 
 	/**
