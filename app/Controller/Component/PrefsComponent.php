@@ -20,20 +20,32 @@ class PrefsComponent extends Component
 	/**
 	 * Read the preferences and place them in the session
 	 */
-	public function retrievePreferences() {
-		$prefs = $this->Preference->find('first', 
-			['conditions' => 
-				['Preference.user_id' => $this->Auth->user('id')]
-			]);
-		if ($prefs) {
-			$this->Session->write(
-					'Prefs', 
-					unserialize($prefs['Preference']['prefs']));
-			$this->Session->write(
-					'Prefs.id', 
-					$prefs['Preference']['id']);
-		}
-	}
+    public function retrievePreferences() {
+        $prefs = $this->retreiveSavedPreferences();
+
+        if ($prefs) {
+            $this->Session->write(
+                'Prefs',
+                unserialize($prefs['Preference']['prefs']));
+            $this->Session->write(
+                'Prefs.id',
+                $prefs['Preference']['id']);
+        }
+    }
+
+    private function retreiveSavedPreferences($id = null)
+    {
+        if ($id === null) {
+            $id = $this->Auth->user('id');
+        }
+
+        $prefs = $this->Preference->find('first',
+            ['conditions' =>
+                ['Preference.user_id' => $id]
+            ]);
+
+        return $prefs;
+    }
 
 	/**
 	 * 
@@ -60,6 +72,29 @@ class PrefsComponent extends Component
 //		$this->autoRender = false;
 		$this->Session->write('Prefs.Search', $filter);
 		$this->savePreferences();
+	}
+
+    public function saveBrandingData($data)
+    {
+        $data = $this->retreiveSavedPreferences($data['customer_user_id']);
+        $prefs = unserialize($data);
+
+        $prefs['Preference'] =
+            [
+                'branding' => $data['branding'],
+                'id' => $data['pref_id'],
+                'user_id' => $data['customer_user_id']
+            ];
+
+        $data = serialize($array);
+        $this->Preference->save($data);
+	}
+
+    public function retreiveBrandingData($id)
+    {
+        $data = $this->retreiveSavedPreferences($id);
+        $array = unserialize($data);
+        return $array['branding'];
 	}
 
 }

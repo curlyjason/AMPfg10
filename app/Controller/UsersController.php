@@ -31,7 +31,7 @@ class UsersController extends AppController {
 	public $helpers = array('User', 'Time');
     public $displayField = 'username';
 	
-	public $components = array('Paginator', 'LoadPreference');
+	public $components = array('Paginator', 'Prefs');
 
 	public $userprop = array('time', 'heals', 'all', 'booboos');
 // </editor-fold>
@@ -118,7 +118,7 @@ class UsersController extends AppController {
         $this->eradicateEditLocks();
         $this->unregisterPublicUser();
         $this->releaseUserRecord();
-        $this->LoadPreference->savePreferences();
+        $this->Prefs->savePreferences();
         $this->Session->destroy();
     }
 
@@ -141,7 +141,7 @@ class UsersController extends AppController {
         $this->registerPublicUser();
         $this->flagUserRecord();
         $this->retreiveCart();
-        $this->LoadPreference->retrievePreferences();
+        $this->Prefs->retrievePreferences();
         // check for login redirect preference
         $this->User->Budget->setBudget($this->Auth->user());
         $this->Session->write('Auth.User.budget_id', $this->User->Budget->getBudgetId($this->Auth->user('id')));

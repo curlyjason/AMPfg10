@@ -179,6 +179,9 @@ class CustomersController extends AppController {
 			) 
 		{
 		    debug($this->request->data);die;
+		    $this->Prefs->saveBrandingData($this->request->data['Preference']);
+		    unset($this->request->data['Preference']);
+
 			$this->request->data(
 					'Address.name', 
 					$this->request->data('User.username')
@@ -211,9 +214,9 @@ class CustomersController extends AppController {
         $this->set(compact('tax_rate_id'));
     }
 
-    private function ()
+    private function saveCutomerPrefernces($data)
     {
-        
+
     }
 
     /**
