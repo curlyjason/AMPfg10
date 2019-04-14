@@ -5,10 +5,13 @@
  */
 class BrandedPagesHelper extends AppHelper
 {
+	
+	public $helpers = ['Session'];
 
 	public function __construct(View $View, $settings = array())
 	{
 		parent::__construct($View, $settings);
+		$brands = $this->Session->read('Prefs.branding');
 	}
 
 	public function header($variant)
