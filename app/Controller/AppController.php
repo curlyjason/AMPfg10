@@ -297,59 +297,6 @@ class AppController extends Controller {
 	}
 
 	/**
-	 * Construct the conditions to control Menu query
-	 *
-	 * @return array The conditions array
-	 */
-	public function setMenuConditions() {
-		$usersGroup = $this->Session->read('Auth.User.group');
-		$access = $this->Session->read('Auth.User.access');
-		
-		switch ($usersGroup) {
-			case 'Admins':
-				$this->menuConditions = ['1' => '1'];
-				break;
-			case 'Staff':
-				break;
-			case 'Clients':
-                //setup base query on guest
-				$this->addCondition($usersGroup, 'Guest', 'Menu');
-				$this->addCondition($usersGroup, 'Guest', 'ChildMenu');
-				
-				if ($access == 'Buyer' || $access == 'Manager') {
-					$this->addCondition($usersGroup, 'Buyer', 'Menu');
-					$this->addCondition($usersGroup, 'Buyer', 'ChildMenu');
-				}
-				
-				if ($access == 'Manager') {
-					$this->addCondition($usersGroup, 'Manager', 'Menu');
-					$this->addCondition($usersGroup, 'Manager', 'ChildMenu');
-				}
-				break;
-			default:
-				break;
-		}
-	}
-
-	/**
-	 * Set group/access conditions or Menu and ChildMenu queries
-	 * 
-	 * @param string $group The user's group
-	 * @param string $access The user's access level
-	 * @param string $table Menu or ChildMenu
-	 */
-	private function addCondition($group, $access, $table) {
-		$conditions = lcfirst($table).'Conditions';
-		if (!isset($this->$conditions)) {
-			$this->$conditions = [];
-		}
-		$this->$conditions += [
-			"$table.group" => $group,
-			"$table.access" => $access
-		];
-	}
-
-	/**
 	 * Determine action permission for visiting User
 	 *
 	 * Merge all possible action arrays and check
