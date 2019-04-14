@@ -1,10 +1,10 @@
 <?php
 
 /**
- * CakePHP PreferenceComponent
+ * CakePHP PrefsComponent
  * @author dondrake
  */
-class LoadPreferenceComponent extends Component
+class PrefsComponent extends Component
 {
 
 	public $components = array();
