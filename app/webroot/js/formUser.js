@@ -290,6 +290,24 @@ function updateToken() {
     })
 }
 
+/**
+ * Copy Address info from Customer to Branding Data
+ *
+ * In the customer edit form, copy the Customer's primary
+ * address information into the Branding company and address fields
+ */
+function fillBrandingAddressValues(e) {
+    e.preventDefault();
+    // alert('This button is fill Branding Address Values');
+
+    var AddressLastLine = $('#AddressCity').val() + ', ' + $('#AddressState').val() + ' ' + $('#AddressZip').val();
+
+    $('#PreferenceBrandingCompany').val($('#UserUsername').val());
+    $('#PreferenceBrandingAddress1').val($('#AddressAddress').val());
+    $('#PreferenceBrandingAddress2').val($('#AddressAddress2').val());
+    $('#PreferenceBrandingAddress3').val(AddressLastLine);
+}
+
 
 $(document).ready(function() {
 })
