@@ -1,13 +1,15 @@
 <?php
-
+App::uses('IdHashTrait', 'Lib/Trait');
 /**
  * CakePHP PrefsComponent
  * @author dondrake
  */
 class PrefsComponent extends Component
 {
+	
+	use IdHashTrait;
 
-	public $components = array();
+	public $components = array('Flash');
 	
 	public function initialize(Controller $controller)
 	{
@@ -33,6 +35,11 @@ class PrefsComponent extends Component
         }
     }
 
+	/**
+	 * 
+	 * @param string $id
+	 * @return array
+	 */
     private function retreiveSavedPreferences($id = null)
     {
         if ($id === null) {
@@ -74,23 +81,65 @@ class PrefsComponent extends Component
 		$this->savePreferences();
 	}
 
+	/**
+	 * Persist the submitted form data to the db
+	 * 
+	 * ```
+	 * [
+	 *		'company' => '',
+	 *		'address1' => '',
+	 *		'address2' => '',
+	 *		'address3' => '',
+	 *		'customer_user_id' => '25/hash'
+	 * ]
+	 * ```
+	 * 
+	 * @param array $data
+	 */
     public function saveBrandingData($data)
     {
-        $data = $this->retreiveSavedPreferences($data['customer_user_id']);
-        $prefs = unserialize($data);
+		$IdSecurityChip = 
+				$this->validateSelectTakingOverTheWorld(
+						$data['customer_user_id']
+					);
+		
+		if($IdSecurityChip->isValid()) {
+			debug($IdSecurityChip->id());
+			$this->addBrandingToPrefs($IdSecurityChip->id(), $data);
+			
+		} else {
+			
+			$this->Flash->error('The branding data was not recorded. '
+					. 'Bad id security hash detected.');
+			
+		}
+		
+		return TRUE;
+	}
+	
+	private function addBrandingToPrefs($customer_user_id, $data)
+	{
+		$raw = $this->retreiveSavedPreferences($customer_user_id);
+		if (empty($raw)) {
+			$raw = [
+				'prefs' => '',
+				'id' => '',
+			];
+		}
+        $prefs = unserialize($raw['prefs']);
+		$prefs['branding'] = $data;
 
-        $prefs['Preference'] =
+        $record['Preference'] =
             [
-                'branding' => $data['branding'],
-                'id' => $data['pref_id'],
-                'user_id' => $data['customer_user_id']
+                'prefs' => serialize($prefs),
+                'id' => $raw['id'],
+                'user_id' => $customer_user_id
             ];
 
-        $data = serialize($array);
-        $this->Preference->save($data);
+        $this->Preference->save($record);
 	}
 
-    public function retreiveBrandingData($id)
+	public function retreiveBrandingData($id)
     {
         $data = $this->retreiveSavedPreferences($id);
         $array = unserialize($data);

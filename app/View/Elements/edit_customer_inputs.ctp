@@ -1,5 +1,4 @@
 <?php
-
 //Setup basic variables
 $userId = $this->Session->read('Auth.User.id');
 //setup image
@@ -136,7 +135,7 @@ echo '</div>'; // close toggling div
 echo '</fieldset>'; //close fieldset
 //=========================== Logo
 echo $this->Html->tag('fieldset'); // Opening fieldset
-$marker = 'Brand-' . $userId;
+$marker = 'Brand-' . $this->request->data('User.id');
 echo $this->Html->tag(
 		'legend', 
 		__('Branding options'), 
@@ -150,6 +149,10 @@ echo $this->Form->input('Preference.branding.company', ['label' => 'Comapany nam
 echo $this->Form->input('Preference.branding.address1', ['label' => 'Address line 1']);
 echo $this->Form->input('Preference.branding.address2', ['label' => 'Address line 2']);
 echo $this->Form->input('Preference.branding.address3', ['label' => 'Address line 3']);
+
+echo $this->Form->input(
+		'Preference.branding.customer_user_id', 
+		['type' => 'hidden', 'value' => $this->request->data('User.id')]);
 
 echo $logo;
 $imageLabel = ($logo) ? 'Replace Logo' : 'Choose Logo';

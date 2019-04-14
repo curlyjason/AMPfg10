@@ -21,7 +21,7 @@ class CustomersController extends AppController {
 	
     public $defaultCustomer = array();
 	
-	public $components = ['Flash'];
+	public $components = ['Flash', 'Prefs'];
 
 	public function beforeFilter() {
         parent::beforeFilter();
@@ -178,8 +178,7 @@ class CustomersController extends AppController {
 				&& $this->validateRequestData('User.id')->isValid()
 			) 
 		{
-		    debug($this->request->data);die;
-		    $this->Prefs->saveBrandingData($this->request->data['Preference']);
+		    $this->Prefs->saveBrandingData($this->request->data('Preference.branding'));
 		    unset($this->request->data['Preference']);
 
 			$this->request->data(
