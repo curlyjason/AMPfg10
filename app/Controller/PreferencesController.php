@@ -7,7 +7,7 @@ App::uses('AppController', 'Controller');
  */
 class PreferencesController extends AppController {
 
-	public $components = array('LoadPreference');
+	public $components = array('Prefs');
 
 	public function beforeFilter() {
         parent::beforeFilter();
@@ -124,7 +124,7 @@ class PreferencesController extends AppController {
 		$this->Session->write(
 				'Prefs.home', 
 				['controller' => $controller, 'action' => $action]);
-		$this->LoadPreference->savePreferences();
+		$this->Prefs->savePreferences();
 		
 		$this->render('/Common/ajax');
 	}
@@ -147,7 +147,7 @@ class PreferencesController extends AppController {
 				'Prefs.ship.' . $this->request->data['customer'] . $a
 				, $this->request->data['shipment']);
 		
-		$this->LoadPreference->savePreferences();
+		$this->Prefs->savePreferences();
 		$this->render('/Common/ajax');
 	}
 
@@ -159,7 +159,7 @@ class PreferencesController extends AppController {
 	public function paginationLimitPreference($limit) {
 		$this->autoRender = false;
 		$this->Session->write('Prefs.Catalog.paginationLimit', $limit);
-		$this->LoadPreference->savePreferences();
+		$this->Prefs->savePreferences();
 	}
 	
 }

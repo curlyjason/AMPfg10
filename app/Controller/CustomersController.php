@@ -178,6 +178,7 @@ class CustomersController extends AppController {
 				&& $this->validateRequestData('User.id')->isValid()
 			) 
 		{
+		    debug($this->request->data);die;
 			$this->request->data(
 					'Address.name', 
 					$this->request->data('User.username')
@@ -208,6 +209,11 @@ class CustomersController extends AppController {
         $tax_rate_id = $this->Customer->Address->TaxRate->getTaxJurisdictionList();
 		$this->set('customer_type', $this->Customer->customer_type);
         $this->set(compact('tax_rate_id'));
+    }
+
+    private function ()
+    {
+        
     }
 
     /**
