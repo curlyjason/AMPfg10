@@ -6,6 +6,7 @@ $userId = $this->Session->read('Auth.User.id');
 
 /**
  * @todo Build a helper class for creating these image strings
+ * @todo Try to remove this ugly inline css
  */
 $style = 'margin-left: 25%';
 if (isset($this->request->data['Logo']['img_file'])) {
@@ -16,10 +17,10 @@ if (isset($this->request->data['Logo']['img_file'])) {
 			['id' => 'ajaxEditImage', 'style' => $style]
 		);
 } else {
-	$logo = $this->Html->image('logo' . DS . 'img_file' . DS . 
-			'no' . DS . 'x160y120_' . 'image.jpg', 
-			['id' => 'ajaxEditImage', 'style' => $style]
-		);
+	$logo = $this->Html->image(
+		'image' . DS . 'img_file' . DS . 'no' .
+		DS . 'x160y120_' . 'image.jpg', ['id' => 'ajaxEditImage', 'style' => $style]
+	);
 };
 
 
@@ -76,6 +77,8 @@ if (isset($this->request->data['Customer']['id'])) {
 				echo $this->Form->input('Customer.rent_qty');
 				echo $this->Form->input('Customer.rent_unit');
 				echo $this->Form->input('Customer.rent_price');
+				echo $this->Form->input('Customer.order_pull_charge', ['label' => 'First Item Charge']);
+				echo $this->Form->input('Customer.item_pull_charge', ['label' => 'Additional Item Charge']);
 			echo '</div>'; // close toggling div
 		echo '</fieldset>'; //close fieldset
 	}
@@ -142,6 +145,7 @@ echo $this->Html->tag(
 echo $this->Html->div('imageBlock', null);
 echo $this->Html->tag('fieldset', null, ['class' => 'logo hide']);
 
+echo $this->Form->button('Copy Company Address', ['bind' => 'click.fillBrandingAddressValues']);
 echo $this->Form->input('Preference.branding.company', ['label' => 'Comapany name']);
 echo $this->Form->input('Preference.branding.address1', ['label' => 'Address line 1']);
 echo $this->Form->input('Preference.branding.address2', ['label' => 'Address line 2']);
