@@ -230,11 +230,21 @@ class AppController extends Controller {
 	 */
 	public function beforeRender() {
 		parent::beforeRender();
-		$this->menuData = $this->Menu->find('threaded', array(
-			'conditions' => array('Menu.parent_id' => '0'),
-			'fields' => array('Menu.id', 'Menu.name', 'Menu.controller', 'Menu.action', 'Menu.lft', 'Menu.access', 'Menu.group'),
+		$this->menuData = $this->Menu->find('threaded', [
+			'conditions' => [
+				'Menu.parent_id' => '0'
+			],
+			'fields' => [
+				'Menu.id', 
+				'Menu.name', 
+				'Menu.controller', 
+				'Menu.action', 
+				'Menu.lft', 
+				'Menu.access', 
+				'Menu.group'
+			],
 			'order' => 'Menu.lft ASC'
-		));
+		]);
 		foreach ($this->menuData as $index => $menu) {
 			$tmp = array();
 			foreach ($menu['ChildMenu'] as $cmenu) {
