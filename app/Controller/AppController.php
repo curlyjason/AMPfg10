@@ -207,20 +207,20 @@ class AppController extends Controller {
 		if (key_exists($this->request->action, $this->allowed)) {
 			$this->layout = 'simple';
 		}
-		if ($this->Auth->user('id') == '' && !key_exists($this->request->action, $this->allowed)) {
+		if (
+				$this->Auth->user('id') == '' 
+				&& !key_exists($this->request->action, $this->allowed)
+		) {
 			$this->redirect('/users/login');
 		}
-		//Pass controller name to javascript on every layout
-		$this->set('controller', $this->request->controller);
 		//Check for open edits and clear if appropriate
 		$this->clearLock();
 		//Admin tool to establish of users for header login button
-		$this->set('adminLoginUsers', $this->User->find('list', array(
-					'fields' => array(
-						'username',
-						'username'
-					)
-		)));
+		//Pass controller name to javascript on every layout
+		$this->set('controller', $this->request->controller);
+		$this->set('adminLoginUsers', 
+				$this->User->find('list', ['fields' => ['username', 'username']])
+			);
 		$this->set('timerParams', $this->timerParams);
 	}
 
