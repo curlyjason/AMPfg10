@@ -496,7 +496,7 @@ class AppController extends Controller {
 		$this->flagUserRecord();
 	}
 
-// <editor-fold defaultstate="collapsed" desc="COPIED TO IdHasTrait">
+// <editor-fold defaultstate="collapsed" desc="COPIED TO IdHashTrait">
 	/**
 	 * Verify that POSTed ID was not altered/spoofed
 	 *
