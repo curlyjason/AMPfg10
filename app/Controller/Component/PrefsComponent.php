@@ -152,8 +152,8 @@ class PrefsComponent extends Component
 	public function retreiveBrandingData($id)
     {
         $data = $this->retreiveSavedPreferences($id);
-		if (!empty($data)) {
-			$prefs = unserialize($data);
+		if (isset($data['Preference']['prefs'])) {
+			$prefs = unserialize($data['Preference']['prefs']);
 		} else {
 			$prefs = [];
 		}
