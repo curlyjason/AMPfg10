@@ -201,6 +201,12 @@ class CustomersController extends AppController {
         $this->set(compact('tax_rate_id'));
     }
 	
+	/**
+	 * Prepare trd to populate the customer-edit form
+	 * 
+	 * @param string $id
+	 * @return void
+	 */
 	private function prepareEditData($id)
 	{
 		$options = ['conditions' => ['Customer.id' => $id]];
@@ -239,7 +245,7 @@ class CustomersController extends AppController {
 	}
 	
 	/**
-	 * Adjust the customer branding edit data and attempt to save
+	 * Adjust the edited customer branding data and attempt to save
 	 * 
 	 * @return boolean
 	 */
