@@ -22,6 +22,8 @@ class CustomersController extends AppController {
     public $defaultCustomer = array();
 	
 	public $components = ['Flash', 'Prefs'];
+	
+	public $helpers = ['Flash'];
 
 	public function beforeFilter() {
         parent::beforeFilter();
@@ -178,18 +180,20 @@ class CustomersController extends AppController {
 				&& $this->validateRequestData('User.id')->isValid()
 			) 
 		{
-		    $this->Prefs->saveBrandingData($this->request->data('Preference.branding'));
-		    unset($this->request->data['Preference']);
-
-			$this->request->data(
-					'Address.name', 
-					$this->request->data('User.username')
-				);
-			$this->request->data(
-					'Address.company', 
-					$this->request->data('User.username')
-				);
-            if ($this->Customer->saveAll($this->request->data)) 
+			
+			$result = $this->saveCustomerEdits();
+			if ($result) {
+				$this->request->data(
+						'Preference.branding.logo_file', 
+						$this->request->data('Logo.img_file.name')
+					);
+				$result = 
+					$result && 
+					$this->Prefs->saveBrandingData(
+							$this->request->data('Preference.branding')
+						);
+			}
+            if ($result) 
 			{
 				$this->Flash->success(__('The customer has been saved'));
                 $this->redirect($this->referer());
@@ -212,11 +216,19 @@ class CustomersController extends AppController {
 		$this->set('customer_type', $this->Customer->customer_type);
         $this->set(compact('tax_rate_id'));
     }
-
-    private function saveCutomerPrefernces($data)
-    {
-
-    }
+	
+	private function saveCustomerEdits()
+	{
+		$this->request->data(
+				'Address.name', 
+				$this->request->data('User.username')
+			);
+		$this->request->data(
+				'Address.company', 
+				$this->request->data('User.username')
+			);
+		return $this->Customer->saveAll($this->request->data);
+	}
 
     /**
      * delete method
@@ -341,4 +353,10 @@ class CustomersController extends AppController {
         $this->render('reset_customer_token');
     }
 
+	public function testMe()
+	{
+		$this->Flash->error('message 1');
+		$this->Flash->error('message 2');
+		$this->Flash->success('message 3');
+	}
 }
