@@ -104,17 +104,17 @@ class PrefsComponent extends Component
 					);
 		
 		if($IdSecurityChip->isValid()) {
-			debug($IdSecurityChip->id());
-			$this->addBrandingToPrefs($IdSecurityChip->id(), $data);
+			$result = $this->addBrandingToPrefs($IdSecurityChip->id(), $data);
 			
 		} else {
 			
 			$this->Flash->error('The branding data was not recorded. '
 					. 'Bad id security hash detected.');
+			$result = FALSE;
 			
 		}
 		
-		return TRUE;
+		return $result;
 	}
 	
 	private function addBrandingToPrefs($customer_user_id, $data)
@@ -122,22 +122,32 @@ class PrefsComponent extends Component
 		$raw = $this->retreiveSavedPreferences($customer_user_id);
 		if (empty($raw)) {
 			$raw = [
-				'prefs' => '',
-				'id' => '',
+				'Preference' => 
+				[
+					'prefs' => '',
+					'id' => '',
+				]
 			];
 		}
-        $prefs = unserialize($raw['prefs']);
+        $prefs = unserialize($raw['Preference']['prefs']);
 		$prefs['branding'] = $data;
 
         $record['Preference'] =
             [
                 'prefs' => serialize($prefs),
-                'id' => $raw['id'],
+                'id' => $raw['Preference']['id'],
                 'user_id' => $customer_user_id
             ];
 
-        $this->Preference->save($record);
-	}
+			if ($this->Preference->save($record)) {
+				$this->Flash->success('The branding settings have be saved.');
+				$result = TRUE;
+			} else {
+				$this->Flash->error('The branding settings failed to save');
+				$result = FALSE;
+			}
+			return $result;
+		}
 
 	public function retreiveBrandingData($id)
     {
