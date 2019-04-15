@@ -2,6 +2,8 @@
 
 App::uses('AppController', 'Controller');
 App::uses('IdHashTrait', 'Lib/Trait');
+App::uses('ClassRegistry', 'Utility');
+
 
 /**
  * Customers Controller
@@ -176,24 +178,10 @@ class CustomersController extends AppController {
             throw new NotFoundException(__('Invalid customer'));
         }
         if (
-				($this->request->is('post') || $this->request->is('put'))
+				$this->putOrPost()
 				&& $this->validateRequestData('User.id')->isValid()
-			) 
-		{
-			
-			$result = $this->saveCustomerEdits();
-			if ($result) {
-				$this->request->data(
-						'Preference.branding.logo_file', 
-						$this->request->data('Logo.img_file.name')
-					);
-				$result = 
-					$result && 
-					$this->Prefs->saveBrandingData(
-							$this->request->data('Preference.branding')
-						);
-			}
-            if ($result) 
+		) {
+            if ($this->saveCustomerEdits() && $this->saveBrandingEdits()) 
 			{
 				$this->Flash->success(__('The customer has been saved'));
                 $this->redirect($this->referer());
@@ -205,11 +193,7 @@ class CustomersController extends AppController {
                 $this->redirect($this->referer());
             }
         } else {
-            $options = ['conditions' => ['Customer.id' => $id]];
-            $this->request->data = $this->Customer->find('first', $options);
-            $this->secureRequestData('User.id');
-            $this->secureRequestData('User.role');
-            $this->secureRequestData('User.parent_id');
+            $this->prepareEditData($id);
 			$this->setBasicAddressSelects($this->request->data('Address.country'));
         }
         $tax_rate_id = $this->Customer->Address->TaxRate->getTaxJurisdictionList();
@@ -217,6 +201,24 @@ class CustomersController extends AppController {
         $this->set(compact('tax_rate_id'));
     }
 	
+	private function prepareEditData($id)
+	{
+		$options = ['conditions' => ['Customer.id' => $id]];
+		$this->request->data = $this->Customer->find('first', $options);
+		$this->request->data(
+				'Preference.branding', 
+				$this->Prefs->retreiveBrandingData($id));
+		$this->secureRequestData('User.id');
+		$this->secureRequestData('User.role');
+		$this->secureRequestData('User.parent_id');
+		return;
+	}
+	
+	/**
+	 * Adjust customer edit data and attempt to save the changes
+	 * 
+	 * @return boolean
+	 */
 	private function saveCustomerEdits()
 	{
 		$this->request->data(
@@ -228,6 +230,23 @@ class CustomersController extends AppController {
 				$this->request->data('User.username')
 			);
 		return $this->Customer->saveAll($this->request->data);
+	}
+	
+	/**
+	 * Adjust the customer branding edit data and attempt to save
+	 * 
+	 * @return boolean
+	 */
+	private function saveBrandingEdits() {
+		$logo_file = $this->request->data('Logo.img_file.name') !== null
+				? $this->request->data('Logo.img_file.name') 
+				: $this->request->data('Logo.img_file');
+		
+		$this->request->data('Preference.branding.logo_file', $logo_file);
+		
+		return $this->Prefs->saveBrandingData(
+				$this->request->data('Preference.branding')
+			);
 	}
 
     /**
