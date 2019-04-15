@@ -308,6 +308,12 @@ function fillBrandingAddressValues(e) {
     $('#PreferenceBrandingAddress3').val(AddressLastLine);
 }
 
+function updateAddressName() {
+    var AddressName = $('#UserUsername').val();
+    $('#AddressName').val(AddressName);
+    $('#AddressCompany').val(AddressName);
+}
+
 
 $(document).ready(function() {
 })
