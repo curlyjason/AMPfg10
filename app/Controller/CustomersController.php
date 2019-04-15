@@ -232,6 +232,9 @@ class CustomersController extends AppController {
 				'Address.company', 
 				$this->request->data('User.username')
 			);
+		if ($this->request->data('Logo.img_file.name') !== null) {
+			unset($this->request->data['Logo']);
+		}
 		return $this->Customer->saveAll($this->request->data);
 	}
 	
