@@ -139,27 +139,27 @@ class CustomersController extends AppController {
     {
         $this->Address->validator()
             ->add('address', 'required', array(
-                'rule' => 'notEmpty',
+                'rule' => 'notBlank',
                 'message' => 'A billing address is required'
             ))
             ->add('city', 'required', array(
-                'rule' => 'notEmpty',
+                'rule' => 'notBlank',
                 'message' => 'A billing address is required'
             ))
             ->add('state', 'required', array(
-                'rule' => 'notEmpty',
+                'rule' => 'notBlank',
                 'message' => 'A billing address is required'
             ))
             ->add('zip', 'required', array(
-                'rule' => 'notEmpty',
+                'rule' => 'notBlank',
                 'message' => 'A billing address is required'
             ))
             ->add('email', 'required', array(
-                'rule' => 'notEmpty',
+                'rule' => 'notBlank',
                 'message' => 'A contact email is required'
             ))
             ->add('phone', 'required', array(
-                'rule' => 'notEmpty',
+                'rule' => 'notBlank',
                 'message' => 'A contact phone number is required'
             ));
     }
