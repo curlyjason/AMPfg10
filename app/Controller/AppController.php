@@ -407,6 +407,11 @@ class AppController extends Controller {
 	public function passRootNodes($type) {
 		$this->set('rootNodes', $this->Auth->user($type . 'Roots'));
 	}
+	
+	public function putOrPost()
+	{
+		return $this->request->is('post') || $this->request->is('put');
+	}
 
 	//============================================================
 	// ID/HASH SECURITY ROUTINES TO MOVE TO SEPARATE CLASS
