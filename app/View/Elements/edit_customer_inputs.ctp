@@ -37,7 +37,7 @@ echo $this->Form->input('Customer.customer_type', array(
 	'default' => 'AMP',
 	'label' => 'Customer Type'
 ));
-echo $this->Form->input('User.username', ['label' => 'Customer Name']);
+echo $this->Form->input('User.username', ['label' => 'Customer Name', 'bind' => 'change.updateAddressName']);
 echo $this->Form->input('User.id', ['type' => 'hidden']);
 echo $this->Form->input('Customer.id', ['type' => 'hidden']);
 echo $this->Form->input('User.folder', ['type' => 'hidden']);
@@ -48,6 +48,8 @@ echo $this->Form->input('Address.id', ['type' => 'hidden']);
 // 
 // ============================= START ADDRESS FIELDS
 echo $this->Form->input('Address.type', ['type' => 'hidden','value' => 'shipping']);
+echo $this->Form->input('Address.name', ['type' => 'hidden']);
+echo $this->Form->input('Address.company', ['type' => 'hidden']);
 echo $this->Form->input('Address.address');
 echo $this->Form->input('Address.address2');
 echo $this->Form->input('Address.city');
@@ -97,6 +99,7 @@ echo $this->Form->input('Address.fedex_acct', ['label' => 'FedEx Acct']);
 echo $this->Form->input('Address.ups_acct', ['label' => 'UPS Acct']);
 echo '</div>'; // close toggling div
 echo '</fieldset>'; //close fieldset
+
 //=========================== Preferences
 echo $this->Html->tag('fieldset'); // Opening fieldset
 $marker = 'Prefs-' . $userId;
