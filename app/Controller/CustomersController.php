@@ -181,7 +181,7 @@ class CustomersController extends AppController {
 				$this->putOrPost()
 				&& $this->validateRequestData('User.id')->isValid()
 		) {
-            if ($this->saveCustomerEdits() && $this->saveBrandingEdits()) 
+			if ($this->saveCustomerEdits() && $this->saveBrandingEdits()) 
 			{
 				$this->Flash->success(__('The customer has been saved'));
                 $this->redirect($this->referer());
@@ -207,7 +207,10 @@ class CustomersController extends AppController {
 		$this->request->data = $this->Customer->find('first', $options);
 		$this->request->data(
 				'Preference.branding', 
-				$this->Prefs->retreiveBrandingData($id));
+				$this->Prefs->retreiveBrandingData(
+						$this->request->data('Customer.user_id')
+					)
+			);
 		$this->secureRequestData('User.id');
 		$this->secureRequestData('User.role');
 		$this->secureRequestData('User.parent_id');
