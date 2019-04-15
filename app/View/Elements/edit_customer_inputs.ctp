@@ -153,6 +153,9 @@ echo $this->Form->input('Preference.branding.address3', ['label' => 'Address lin
 echo $this->Form->input(
 		'Preference.branding.customer_user_id', 
 		['type' => 'hidden', 'value' => $this->request->data('User.id')]);
+echo $this->Form->input(
+		'Preference.branding.logo_file', 
+		['type' => 'hidden', 'value' => $this->request->data('Logo.img_file')]);
 
 echo $logo;
 $imageLabel = ($logo) ? 'Replace Logo' : 'Choose Logo';
@@ -166,4 +169,4 @@ echo '</div>'; // close toggling div
 echo '</fieldset>'; //close fieldset
 
 echo '</fieldset>'; //close fieldset
-?>
+
