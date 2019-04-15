@@ -71,39 +71,13 @@ class CustomersController extends AppController {
      */
     public function add() {
         $this->layout = 'ajax';
-		$this->Address->validator()
-			->add('address', 'required', array(
-				'rule' => 'notEmpty',
-				'message' => 'A billing address is required'
-			))
-			->add('city', 'required', array(
-				'rule' => 'notEmpty',
-				'message' => 'A billing address is required'
-			))
-			->add('state', 'required', array(
-				'rule' => 'notEmpty',
-				'message' => 'A billing address is required'
-			))
-			->add('zip', 'required', array(
-				'rule' => 'notEmpty',
-				'message' => 'A billing address is required'
-			))
-			->add('email', 'required', array(
-				'rule' => 'notEmpty',
-				'message' => 'A contact email is required'
-			))
-			->add('phone', 'required', array(
-				'rule' => 'notEmpty',
-				'message' => 'A contact phone number is required'
-			));
-        if ($this->request->is('post')) {
+        $this->customerAddAddressValidationSetup();
+        if ($this->putOrPost()) {
             $this->Customer->create();
-            $this->request->data['Address']['name'] = $this->request->data['User']['username'];
-            $this->request->data['Address']['company'] = $this->request->data['User']['username'];
-			$s = $this->request->data['User']['username'] . time();
-			$this->request->data['Customer']['token'] = $this->secureHash($s);
-			$address['Address'] = $this->request->data['Address'];
-			unset($this->request->data['Address']);
+
+            $this->setupNewCustomerVendor();
+            $this->setupNewCustomerToken();
+
             if ($this->Customer->saveAll($this->request->data)) {
 				
 				//=============get created id's
@@ -112,28 +86,7 @@ class CustomersController extends AppController {
                     'Customer.id' => $this->Customer->id
                 ));
 
-                //=============attach address to user
-				
-                $address['Address']['user_id'] = $this->Customer->User->id;
-                if (!$this->Customer->Address->save($address)) {
-                    $this->Session->setFlash(__('the address failed to update'), 'flash_error');
-                }
-				$addressId = $this->Customer->Address->id;
-				$addressSave = ($this->Customer->saveField('address_id', $addressId));
-				
-                //=============make the new customer a vendor also so they can resupply thier own inventory
-                $vendor = $address;
-				$vendor['Address']['type'] = 'vendor';
-				$vendor['Address']['user_id'] = NULL;
-				$vendor['Address']['customer_id'] = $custId;
-                if (!$this->Customer->Address->save($vendor)) {
-                    $this->Session->setFlash(__('the address for vendor failed to update'), 'flash_error');
-                }
-
-                //=============setup ownership in users:users for the creating user
                 $this->setCustomerOwnership();
-
-                //=============create a catalog root connected to the customer
                 $this->createCatalogRoot($custId, $custUserId);
 
                 //=============refresh permissions, if necessary
@@ -160,6 +113,58 @@ class CustomersController extends AppController {
     }
 
     /**
+     * Setup a vendor node on TRD for a new customer
+     */
+    private function setupNewCustomerVendor()
+    {
+        $this->request->data['Vendor'] = $this->request->data['Address'];
+        $this->request->data['Vendor']['type'] = 'vendor';
+    }
+
+    /**
+     * Setup the security token for a new customer
+     */
+    private function setupNewCustomerToken()
+    {
+        $s = $this->request->data['User']['username'] . time();
+        $this->request->data['Customer']['token'] = $this->secureHash($s);
+    }
+
+    /**
+     * Setup validation rules for adding customers
+     *
+     * Needed to ensure Billing Address is setup correctly
+     */
+    private function customerAddAddressValidationSetup()
+    {
+        $this->Address->validator()
+            ->add('address', 'required', array(
+                'rule' => 'notEmpty',
+                'message' => 'A billing address is required'
+            ))
+            ->add('city', 'required', array(
+                'rule' => 'notEmpty',
+                'message' => 'A billing address is required'
+            ))
+            ->add('state', 'required', array(
+                'rule' => 'notEmpty',
+                'message' => 'A billing address is required'
+            ))
+            ->add('zip', 'required', array(
+                'rule' => 'notEmpty',
+                'message' => 'A billing address is required'
+            ))
+            ->add('email', 'required', array(
+                'rule' => 'notEmpty',
+                'message' => 'A contact email is required'
+            ))
+            ->add('phone', 'required', array(
+                'rule' => 'notEmpty',
+                'message' => 'A contact phone number is required'
+            ));
+    }
+
+    /**
      * edit method
 	 * 
 	 * @todo The id, role, and parent_id are all hashed. role and 
@@ -177,17 +182,11 @@ class CustomersController extends AppController {
         if (!$this->Customer->exists($id)) {
             throw new NotFoundException(__('Invalid customer'));
         }
-        if (
-				$this->putOrPost()
-				&& $this->validateRequestData('User.id')->isValid()
-		) {
-			if ($this->saveCustomerEdits() && $this->saveBrandingEdits()) 
-			{
+        if ($this->putOrPost() && $this->validateRequestData('User.id')->isValid()) {
+			if ($this->saveCustomerEdits() && $this->saveBrandingEdits()) {
 				$this->Flash->success(__('The customer has been saved'));
                 $this->redirect($this->referer());
-            } 
-			else 
-			{
+            } else {
                 $this->Flash->error(
 						__('The customer could not be saved. Please, try again.'));
                 $this->redirect($this->referer());
@@ -386,6 +385,60 @@ class CustomersController extends AppController {
 
 	public function testMe()
 	{
+	    $data = array(
+            'Customer' => array(
+                'customer_code' => '12354',
+                'customer_type' => 'AMP',
+                'id' => '',
+                'allow_backorder' => '1',
+                'allow_direct_pay' => '0',
+                'release_hold' => '0'
+            ),
+            'User' => array(
+                'username' => 'Super Customer',
+                'id' => '',
+                'folder' => '1',
+                'role' => 'Clients Guest/196abfc5b8e57c1403f3d855dd3ce1072f565966',
+                'parent_id' => '1/b7a815afce7add8d4c22aadb83638e301b0d396c'
+            ),
+            'Address' => array(
+                'id' => '',
+                'type' => 'shipping',
+                'address' => '123 Main Street',
+                'address2' => 'Ste 204',
+                'city' => 'San Francisco',
+                'state' => 'CA',
+                'zip' => '939393',
+                'country' => 'US',
+                'first_name' => 'first',
+                'last_name' => 'last',
+                'email' => 'email@email.com',
+                'phone' => '9255569000',
+                'fedex_acct' => 'FedEx',
+                'ups_acct' => 'UPS'
+            ),
+            'Preference' => array(
+                'branding' => array(
+                    'company' => 'Super Customer',
+                    'address1' => '123 Main Street',
+                    'address2' => '',
+                    'address3' => 'San Francisco, CA 939393',
+                    'customer_user_id' => '',
+                    'logo_file' => ''
+                )
+            ),
+            'Logo' => array(
+                'img_file' => array(
+                    'name' => '',
+                    'type' => '',
+                    'tmp_name' => '',
+                    'error' => (int) 4,
+                    'size' => (int) 0
+                )
+            )
+        );
+	    $this->Customer->SaveAll($data);
+	    debug($this->Customer->validationErrors);die;
 		$this->Flash->error('message 1');
 		$this->Flash->error('message 2');
 		$this->Flash->success('message 3');
