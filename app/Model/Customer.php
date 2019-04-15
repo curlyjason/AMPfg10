@@ -61,6 +61,11 @@ class Customer extends AppModel {
 		'Vendor' => array(
 			'className' => 'Address',
 			'foreignKey' => 'customer_id'
+//		),
+//		'Preference' => array(
+//			'className' => 'Preference',
+//			'foreignKey' => 'user_id',
+//			'primaryKey' => 'user_id'
 		)
 	);
 // </editor-fold>
