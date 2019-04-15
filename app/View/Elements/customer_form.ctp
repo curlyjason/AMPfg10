@@ -1,3 +1,4 @@
+<!-- Element/customer_form.ctp -->
 <div class="customerDisplay">
     <?php
 ?>
@@ -23,3 +24,4 @@
     echo $this->Form->end();
     ?>
 </div>
+<!-- END Element/customer_form.ctp -->

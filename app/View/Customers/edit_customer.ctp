@@ -1,4 +1,5 @@
-<?php
+<!-- Customer/edit_customer -->
+	<?php
 //Div and form opening
 echo $this->Html->div('customers'); // Opening customer form div
 echo $this->Form->create('Customer', array('class' => 'grainVersion', 'type' => 'file')); // Open Form
@@ -20,3 +21,4 @@ echo $this->FgForm->button('Submit', array(
 echo $this->Form->end();
 echo '</div>'; // close customer form div
 ?>
+<!-- END Customer/edit_customer -->

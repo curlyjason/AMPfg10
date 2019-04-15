@@ -1,3 +1,4 @@
+<!-- Element/edit_customer_inputs -->
 <?php
 //Setup basic variables
 $userId = $this->Session->read('Auth.User.id');
@@ -169,4 +170,5 @@ echo '</div>'; // close toggling div
 echo '</fieldset>'; //close fieldset
 
 echo '</fieldset>'; //close fieldset
-
+?>
+<!-- END Element/edit_customer_inputs -->

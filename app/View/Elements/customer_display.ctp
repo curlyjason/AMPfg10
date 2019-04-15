@@ -1,3 +1,4 @@
+<!-- Element/customer_display.ctp -->
 <div class="customersDisplay" id="<?php echo $grain['Customer']['user_id'] ?>">
     <?php
 if ($grain['Customer']['user_id'] != NULL) {
@@ -8,3 +9,4 @@ if ($grain['Customer']['user_id'] != NULL) {
 }
 ?>
 </div>
+<!-- END Element/customer_display.ctp -->

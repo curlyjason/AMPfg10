@@ -1,3 +1,4 @@
+<!-- AppAjax/edit_grain.ctp -->
 <?php
 $this->start('css');
 echo $this->Html->css('ampfg_grain');
@@ -98,3 +99,4 @@ if (isset($editGrain)) {
 }
 ?>
 </div>
+<!-- END AppAjax/edit_grain.ctp -->
