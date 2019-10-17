@@ -56,3 +56,11 @@ app/View/Emails/notifications/*
 /.idea/workspace.xml
 app/Vendor/*
 /app/Vendor/dompdf/lib/fonts/log.htm
+/vendors/composer
+/vendors/symfony
+/vendors/squizlabs
+/vendors/bin
+/vendors/cakephp
+/vendors/autoload.php
+/composer.lock
+/vendors/phpunit
