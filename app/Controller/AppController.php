@@ -57,7 +57,8 @@ class AppController extends Controller {
 			'logoutRedirect' => array('controller' => 'users', 'action' => 'login')
 		),
 		'Markdown.Markdown',
-		'RequestHandler'
+		'RequestHandler',
+        'Flash'
 	);
 	public $helpers = array(
 		'Html',
@@ -67,7 +68,8 @@ class AppController extends Controller {
 		'FgHtml',
 		'FgForm',
 		'Markdown.Markdown',
-		'BrandedPages'
+		'BrandedPages',
+        'Flash'
 	);
 	public $uses = array(
 		'User', 'Menu', 'Catalog', 'UserRegistry', 'Preference', 'Address', 'Gateway'
