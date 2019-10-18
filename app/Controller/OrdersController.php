@@ -139,10 +139,10 @@ class OrdersController extends AppController {
         if ($this->request->is('post')) {
             $this->Order->create();
             if ($this->Order->save($this->request->data)) {
-                $this->Session->setFlash(__('The order has been saved'));
+                $this->Flash->set(__('The order has been saved'));
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The order could not be saved. Please, try again.'));
+                $this->Flash->set(__('The order could not be saved. Please, try again.'));
             }
         }
     }
@@ -160,10 +160,10 @@ class OrdersController extends AppController {
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Order->save($this->request->data)) {
-                $this->Session->setFlash(__('The order has been saved'));
+                $this->Flash->set(__('The order has been saved'));
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The order could not be saved. Please, try again.'));
+                $this->Flash->set(__('The order could not be saved. Please, try again.'));
             }
         } else {
             $options = array('conditions' => array('Order.' . $this->Order->primaryKey => $id));
@@ -188,10 +188,10 @@ class OrdersController extends AppController {
         }
         $this->request->onlyAllow('post', 'delete');
         if ($this->Order->delete()) {
-            $this->Session->setFlash(__('Order deleted'));
+            $this->Flash->set(__('Order deleted'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('Order was not deleted'));
+        $this->Flash->set(__('Order was not deleted'));
         $this->redirect(array('action' => 'index'));
     }
 
@@ -593,11 +593,11 @@ class OrdersController extends AppController {
         //determine if we're short inventory on any items
         foreach ($data['OrderItem'] as $index => $item) {
             if (($item['catalog_type'] & PRODUCT) && $item['Item']['available_qty'] < 0) {
-                $this->Session->setFlash('You cannot release items with unavailable inventory');
+                $this->Flash->set('You cannot release items with unavailable inventory');
                 return 'Approved';
             }
             if(!($item['catalog_type'] & PRODUCT)  && ($item['Catalog']['available_qty'] < 0)){
-                $this->Session->setFlash('You cannot release items with unavailable kit or component inventory');
+                $this->Flash->set('You cannot release items with unavailable kit or component inventory');
                 return 'Approved';
             }
         }
@@ -640,7 +640,7 @@ class OrdersController extends AppController {
         if($allPulled){
             return 'Pulled';
         } else {
-            $this->Session->setFlash('You must mark off all of the line items as pulled.');
+            $this->Flash->set('You must mark off all of the line items as pulled.');
             return 'Released';
         }
 
@@ -928,7 +928,7 @@ class OrdersController extends AppController {
     private function checkBackorderSweepValidity($order, $mode) {
         // if backorders aren't allowed for the customer, return false
         if ($order == 'disallowed') {
-            $this->Session->setFlash('This customer does not allow backordering');
+            $this->Flash->set('This customer does not allow backordering');
             return false;
         }
         // Should we shift items or set status to Backordered
@@ -938,7 +938,7 @@ class OrdersController extends AppController {
         }
         //if there are no UNavailable items, return false
         if ($availItemCount == $itemCount && $mode != 'fullOrder') {
-            $this->Session->setFlash('There are no items to be backordered');
+            $this->Flash->set('There are no items to be backordered');
             return false;
         }
         //if there are no available items, make the entire order a backorder
@@ -977,7 +977,7 @@ class OrdersController extends AppController {
         $data = $this->Order->setupBackorder($data);
         // if backorders aren't allowed for the customer, scram-ola
         if ($data == 'disallowed') {
-            $this->Session->setFlash('This customer does not allow backordering');
+            $this->Flash->set('This customer does not allow backordering');
             return;
         }
         $this->backorderItem($id, $mode, $data);

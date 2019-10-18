@@ -353,10 +353,10 @@ class ProductsController extends AppController {
 			}
 
 			if ($this->Product->save($this->request->data)) {
-				$this->Session->setFlash($upload);
+				$this->Flash->set($upload);
 				return $this->redirect($this->referer());
 			} else {
-				$this->Session->setFlash('The Product could not be saved. Please, try again.');
+				$this->Flash->set('The Product could not be saved. Please, try again.');
 			}
 		}
 
@@ -382,10 +382,10 @@ class ProductsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Product->create();
 			if ($this->Product->save($this->request->data)) {
-				$this->Session->setFlash('The product has been saved');
+				$this->Flash->set('The product has been saved');
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash('The product could not be saved. Please, try again.');
+				$this->Flash->set('The product could not be saved. Please, try again.');
 			}
 		}
 		$brands = $this->Product->Brand->find('list');
@@ -403,10 +403,10 @@ class ProductsController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Product->save($this->request->data)) {
-				$this->Session->setFlash('The product has been saved');
+				$this->Flash->set('The product has been saved');
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash('The product could not be saved. Please, try again.');
+				$this->Flash->set('The product could not be saved. Please, try again.');
 			}
 		} else {
 			$product = $this->Product->find('first', array(
@@ -443,10 +443,10 @@ class ProductsController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Product->delete()) {
-			$this->Session->setFlash('Product deleted');
+			$this->Flash->set('Product deleted');
 			return $this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash('Product was not deleted');
+		$this->Flash->set('Product was not deleted');
 		return $this->redirect(array('action' => 'index'));
 	}
 

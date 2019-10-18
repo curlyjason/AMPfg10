@@ -106,10 +106,10 @@ class AddressesController extends AppController {
         }
         $this->request->onlyAllow('post', 'delete');
         if ($this->Address->delete()) {
-//            $this->Session->setFlash(__('Address deleted'));
+//            $this->Flash->set(__('Address deleted'));
 			$result = true;
         } else {
-//			$this->Session->setFlash(__('Address was not deleted'));
+//			$this->Flash->set(__('Address was not deleted'));
 			$result = false;
 		}
         

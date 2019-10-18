@@ -274,10 +274,10 @@ class CustomersController extends AppController {
         }
         $this->request->onlyAllow('post', 'delete');
         if ($this->Customer->delete()) {
-            $this->Session->setFlash(__('Customer deleted'));
+            $this->Flash->set(__('Customer deleted'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('Customer was not deleted'));
+        $this->Flash->set(__('Customer was not deleted'));
         $this->redirect(array('action' => 'index'));
     }
 
@@ -296,7 +296,7 @@ class CustomersController extends AppController {
                 )
             );
             if (!$this->Customer->User->save($data, false)) {
-                $this->Session->setFlash('The permissions were not saved');
+                $this->Flash->set('The permissions were not saved');
             }
         }
     }

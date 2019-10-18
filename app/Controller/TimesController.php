@@ -41,7 +41,7 @@ class TimesController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Time->create();
 			if ($this->Time->save($this->request->data)) {
-				$this->Session->setFlash(__('The time has been saved'));
+				$this->Flash->set(__('The time has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The time could not be saved. Please, try again.'));

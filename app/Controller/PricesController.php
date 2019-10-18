@@ -54,10 +54,10 @@ class PricesController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Price->create();
 			if ($this->Price->save($this->request->data)) {
-				$this->Session->setFlash(__('The price has been saved'));
+				$this->Flash->set(__('The price has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The price could not be saved. Please, try again.'));
+				$this->Flash->set(__('The price could not be saved. Please, try again.'));
 			}
 		}
 		$customers = $this->Price->Customer->find('list');
@@ -77,10 +77,10 @@ class PricesController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Price->save($this->request->data)) {
-				$this->Session->setFlash(__('The price has been saved'));
+				$this->Flash->set(__('The price has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The price could not be saved. Please, try again.'));
+				$this->Flash->set(__('The price could not be saved. Please, try again.'));
 			}
 		} else {
 			$options = array('conditions' => array('Price.' . $this->Price->primaryKey => $id));
@@ -111,14 +111,14 @@ class PricesController extends AppController {
 			if ($ajax) {
 				echo true;
 			} else {
-				$this->Session->setFlash(__('Price deleted'));
+				$this->Flash->set(__('Price deleted'));
 				$this->redirect(array('action' => 'index'));
 			}
 		} else {
 			if ($ajax) {
 				echo false;
 			} else {
-				$this->Session->setFlash(__('Price was not deleted'));
+				$this->Flash->set(__('Price was not deleted'));
 				$this->redirect(array('action' => 'index'));
 			}
 		}
@@ -177,7 +177,7 @@ class PricesController extends AppController {
 					));
 					$maxRecord['Price']['test_max_qty'] = 2000000000;
 					$this->Price->save($maxRecord);
-					$this->Session->setFlash('The pull fee pricing table saved.');
+					$this->Flash->set('The pull fee pricing table saved.');
 				}
 				echo json_encode(array($save));
 				return;

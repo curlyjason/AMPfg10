@@ -1020,7 +1020,7 @@ class CatalogsController extends AppController {
             // In all cases, get the side-panel selector tree data and send it to the view
             $this->prepareShoppingSidebar();
         } else {
-            $this->Session->setFlash('You don\'t have permission to shop from this Catalog');
+            $this->Flash->set('You don\'t have permission to shop from this Catalog');
 			$this->redirect(array('action' => 'shopping'));
         }
         // uses store_grain Element

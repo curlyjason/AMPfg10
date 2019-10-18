@@ -301,7 +301,7 @@ class AppController extends Controller {
 			}
 		}
 
-		$this->Session->setFlash('You aren\'t allowed on a ' . $this->request->controller . ' ' . $this->request->action . ' page.');
+		$this->Flash->set('You aren\'t allowed on a ' . $this->request->controller . ' ' . $this->request->action . ' page.');
 		$this->redirect(array(
 			'controller' => strtolower($this->Session->read('Auth.User.group')),
 			'action' => 'status'
@@ -539,7 +539,7 @@ class AppController extends Controller {
 				return $check;
 			}
 		}
-		$this->Session->setFlash('An improperly formatted security string was found.');
+		$this->Flash->set('An improperly formatted security string was found.');
 		return false;
 	}
 
@@ -574,7 +574,7 @@ class AppController extends Controller {
 			if ($value == 'invalid') {
 
 				// one of the values in the data form was left as the default 'invalid'
-				$this->Session->setFlash('There was an error saving your data
+				$this->Flash->set('There was an error saving your data
 		    (The app/treeJax function failed due to invalid form data)');
 				$this->set('data', null);
 				return FALSE;
@@ -594,7 +594,7 @@ class AppController extends Controller {
 		}
 		if (!$secure) {
 			// one of the values in the data form did not match it's hash
-			$this->Session->setFlash('There was an error saving your data
+			$this->Flash->set('There was an error saving your data
 		(The app/treeJax function failed due to non-matched form data)');
 			$this->set('data', null);
 			return FALSE;
@@ -884,7 +884,7 @@ class AppController extends Controller {
 			$Model->alias . '.lock <> ' . $this->Auth->user('id')));
 		if (!empty($ancestors) || !empty($selfLock) || !empty($descendents)) {
 			//either an ancestor is locked, myself is locked or a descendent is locked
-			$this->Session->setFlash('Records in this section are being edited by another user. You can only view at this time.');
+			$this->Flash->set('Records in this section are being edited by another user. You can only view at this time.');
 			return true;
 		}
 		$this->setLock($Model, $id);
@@ -972,7 +972,7 @@ class AppController extends Controller {
 			$this->User->Behaviors->enable('ThinTree');
 			return true;
 		}
-		$this->Session->setFlash("The lock on Model $Model of id $id failed to clear. Contact admin NOW.");
+		$this->Flash->set("The lock on Model $Model of id $id failed to clear. Contact admin NOW.");
 		$this->User->Behaviors->enable('ThinTree');
 		return false;
 	}

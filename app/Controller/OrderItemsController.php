@@ -51,10 +51,10 @@ class OrderItemsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->OrderItem->create();
 			if ($this->OrderItem->save($this->request->data)) {
-				$this->Session->setFlash(__('The order item has been saved'));
+				$this->Flash->set(__('The order item has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The order item could not be saved. Please, try again.'));
+				$this->Flash->set(__('The order item could not be saved. Please, try again.'));
 			}
 		}
 		$orders = $this->OrderItem->Order->find('list');
@@ -74,10 +74,10 @@ class OrderItemsController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->OrderItem->save($this->request->data)) {
-				$this->Session->setFlash(__('The order item has been saved'));
+				$this->Flash->set(__('The order item has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The order item could not be saved. Please, try again.'));
+				$this->Flash->set(__('The order item could not be saved. Please, try again.'));
 			}
 		} else {
 			$options = array('conditions' => array('OrderItem.' . $this->OrderItem->primaryKey => $id));
@@ -101,10 +101,10 @@ class OrderItemsController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->OrderItem->delete()) {
-			$this->Session->setFlash(__('Order item deleted'));
+			$this->Flash->set(__('Order item deleted'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Order item was not deleted'));
+		$this->Flash->set(__('Order item was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
 }

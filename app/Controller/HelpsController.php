@@ -53,10 +53,10 @@ class HelpsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Help->create();
 			if ($this->Help->save($this->request->data)) {
-				$this->Session->setFlash(__('The help has been saved'));
+				$this->Flash->set(__('The help has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The help could not be saved. Please, try again.'));
+				$this->Flash->set(__('The help could not be saved. Please, try again.'));
 			}
 		}
 	}
@@ -74,10 +74,10 @@ class HelpsController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Help->save($this->request->data)) {
-				$this->Session->setFlash(__('The help has been saved'));
+				$this->Flash->set(__('The help has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The help could not be saved. Please, try again.'));
+				$this->Flash->set(__('The help could not be saved. Please, try again.'));
 			}
 		} else {
 			$options = array('conditions' => array('Help.' . $this->Help->primaryKey => $id));
@@ -99,10 +99,10 @@ class HelpsController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Help->delete()) {
-			$this->Session->setFlash(__('Help deleted'));
+			$this->Flash->set(__('Help deleted'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Help was not deleted'));
+		$this->Flash->set(__('Help was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
 	

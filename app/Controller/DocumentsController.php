@@ -56,10 +56,10 @@ class DocumentsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Document->create();
 			if ($this->Document->save($this->request->data)) {
-				$this->Session->setFlash(__('The document has been saved'));
+				$this->Flash->set(__('The document has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The document could not be saved. Please, try again.'));
+				$this->Flash->set(__('The document could not be saved. Please, try again.'));
 			}
 		}
 		$orders = $this->Document->Order->find('list');
@@ -79,10 +79,10 @@ class DocumentsController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Document->save($this->request->data)) {
-				$this->Session->setFlash(__('The document has been saved'));
+				$this->Flash->set(__('The document has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The document could not be saved. Please, try again.'));
+				$this->Flash->set(__('The document could not be saved. Please, try again.'));
 			}
 		} else {
 			$options = array('conditions' => array('Document.' . $this->Document->primaryKey => $id));
@@ -117,9 +117,9 @@ class DocumentsController extends AppController {
 
 			if ($this->request->is('post')) {
 				if ($r['result']) {
-					$this->Session->setFlash(__('Document deleted'));
+					$this->Flash->set(__('Document deleted'));
 				} else {
-					$this->Session->setFlash(__('Document was not deleted'));
+					$this->Flash->set(__('Document was not deleted'));
 				}
 				$this->redirect(array('action' => 'index'));
 			}

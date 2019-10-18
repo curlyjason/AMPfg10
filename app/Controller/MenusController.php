@@ -41,10 +41,10 @@ class MenusController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Menu->create();
 			if ($this->Menu->save($this->request->data)) {
-				$this->Session->setFlash(__('The menu has been saved'));
+				$this->Flash->set(__('The menu has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The menu could not be saved. Please, try again.'));
+				$this->Flash->set(__('The menu could not be saved. Please, try again.'));
 			}
 		}
 		$parentMenus = $this->Menu->ParentMenu->find('list');
@@ -64,7 +64,7 @@ class MenusController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Menu->save($this->request->data)) {
-				$this->Session->setFlash(__('The menu has been saved'));
+				$this->Flash->set(__('The menu has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The menu could not be saved. Please, try again.'));

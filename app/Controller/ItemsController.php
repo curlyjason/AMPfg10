@@ -74,10 +74,10 @@ class ItemsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Item->create();
 			if ($this->Item->save($this->request->data)) {
-				$this->Session->setFlash(__('The item has been saved'));
+				$this->Flash->set(__('The item has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The item could not be saved. Please, try again.'));
+				$this->Flash->set(__('The item could not be saved. Please, try again.'));
 			}
 		}
 	}
@@ -103,10 +103,10 @@ class ItemsController extends AppController {
 		    throw new NotFoundException('Security checkpoint: Hey! You messing with the form data?');
 		}
 			if ($this->Item->save($this->request->data)) {
-				$this->Session->setFlash(__('The item has been saved'));
+				$this->Flash->set(__('The item has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The item could not be saved. Please, try again.'));
+				$this->Flash->set(__('The item could not be saved. Please, try again.'));
 			}
 		} else {
 			$options = array('conditions' => array('Item.' . $this->Item->primaryKey => $id));
@@ -128,10 +128,10 @@ class ItemsController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Item->delete()) {
-			$this->Session->setFlash(__('Item deleted'));
+			$this->Flash->set(__('Item deleted'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Item was not deleted'));
+		$this->Flash->set(__('Item was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
     
@@ -477,7 +477,7 @@ class ItemsController extends AppController {
 			$this->logEntriesInDateRange();
 			$this->snapshotEntriesInDateRange();
 		} else {
-			$this->Session->setFlash('There are no items for this customer.');
+			$this->Flash->set('There are no items for this customer.');
 		}
 		$this->set('customers', $this->User->getPermittedCustomers($this->Auth->user('id')));
 		$this->set('customerName', $this->Item->Catalog->User->discoverName($customer));

@@ -77,10 +77,10 @@ class InvoicesController extends AppController {
         if ($this->request->is('post')) {
             $this->Invoice->create();
             if ($this->Invoice->save($this->request->data)) {
-                $this->Session->setFlash(__('The invoice has been saved'));
+                $this->Flash->set(__('The invoice has been saved'));
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The invoice could not be saved. Please, try again.'));
+                $this->Flash->set(__('The invoice could not be saved. Please, try again.'));
             }
         }
     }
@@ -98,10 +98,10 @@ class InvoicesController extends AppController {
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Invoice->save($this->request->data)) {
-                $this->Session->setFlash(__('The invoice has been saved'));
+                $this->Flash->set(__('The invoice has been saved'));
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The invoice could not be saved. Please, try again.'));
+                $this->Flash->set(__('The invoice could not be saved. Please, try again.'));
             }
         } else {
             $options = array('conditions' => array('Invoice.' . $this->Invoice->primaryKey => $id));
@@ -123,10 +123,10 @@ class InvoicesController extends AppController {
         }
         $this->request->onlyAllow('post', 'delete');
         if ($this->Invoice->delete()) {
-            $this->Session->setFlash(__('Invoice deleted'));
+            $this->Flash->set(__('Invoice deleted'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('Invoice was not deleted'));
+        $this->Flash->set(__('Invoice was not deleted'));
         $this->redirect(array('action' => 'index'));
     }
     

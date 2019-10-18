@@ -53,10 +53,10 @@ class ImagesController extends AppController {
         if ($this->request->is('post')) {
             $this->Image->create();
             if ($this->Image->save($this->request->data)) {
-                $this->Session->setFlash(__('The image has been saved'));
+                $this->Flash->set(__('The image has been saved'));
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The image could not be saved. Please, try again.'));
+                $this->Flash->set(__('The image could not be saved. Please, try again.'));
             }
         }
     }
@@ -74,10 +74,10 @@ class ImagesController extends AppController {
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Image->save($this->request->data)) {
-                $this->Session->setFlash(__('The image has been saved'));
+                $this->Flash->set(__('The image has been saved'));
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The image could not be saved. Please, try again.'));
+                $this->Flash->set(__('The image could not be saved. Please, try again.'));
             }
         } else {
             $options = array('conditions' => array('Image.' . $this->Image->primaryKey => $id));
@@ -99,10 +99,10 @@ class ImagesController extends AppController {
         }
         $this->request->onlyAllow('post', 'delete');
         if ($this->Image->delete()) {
-            $this->Session->setFlash(__('Image deleted'));
+            $this->Flash->set(__('Image deleted'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('Image was not deleted'));
+        $this->Flash->set(__('Image was not deleted'));
         $this->redirect(array('action' => 'index'));
     }
 

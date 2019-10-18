@@ -57,10 +57,10 @@ class LabelsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Label->create();
 			if ($this->Label->save($this->request->data)) {
-				$this->Session->setFlash(__('The label has been saved'));
+				$this->Flash->set(__('The label has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The label could not be saved. Please, try again.'));
+				$this->Flash->set(__('The label could not be saved. Please, try again.'));
 			}
 		}
 		$orders = $this->Label->Order->find('list');
@@ -80,10 +80,10 @@ class LabelsController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Label->save($this->request->data)) {
-				$this->Session->setFlash(__('The label has been saved'));
+				$this->Flash->set(__('The label has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The label could not be saved. Please, try again.'));
+				$this->Flash->set(__('The label could not be saved. Please, try again.'));
 			}
 		} else {
 			$options = array('conditions' => array('Label.' . $this->Label->primaryKey => $id));
@@ -107,10 +107,10 @@ class LabelsController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Label->delete()) {
-			$this->Session->setFlash(__('Label deleted'));
+			$this->Flash->set(__('Label deleted'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Label was not deleted'));
+		$this->Flash->set(__('Label was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
 	

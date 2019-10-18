@@ -122,10 +122,10 @@ class ObserversController extends AppController {
         }
         $this->request->onlyAllow('post', 'delete');
         if ($this->Observer->delete()) {
-//            $this->Session->setFlash(__('Observer deleted'));
+//            $this->Flash->set(__('Observer deleted'));
 			$result = true;
         } else {
-//			$this->Session->setFlash(__('Observer was not deleted'));
+//			$this->Flash->set(__('Observer was not deleted'));
 			$result = false;
 		}
         
