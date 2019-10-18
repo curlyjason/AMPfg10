@@ -53,10 +53,10 @@ class CrudDocsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->CrudDoc->create();
 			if ($this->CrudDoc->save($this->request->data)) {
-				$this->Session->setFlash(__('The document has been saved'));
+				$this->Flash->set(__('The document has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The document could not be saved. Please, try again.'));
+				$this->Flash->set(__('The document could not be saved. Please, try again.'));
 			}
 		}
 		$orders = $this->CrudDoc->Order->find('list', array(
@@ -78,10 +78,10 @@ class CrudDocsController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->CrudDoc->save($this->request->data)) {
-				$this->Session->setFlash(__('The document has been saved'));
+				$this->Flash->set(__('The document has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The document could not be saved. Please, try again.'));
+				$this->Flash->set(__('The document could not be saved. Please, try again.'));
 			}
 		} else {
 			$options = array('conditions' => array('CrudDoc.' . $this->CrudDoc->primaryKey => $id));
@@ -105,10 +105,10 @@ class CrudDocsController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->CrudDoc->delete()) {
-			$this->Session->setFlash(__('Document deleted'));
+			$this->Flash->set(__('Document deleted'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Document was not deleted'));
+		$this->Flash->set(__('Document was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
 }

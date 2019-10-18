@@ -34,7 +34,7 @@ class ShopController extends AppController {
     
     public function clear() {
         $this->Cart->clear();
-        $this->Session->setFlash('All item(s) removed from your shopping cart');
+        $this->Flash->set('All item(s) removed from your shopping cart');
         return $this->redirect('/catalogs/shopping');
     }
 
@@ -111,7 +111,7 @@ class ShopController extends AppController {
         $shop = $this->Session->read('Shop');
 		
 		if (!isset($shop['OrderItem'])) {
-			$this->Session->setFlash('The cart had no items in it. If this doesn\'t seem right, please contact your system administrator.');
+			$this->Flash->set('The cart had no items in it. If this doesn\'t seem right, please contact your system administrator.');
 			$this->redirect($this->referer());
 		}
 		//setup order note from the first cart item
@@ -368,10 +368,10 @@ class ShopController extends AppController {
                 )
             ));
             if (empty($billingAddress)) {
-                $this->Session->setFlash('No address was returned for this customer');
+                $this->Flash->set('No address was returned for this customer');
             }
         } else {
-            $this->Session->setFlash('There was a security hash violation on the customer id');
+            $this->Flash->set('There was a security hash violation on the customer id');
         }
         $this->set(compact('billingAddress'));
     }
@@ -468,7 +468,7 @@ class ShopController extends AppController {
 				//if OrderTools->saveOrder succeeds, it redirects and never returns here, unless it is a robot call
 				
             } else {
-                $this->Session->setFlash('Validation errors occured');
+                $this->Flash->set('Validation errors occured');
                 $this->redirect(array('controller' => 'shop', 'action' => 'address'));
             }
         }

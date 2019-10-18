@@ -53,10 +53,10 @@ class LocationsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Location->create();
 			if ($this->Location->save($this->request->data)) {
-				$this->Session->setFlash(__('The location has been saved'));
+				$this->Flash->set(__('The location has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The location could not be saved. Please, try again.'));
+				$this->Flash->set(__('The location could not be saved. Please, try again.'));
 			}
 		}
 		$items = $this->Location->Item->find('list');
@@ -76,10 +76,10 @@ class LocationsController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Location->save($this->request->data)) {
-				$this->Session->setFlash(__('The location has been saved'));
+				$this->Flash->set(__('The location has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The location could not be saved. Please, try again.'));
+				$this->Flash->set(__('The location could not be saved. Please, try again.'));
 			}
 		} else {
 			$options = array('conditions' => array('Location.' . $this->Location->primaryKey => $id));
@@ -110,14 +110,14 @@ class LocationsController extends AppController {
 			if ($ajax) {
 				echo true;
 			} else {
-				$this->Session->setFlash(__('Location deleted'));
+				$this->Flash->set(__('Location deleted'));
 				$this->redirect(array('action' => 'index'));
 			}
 		} else {
 			if ($ajax) {
 				echo false;
 			} else {
-				$this->Session->setFlash(__('Location was not deleted'));
+				$this->Flash->set(__('Location was not deleted'));
 				$this->redirect(array('action' => 'index'));
 			}
 		}

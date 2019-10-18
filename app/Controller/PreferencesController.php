@@ -54,10 +54,10 @@ class PreferencesController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Preference->create();
 			if ($this->Preference->save($this->request->data)) {
-				$this->Session->setFlash(__('The preference has been saved'));
+				$this->Flash->set(__('The preference has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The preference could not be saved. Please, try again.'));
+				$this->Flash->set(__('The preference could not be saved. Please, try again.'));
 			}
 		}
 		$users = $this->Preference->User->find('list');
@@ -77,10 +77,10 @@ class PreferencesController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Preference->save($this->request->data)) {
-				$this->Session->setFlash(__('The preference has been saved'));
+				$this->Flash->set(__('The preference has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The preference could not be saved. Please, try again.'));
+				$this->Flash->set(__('The preference could not be saved. Please, try again.'));
 			}
 		} else {
 			$options = array('conditions' => array('Preference.' . $this->Preference->primaryKey => $id));
@@ -104,10 +104,10 @@ class PreferencesController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Preference->delete()) {
-			$this->Session->setFlash(__('Preference deleted'));
+			$this->Flash->set(__('Preference deleted'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Preference was not deleted'));
+		$this->Flash->set(__('Preference was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
 	

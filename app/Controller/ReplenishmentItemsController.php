@@ -52,10 +52,10 @@ class ReplenishmentItemsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->ReplenishmentItem->create();
 			if ($this->ReplenishmentItem->save($this->request->data)) {
-				$this->Session->setFlash(__('The replenishment item has been saved'));
+				$this->Flash->set(__('The replenishment item has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The replenishment item could not be saved. Please, try again.'));
+				$this->Flash->set(__('The replenishment item could not be saved. Please, try again.'));
 			}
 		}
 		$replenishments = $this->ReplenishmentItem->Replenishment->find('list');
@@ -75,10 +75,10 @@ class ReplenishmentItemsController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->ReplenishmentItem->save($this->request->data)) {
-				$this->Session->setFlash(__('The replenishment item has been saved'));
+				$this->Flash->set(__('The replenishment item has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The replenishment item could not be saved. Please, try again.'));
+				$this->Flash->set(__('The replenishment item could not be saved. Please, try again.'));
 			}
 		} else {
 			$options = array('conditions' => array('ReplenishmentItem.' . $this->ReplenishmentItem->primaryKey => $id));
@@ -102,10 +102,10 @@ class ReplenishmentItemsController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->ReplenishmentItem->delete()) {
-			$this->Session->setFlash(__('Replenishment item deleted'));
+			$this->Flash->set(__('Replenishment item deleted'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Replenishment item was not deleted'));
+		$this->Flash->set(__('Replenishment item was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
 	

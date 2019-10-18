@@ -67,7 +67,7 @@ class MenusController extends AppController {
 				$this->Flash->set(__('The menu has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The menu could not be saved. Please, try again.'));
+				$this->Flash->set(__('The menu could not be saved. Please, try again.'));
 			}
 		} else {
 			$options = array('conditions' => array('Menu.' . $this->Menu->primaryKey => $id));
@@ -91,10 +91,10 @@ class MenusController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Menu->delete()) {
-			$this->Session->setFlash(__('Menu deleted'));
+			$this->Flash->set(__('Menu deleted'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Menu was not deleted'));
+		$this->Flash->set(__('Menu was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
 	

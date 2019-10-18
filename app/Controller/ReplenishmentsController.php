@@ -56,10 +56,10 @@ class ReplenishmentsController extends AppController {
         if ($this->request->is('post')) {
             $this->Replenishment->create();
             if ($this->Replenishment->save($this->request->data)) {
-                $this->Session->setFlash(__('The replenishment has been saved'));
+                $this->Flash->set(__('The replenishment has been saved'));
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The replenishment could not be saved. Please, try again.'));
+                $this->Flash->set(__('The replenishment could not be saved. Please, try again.'));
             }
         }
     }
@@ -77,10 +77,10 @@ class ReplenishmentsController extends AppController {
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Replenishment->save($this->request->data)) {
-                $this->Session->setFlash(__('The replenishment has been saved'));
+                $this->Flash->set(__('The replenishment has been saved'));
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The replenishment could not be saved. Please, try again.'));
+                $this->Flash->set(__('The replenishment could not be saved. Please, try again.'));
             }
         } else {
             $options = array('conditions' => array('Replenishment.' . $this->Replenishment->primaryKey => $id));
@@ -102,10 +102,10 @@ class ReplenishmentsController extends AppController {
         }
         $this->request->onlyAllow('post', 'delete');
         if ($this->Replenishment->delete()) {
-            $this->Session->setFlash(__('Replenishment deleted'));
+            $this->Flash->set(__('Replenishment deleted'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('Replenishment was not deleted'));
+        $this->Flash->set(__('Replenishment was not deleted'));
         $this->redirect(array('action' => 'index'));
     }
 
@@ -310,7 +310,7 @@ class ReplenishmentsController extends AppController {
                     $this->Replenishment->ReplenishmentItem->Item->managePendingQty($lineItem['item_id']);
                 }
             } else {
-                $this->Session->setFlash('The data was not saved. Please try again');
+                $this->Flash->set('The data was not saved. Please try again');
                 $this->redirect($this->referer());
             }
             $this->redirect(array('controller' => 'clients', 'action' => 'status', $this->Replenishment->id));
@@ -357,7 +357,7 @@ class ReplenishmentsController extends AppController {
                     $this->Item->managePendingQty($lineItem['item_id']);
                 }
             } else {
-                $this->Session->setFlash('The data was not saved. Please try again');
+                $this->Flash->set('The data was not saved. Please try again');
                 $this->redirect($this->referer());
             }
             $this->redirect(array('controller' => 'clients', 'action' => 'status', $this->Replenishment->id));

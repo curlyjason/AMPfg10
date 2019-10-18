@@ -806,7 +806,7 @@ class UsersController extends AppController {
             // In all cases, get the side-panel selector tree data and send it to the view
             $this->prepareCatalogSidebar();
         } else {
-            $this->Session->setFlash('You don\'t have permission to edit any Catalogs');
+            $this->Flash->set('You don\'t have permission to edit any Catalogs');
         }
     }
 
@@ -1119,7 +1119,7 @@ class UsersController extends AppController {
     public function registration($username = false, $password = null) {
         //validate proper data provided
         if (!$username) {
-            $this->Session->setFlash(__('Invalid username or password, try again'));
+            $this->Flash->set(__('Invalid username or password, try again'));
             return false;
         }
 
@@ -1137,7 +1137,7 @@ class UsersController extends AppController {
 
         //test for a valid user & matching password
         if (empty($user) || ($user['User']['password'] != $this->Auth->password($password))) {
-            $this->Session->setFlash('This email link has expired. Contact your manager if you don\'t have access to the site.');
+            $this->Flash->set('This email link has expired. Contact your manager if you don\'t have access to the site.');
             $this->redirect(array('action' => 'login'));
         }
 
@@ -1250,7 +1250,7 @@ class UsersController extends AppController {
                 )) {
                     $this->redirect(array('action' => 'edit_userGrain', $this->request->data['User']['id'], $this->request->data['User']['secure']));
                 } else {
-                    $this->Session->setFlash('The record did not save.');
+                    $this->Flash->set('The record did not save.');
                 }
             }
         }

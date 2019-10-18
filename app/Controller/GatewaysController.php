@@ -71,10 +71,10 @@ class GatewaysController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Gateway->create();
 			if ($this->Gateway->save($this->request->data)) {
-				$this->Session->setFlash(__('The gateway has been saved'));
+				$this->Flash->set(__('The gateway has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The gateway could not be saved. Please, try again.'));
+				$this->Flash->set(__('The gateway could not be saved. Please, try again.'));
 			}
 		}
 		$users = $this->Gateway->User->find('list');
@@ -94,10 +94,10 @@ class GatewaysController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Gateway->save($this->request->data)) {
-				$this->Session->setFlash(__('The gateway has been saved'));
+				$this->Flash->set(__('The gateway has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The gateway could not be saved. Please, try again.'));
+				$this->Flash->set(__('The gateway could not be saved. Please, try again.'));
 			}
 		} else {
 			$options = array('conditions' => array('Gateway.' . $this->Gateway->primaryKey => $id));
@@ -121,10 +121,10 @@ class GatewaysController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Gateway->delete()) {
-			$this->Session->setFlash(__('Gateway deleted'));
+			$this->Flash->set(__('Gateway deleted'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Gateway was not deleted'));
+		$this->Flash->set(__('Gateway was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
 
@@ -154,7 +154,7 @@ class GatewaysController extends AppController {
 		$this->requestAction(array('controller' => 'users', 'action' => 'initUser'));
 
 		if (!$loggedIn) {
-			$this->Session->setFlash('Login failed. Please contact your administrator');
+			$this->Flash->set('Login failed. Please contact your administrator');
 			$this->redirect(array('controller' => 'Users', 'action' => 'login'));
 		}
 		//execute the action
@@ -166,13 +166,13 @@ class GatewaysController extends AppController {
 		}
 		$executed = $this->requestAction( $baseUrl );
 		if (!$executed) {
-			$this->Session->setFlash('Process failed. Please login to take this action.');
+			$this->Flash->set('Process failed. Please login to take this action.');
 		} else {
 			//if succeeded, set all matching actions to completed
 			if ($this->completeAction()) {
-				$this->Session->setFlash('Action succeeded, thanks!');
+				$this->Flash->set('Action succeeded, thanks!');
 			} else {
-				$this->Session->setFlash('Completion failed. Please inform your administrator.');
+				$this->Flash->set('Completion failed. Please inform your administrator.');
 			}
 		}
 		$this->Auth->logout();

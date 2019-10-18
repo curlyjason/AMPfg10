@@ -44,7 +44,7 @@ class TimesController extends AppController {
 				$this->Flash->set(__('The time has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The time could not be saved. Please, try again.'));
+				$this->Flash->set(__('The time could not be saved. Please, try again.'));
 			}
 		}
 		$users = $this->Time->User->find('list');
@@ -65,10 +65,10 @@ class TimesController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Time->save($this->request->data)) {
-				$this->Session->setFlash(__('The time has been saved'));
+				$this->Flash->set(__('The time has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The time could not be saved. Please, try again.'));
+				$this->Flash->set(__('The time could not be saved. Please, try again.'));
 			}
 		} else {
 			$options = array('conditions' => array('Time.' . $this->Time->primaryKey => $id));
@@ -93,10 +93,10 @@ class TimesController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Time->delete()) {
-			$this->Session->setFlash(__('Time deleted'));
+			$this->Flash->set(__('Time deleted'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Time was not deleted'));
+		$this->Flash->set(__('Time was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
 }

@@ -57,10 +57,10 @@ class ShipmentsController extends AppController {
         if ($this->request->is('post')) {
             $this->Shipment->create();
             if ($this->Shipment->save($this->request->data)) {
-                $this->Session->setFlash(__('The shipment has been saved'));
+                $this->Flash->set(__('The shipment has been saved'));
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The shipment could not be saved. Please, try again.'));
+                $this->Flash->set(__('The shipment could not be saved. Please, try again.'));
             }
         }
         $orders = $this->Shipment->Order->find('list');
@@ -80,10 +80,10 @@ class ShipmentsController extends AppController {
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Shipment->save($this->request->data)) {
-                $this->Session->setFlash(__('The shipment has been saved'));
+                $this->Flash->set(__('The shipment has been saved'));
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The shipment could not be saved. Please, try again.'));
+                $this->Flash->set(__('The shipment could not be saved. Please, try again.'));
             }
         } else {
             $options = array('conditions' => array('Shipment.' . $this->Shipment->primaryKey => $id));
@@ -107,10 +107,10 @@ class ShipmentsController extends AppController {
         }
         $this->request->onlyAllow('post', 'delete');
         if ($this->Shipment->delete()) {
-            $this->Session->setFlash(__('Shipment deleted'));
+            $this->Flash->set(__('Shipment deleted'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('Shipment was not deleted'));
+        $this->Flash->set(__('Shipment was not deleted'));
         $this->redirect(array('action' => 'index'));
     }
     
@@ -131,10 +131,10 @@ class ShipmentsController extends AppController {
 		$this->layout = 'ajax';
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Shipment->save($this->request->data)) {
-                $this->Session->setFlash(__('The shipment has been saved'));
+                $this->Flash->set(__('The shipment has been saved'));
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The shipment could not be saved. Please, try again.'));
+                $this->Flash->set(__('The shipment could not be saved. Please, try again.'));
             }
         } else {
             $options = array('conditions' => array('Shipment.order_id' => $order_id));

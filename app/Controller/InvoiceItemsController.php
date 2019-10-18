@@ -66,10 +66,10 @@ class InvoiceItemsController extends AppController {
         if ($this->request->is('post')) {
             $this->InvoiceItem->create();
             if ($this->InvoiceItem->save($this->request->data)) {
-                $this->Session->setFlash(__('The invoice item has been saved'));
+                $this->Flash->set(__('The invoice item has been saved'));
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The invoice item could not be saved. Please, try again.'));
+                $this->Flash->set(__('The invoice item could not be saved. Please, try again.'));
             }
         }
         $invoices = $this->InvoiceItem->Invoice->find('list');
@@ -89,10 +89,10 @@ class InvoiceItemsController extends AppController {
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->InvoiceItem->save($this->request->data)) {
-                $this->Session->setFlash(__('The invoice item has been saved'));
+                $this->Flash->set(__('The invoice item has been saved'));
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The invoice item could not be saved. Please, try again.'));
+                $this->Flash->set(__('The invoice item could not be saved. Please, try again.'));
             }
         } else {
             $options = array('conditions' => array('InvoiceItem.' . $this->InvoiceItem->primaryKey => $id));
@@ -117,9 +117,9 @@ class InvoiceItemsController extends AppController {
         }
         $this->request->onlyAllow('post', 'delete', 'get');
         if ($this->InvoiceItem->delete()) {
-            $this->Session->setFlash(__('Invoice item deleted'));
+            $this->Flash->set(__('Invoice item deleted'));
         }
-        $this->Session->setFlash(__('Invoice item was not deleted'));
+        $this->Flash->set(__('Invoice item was not deleted'));
     }
     /**
      * delete method
