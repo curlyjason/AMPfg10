@@ -166,7 +166,7 @@ class InvoicesController extends AppController {
 			// change the involved orders to 'invoiced' status
 			// use the ordercontroller method? or write a new one?
 		} else {
-			$this->Session->setFlash('The invoice did not save. Please try again', 'flash_error');
+			$this->Flash->error('The invoice did not save. Please try again');
 		}
 		$this->set('invoiceId', $this->Invoice->id);
 		$this->set('showInvoicePDF', $this->Invoice->id);
@@ -181,11 +181,11 @@ class InvoicesController extends AppController {
 	private function packageInvoiceItems() {
 		$this->Invoice->InvoiceItem->lineItems = $this->invoice;
 		if (!$this->Invoice->newInvoice()) {
-			$this->Session->setFlash('An invoice was not created. Please try again.', 'flash_error');
+			$this->Flash->error('An invoice was not created. Please try again.');
 			return FALSE;
 		}
 		if(!$this->Invoice->InvoiceItem->linkInvoiceItems($this->Invoice->id)){
-			$this->Session->setFlash('An invoice was created, but the charge items failed to link. Please try again.', 'flash_error');
+			$this->Flash->error('An invoice was created, but the charge items failed to link. Please try again.');
 			return FALSE;
 		}
 		$this->Session->setFlash('The charge items were successfully linked to an invoice', 'flash_success');

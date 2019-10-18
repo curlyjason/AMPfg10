@@ -171,7 +171,7 @@ class CatalogsController extends AppController {
                     return;
                 }
             }
-            $this->Session->setFlash(__('The catalog could not be saved. Please, try again.'), 'flash_error');
+            $this->Flash->error(__('The catalog could not be saved. Please, try again.'));
         }
 //        if ($this->request->action == 'add' || $this->request->action == 'edit_renderEditForm') {
         $this->fetchVariablesForEdit();
@@ -194,7 +194,7 @@ class CatalogsController extends AppController {
                 $this->Session->setFlash(__('The catalog has been saved'), 'flash_success');
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The catalog could not be saved. Please, try again.'), 'flash_error');
+                $this->Flash->error(__('The catalog could not be saved. Please, try again.'));
             }
         } else {
             $this->fetchRecordForEdit($id);
@@ -408,7 +408,7 @@ class CatalogsController extends AppController {
             $this->Session->setFlash(__('Catalog deleted'), 'flash_success');
             $this->redirect($this->referer());
         }
-        $this->Session->setFlash(__('Catalog was not deleted'), 'flash_error');
+        $this->Flash->error(__('Catalog was not deleted'));
         $this->redirect($this->referer());
     }
 
@@ -578,7 +578,7 @@ class CatalogsController extends AppController {
             if($this->universalSave($this->request->data)){
                 $this->Session->setFlash('The catalog has been saved', 'flash_success');
             } else {
-                $this->Session->setFlash(__('The catalog has NOT been saved'), 'flash_error');
+                $this->Flash->error(__('The catalog has NOT been saved'));
             }
         }
         $this->layout = 'ajax';
@@ -1132,14 +1132,14 @@ class CatalogsController extends AppController {
 		//get the kit product itself
 		$this->kit = $this->Catalog->fetchKit($kitId);
 		if(empty($this->kit)){
-			$this->Session->setFlash("This product is not a kit", 'flash_error');
+			$this->Flash->error("This product is not a kit");
 			return FALSE;			
 		}
 		
 		//fetch the kit components
 		$this->components = $this->Catalog->fetchComponents($kitId);
 		if(empty($this->components)){
-			$this->Session->setFlash("This kit has no components", 'flash_error');
+			$this->Flash->error("This kit has no components");
 			return FALSE;
 		}
 				
@@ -1148,7 +1148,7 @@ class CatalogsController extends AppController {
 		
 		//make sure there's enough inventory to fulfill this
 		if ($this->maxKitUp < $qty){
-			$this->Session->setFlash("There is only enough inventory to make {$this->maxKitUp} kit(s)", 'flash_error');
+			$this->Flash->error("There is only enough inventory to make {$this->maxKitUp} kit(s)");
 			return FALSE;
 		}
 		
@@ -1172,20 +1172,20 @@ class CatalogsController extends AppController {
 		//get the kit product itself
 		$this->kit = $this->Catalog->fetchKit($kitId);
 		if(empty($this->kit)){
-			$this->Session->setFlash("This product is not a kit", 'flash_error');
+			$this->Flash->error("This product is not a kit");
 			return FALSE;			
 		}
 		
 		//fetch the kit components
 		$this->components = $this->Catalog->fetchComponents($kitId);
 		if(empty($this->components)){
-			$this->Session->setFlash("This kit has no components", 'flash_error');
+			$this->Flash->error("This kit has no components");
 			return FALSE;
 		}
 				
 		//make sure there's enough kit inventory to fulfill this
 		if ($this->kit['Item']['available_qty'] < $qty){
-			$this->Session->setFlash("There is only enough inventory to break {$this->kit['Item']['available_qty']} kit(s)", 'flash_error');
+			$this->Flash->error("There is only enough inventory to break {$this->kit['Item']['available_qty']} kit(s)");
 			return FALSE;
 		}
 		
@@ -1296,12 +1296,12 @@ class CatalogsController extends AppController {
 	
 	public function fetchCutomerItemList($catalogSecureId, $secureString = NULL) {
 		if(!$customerUserId = $this->discoverCustomerUserId($catalogSecureId, $secureString)){
-			$this->Session->setFlash('Could not validate the customer, please try again.', 'flash_error');
+			$this->Flash->error('Could not validate the customer, please try again.');
 			return FALSE;
 		}
 		$items = $this->Catalog->allItemsForCustomer($customerUserId);
 		if(empty($items)){
-			$this->Session->setFlash('Could not retreive the item list, please try again.', 'flash_error');
+			$this->Flash->error('Could not retreive the item list, please try again.');
 			return FALSE;
 		}
 		$itemList = array();
@@ -1328,12 +1328,12 @@ class CatalogsController extends AppController {
 		}
 		$catalogIdArray = $this->validateSelect($catalogSecureId, $delimeter);
 		if(!$catalogIdArray[2]){
-			$this->Session->setFlash('This catalog failed to validate, please try again.', 'flash_error');
+			$this->Flash->error('This catalog failed to validate, please try again.');
 			return FALSE;
 		}
 		$catalogId = $catalogIdArray[0];
 		if(!$customerUserId = $this->Catalog->fetchCustomerUserId($catalogId)){
-			$this->Session->setFlash('This catalog did not retreive, please try again.', 'flash_error');
+			$this->Flash->error('This catalog did not retreive, please try again.');
 			return FALSE;
 		}
 		return $customerUserId;

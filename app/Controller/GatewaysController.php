@@ -138,7 +138,7 @@ class GatewaysController extends AppController {
 
 		//Validate the gateway record and its targets
 		if (!$this->gatekeeper()) {
-			$this->Session->setFlash($this->gatekeeperMessage, 'flash_error');
+			$this->Flash->error($this->gatekeeperMessage);
 			$this->redirect(array('controller' => 'users', 'action' => 'login'));
 		}
 

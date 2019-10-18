@@ -408,7 +408,7 @@ class ReplenishmentsController extends AppController {
         $totalReplenishment = $replenishment['ReplenishmentItem'][0]['ReplenishmentItem'][0]['totalReplenishments'];
         $countItems = $replenishment['ReplenishmentItem'][0]['ReplenishmentItem'][0]['countItems'];
         if($totalReplenishment != $countItems){
-            $this->Session->setFlash(__('You must receive all items before Completing the Replenishment'), 'flash_error');
+            $this->Flash->error(__('You must receive all items before Completing the Replenishment'));
             $this->redirect($this->referer());
         }
 
@@ -420,7 +420,7 @@ class ReplenishmentsController extends AppController {
         unset ($replenishment['ReplenishmentItem']);
 
         if(!$this->Replenishment->save($replenishment)){
-            $this->Session->setFlash(__('The Replenishment failed to update, please try again'), 'flash_error');
+            $this->Flash->error(__('The Replenishment failed to update, please try again'));
         }
         $this->Session->setFlash(__('The Replenishment was completed'), 'flash_success');
         $this->redirect($this->referer());

@@ -182,13 +182,13 @@ class DocumentsController extends AppController {
 		}
 //		$this->ddd($this->request->data, 'trd');
 //		die;
-		$this->Session->setFlash('bummer - TRD empty', 'flash_error');
+		$this->Flash->error('bummer - TRD empty');
 		if(!empty($this->request->data)){
 			$save =$this->Document->saveMany($this->request->data['Document']);
 			if($save) {
 				$this->Session->setFlash('Saved the Documents', 'flash_success');
 			} else {
-				$this->Session->setFlash('Document save failed', 'flash_error');
+				$this->Flash->error('Document save failed');
 			}
 		}
 		$this->redirect($this->referer());

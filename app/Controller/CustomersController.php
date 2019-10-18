@@ -101,7 +101,7 @@ class CustomersController extends AppController {
                     $custUserId,
                     $this->secureHash($custUserId)));
             } else {
-                $this->Session->setFlash(__('The customer could not be saved. Please, try again.'), 'flash_error');
+                $this->Flash->error(__('The customer could not be saved. Please, try again.'));
                 $this->redirect($this->referer());
             }
         } else {
@@ -321,7 +321,7 @@ class CustomersController extends AppController {
                     'fieldlist' => array('id', 'type', 'active', 'name', 'parent_id', 'customer_id', 'customer_user_id'),
                     'callbacks' => 'before'
                 ))) {
-            $this->Session->setFlash('The catalog was not saved', 'flash_error');
+            $this->Flash->error('The catalog was not saved');
             return false;
         }
         //After save in catalog again doesn't work
@@ -332,7 +332,7 @@ class CustomersController extends AppController {
                 )
             );
             if (!$this->User->Catalog->save($permission, false)) {
-                $this->Session->setFlash('The catalog permissions were not saved', 'flash_error');
+                $this->Flash->error('The catalog permissions were not saved');
             }
         }
     }
@@ -372,7 +372,7 @@ class CustomersController extends AppController {
             'validate' => false,
             'fieldlist' => ['id', 'token']
         ))) {
-            $this->Session->setFlash('The token did not save', 'flash_error');
+            $this->Flash->error('The token did not save');
             $result = false;
         } else {
             //If the save happens, return true

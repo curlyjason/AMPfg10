@@ -123,7 +123,7 @@ class LabelsController extends AppController {
 				$this->request->data['Label']['id'] = $this->Label->getInsertID();
 				$this->Session->setFlash('The new label was saved.', 'flash_success');
 			} else {
-				$this->Session->setFlash('The label couldn\'t be saved. Please try again.', 'flash_error');
+				$this->Flash->error('The label couldn\'t be saved. Please try again.');
 			}
 		}
 		$this->redirect(array('controller' => 'orders', 'action' => 'shippingLabels', $this->request->data['Label']['order_id']));
@@ -141,7 +141,7 @@ class LabelsController extends AppController {
 				$this->Session->setFlash(__('The label has been saved'), 'flash_success');
 				$this->redirect(array('controller' => 'orders', 'action' => 'shippingLabels', $this->request->data['Label']['order_id']));
 			} else {
-				$this->Session->setFlash(__('The label could not be saved. Please, try again.'), 'flash_error');
+				$this->Flash->error(__('The label could not be saved. Please, try again.'));
 			}
 		}
 		$this->request->data = $this->Label->fetchLabel($id);
@@ -164,7 +164,7 @@ class LabelsController extends AppController {
 		if ($this->Label->delete()) {
 			$this->Session->setFlash(__('Label deleted'), 'flash_success');
 		} else {
-			$this->Session->setFlash(__('Label was not deleted'), 'flash_error');
+			$this->Flash->error(__('Label was not deleted'));
 		}
 		$this->layout = 'ajax';
 		$this->render('/AppAjax/flash_out');

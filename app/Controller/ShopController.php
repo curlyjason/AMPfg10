@@ -79,7 +79,7 @@ class ShopController extends AppController {
     public function remove($id = null) {
         $product = $this->Cart->remove($id);
         if (!empty($product)) {
-            $this->Session->setFlash($product['Item']['name'] . ' was removed from your shopping cart', 'flash_error');
+            $this->Flash->error($product['Item']['name'] . ' was removed from your shopping cart');
         }
         return $this->redirect(array('action' => 'cart'));
     }

@@ -59,7 +59,7 @@ class AddressesController extends AppController {
                 $this->Session->setFlash(__('The address has been saved'), 'flash_success');
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The address could not be saved. Please, try again.'), 'flash_error');
+                $this->Flash->error(__('The address could not be saved. Please, try again.'));
             }
         }
         $users = $this->Address->User->find('list');
@@ -82,7 +82,7 @@ class AddressesController extends AppController {
                 $this->Session->setFlash(__('The address has been saved'), 'flash_success');
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The address could not be saved. Please, try again.'), 'flash_error');
+                $this->Flash->error(__('The address could not be saved. Please, try again.'));
             }
         } else {
             $options = array('conditions' => array('Address.' . $this->Address->primaryKey => $id));
@@ -144,7 +144,7 @@ class AddressesController extends AppController {
             if ($this->Address->save($this->request->data)) {
                 $this->Session->setFlash('This address saved.', 'flash_success');
             } else {
-                $this->Session->setFlash('The address did not save. Please try again.', 'flash_error');
+                $this->Flash->error('The address did not save. Please try again.');
             }
             $this->redirect($this->referer());
         }
@@ -164,7 +164,7 @@ class AddressesController extends AppController {
             if ($this->Address->save($this->request->data)) {
                 $this->Session->setFlash('This address saved.', 'flash_success');
             } else {
-                $this->Session->setFlash('The address did not save. Please try again.', 'flash_error');
+                $this->Flash->error('The address did not save. Please try again.');
             }
             $this->redirect($this->referer());
         }
@@ -185,7 +185,7 @@ class AddressesController extends AppController {
             if ($this->Address->save($this->request->data)) {
                 $this->Session->setFlash('This vendor saved.', 'flash_success');
             } else {
-                $this->Session->setFlash('The vendor did not save. Please try again.', 'flash_error');
+                $this->Flash->error('The vendor did not save. Please try again.');
             }
             $this->redirect($this->referer());
         }
@@ -203,7 +203,7 @@ class AddressesController extends AppController {
             if ($this->Address->save($this->request->data)) {
                 $this->Session->setFlash('This vendor saved.', 'flash_success');
             } else {
-                $this->Session->setFlash('The vendor did not save. Please try again.', 'flash_error');
+                $this->Flash->error('The vendor did not save. Please try again.');
             }
             $this->redirect($this->referer());
         }
@@ -247,7 +247,7 @@ this is called from ReplenishmentsController->createReplenishments() the line wa
 	
 	public function testMe(){
         $this->Session->setFlash('success', 'flash_success');
-        $this->Session->setFlash('error', 'flash_error');
+        $this->Flash->error('error');
         $this->Auth->flash('Auth message');
         $this->Flash->set('normal message');
         $this->Flash->success('new success');

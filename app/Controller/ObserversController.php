@@ -69,7 +69,7 @@ class ObserversController extends AppController {
                 $this->Session->setFlash(__('The observer has been saved'), 'flash_success');
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The observer could not be saved. Please, try again.'), 'flash_error');
+                $this->Flash->error(__('The observer could not be saved. Please, try again.'));
             }
         }
         $users = $this->Observer->User->find('list');
@@ -97,7 +97,7 @@ class ObserversController extends AppController {
                     $this->redirect(array('action' => 'index'));
                 }
             } else {
-                $this->Session->setFlash(__('The observer could not be saved. Please, try again.'), 'flash_error');
+                $this->Flash->error(__('The observer could not be saved. Please, try again.'));
             }
         } else {
             $options = array('conditions' => array('Observer.' . $this->Observer->primaryKey => $id));
@@ -174,7 +174,7 @@ class ObserversController extends AppController {
                 $this->Session->setFlash(__('The observer has been saved'), 'flash_success');
                 $this->redirect($this->referer());
             } else {
-                $this->Session->setFlash(__('The observer could not be saved. Please, try again.'), 'flash_error');
+                $this->Flash->error(__('The observer could not be saved. Please, try again.'));
             }
         }
         $this->layout = 'ajax';
@@ -194,7 +194,7 @@ class ObserversController extends AppController {
                 $this->Session->setFlash(__('The observer has been saved'), 'flash_success');
                 $this->redirect($this->referer());
             } else {
-                $this->Session->setFlash(__('The observer could not be saved. Please, try again.'), 'flash_error');
+                $this->Flash->error(__('The observer could not be saved. Please, try again.'));
             }
         }
         $this->layout = 'ajax';

@@ -1049,7 +1049,7 @@ class OrdersController extends AppController {
                     'action' => 'status'
                 ));
             } else {
-                $this->Session->setFlash("This shipment didn't save. Please try again.", 'flash_error');
+                $this->Flash->error("This shipment didn't save. Please try again.");
             }
         }
 
@@ -1150,7 +1150,7 @@ class OrdersController extends AppController {
         if ($this->Order->saveField('exclude', $exclusion)) {
             $this->Session->setFlash('Change saved', 'flash_success');
         } else {
-            $this->Session->setFlash('The change was not saved', 'flash_error');
+            $this->Flash->error('The change was not saved');
         }
         $this->layout = 'ajax';
         $this->render('/AppAjax/flash_out');

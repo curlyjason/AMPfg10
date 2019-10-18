@@ -469,7 +469,7 @@ class UsersController extends AppController {
                 foreach ($this->User->validationErrors as $message){
                     $msg .= $message[0] . " \n\r ";
                 }
-                $this->Session->setFlash(__($msg), 'flash_error');
+                $this->Flash->error(__($msg));
             }
         }
 
@@ -506,7 +506,7 @@ class UsersController extends AppController {
                 $this->Session->setFlash(__('The user has been saved'), 'flash_success');
                 return $this->redirect(array('action' => 'index'));
             }
-            $this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'flash_error');
+            $this->Flash->error(__('The user could not be saved. Please, try again.'));
         } else {
             $this->fetchRecordForEdit($id);
         }
@@ -530,7 +530,7 @@ class UsersController extends AppController {
             $this->Session->setFlash(__('User deleted'), 'flash_success');
             $this->redirect($this->referer());
         }
-        $this->Session->setFlash(__('User was not deleted'), 'flash_error');
+        $this->Flash->error(__('User was not deleted'));
         $this->redirect($this->referer());
     }
 
@@ -617,7 +617,7 @@ class UsersController extends AppController {
 
             // Sorry, there's nothing you can do here even though you are allowed   
         } else {
-            $this->Session->setFlash('You don\'t have permission to edit any Users', 'flash_error');
+            $this->Flash->error('You don\'t have permission to edit any Users');
         }
     }
 
@@ -991,7 +991,7 @@ class UsersController extends AppController {
                     $this->requestAction(array('controller' => 'Catalogs', 'action' => 'edit_deactivate/' . $h . '/' . $activeToggle));
                 }
             } else {
-                $this->Session->setFlash("Failed to $activeToggle user, please try again.", 'flash_error');
+                $this->Flash->error("Failed to $activeToggle user, please try again.");
             }
         }
         $this->redirect($this->referer());
@@ -1026,11 +1026,11 @@ class UsersController extends AppController {
                 $this->Session->setFlash('An email has been sent so you can reset your password', 'flash_success');
             } else {
                 $result = FALSE;
-                $this->Session->setFlash('The process failed. Please try again.', 'flash_error');
+                $this->Flash->error('The process failed. Please try again.');
             }
         } else {
             $result = FALSE;
-            $this->Session->setFlash('No account found for that email', 'flash_error');
+            $this->Flash->error('No account found for that email');
         }
         $this->set('result', $result);
         if(!$this->request->is('ajax')){
@@ -1200,13 +1200,13 @@ class UsersController extends AppController {
                         }
                         $this->redirect(array('controller' => Inflector::underscore($this->Auth->user('group')), 'action' => 'status'));
                     } else {
-                        $this->Session->setFlash('Your new password did not save properly. Please try again', 'flash_error');
+                        $this->Flash->error('Your new password did not save properly. Please try again');
                     }
                 } else {
-                    $this->Session->setFlash('Both passwords must match. Please try again.', 'flash_error');
+                    $this->Flash->error('Both passwords must match. Please try again.');
                 }
             } else {
-                $this->Session->setFlash('Your current password is not correct', 'flash_error');
+                $this->Flash->error('Your current password is not correct');
             }
             // validate and save
         }
@@ -1326,7 +1326,7 @@ class UsersController extends AppController {
                 $this->Session->setFlash(__('The user access has been saved'), 'flash_success');
                 return $this->redirect($this->referer());
             }
-            $this->Session->setFlash(__('The user access could not be saved. Please, try again.'), 'flash_error');
+            $this->Flash->error(__('The user access could not be saved. Please, try again.'));
             return $this->redirect($this->referer());
         }
         $this->fetchRecordForEdit($id);
@@ -1344,7 +1344,7 @@ class UsersController extends AppController {
                 $this->Session->setFlash(__('The catalog access has been saved'), 'flash_success');
                 return $this->redirect($this->referer());
             }
-            $this->Session->setFlash(__('The catalog access could not be saved. Please, try again.'), 'flash_error');
+            $this->Flash->error(__('The catalog access could not be saved. Please, try again.'));
             return $this->redirect($this->referer());
         }
         $this->fetchRecordForEdit($id);

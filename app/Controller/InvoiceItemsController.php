@@ -218,7 +218,7 @@ class InvoiceItemsController extends AppController {
 			}		
 			
 		} else {
-			$this->Session->setFlash("The alias $alias is unsupported", 'flash_error');
+			$this->Flash->error("The alias $alias is unsupported");
 		}
 		$this->set('invoiceItems', $this->invoiceItems);
 		$this->set('invoiceTotals', $this->invoiceTotals);
@@ -349,7 +349,7 @@ class InvoiceItemsController extends AppController {
 			);
 			
 		} else {
-			$this->Session->setFlash("The alias $alias is unsupported", 'flash_error');
+			$this->Flash->error("The alias $alias is unsupported");
 		}
 	}
 	

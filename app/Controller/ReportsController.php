@@ -52,7 +52,7 @@ class ReportsController extends AppController {
 			$endMonth = $this->months[$this->request->data['User']['end_month']['month']];
 			$end = strtotime($endMonth . '1, ' . $this->request->data['User']['end_year']['year'] . '+1 month - 1 second');
 			if(!$start && $end){
-				$this->Session->setFlash('Invalid date', 'flash_error');
+				$this->Flash->error('Invalid date');
 			} else {
 				if ($start > $end) {
 					$e = $end;
@@ -126,7 +126,7 @@ class ReportsController extends AppController {
 		}
 				
 		if(count($cust) === 0){
-			$this->Session->setFlash('Please choose a customer', 'flash_error');
+			$this->Flash->error('Please choose a customer');
 		} else {
 			$User = ClassRegistry::init('User');
 			$sort = $this->request->data['Reports']['sort'];
