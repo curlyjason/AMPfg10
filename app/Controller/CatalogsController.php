@@ -403,7 +403,7 @@ class CatalogsController extends AppController {
         if (!$this->Catalog->exists()) {
             throw new NotFoundException(__('Invalid catalog'));
         }
-        $this->request->onlyAllow('post', 'delete');
+        $this->request->allowMethod(['post', 'delete']);
         if ($this->Catalog->delete()) {
             $this->Flash->success(__('Catalog deleted'));
             $this->redirect($this->referer());

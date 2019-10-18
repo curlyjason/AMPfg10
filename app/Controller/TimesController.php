@@ -91,7 +91,7 @@ class TimesController extends AppController {
 		if (!$this->Time->exists()) {
 			throw new NotFoundException(__('Invalid time'));
 		}
-		$this->request->onlyAllow('post', 'delete');
+		$this->request->allowMethod(['post', 'delete']);
 		if ($this->Time->delete()) {
 			$this->Flash->set(__('Time deleted'));
 			$this->redirect(array('action' => 'index'));

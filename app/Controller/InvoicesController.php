@@ -121,7 +121,7 @@ class InvoicesController extends AppController {
         if (!$this->Invoice->exists()) {
             throw new NotFoundException(__('Invalid invoice'));
         }
-        $this->request->onlyAllow('post', 'delete');
+        $this->request->allowMethod(['post', 'delete']);
         if ($this->Invoice->delete()) {
             $this->Flash->set(__('Invoice deleted'));
             $this->redirect(array('action' => 'index'));

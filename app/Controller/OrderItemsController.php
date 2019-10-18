@@ -99,7 +99,7 @@ class OrderItemsController extends AppController {
 		if (!$this->OrderItem->exists()) {
 			throw new NotFoundException(__('Invalid order item'));
 		}
-		$this->request->onlyAllow('post', 'delete');
+		$this->request->allowMethod(['post', 'delete']);
 		if ($this->OrderItem->delete()) {
 			$this->Flash->set(__('Order item deleted'));
 			$this->redirect(array('action' => 'index'));

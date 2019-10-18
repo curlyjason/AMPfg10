@@ -126,7 +126,7 @@ class ItemsController extends AppController {
 		if (!$this->Item->exists()) {
 			throw new NotFoundException(__('Invalid item'));
 		}
-		$this->request->onlyAllow('post', 'delete');
+		$this->request->allowMethod(['post', 'delete']);
 		if ($this->Item->delete()) {
 			$this->Flash->set(__('Item deleted'));
 			$this->redirect(array('action' => 'index'));

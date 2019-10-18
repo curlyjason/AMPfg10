@@ -102,7 +102,7 @@ class PreferencesController extends AppController {
 		if (!$this->Preference->exists()) {
 			throw new NotFoundException(__('Invalid preference'));
 		}
-		$this->request->onlyAllow('post', 'delete');
+		$this->request->allowMethod(['post', 'delete']);
 		if ($this->Preference->delete()) {
 			$this->Flash->set(__('Preference deleted'));
 			$this->redirect(array('action' => 'index'));

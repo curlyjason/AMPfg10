@@ -186,7 +186,7 @@ class OrdersController extends AppController {
         if (!$this->Order->exists()) {
             throw new NotFoundException(__('Invalid order'));
         }
-        $this->request->onlyAllow('post', 'delete');
+        $this->request->allowMethod(['post', 'delete']);
         if ($this->Order->delete()) {
             $this->Flash->set(__('Order deleted'));
             $this->redirect(array('action' => 'index'));

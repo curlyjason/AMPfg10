@@ -97,7 +97,7 @@ class HelpsController extends AppController {
 		if (!$this->Help->exists()) {
 			throw new NotFoundException(__('Invalid help'));
 		}
-		$this->request->onlyAllow('post', 'delete');
+		$this->request->allowMethod(['post', 'delete']);
 		if ($this->Help->delete()) {
 			$this->Flash->set(__('Help deleted'));
 			$this->redirect(array('action' => 'index'));

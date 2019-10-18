@@ -105,7 +105,7 @@ class LabelsController extends AppController {
 		if (!$this->Label->exists()) {
 			throw new NotFoundException(__('Invalid label'));
 		}
-		$this->request->onlyAllow('post', 'delete');
+		$this->request->allowMethod(['post', 'delete']);
 		if ($this->Label->delete()) {
 			$this->Flash->set(__('Label deleted'));
 			$this->redirect(array('action' => 'index'));
@@ -160,7 +160,7 @@ class LabelsController extends AppController {
 		if (!$this->Label->exists()) {
 			throw new NotFoundException(__('Invalid label'));
 		}
-		$this->request->onlyAllow('post', 'delete');
+		$this->request->allowMethod(['post', 'delete']);
 		if ($this->Label->delete()) {
 			$this->Flash->success(__('Label deleted'));
 		} else {

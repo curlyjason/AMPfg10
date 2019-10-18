@@ -115,7 +115,7 @@ class InvoiceItemsController extends AppController {
         if (!$this->InvoiceItem->exists()) {
             throw new NotFoundException(__('Invalid invoice item'));
         }
-        $this->request->onlyAllow('post', 'delete', 'get');
+        $this->request->allowMethod(['post', 'delete', 'get']);
         if ($this->InvoiceItem->delete()) {
             $this->Flash->set(__('Invoice item deleted'));
         }
@@ -139,7 +139,7 @@ class InvoiceItemsController extends AppController {
 		$this->InvoiceItem->id = $id;
 		$idSet = $this->InvoiceItem->read(array('customer_id', 'order_id'));
 		
-        $this->request->onlyAllow('post', 'delete', 'get');
+        $this->request->allowMethod(['post', 'delete', 'get']);
         if ($this->InvoiceItem->delete()) {
 			if (empty($idSet['InvoiceItem']['order_id'])){
 				$headerTotal = $this->InvoiceItem->fetchTotalGeneralCharges($idSet['InvoiceItem']['customer_id']);

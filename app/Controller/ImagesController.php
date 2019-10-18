@@ -97,7 +97,7 @@ class ImagesController extends AppController {
         if (!$this->Image->exists()) {
             throw new NotFoundException(__('Invalid image'));
         }
-        $this->request->onlyAllow('post', 'delete');
+        $this->request->allowMethod(['post', 'delete']);
         if ($this->Image->delete()) {
             $this->Flash->set(__('Image deleted'));
             $this->redirect(array('action' => 'index'));

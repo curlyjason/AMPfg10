@@ -120,7 +120,7 @@ class ObserversController extends AppController {
         if (!$this->Observer->exists()) {
             throw new NotFoundException(__('Invalid observer'));
         }
-        $this->request->onlyAllow('post', 'delete');
+        $this->request->allowMethod(['post', 'delete']);
         if ($this->Observer->delete()) {
 //            $this->Flash->set(__('Observer deleted'));
 			$result = true;

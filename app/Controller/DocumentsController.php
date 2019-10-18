@@ -108,7 +108,7 @@ class DocumentsController extends AppController {
 				throw new NotFoundException(__('Invalid document'));
 			}
 		} else {
-			$this->request->onlyAllow('post', 'delete');
+			$this->request->allowMethod(['post', 'delete']);
 			if ($this->Document->delete()) {
 				$r = array('result' => TRUE);
 			} else {

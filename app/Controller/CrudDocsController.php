@@ -103,7 +103,7 @@ class CrudDocsController extends AppController {
 		if (!$this->CrudDoc->exists()) {
 			throw new NotFoundException(__('Invalid document'));
 		}
-		$this->request->onlyAllow('post', 'delete');
+		$this->request->allowMethod(['post', 'delete']);
 		if ($this->CrudDoc->delete()) {
 			$this->Flash->set(__('Document deleted'));
 			$this->redirect(array('action' => 'index'));

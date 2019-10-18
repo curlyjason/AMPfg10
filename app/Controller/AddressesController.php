@@ -104,7 +104,7 @@ class AddressesController extends AppController {
         if (!$this->Address->exists()) {
             throw new NotFoundException(__('Invalid Address'));
         }
-        $this->request->onlyAllow('post', 'delete');
+        $this->request->allowMethod(['post', 'delete']);
         if ($this->Address->delete()) {
 //            $this->Flash->set(__('Address deleted'));
 			$result = true;

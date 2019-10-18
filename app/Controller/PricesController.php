@@ -106,7 +106,7 @@ class PricesController extends AppController {
 		if (!$this->Price->exists()) {
 			throw new NotFoundException(__('Invalid price'));
 		}
-		$this->request->onlyAllow('post', 'delete');
+		$this->request->allowMethod(['post', 'delete']);
 		if ($this->Price->delete()) {
 			if ($ajax) {
 				echo true;

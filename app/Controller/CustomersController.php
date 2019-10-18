@@ -272,7 +272,7 @@ class CustomersController extends AppController {
         if (!$this->Customer->exists()) {
             throw new NotFoundException(__('Invalid customer'));
         }
-        $this->request->onlyAllow('post', 'delete');
+        $this->request->allowMethod(['post', 'delete']);
         if ($this->Customer->delete()) {
             $this->Flash->set(__('Customer deleted'));
             $this->redirect(array('action' => 'index'));

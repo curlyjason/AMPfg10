@@ -441,7 +441,7 @@ class ProductsController extends AppController {
 		if (!$this->Product->exists()) {
 			throw new NotFoundException('Invalid product');
 		}
-		$this->request->onlyAllow('post', 'delete');
+		$this->request->allowMethod(['post', 'delete']);
 		if ($this->Product->delete()) {
 			$this->Flash->set('Product deleted');
 			return $this->redirect(array('action' => 'index'));

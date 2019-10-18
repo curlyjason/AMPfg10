@@ -100,7 +100,7 @@ class ReplenishmentItemsController extends AppController {
 		if (!$this->ReplenishmentItem->exists()) {
 			throw new NotFoundException(__('Invalid replenishment item'));
 		}
-		$this->request->onlyAllow('post', 'delete');
+		$this->request->allowMethod(['post', 'delete']);
 		if ($this->ReplenishmentItem->delete()) {
 			$this->Flash->set(__('Replenishment item deleted'));
 			$this->redirect(array('action' => 'index'));

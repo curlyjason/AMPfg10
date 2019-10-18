@@ -105,7 +105,7 @@ class ShipmentsController extends AppController {
         if (!$this->Shipment->exists()) {
             throw new NotFoundException(__('Invalid shipment'));
         }
-        $this->request->onlyAllow('post', 'delete');
+        $this->request->allowMethod(['post', 'delete']);
         if ($this->Shipment->delete()) {
             $this->Flash->set(__('Shipment deleted'));
             $this->redirect(array('action' => 'index'));

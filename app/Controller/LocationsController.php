@@ -105,7 +105,7 @@ class LocationsController extends AppController {
 		if (!$this->Location->exists()) {
 			throw new NotFoundException(__('Invalid price'));
 		}
-		$this->request->onlyAllow('post', 'delete');
+		$this->request->allowMethod(['post', 'delete']);
 		if ($this->Location->delete()) {
 			if ($ajax) {
 				echo true;

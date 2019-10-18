@@ -119,7 +119,7 @@ class GatewaysController extends AppController {
 		if (!$this->Gateway->exists()) {
 			throw new NotFoundException(__('Invalid gateway'));
 		}
-		$this->request->onlyAllow('post', 'delete');
+		$this->request->allowMethod(['post', 'delete']);
 		if ($this->Gateway->delete()) {
 			$this->Flash->set(__('Gateway deleted'));
 			$this->redirect(array('action' => 'index'));
