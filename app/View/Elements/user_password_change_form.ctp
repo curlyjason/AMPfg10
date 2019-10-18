@@ -1,6 +1,6 @@
 <div class="passwordChange form">
     <?php
-    echo $this->Session->flash('auth');
+    echo $this->Flash->render('auth');
     echo $this->Form->create('User');
     echo '<fieldset>';
 	echo $this->Html->para('', 'New Password for ' . $this->Session->read('Auth.User.username'));

@@ -1,6 +1,6 @@
 <?php
 $response = array(
-    'flash' => $this->Session->flash(),
+    'flash' => $this->Flash->render(),
     'result' => $result
 );
 echo json_encode($response);

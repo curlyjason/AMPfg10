@@ -6,7 +6,7 @@
 
 $this->start('editTree');//start of editTree block
 
-echo $this->Session->flash();
+echo $this->Flash->render();
 echo $this->Html->div('treeEdit', NULL);//start of treeEdit div
 if (isset($editTree)) {
     

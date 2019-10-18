@@ -1,6 +1,6 @@
 <div class="userForm">
     <?php
-    echo $this->Session->flash();
+    echo $this->Flash->render();
     echo $this->FgForm->create('User', array('class' => 'grainVersion'));
     echo $this->FgForm->secureId('User.id', $id);
 	if($this->request->data['User']['folder']){

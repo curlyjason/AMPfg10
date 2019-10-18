@@ -17,8 +17,8 @@ echo $this->fetch('sidebar');
 echo '</div>'; //closing div sidebar
 
 echo $this->Html->div('view', NULL);
-echo $this->Session->flash();
-echo $this->Session->flash('auth');
+echo $this->Flash->render();
+echo $this->Flash->render('auth');
 //1. Common/manage_tree_object (fetch of editTree)
 echo $this->fetch('editTree'); // in case we're editing a tree
 //echo $this->fetch('editTree'); // in case we're editing grain

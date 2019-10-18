@@ -1,6 +1,6 @@
 <?php
 echo $this->Html->div('shippingAddress hide', NULL, array('bind' => 'validate.validateShippingAddress'));
-	echo $this->Session->flash('validationError');
+	echo $this->Flash->render('validationError');
     echo $this->Form->button('Clear Address', array('type' => 'button', 'class' => 'regular green', 'bind' => 'click.clearAddress'));
 	echo $this->Form->input('sameaddress', array('type' => 'checkbox', 'label' => 'Copy billing address to shipping'));
 	if(!empty($myAddresses)){

@@ -1,6 +1,6 @@
 <div class="addressForm">
     <?php
-    echo $this->Session->flash();
+    echo $this->Flash->render();
     echo $this->FgForm->create('Address', array('class' => 'grainVersion'));
     if (!empty($this->request->data) && isset($this->request->data['Address']['id'])) {
 	echo $this->FgForm->secureId('Address.id', $this->request->data['Address']['id']);

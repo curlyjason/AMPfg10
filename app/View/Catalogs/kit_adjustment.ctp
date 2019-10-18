@@ -1,5 +1,5 @@
 <?php
-	$message = $this->Session->flash();
+	$message = $this->Flash->render();
 	if(!$available){
 		$jsonReturn = array(
 			'message' => $message,
@@ -12,5 +12,5 @@
 		);
 	}
 	echo json_encode($jsonReturn);
-//	echo $this->Session->flash('auth');
+//	echo $this->Flash->render('auth');
 ?>

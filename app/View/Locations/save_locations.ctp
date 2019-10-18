@@ -1,5 +1,5 @@
 <?php
-	$message = $this->Session->flash();
+	$message = $this->Flash->render();
 	$jsonReturn = array(
 		'message' => $message,
 		'save' => $save

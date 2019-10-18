@@ -1,5 +1,5 @@
 <?php
-echo $this->Session->flash();
+echo $this->Flash->render();
 $class = ($owner) ? 'user owner' : 'user';
 //$this->FgHtml->ddd(array($group, $access), 'role');
 if ($customerFlag && ($group === 'Staff' || $group === 'Admins') && $access === 'Manager') {

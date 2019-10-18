@@ -1,5 +1,5 @@
 <div class="users form">
-    <?php echo $this->Session->flash('auth');
+    <?php echo $this->Flash->render('auth');
     echo $this->fetch('timeout');
     echo $this->Form->create('User', [
             'url' => ['controller' => 'users', 'action' => 'login']

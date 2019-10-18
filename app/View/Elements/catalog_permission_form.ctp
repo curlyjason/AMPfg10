@@ -1,6 +1,6 @@
 <?php
 echo $this->Html->div('catalogPermissionForm', NULL);
-echo $this->Session->flash();
+echo $this->Flash->render();
 echo $this->FgForm->create('User', array('class' => 'grainVersion'));
 echo $this->FgForm->input('User.id', array('type' => 'hidden'));
 

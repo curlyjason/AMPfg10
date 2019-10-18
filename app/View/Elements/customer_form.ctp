@@ -5,7 +5,7 @@
 </div>
 <div class="userForm">
     <?php
-    echo $this->Session->flash();
+    echo $this->Flash->render();
     echo $this->FgForm->create('Customer', array('class' => 'grainVersion'));
     echo $this->FgForm->secureId('Customer.id', $id);
     echo $this->FgForm->input('Customer.order_contact');

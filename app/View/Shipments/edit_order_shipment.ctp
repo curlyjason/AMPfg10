@@ -86,7 +86,7 @@ echo $this->Html->div('displayAddresses', NULL);
 
 	echo $this->Html->div('addressSelectors', NULL);
 		echo $this->Html->tag('h2', 'Shipping Address');
-		echo $this->Session->flash('validationError');
+		echo $this->Flash->render('validationError');
 		if(!empty($myAddresses)){
 			echo $this->Form->input('myAddresses', array('empty' => 'Select an Address', 'class' => 'addressSelect'));
 		}

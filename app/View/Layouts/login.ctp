@@ -70,8 +70,8 @@ $this->end();
 
             <div id="content">
                 <?php
-				echo $this->Session->flash();
-				echo $this->Session->flash('auth');
+				echo $this->Flash->render();
+				echo $this->Flash->render('auth');
                 if (isset($pageHeading)) {
                     echo $this->Html->tag('h1', $pageHeading);
                 }
