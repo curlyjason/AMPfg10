@@ -121,7 +121,7 @@ class LabelsController extends AppController {
 		if ($this->request->is('post')) {
 			if ($this->Label->saveLabel($this->request->data)) {
 				$this->request->data['Label']['id'] = $this->Label->getInsertID();
-				$this->Session->setFlash('The new label was saved.', 'flash_success');
+				$this->Flash->success('The new label was saved.');
 			} else {
 				$this->Flash->error('The label couldn\'t be saved. Please try again.');
 			}
@@ -138,7 +138,7 @@ class LabelsController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Label->saveLabel($this->request->data)) {
-				$this->Session->setFlash(__('The label has been saved'), 'flash_success');
+				$this->Flash->success(__('The label has been saved'));
 				$this->redirect(array('controller' => 'orders', 'action' => 'shippingLabels', $this->request->data['Label']['order_id']));
 			} else {
 				$this->Flash->error(__('The label could not be saved. Please, try again.'));
@@ -162,7 +162,7 @@ class LabelsController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Label->delete()) {
-			$this->Session->setFlash(__('Label deleted'), 'flash_success');
+			$this->Flash->success(__('Label deleted'));
 		} else {
 			$this->Flash->error(__('Label was not deleted'));
 		}

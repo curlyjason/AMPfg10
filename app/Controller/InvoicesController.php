@@ -161,7 +161,7 @@ class InvoicesController extends AppController {
 		
 		if ($this->invoice) {
 			$this->packageInvoiceItems();
-			$this->Session->setFlash('The invoice saved', 'flash_success');
+			$this->Flash->success('The invoice saved');
 			$this->updateInvoiceStatus($cust_id);
 			// change the involved orders to 'invoiced' status
 			// use the ordercontroller method? or write a new one?
@@ -188,7 +188,7 @@ class InvoicesController extends AppController {
 			$this->Flash->error('An invoice was created, but the charge items failed to link. Please try again.');
 			return FALSE;
 		}
-		$this->Session->setFlash('The charge items were successfully linked to an invoice', 'flash_success');
+		$this->Flash->success('The charge items were successfully linked to an invoice');
 		return TRUE;
 	}
 	

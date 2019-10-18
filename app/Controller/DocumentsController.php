@@ -186,7 +186,7 @@ class DocumentsController extends AppController {
 		if(!empty($this->request->data)){
 			$save =$this->Document->saveMany($this->request->data['Document']);
 			if($save) {
-				$this->Session->setFlash('Saved the Documents', 'flash_success');
+				$this->Flash->success('Saved the Documents');
 			} else {
 				$this->Flash->error('Document save failed');
 			}

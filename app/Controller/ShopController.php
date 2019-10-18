@@ -44,7 +44,7 @@ class ShopController extends AppController {
             $product = $this->Cart->add($id, 1);
         }
         if (!empty($product)) {
-            $this->Session->setFlash($product['Item']['name'] . ' was added to your shopping cart.', 'flash_success');
+            $this->Flash->success($product['Item']['name'] . ' was added to your shopping cart.');
         }
         return $this->redirect($this->referer());
     }
@@ -92,7 +92,7 @@ class ShopController extends AppController {
             }
 			$this->installComponent('Budget');
 			$this->Budget->updateRemainingBudget();
-            $this->Session->setFlash('Shopping Cart is updated.', 'flash_success');
+            $this->Flash->success('Shopping Cart is updated.');
         }
         return $this->redirect(array('action' => 'cart'));
     }

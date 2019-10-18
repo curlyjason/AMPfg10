@@ -1148,7 +1148,7 @@ class OrdersController extends AppController {
     public function updateExclusion($id, $exclusion) {
         $this->Order->id = $id;
         if ($this->Order->saveField('exclude', $exclusion)) {
-            $this->Session->setFlash('Change saved', 'flash_success');
+            $this->Flash->success('Change saved');
         } else {
             $this->Flash->error('The change was not saved');
         }

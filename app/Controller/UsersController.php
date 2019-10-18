@@ -454,7 +454,7 @@ class UsersController extends AppController {
                 if ($this->User->refreshPermissions) {
                     $this->setNodeAccess($this->Auth->user('id'));
                 }
-                $this->Session->setFlash(__('The user has been saved'), 'flash_success');
+                $this->Flash->success(__('The user has been saved'));
 
                 // normal CRUD adds redirect to index
                 if ($this->request->action == 'add') {
@@ -503,7 +503,7 @@ class UsersController extends AppController {
             $this->validateIds($this->request->data['Catalog']['Catalog']);
 
             if ($this->User->save($this->request->data)) {
-                $this->Session->setFlash(__('The user has been saved'), 'flash_success');
+                $this->Flash->success(__('The user has been saved'));
                 return $this->redirect(array('action' => 'index'));
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
@@ -527,7 +527,7 @@ class UsersController extends AppController {
         }
         $this->request->onlyAllow('post', 'delete');
         if ($this->User->delete()) {
-            $this->Session->setFlash(__('User deleted'), 'flash_success');
+            $this->Flash->success(__('User deleted'));
             $this->redirect($this->referer());
         }
         $this->Flash->error(__('User was not deleted'));
@@ -983,7 +983,7 @@ class UsersController extends AppController {
 
             //Save with error capture
             if($this->User->saveAll($descendents)){
-                $this->Session->setFlash("User and descendents {$activeToggle}d.", 'flash_success');
+                $this->Flash->success("User and descendents {$activeToggle}d.");
                 //check if user is customer deactivate the user's root catalog node
                 if($this->User->Customer->field('id', array('user_id' => $id))){
                     $r = $this->User->Catalog->field('id', array('customer_user_id' => $id));
@@ -1023,7 +1023,7 @@ class UsersController extends AppController {
             if ($save) {
                 $result = TRUE;
                 $this->sendRegisterEmail($user['User']['username'], $user['User']['password']);
-                $this->Session->setFlash('An email has been sent so you can reset your password', 'flash_success');
+                $this->Flash->success('An email has been sent so you can reset your password');
             } else {
                 $result = FALSE;
                 $this->Flash->error('The process failed. Please try again.');
@@ -1180,10 +1180,10 @@ class UsersController extends AppController {
 
                     // did the password save?
                     if ($save) {
-                        $this->Session->setFlash('Your password was reset', 'flash_success');
+                        $this->Flash->success('Your password was reset');
                         // did the user request this change? (or was it part of the registration process)
                         if (!$requireCurrent) {
-                            $this->Session->setFlash('Your password was reset. Welcome to the Amp Finished Goods System.', 'flash_success');
+                            $this->Flash->success('Your password was reset. Welcome to the Amp Finished Goods System.');
                         } else {
                             $Email = new CakeEmail();
                             $Email->config('smtp')
@@ -1323,7 +1323,7 @@ class UsersController extends AppController {
             $this->validateIds($this->request->data['UserManaged']);
 
             if ($this->User->save($this->request->data)) {
-                $this->Session->setFlash(__('The user access has been saved'), 'flash_success');
+                $this->Flash->success(__('The user access has been saved'));
                 return $this->redirect($this->referer());
             }
             $this->Flash->error(__('The user access could not be saved. Please, try again.'));
@@ -1341,7 +1341,7 @@ class UsersController extends AppController {
             $this->validateIds($this->request->data['Catalog']);
 
             if ($this->User->save($this->request->data)) {
-                $this->Session->setFlash(__('The catalog access has been saved'), 'flash_success');
+                $this->Flash->success(__('The catalog access has been saved'));
                 return $this->redirect($this->referer());
             }
             $this->Flash->error(__('The catalog access could not be saved. Please, try again.'));

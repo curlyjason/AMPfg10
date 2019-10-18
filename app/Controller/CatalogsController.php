@@ -160,7 +160,7 @@ class CatalogsController extends AppController {
                 if ($this->Catalog->refreshPermissions) {
                     $this->setNodeAccess($this->Auth->user('id'));
                 }
-                $this->Session->setFlash(__('The catalog has been saved'), 'flash_success');
+                $this->Flash->success(__('The catalog has been saved'));
 
                 // normal CRUD adds redirect to index
                 if ($this->request->action == 'add') {
@@ -191,7 +191,7 @@ class CatalogsController extends AppController {
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Catalog->save($this->request->data)) {
-                $this->Session->setFlash(__('The catalog has been saved'), 'flash_success');
+                $this->Flash->success(__('The catalog has been saved'));
                 $this->redirect(array('action' => 'index'));
             } else {
                 $this->Flash->error(__('The catalog could not be saved. Please, try again.'));
@@ -405,7 +405,7 @@ class CatalogsController extends AppController {
         }
         $this->request->onlyAllow('post', 'delete');
         if ($this->Catalog->delete()) {
-            $this->Session->setFlash(__('Catalog deleted'), 'flash_success');
+            $this->Flash->success(__('Catalog deleted'));
             $this->redirect($this->referer());
         }
         $this->Flash->error(__('Catalog was not deleted'));
@@ -576,7 +576,7 @@ class CatalogsController extends AppController {
         $itemId = false;
         if ($this->request->is('post') || $this->request->is('put')) {
             if($this->universalSave($this->request->data)){
-                $this->Session->setFlash('The catalog has been saved', 'flash_success');
+                $this->Flash->success('The catalog has been saved');
             } else {
                 $this->Flash->error(__('The catalog has NOT been saved'));
             }
@@ -1158,7 +1158,7 @@ class CatalogsController extends AppController {
 		//update kit inventory
 		$this->updateKitInventory($qty, array(0 => $this->kit), 'increase');
 				
-		$this->Session->setFlash("$qty kit(s) were created from components.", 'flash_success');
+		$this->Flash->success("$qty kit(s) were created from components.");
 	}
 	
 	/**
@@ -1195,7 +1195,7 @@ class CatalogsController extends AppController {
 		//update kit inventory
 		$this->updateKitInventory($qty, array(0 => $this->kit), 'reduce');
 		
-		$this->Session->setFlash("$qty kit(s) were broken.", 'flash_success');
+		$this->Flash->success("$qty kit(s) were broken.");
 	}
 	
 	/**

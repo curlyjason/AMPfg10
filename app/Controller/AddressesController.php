@@ -56,7 +56,7 @@ class AddressesController extends AppController {
         if ($this->request->is('post')) {
             $this->Address->create();
             if ($this->Address->save($this->request->data)) {
-                $this->Session->setFlash(__('The address has been saved'), 'flash_success');
+                $this->Flash->success(__('The address has been saved'));
                 $this->redirect(array('action' => 'index'));
             } else {
                 $this->Flash->error(__('The address could not be saved. Please, try again.'));
@@ -79,7 +79,7 @@ class AddressesController extends AppController {
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Address->save($this->request->data)) {
-                $this->Session->setFlash(__('The address has been saved'), 'flash_success');
+                $this->Flash->success(__('The address has been saved'));
                 $this->redirect(array('action' => 'index'));
             } else {
                 $this->Flash->error(__('The address could not be saved. Please, try again.'));
@@ -142,7 +142,7 @@ class AddressesController extends AppController {
         $this->layout = 'ajax';
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Address->save($this->request->data)) {
-                $this->Session->setFlash('This address saved.', 'flash_success');
+                $this->Flash->success('This address saved.');
             } else {
                 $this->Flash->error('The address did not save. Please try again.');
             }
@@ -162,7 +162,7 @@ class AddressesController extends AppController {
         $this->layout = 'ajax';
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Address->save($this->request->data)) {
-                $this->Session->setFlash('This address saved.', 'flash_success');
+                $this->Flash->success('This address saved.');
             } else {
                 $this->Flash->error('The address did not save. Please try again.');
             }
@@ -183,7 +183,7 @@ class AddressesController extends AppController {
         $this->layout = 'ajax';
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Address->save($this->request->data)) {
-                $this->Session->setFlash('This vendor saved.', 'flash_success');
+                $this->Flash->success('This vendor saved.');
             } else {
                 $this->Flash->error('The vendor did not save. Please try again.');
             }
@@ -201,7 +201,7 @@ class AddressesController extends AppController {
         $this->layout = 'ajax';
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Address->save($this->request->data)) {
-                $this->Session->setFlash('This vendor saved.', 'flash_success');
+                $this->Flash->success('This vendor saved.');
             } else {
                 $this->Flash->error('The vendor did not save. Please try again.');
             }
@@ -246,7 +246,7 @@ this is called from ReplenishmentsController->createReplenishments() the line wa
     }
 	
 	public function testMe(){
-        $this->Session->setFlash('success', 'flash_success');
+        $this->Flash->success('success');
         $this->Flash->error('error');
         $this->Auth->flash('Auth message');
         $this->Flash->set('normal message');

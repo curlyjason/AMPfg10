@@ -66,7 +66,7 @@ class ObserversController extends AppController {
         if ($this->request->is('post')) {
             $this->Observer->create();
             if ($this->Observer->save($this->request->data)) {
-                $this->Session->setFlash(__('The observer has been saved'), 'flash_success');
+                $this->Flash->success(__('The observer has been saved'));
                 $this->redirect(array('action' => 'index'));
             } else {
                 $this->Flash->error(__('The observer could not be saved. Please, try again.'));
@@ -90,7 +90,7 @@ class ObserversController extends AppController {
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Observer->save($this->request->data)) {
-                $this->Session->setFlash(__('The observer has been saved'), 'flash_success');
+                $this->Flash->success(__('The observer has been saved'));
                 if ($this->request->params['action'] != 'edit') {
                     $this->redirect($this->referer());
                 } else {
@@ -171,7 +171,7 @@ class ObserversController extends AppController {
         if ($this->request->is('post') || $this->request->is('put')) {
             $this->Observer->create();
             if ($this->Observer->save($this->request->data)) {
-                $this->Session->setFlash(__('The observer has been saved'), 'flash_success');
+                $this->Flash->success(__('The observer has been saved'));
                 $this->redirect($this->referer());
             } else {
                 $this->Flash->error(__('The observer could not be saved. Please, try again.'));
@@ -191,7 +191,7 @@ class ObserversController extends AppController {
         if ($this->request->is('post') || $this->request->is('put')) {
             $this->Observer->create();
             if ($this->Observer->save($this->request->data)) {
-                $this->Session->setFlash(__('The observer has been saved'), 'flash_success');
+                $this->Flash->success(__('The observer has been saved'));
                 $this->redirect($this->referer());
             } else {
                 $this->Flash->error(__('The observer could not be saved. Please, try again.'));

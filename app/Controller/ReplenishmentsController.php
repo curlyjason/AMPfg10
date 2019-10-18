@@ -422,7 +422,7 @@ class ReplenishmentsController extends AppController {
         if(!$this->Replenishment->save($replenishment)){
             $this->Flash->error(__('The Replenishment failed to update, please try again'));
         }
-        $this->Session->setFlash(__('The Replenishment was completed'), 'flash_success');
+        $this->Flash->success(__('The Replenishment was completed'));
         $this->redirect($this->referer());
     }
 

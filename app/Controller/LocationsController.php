@@ -155,7 +155,7 @@ class LocationsController extends AppController {
 		// Save
 		$save = $this->Location->saveAll($this->request->data);
 		if($save){
-			$this->Session->setFlash('The locations saved.', 'flash_success');
+			$this->Flash->success('The locations saved.');
 		}
 		$this->set('save', $save);
 	}

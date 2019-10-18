@@ -94,7 +94,7 @@ class CustomersController extends AppController {
                     $this->setNodeAccess($this->Auth->user('id'));
                 }
 
-				$this->Session->setFlash(__('The customer has been saved'), 'flash_success');
+				$this->Flash->success(__('The customer has been saved'));
                 $this->redirect(array(
                     'controller' => 'users',
                     'action' => 'edit_userGrain/',
@@ -376,7 +376,7 @@ class CustomersController extends AppController {
             $result = false;
         } else {
             //If the save happens, return true
-            $this->Session->setFlash('The token was updated', 'flash_success');
+            $this->Flash->success('The token was updated');
             $result = true;
         }
         $this->set('result', $result);
