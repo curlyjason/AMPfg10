@@ -246,6 +246,12 @@ this is called from ReplenishmentsController->createReplenishments() the line wa
     }
 	
 	public function testMe(){
+        $this->Session->setFlash('success', 'flash_success');
+        $this->Session->setFlash('error', 'flash_error');
+        $this->Auth->flash('Auth message');
+        $this->Flash->set('normal message');
+        $this->Flash->success('new success');
+        $this->Flash->error('new error');
 		$this->ddd($this->accessPattern, 'Access Pattern');
 	}
 }
