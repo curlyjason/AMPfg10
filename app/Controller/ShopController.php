@@ -239,7 +239,7 @@ class ShopController extends AppController {
                 return $this->redirect(array('action' => 'review'));
             } else {
                 $validationMessages = $this->Shipment->fetchModelValidationMessage($this->Shipment->validationErrors);
-                $this->Session->setFlash($validationMessages, 'validationError');
+                $this->Flash->error($validationMessages);
                 return $this->redirect(array('action' => 'address'));
             }
         }

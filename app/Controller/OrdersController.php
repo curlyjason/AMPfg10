@@ -353,13 +353,13 @@ class OrdersController extends AppController {
         if ($save) {
             $message = 'Change';
             $flashMessage = $existingMessage . ' | Job: ' . $order_number . ' | '  . $this->currentStatus;
-            $messageType = 'flash_success';
+            $messageType = 'success';
         } else {
             $flashMessage = $existingMessag . ' | Job: ' . $order_number . ' | Save Failure';
-            $messageType = 'flash_error';
+            $messageType = 'error';
         }
 
-        $this->Session->setFlash(__($flashMessage), $messageType);
+        $this->Flash->$messageType(__($flashMessage), $messageType);
 
         // if the save was successful
         if ($save) {

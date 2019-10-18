@@ -802,12 +802,12 @@ class CatalogsController extends AppController {
 
         if($this->Catalog->Item->saveAll($this->items)){
             $message .= " Linked items have been {$activeToggle}d.";
-            $messageType = 'flash_success';
+            $messageType = 'success';
         } else {
             $message .= " Failed to $activeToggle items, please try again.";
-            $messageType = 'flash_error';
+            $messageType = 'error';
         }
-        $this->Session->setFlash($message, $messageType);
+        $this->Flash->$messageType($message);
         $this->redirect($this->referer());
 
     }
