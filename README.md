@@ -12,16 +12,15 @@
       - command line running has an autoload problem
       - webrunner must be called on a full path [fg.com/app/webroot/test.php]. Some .htaccess problem?
    - Testing data connections are not working.
+   - Took care of Session->flash change to Flash Helper/Component
    - END OF DAY: 
       - Login is possible. 
       - Error free access to status page established. 
       - Testing is possible through the webrunner at `dev.fg.com/app/webroot/test.php`.
       - Baking fixtures with data works through console
+      - Controller deprecations down to 19 from starting count of 303
          
 # Plan
 - Deprecation removal
-   - Over 300 Session->setFlash() issues in Controllers.
-      - write tests and convert to Flash->set()   
-      The plan is to make a simpl FlashControllerTest class that uses both the 
-      Session and Flash components so I can confirm the new Flash calls 
-      create the same HTML as the old Session calls
+   - Currently working on Controller folder. 19 of 303 remaining.
+- Search out php changes
