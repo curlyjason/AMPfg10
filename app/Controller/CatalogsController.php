@@ -1252,23 +1252,18 @@ class CatalogsController extends AppController {
 		//step through the provided data records
 		foreach ($data as $index => $component) {
 			//setup variables
-//			$catalogName = $component['Catalog']['name'];
 			$itemId = $component['Item']['id'];
 			$itemQty = $this->Catalog->Item->field('quantity', array('Item.id' => $itemId));
 			$adjustment = $qty * $component['Catalog']['sell_quantity'];
 			$newQty = $itemQty + $adjustment;
-//			$userName = $this->Catalog->Item->OrderItem->Order->User->discoverName($this->Auth->user('id'));
-			
-			//
-			$this->Catalog->Item->create();
-			$this->Catalog->Item->id = $itemId = $component['Item']['id'];
-			$save = $this->Catalog->Item->saveField('quantity', $newQty);
-			if ($save) {
-//				$this->request->data['Item'] = array('id' => $itemId, 'quantity' => )
+
+			$data = [
+                'id' => $itemId,
+                'quantity' => $newQty
+            ];
+			if ($this->Catalog->Item->save($data)) {
 				$this->Catalog->Item->manageUncommitted($itemId);
-//				$this->ddd($component['Catalog']);
-//				$this->Catalog->Item->discoverCustomerUserId($itemId);
-				
+
 				$this->Log = ClassRegistry::init('Log');
 				$this->Log->create('inventory');
 				$this->Log

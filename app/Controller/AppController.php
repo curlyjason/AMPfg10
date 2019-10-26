@@ -894,22 +894,27 @@ class AppController extends Controller {
 	/**
 	 * Lock a node for editing and record details in Auth session
 	 * 
-	 * @param Model $Model
-	 * @param int $id Id of the node to lock for editing
+	 * @param Catalog|User $Model
+	 * @param int $recordId Id of the node to lock for editing (users or catalogs)
 	 * @return boolean Did the lock succeed
+     * @todo 'lock' fields are in catalogs and users
+     *      this code does not have to be in appController.
+     *      The two calls are made from UsersController, so the
+     *      Catalog version is also in the wrong class
 	 */
-	public function setLock(Model $Model, $id) {
-		$Model->id = $id;
+	public function setLock(Model $Model, $recordId) {
 		$this->User->Behaviors->disable('ThinTree');
-		if ($Model->saveField('lock', $this->Auth->user('id'))) {
+		$userId = $this->Auth->user('id');
+		$result = $Model->save(['id' => $recordId, 'lock' => $userId]);
+
+		if ($result) {
 			$this->Session->write('Auth.User.edit.mode', true);
 			$this->Session->write('Auth.User.edit.model', $Model->alias);
-			$this->Session->write('Auth.User.edit.id', $id);
-			$this->User->Behaviors->enable('ThinTree');
-			return true;
+			$this->Session->write('Auth.User.edit.id', $recordId);
 		}
+
 		$this->User->Behaviors->enable('ThinTree');
-		return false;
+		return $result;
 	}
 
 	/**
