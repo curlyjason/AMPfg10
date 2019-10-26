@@ -10,7 +10,7 @@
    - db migration was done. Tables came on line and login works.
    - phpunit testing was fixed
       - command line running has an autoload problem
-      - webrunner must be called on a full path [fg.com/app/webroot/test.php]. Some .htaccess problem?
+      - webrunner must be called on a full path `dev.fg.com/app/webroot/test.php`. Some .htaccess problem?
    - Testing data connections are not working.
    - Took care of Session->flash change to Flash Helper/Component
    - END OF DAY: 
