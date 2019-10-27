@@ -58,7 +58,8 @@ class ThinTreeBehavior extends ModelBehavior {
         }
         $settings = array_merge($this->_defaults, $config);
 
-        if (in_array($settings['scope'], $Model->getAssociated('belongsTo'))) {
+        // ?? [] was added to support Mocks in testing
+        if (in_array($settings['scope'], $Model->getAssociated('belongsTo') ?? [])) {
             $data = $Model->getAssociated($settings['scope']);
             $Parent = $Model->{$settings['scope']};
             $settings['scope'] = $Model->escapeField($data['foreignKey']) . ' = ' . $Parent->escapeField();
