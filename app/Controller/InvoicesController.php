@@ -280,8 +280,12 @@ class InvoicesController extends AppController {
 	 */
 	public function saveInvoiceNumber($id, $jobNumber) {
 		$this->layout = 'ajax';
+		$data = [
+		    'id' => $id,
+            'job_number' => $jobNumber
+        ];
 		$this->Invoice->id = $id;
-		if($this->Invoice->saveField('job_number', $jobNumber)){
+		if($this->Invoice->save($data)){
 			$jsonReturn = array('response' => TRUE);
 		} else {
 			$jsonReturn = array('response' => FALSE);
