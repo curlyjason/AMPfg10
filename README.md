@@ -36,10 +36,17 @@
       - Error free access to status page established. 
       - Testing is possible through the webrunner at `dev.fg.com/app/webroot/test.php`.
       - Baking fixtures with data works through console
-   
+   - Finish structural change from 10/26:
+      - dump files external to app (lib, vendor, plugin)   
+      These were old versions of software and did not seem to be in the 
+      correct place. System runs without them
          
 # Plan
 - Deprecation removal
    - Controller folder complete
    - Model folder has 4 saveField() uses
 - Search out php changes
+- Apparent core deprecation warning:   
+   - > Deprecated (16384): Using key `action` is deprecated, use `url` directly instead. [APP/Vendor/cakephp/cakephp/lib/Cake/View/Helper/FormHelper.php, line 383]
+   - How can this come from 2.10? how do I suppress it? 
+   - Or is it a warning FROM the helper about my usage?
