@@ -337,15 +337,21 @@ class OrdersController extends AppController {
 
         // an odd way of determining record type...
         if ($this->alias === 'Order' ) {
-            $this->Order->id = $this->orderId;
             $order_number = $this->Order->field('order_number');
-            $save = $this->Order->saveField('status', $this->currentStatus);
+            $data = [
+                'id' => $this->orderId,
+                'status' => $this->currentStatus
+            ];
+            $save = $this->Order->save($data);
         } else {
             //this is a Replenishment
             $this->Replenishment = ClassRegistry::init('Replenishment');
-            $this->Replenishment->id = $this->replenishmentId;
             $order_number = $this->Replenishment->field('order_number');
-            $save = $this->Replenishment->saveField('status', $this->currentStatus);
+            $data = [
+                'id' => $this->replenishmentId,
+                'status' => $this->currentStatus
+            ];
+            $save = $this->Replenishment->save($data);
         }
 
         // flash a message to the view
@@ -655,8 +661,11 @@ class OrdersController extends AppController {
      * @return string The final landing status
      */
     private function statusShip($id) {
-        $this->Order->id = $id;
-        $this->Order->saveField('ship_date', date('Y-m-d H:i:s', time()));
+        $data = [
+            'id' => $id,
+            'ship_date' => date('Y-m-d H:i:s', time())
+        ];
+        $this->Order->save($data);
         $key = 'Ship';
         return ('Shipped');
     }
@@ -737,8 +746,11 @@ class OrdersController extends AppController {
                     'OrderItem'
                 )
             ));
-            $this->Order->id = $order['Order']['id'];
-            $this->Order->saveField('status', 'Submitted');
+            $data = [
+                'id' => $order['Order']['id'],
+                'status' => 'Submitted'
+            ];
+            $this->Order->save($data);
             foreach ($order['OrderItem'] as $key => $orderItem) {
                 $this->Order->OrderItem->Item->manageUncommitted($orderItem['item_id']);
             }
@@ -893,8 +905,11 @@ class OrdersController extends AppController {
         // Just change the status of the order & update the items
         if ($mode == 'fullOrder') {
             //temporarily set the order status to backorder for efficient order line function
-            $this->Order->id = $orderId;
-            $this->Order->saveField('status', 'Backordered');
+            $data = [
+                'id' => $orderId,
+                'status' => 'Backordered'
+            ];
+            $this->Order->save($data);
 
             //update all the order items
             foreach ($order['OrderItem'] as $key => $orderItem) {
@@ -1146,8 +1161,11 @@ class OrdersController extends AppController {
      * @param int $exclusion exclusion setting
      */
     public function updateExclusion($id, $exclusion) {
-        $this->Order->id = $id;
-        if ($this->Order->saveField('exclude', $exclusion)) {
+        $data = [
+            'id' => $id,
+            'exclude' => $exclusion
+        ];
+        if ($this->Order->save($data)) {
             $this->Flash->success('Change saved');
         } else {
             $this->Flash->error('The change was not saved');
