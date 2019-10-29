@@ -301,9 +301,14 @@ class ReplenishmentsController extends AppController {
             }
             $result = $this->Replenishment->saveAll($this->request->data);
             if ($result) {
-                $number = $this->Replenishment->getReplenishmentNumber($this->Replenishment->id);
+                $id = $this->Replenishment->id;
+                $number = $this->Replenishment->getReplenishmentNumber($id);
                 if ($number) {
-                    $this->Replenishment->saveField('order_number', $number);
+                    $data = [
+                        'id' => $id,
+                        'order_number' => $number
+                    ];
+                    $this->Replenishment->save($data);
                 }
                 // update Item model pending_qty vals
                 foreach($this->request->data['ReplenishmentItem'] as $index => $lineItem) {
@@ -348,9 +353,11 @@ class ReplenishmentsController extends AppController {
             }
             $result = $this->Replenishment->saveAll($this->request->data);
             if ($result) {
-                $number = $this->Replenishment->getReplenishmentNumber($this->Replenishment->id);
+                $id = $this->Replenishment->id;
+                $number = $this->Replenishment->getReplenishmentNumber($id);
                 if ($number) {
-                    $this->Replenishment->saveField('order_number', $number);
+                    $data = ['id' => $id, 'order_number' => $number];
+                    $this->Replenishment->save($data);
                 }
                 // update Item model pending_qty vals
                 foreach($this->request->data['ReplenishmentItem'] as $index => $lineItem) {
