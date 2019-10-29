@@ -1018,9 +1018,11 @@ class UsersController extends AppController {
         ));
         if (!empty($user)) {
             $user['User']['password'] = $this->initNewUserPass();
-            $this->User->id = $user['User']['id'];
-            $save = $this->User->saveField('password', $user['User']['password']);
-            if ($save) {
+            $data = [
+                'id' => $user['User']['id'],
+                'password' => $user['User']['password']
+            ];
+            if ($this->User->save($data)) {
                 $result = TRUE;
                 $this->sendRegisterEmail($user['User']['username'], $user['User']['password']);
                 $this->Flash->success('An email has been sent so you can reset your password');
