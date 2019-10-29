@@ -42,12 +42,5 @@
       - Baking fixtures with data works through console
          
 # Plan
-- Deprecation removal
-   - Controller folder complete
-   - Model folder has 4 saveField() uses
+- Click around to see how app survived deprecation fixes 
 - Search out php changes
-- Apparent core deprecation warning:   
-   - > Deprecated (16384): Using key `action` is deprecated, use `url` directly instead. [APP/Vendor/cakephp/cakephp/lib/Cake/View/Helper/FormHelper.php, line 383]
-   - How can this come from 2.10? how do I suppress it? 
-   - Or is it a warning FROM the helper about my usage?
-   - Status page, order, tool: docs reveals this error
