@@ -9,7 +9,15 @@
 		$closeForm = '';
 	} else {
 		$done = $this->Form->button('Done', array('type' => 'submit', 'class' => 'docDoneButton regular', 'bind' => 'click.docDone'));
-		$openForm = $this->Form->create('Document', array('type' => 'file', 'method' => 'post', 'controller' => 'documents', 'action' => 'save'));
+		$openForm = $this->Form->create(
+		    'Document',
+            [
+                'type' => 'file',
+                'method' => 'post',
+                'controller' => 'documents',
+                'url' => ['action' => 'save']
+            ]
+        );
 		$closeForm = '</form>';
 	}
 	$headers = array('Document', 'Tool');
