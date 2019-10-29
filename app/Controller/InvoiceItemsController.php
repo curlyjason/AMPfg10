@@ -534,15 +534,15 @@ class InvoiceItemsController extends AppController {
 		// extract some values from posted data
 		$index = key($this->request->data['InvoiceItem']);
 		$field = Inflector::underscore(str_replace("InvoiceItem$index", '', $this->request->data['field']));
-		$this->InvoiceItem->id = $this->request->data['InvoiceItem'][$index]['id'];
-		
-		$save = $this->InvoiceItem->saveField($field, $this->request->data['InvoiceItem'][$index][$field]);
-		
-		if ($save) {
+		$data = [
+		    'id' => $this->request->data['InvoiceItem'][$index]['id'],
+            $field => $this->request->data['InvoiceItem'][$index][$field]];
+
+		if ($this->InvoiceItem->save($data)) {
 			
 			// read in the new subtotal
 			$this->InvoiceItem->recursive = -1;
-			$invoiceItem = $this->InvoiceItem->read(array('subtotal'));
+			$invoiceItem = $this->InvoiceItem->read(['subtotal']);
 
 			// prepare the new group header total and identify our target group
 			if (empty($this->request->data['InvoiceItem'][$index]['order_id'])){
