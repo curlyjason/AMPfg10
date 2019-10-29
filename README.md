@@ -13,14 +13,25 @@
       - webrunner must be called on a full path `dev.fg.com/app/webroot/test.php`. Some .htaccess problem?
    - Testing data connections are not working.
    - Took care of Session->flash change to Flash Helper/Component
+- 10/28
+    - Controller deprecations are complete
+    - disableCache() deprecation was ignored   
+    This one sets some headers to prevent browser caching, a topic I don't 
+    really understand. So adding new poorly understood fixes to a poorly 
+    understood bit of code that is not slated for further updates 
+    seemed unnecessary.
+    - Testing of saveField() deprecations was abandoned.   
+    I made some progress with testing and using mocks, but so many of these 
+    fixes were a minor part of a larger process. I opted for careful proofing 
+    of the fairly simple fixes required to remove the method call.
    - END OF DAY: 
       - Login is possible. 
       - Error free access to status page established. 
       - Testing is possible through the webrunner at `dev.fg.com/app/webroot/test.php`.
       - Baking fixtures with data works through console
-      - Controller deprecations down to 19 from starting count of 303
          
 # Plan
 - Deprecation removal
-   - Currently working on Controller folder. 19 of 303 remaining.
+   - Controller folder complete
+   - Model folder has 4 saveField() uses
 - Search out php changes
