@@ -783,8 +783,11 @@ class Catalog extends AppModel {
 			$vendor_id = $vendor['Vendor']['id'];
 			$children = $this->getDecendents($catalog['Catalog']['id'], FALSE, array('type <>' => 2), array('contain' => array('Item')));
 			foreach ($children as $child) {
-				$this->Item->id = $child['Item']['id'];
-				$this->Item->saveField('vendor_id', $vendor_id);
+			    $data = [
+			        'id' => $child['Item']['id'],
+                    'vendor_id' => $vendor_id
+                ];
+				$this->Item->save($data);
 			}
 		}
 	}

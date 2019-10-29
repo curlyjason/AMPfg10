@@ -1038,7 +1038,8 @@ class Order extends AppModel {
         $this->save($this->newBackorder, false);
         $order_number = $this->getOrderNumber($this->id);
         if ($order_number) {
-            $this->saveField('order_number', $order_number);
+            $data = ['id' => $this->id, 'order_number' => $order_number];
+            $this->save($data);
             return $this->id;
         } else {
             $this->removeOrder($this->id);
@@ -1051,8 +1052,11 @@ class Order extends AppModel {
         $this->ofb['Backorder']['id'] = $this->newBackorderId;
 
         //save the backorder_id field into the original order
-        $this->id = $this->ofb['Order']['id'];
-        $this->saveField('backorder_id', $this->ofb['Order']['backorder_id']);
+        $data = [
+            'id' => $this->ofb['Order']['id'],
+            'backorder_id' => $this->ofb['Order']['backorder_id']
+        ];
+        $this->save($data);
     }
 
     private function updateBackorderShipment() {
@@ -1112,8 +1116,8 @@ class Order extends AppModel {
             )
         ));
         if (!empty($backorder)) {
-            $this->id = $backorder['Order']['id'];
-            $this->saveField('backorder_id', '');
+            $data = ['id' => $backorder['Order']['id'], 'backorder_id' => ''];
+            $this->save($data);
         }
         $this->delete($id);
     }
