@@ -48,15 +48,28 @@
 ## Found errors
 - Putting an item on the card yields error
    - >Database Error
-      >
-      >Error: SQLSTATE[42000]: Syntax error or access violation: 1140 In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'fg10.OrderItem.id'; this is incompatible with sql_mode=only_full_group_by
-      >
-      >SQL Query: SELECT `OrderItem`.`id`, SUM(each_quantity), `OrderItem`.`item_id` FROM `fg10`.`order_items` AS `OrderItem` WHERE `pulled` = 0 AND `OrderItem`.`item_id` = (45) 
+   >
+   >Error: SQLSTATE[42000]: Syntax error or access violation: 
+   >1140 In aggregated query without GROUP BY, expression #1 of SELECT list 
+   >contains nonaggregated column 'fg10.OrderItem.id'; this is incompatible with 
+   >sql_mode=only_full_group_by
+   >
+   >SQL Query: SELECT `OrderItem`.`id`, SUM(each_quantity), `OrderItem`.`item_id` 
+   >FROM `fg10`.`order_items` AS `OrderItem` WHERE `pulled` = 0 
+   >AND `OrderItem`.`item_id` = (45) 
 - Editing a customers catalog group access in the tree page yields:
    - >Database Error
-      >
-      >Error: SQLSTATE[22007]: Invalid datetime format: 1292 Truncated incorrect DOUBLE value: '285liadd5854b05000a65f9b968bc17d15d97abc397ed'
-      >
-      >SQL Query: UPDATE `fg10`.`users` SET `parent_id` = 25, `sequence` = 2, `id` = '285liadd5854b05000a65f9b968bc17d15d97abc397ed', `active` = 1, `folder` = '0', `first_name` = 'Random', `last_name` = 'Person', `username` = 'random@person.com', `role` = 'Staff Guest', `modified` = '2019-10-28 21:02:27' WHERE `fg10`.`users`.`id` = '285liadd5854b05000a65f9b968bc17d15d97abc397ed'
+   >
+   >Error: SQLSTATE[22007]: Invalid datetime format: 1292 Truncated incorrect 
+   >DOUBLE value: '285liadd5854b05000a65f9b968bc17d15d97abc397ed'
+   >
+   >SQL Query: UPDATE `fg10`.`users` SET `parent_id` = 25, `sequence` = 2, 
+   >`id` = '285liadd5854b05000a65f9b968bc17d15d97abc397ed', `active` = 1, 
+   >`folder` = '0', `first_name` = 'Random', `last_name` = 'Person', 
+   >`username` = 'random@person.com', `role` = 'Staff Guest', `modified` = '2019-10-28 21:02:27' 
+   >WHERE `fg10`.`users`.`id` = '285liadd5854b05000a65f9b968bc17d15d97abc397ed'
+   - Doing the save from the 'detail' page gives a more useful:
+      >Error: SQLSTATE[HY000]: General error: 1364 Field 'modified' 
+      >doesn't have a default value
    - Also, the edit resulted in a flash message:
       >That username is taken. Try another. 
