@@ -13,6 +13,12 @@
       - webrunner must be called on a full path `dev.fg.com/app/webroot/test.php`. Some .htaccess problem?
    - Testing data connections are not working.
    - Took care of Session->flash change to Flash Helper/Component
+- 10/26
+    - Restructuring: made app/Vendor folder so it holds all the vendor 
+    files including the cake core.   
+    After some research this seemed to be the correct construction for a 
+    2.10 app. This will result naturally from composing with the 
+    composer.json file inside the app folder.
 - 10/28
     - Controller deprecations are complete
     - disableCache() deprecation was ignored   
@@ -24,11 +30,13 @@
     I made some progress with testing and using mocks, but so many of these 
     fixes were a minor part of a larger process. I opted for careful proofing 
     of the fairly simple fixes required to remove the method call.
+    - Model class deprecations done
    - END OF DAY: 
       - Login is possible. 
       - Error free access to status page established. 
       - Testing is possible through the webrunner at `dev.fg.com/app/webroot/test.php`.
       - Baking fixtures with data works through console
+   
          
 # Plan
 - Deprecation removal
