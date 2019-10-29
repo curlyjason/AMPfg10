@@ -13,4 +13,3 @@
 	}
 	echo json_encode($jsonReturn);
 //	echo $this->Flash->render('auth');
-?>

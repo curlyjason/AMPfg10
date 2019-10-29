@@ -293,4 +293,3 @@ echo $this->Html->div('ajaxEditPull', NULL);
 		echo '</div>'; //closing the nonFolder div
 	}
 echo '</div>'; //closing the ajaxEditPull div
-?>

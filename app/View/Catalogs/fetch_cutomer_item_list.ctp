@@ -12,4 +12,3 @@ if ($itemList) {
 } else {
 	echo FALSE;
 }	
- ?>
