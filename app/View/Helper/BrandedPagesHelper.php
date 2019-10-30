@@ -6,7 +6,7 @@
 class BrandedPagesHelper extends AppHelper
 {
 	
-	public $helpers = ['Session'];
+	public $helpers = ['Session', 'Html'];
 
 	public function __construct(View $View, $settings = array())
 	{
@@ -31,14 +31,14 @@ class BrandedPagesHelper extends AppHelper
 
     public function superUglyHack($user_cutomer_id = 1, $customer_type = 'AMP')
     {
-        if($user_customer_id == 275){
-            echo $this->FgHtml->para(null, "Xtracycle");
-            echo $this->FgHtml->para(null, '868 43rd St.');
-            echo $this->FgHtml->para(null, 'Oakland, CA 94608, U.S.A.');
+        if($user_cutomer_id == 275){
+            echo $this->Html->para(null, "Xtracycle");
+            echo $this->Html->para(null, '868 43rd St.');
+            echo $this->Html->para(null, 'Oakland, CA 94608, U.S.A.');
         } else {
-            echo $this->FgHtml->para(null, $customer_type == 'AMP' ? "AMP Printing + Graphics" : "Gold Medal Press");
-            echo $this->FgHtml->para(null, '6955 Sierra Court');
-            echo $this->FgHtml->para(null, 'Dublin, CA 94568');
+            echo $this->Html->para(null, $customer_type == 'AMP' ? "AMP Printing + Graphics" : "Gold Medal Press");
+            echo $this->Html->para(null, '6955 Sierra Court');
+            echo $this->Html->para(null, 'Dublin, CA 94568');
         }
 
     }
