@@ -50,6 +50,7 @@ class AddressesController extends AppController {
     /**
      * add method
      *
+     * @throws Exception
      * @return void
      */
     public function add() {
@@ -70,6 +71,7 @@ class AddressesController extends AppController {
      * edit method
      *
      * @throws NotFoundException
+     * @throws Exception
      * @param string $id
      * @return void
      */
@@ -135,7 +137,8 @@ class AddressesController extends AppController {
      * GRAIN AJAX: address/vendor new/edit 
      * 
      * INCOMPLETE
-     * 
+     *
+     * @throws Exception
      * @param type $id
      */
     public function addressEdit($id = NULL) {
@@ -174,6 +177,9 @@ class AddressesController extends AppController {
         $this->render('/Elements/address_form');
     }
 
+    /**
+     * @param null $id
+     */
     public function addressDelete($id = NULL) {
         debug('Hey, deleting a record');
         $this->delete($id);
@@ -220,21 +226,25 @@ class AddressesController extends AppController {
 
 	// ERROR (a bit of a hack fix. disabled the 'probably' meaningless call) **
 	/**
-	 * 2014-08-29 12:19:53 Warning: Warning (2): Missing argument 2 for AddressesController::getAddress() in [/var/www/html/ampfg/app/Controller/AddressesController.php, line 220]
-Trace:
-AddressesController::getAddress() - APP/Controller/AddressesController.php, line 220
-ReflectionMethod::invokeArgs() - [internal], line ??
-Controller::invokeAction() - CORE/Cake/Controller/Controller.php, line 486
-Dispatcher::_invoke() - CORE/Cake/Routing/Dispatcher.php, line 187
-Dispatcher::dispatch() - CORE/Cake/Routing/Dispatcher.php, line 162
-[main] - APP/webroot/index.php, line 111
-
-this is called from ReplenishmentsController->createReplenishments() the line was
+	 * 2014-08-29 12:19:53 Warning: Warning (2): Missing argument 2 for AddressesController::getAddress()
+     * in [/var/www/html/ampfg/app/Controller/AddressesController.php, line 220]
+     * Trace:
+     * AddressesController::getAddress() - APP/Controller/AddressesController.php, line 220
+     * ReflectionMethod::invokeArgs() - [internal], line ??
+     * Controller::invokeAction() - CORE/Cake/Controller/Controller.php, line 486
+     * Dispatcher::_invoke() - CORE/Cake/Routing/Dispatcher.php, line 187
+     * Dispatcher::dispatch() - CORE/Cake/Routing/Dispatcher.php, line 162
+     * [main] - APP/webroot/index.php, line 111
+     *
+     * this is called from ReplenishmentsController->createReplenishments() the line was
 	 * $defaultShipping = $this->Address->getAddress($addressId);
-	 * I'm not sure what the structure would be for a shipping preference and what a valid $customer would be
-	 * I rem'd out the call which was meant to set a default shipping address if one existed
-
-*/
+	 * I'm not sure what the structure would be for a shipping preference and what
+     * a valid $customer would be. I rem'd out the call which was meant to set a
+     * default shipping address if one existed
+     * 
+     * @param $id string
+     * @param $customer null|string
+    */
 	public function getAddress($id, $customer = null) {
 		$prefs = array();
 		if ($customer != null) {
