@@ -26,7 +26,7 @@ App::uses('RobotIO', 'Controller/Template');
  * @package       Robot.Xml
  * @author jasont
  */
-//abstract class XmlRobotIO extends RobotIO {
+abstract class XmlRobotIO extends RobotIO {
 	
 	protected $xsd;
 
