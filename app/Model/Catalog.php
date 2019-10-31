@@ -483,21 +483,21 @@ class Catalog extends AppModel {
 	 * The Max number of kits will be limited by the component with the least inventory
 	 * 
 	 * @param string $kitId
+     * @return null|string
 	 */
 	public function fetchMaxKitUp($kitId) {
-		$min = $this->find('all', array(
-			'conditions' => array(
+		$min = $this->find('all', [
+			'conditions' => [
 				'Catalog.parent_id' => $kitId,
 				'Catalog.active' => 1
-			),
-			'contain' => array(
-				'Item'
-			),
-			'fields' => array(
+			],
+			'contain' => ['Item'],
+			'group' => ['Item.id'],
+			'fields' => [
 				'MIN(`Item`.`available_qty` / `Catalog`.`sell_quantity`) AS `min`'
-			)
-		));
-		$this->maxKitUp = ($min[0][0]['min'] === NULL) ? 0 : $min[0][0]['min'];
+			]
+		]);
+		$this->maxKitUp = empty($min[0][0]['min']) ? 0 : $min[0][0]['min'];
 		
 		return $this->maxKitUp;
 	}
