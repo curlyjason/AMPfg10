@@ -295,20 +295,18 @@ class Item extends AppModel implements CakeEventListener {
 			'conditions' => array(
 				'status' => 'Backordered',
 			),
-			'fields' => array(
-				'id'
-			),
-			'contain' => array(
-				'OrderItem' => array(
-					'conditions' => array(
+			'fields' => ['id'],
+			'contain' => [
+				'OrderItem' => [
+					'conditions' => [
 						'item_id' => $id
-					),
-					'fields' => array(
+					],
+					'fields' => [
 						'order_id',
 						'SUM(each_quantity)'
-					)
-				)
-			))
+					]
+				]
+			])
 		);
 		$cartCommit = $orderCommit = $backordered = 0;
 
