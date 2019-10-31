@@ -1,4 +1,10 @@
 <?php
+App::uses('ShopController', 'Controller');
+/**
+ * Class CartComponent
+ *
+ * @property ShopController controller
+ */
 class CartComponent extends Component {
 
 //////////////////////////////////////////////////
@@ -52,7 +58,7 @@ class CartComponent extends Component {
 		if($quantity == 0) {
 			return $this->remove($id);
 		}
-		
+
 		//do the basic catalog find
 		$product = $this->controller->Catalog->find('first', array(
 //			'recursive' => 1,

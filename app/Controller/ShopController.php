@@ -3,7 +3,19 @@
 App::uses('AppController', 'Controller');
 App::uses('CakeEvent', 'Event');
 App::uses('InventoryEvent', 'Lib');
+App::uses('CartComponent', 'Controller/Component');
+App::uses('AuthComponent', 'Controller/Component');
+App::uses('FlashComponent', 'Controller/Component');
+App::uses('Catalog', 'Model');
+App::uses('Item', 'Model');
 
+/**
+ * @property CartComponent $Cart;
+ * @property AuthComponent $Auth;
+ * @property FlashComponent $Flash;
+ * @property Catalog $Catalog;
+ * @property Item $Item;
+ */
 
 class ShopController extends AppController {
     public $components = array(

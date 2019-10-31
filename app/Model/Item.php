@@ -6,11 +6,13 @@ App::uses('CakeEvent', 'Event');
 App::uses('InventoryEvent', 'Lib');
 App::uses('AvailableEntries', 'Lib');
 App::uses('CakeSession', 'Model/Datasource');
+App::uses('OrderItem', 'Model');
 
 /**
  * Item Model
  *
  * @property Catalog $Catalog
+ * @property OrderItem $OrderItem
  */
 class Item extends AppModel implements CakeEventListener {
 
@@ -230,7 +232,7 @@ class Item extends AppModel implements CakeEventListener {
 	 */
 	public function manageUncommitted($id) {
 
-// <editor-fold defaultstate="collapsed" desc="Initial Query">
+        // <editor-fold defaultstate="collapsed" desc="Initial Query">
 		// Get commitments for this item
 		$item = $this->find('first', array(
 			'conditions' => array(
@@ -286,7 +288,7 @@ class Item extends AppModel implements CakeEventListener {
 				)
 			)
 		));
-// </editor-fold>
+        // </editor-fold>
 		
 		// Get commitmetns that are on backorders
 		$backorder = $this->OrderItem->Order->find('all', array(
