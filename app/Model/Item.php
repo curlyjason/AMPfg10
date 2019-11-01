@@ -306,7 +306,6 @@ class Item extends AppModel implements CakeEventListener {
 			])
 		);
 		$cartCommit = $orderCommit = $backordered = 0;
-        debug($backorder);
         return;
 
 		// extract the quantity on Cart
