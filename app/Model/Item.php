@@ -234,73 +234,70 @@ class Item extends AppModel implements CakeEventListener {
 
         // <editor-fold defaultstate="collapsed" desc="Initial Query">
 		// Get commitments for this item
-		$item = $this->find('first', array(
-			'conditions' => array(
-				'Item.id' => $id),
-			'fields' => array(
+		$item = $this->find('first', [
+			'conditions' => ['Item.id' => $id],
+			'fields' => [
 				'id',
 				'quantity',
 				'available_qty'
-			),
-			'contain' => array(
-				'Cart' => array(
-					'fields' => array(
+			],
+            'contain' => [
+				'Cart' => [
+					'fields' => [
 						'SUM(each_quantity)'
-					)),
-				'OrderItem' => array(
-					'fields' => array(
-						'id',
-						'SUM(each_quantity)'
-					),
-					'conditions' => array(
-						'pulled' => 0
-					),
-				),
-				'Catalog' => array(
-					'fields' => array(
+					]],
+				'OrderItem' => [
+//					'fields' => ['id', 'SUM(each_quantity)'],
+//					'fields' => ['id', 'each_quantity'],
+					'conditions' => ['pulled' => 0],
+				],
+				'Catalog' => [
+					'fields' => [
 						'Catalog.id',
 						'Catalog.item_id',
 						'Catalog.sell_unit',
 						'Catalog.sell_quantity',
 						'Catalog.type'
-					),
+					],
 					'Item',
-					'ParentCatalog' => array(
-						'fields' => array(
+					'ParentCatalog' => [
+						'fields' => [
 							'ParentCatalog.id',
 							'ParentCatalog.item_id',
 							'ParentCatalog.type',
 							'ParentCatalog.sell_unit',
 							'ParentCatalog.sell_quantity'
-						),
+						],
 						'Item'
-					),
-					'ChildCatalog' => array(
-						'fields' => array(
+					],
+					'ChildCatalog' => [
+						'fields' => [
 							'ChildCatalog.id',
 							'ChildCatalog.item_id',
 							'ChildCatalog.sell_unit',
 							'ChildCatalog.sell_quantity',
 							'ChildCatalog.type'
-						),
+						],
 						'Item'
-					)
-				)
-			)
-		));
+					]
+				]
+			]
+		]);
         // </editor-fold>
-		
+
 		// Get commitmetns that are on backorders
 		$backorder = $this->OrderItem->Order->find('all', array(
 			'conditions' => array(
 				'status' => 'Backordered',
+                'id' => $id
 			),
 			'fields' => ['id'],
 			'contain' => [
 				'OrderItem' => [
-					'conditions' => [
-						'item_id' => $id
-					],
+//					'conditions' => [
+//						'item_id' => $id
+//					],
+//					'group' => ['id'],
 					'fields' => [
 						'order_id',
 						'SUM(each_quantity)'
@@ -309,6 +306,8 @@ class Item extends AppModel implements CakeEventListener {
 			])
 		);
 		$cartCommit = $orderCommit = $backordered = 0;
+        debug($backorder);
+        return;
 
 		// extract the quantity on Cart
 		if (isset($item['Cart'][0]['Cart'][0]['SUM(each_quantity)'])) {
@@ -332,12 +331,12 @@ class Item extends AppModel implements CakeEventListener {
 		// calculate the avaialbe amount
 		$available = $item['Item']['quantity'] - $cartCommit - $orderCommit + $backordered;
 		$this->create();
-		$this->save(array(
-			'Item' => array(
+		$this->save([
+			'Item' => [
 				'id' => $id,
 				'available_qty' => $available
-			)
-		));
+			]
+		]);
 		foreach ($item['Catalog'] as $product) {
 			//switch on Catalog type 
 			if($product['type'] & COMPONENT){
