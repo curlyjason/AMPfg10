@@ -769,6 +769,7 @@ class ItemsController extends AppController {
 	 * Universal testMe function
 	 */
 	public function testMe() {
+	    $this->Item->manageUncommitted(45);die;
 		$this->logInventoryTotals();
 		exit;
 	}
