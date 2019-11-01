@@ -127,53 +127,67 @@ echo $this->Html->div('ajaxEditPull', NULL);
 		
 		// <editor-fold defaultstate="collapsed" desc="Kit Preference section">
 			//Kit Preferences
-		$kitType = (isset($this->request->data['Catalog']['type'])) ? $this->request->data['Catalog']['type'] : '';
-		$parentType = (isset($this->request->data['ParentCatalog']['type'])) ? $this->request->data['ParentCatalog']['type'] : '';
-			if ($kitType & KIT || (($kitType & COMPONENT) && ($parentType &	ORDER_COMPONENT)) || ($action[0] == 'add_' && $kitType & (COMPONENT | ORDER_COMPONENT))) {
-				echo $this->Html->div('kitBlock', null);
-			} else {
-				echo $this->Html->div('kitBlock hide', null);
-			}
-			echo $this->Html->tag('legend', __('Kit Preferences'), array('class' => 'toggle', 'id' => 'kitFields'));
-			echo $this->Html->tag('fieldset', null, array('class' => 'kitFields hide help', 'help' => 'Kit Preferences'));
-				$options = array(
-					INVENTORY_BOTH => 'Inventory Kits and Components Both',
-					INVENTORY_KIT => 'Inventory Kits Only',
-					ON_DEMAND => 'Make Kits on Demand Only'
-				);
-				
-				if (($action[0] != 'add_' && ($this->request->data['Catalog']['type'] & KIT)) ||($action[0] == 'add_' &&  (($kitType & COMPONENT) != COMPONENT))) {
-					echo $this->FgForm->radio('Catalog.kit_prefs', $options, array(
-						'label' => 'Inventory Options',
-							'default' => INVENTORY_BOTH
-					));
-				}
-				
-				
-				echo $this->FgForm->folderCheck('Catalog', 'can_order_components', array(
-					'options' => array((COMPONENT | ORDER_COMPONENT) => 'Users Can Order Components'),
-					'div' => array(
-						'id' => 'CanOrderComponents'
-				)));
-			echo '</fieldset>'; //close kit fieldset
-			echo '</div>'; //close kitBlock div// 
+		$kitType = (isset($this->request->data['Catalog']['type']))
+            ? $this->request->data['Catalog']['type']
+            : '';
+		$parentType = (isset($this->request->data['ParentCatalog']['type']))
+            ? $this->request->data['ParentCatalog']['type']
+            : '';
+        if ($kitType & KIT
+            || (($kitType & COMPONENT) && ($parentType &	ORDER_COMPONENT))
+            || ($action[0] == 'add_' && $kitType & (COMPONENT | ORDER_COMPONENT))) {
+            echo $this->Html->div('kitBlock', null);
+        } else {
+            echo $this->Html->div('kitBlock hide', null);
+        }
+        echo $this->Html->tag(
+            'legend',
+            __('Kit Preferences'),
+            array('class' => 'toggle', 'id' => 'kitFields')
+        );
+        echo $this->Html->tag(
+            'fieldset',
+            null,
+            array('class' => 'kitFields hide help', 'help' => 'Kit Preferences')
+        );
+        $options = array(
+            INVENTORY_BOTH => 'Inventory Kits and Components Both',
+            INVENTORY_KIT => 'Inventory Kits Only',
+            ON_DEMAND => 'Make Kits on Demand Only'
+        );
+
+        if (($action[0] != 'add_' && ($this->request->data['Catalog']['type'] & KIT))
+            ||($action[0] == 'add_' &&  (($kitType & COMPONENT) != COMPONENT))) {
+            echo $this->FgForm->radio('Catalog.kit_prefs', $options, array(
+                'label' => 'Inventory Options',
+                    'default' => INVENTORY_BOTH
+            ));
+        }
+
+        echo $this->FgForm->folderCheck('Catalog', 'can_order_components', array(
+            'options' => [(COMPONENT | ORDER_COMPONENT) => 'Users Can Order Components'],
+            'div' => array(
+                'id' => 'CanOrderComponents'
+        )));
+        echo '</fieldset>'; //close kit fieldset
+        echo '</div>'; //close kitBlock div//
 		//</editor-fold>
 		
 		if (empty($this->request->data['Catalog']['id'])) {
 			echo $this->Html->para('advanced instruction', 'Item source for this catalog entry');
-				echo $this->FgForm->input('Item.source', array(
-					'options' => array('New', 'Existing'),
-					'type' => $radioType,
-					'value' => 0,
-					'legend' => false
-				));
-				echo $this->Form->input('Catalog.item_id', array(
-					'type' => $inputType,
-					'items' => $items, 
-					'empty' => 'Choose an item', 
-					'label' => '',
-					'bind' => 'change.existingItemChange'
-				));
+            echo $this->FgForm->input('Item.source', [
+                'options' => array('New', 'Existing'),
+                'type' => $radioType,
+                'value' => 0,
+                'legend' => false
+            ]);
+            echo $this->Form->input('Catalog.item_id', [
+                'type' => $inputType,
+                'items' => $items,
+                'empty' => 'Choose an item',
+                'label' => '',
+                'bind' => 'change.existingItemChange'
+            ]);
 		}
 
 	//Item Block

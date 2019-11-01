@@ -542,7 +542,10 @@ class FgHtmlHelper extends AppHelper {
         extract($params);
         $keys = array_keys($group);
 		$targetType = $parentNodeType & (KIT | FOLDER | PRODUCT | COMPONENT);
-		$class = ($targetType > 0 ? str_replace('li', 'ul', $this->types[$targetType]) : '') . ($targetType != KIT ? ' sort' : '');
+		$class = (
+		    $targetType > 0
+                ? str_replace('li', 'ul', $this->types[$targetType])
+                : '') . ($targetType != KIT ? ' sort' : '');
         return $this->Html->tag('ul', NULL, array(
 				'id' => $this->secureSelect($group[$keys[0]]['parent_id'], 'ul'),
 				'class' => trim($class)
