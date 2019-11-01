@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>This is the first query with the problematic 'sum' removed</p>
+<pre>
+    /app/Model/Item.php (line 287)
+array(
+	'Item' => array(
+		'id' => '45',
+		'quantity' => '971.0',
+		'available_qty' => '969.0'
+	),
+	'Catalog' => array(
+		(int) 0 => array(
+			'id' => '52',
+			'item_id' => '45',
+			'sell_unit' => 'ea',
+			'sell_quantity' => '1',
+			'type' => '4',
+			'parent_id' => '51',
+			'Item' => array(
+				'id' => '45',
+				'created' => '2014-03-18 13:38:48',
+				'modified' => '2019-10-29 13:31:19',
+				'item_code' => '',
+				'customer_item_code' => '',
+				'name' => 'first item',
+				'description' => '',
+				'description_2' => null,
+				'color' => null,
+				'price' => '0.00',
+				'weight' => '0.00',
+				'quantity' => '971.0',
+				'reorder_qty' => '0',
+				'available_qty' => '969.0',
+				'pending_qty' => '971.0',
+				'reorder_level' => '1',
+				'minimum' => null,
+				'non_stock' => false,
+				'customer_owned' => false,
+				'catalog_count' => '3',
+				'active' => '1',
+				'vendor_id' => '48',
+				'cost' => '0.00',
+				'po_item_code' => '',
+				'po_description' => null,
+				'po_unit' => 'ea',
+				'po_quantity' => '1',
+				'location_id' => null,
+				'max_quantity' => null,
+				'Catalog' => array(
+					(int) 0 => array(
+						'id' => '52',
+						'item_id' => '45',
+						'sell_unit' => 'ea',
+						'sell_quantity' => '1',
+						'type' => '4',
+						'parent_id' => '51'
+					),
+					(int) 1 => array(
+						'id' => '89',
+						'item_id' => '45',
+						'sell_unit' => 'ea',
+						'sell_quantity' => '1',
+						'type' => '4',
+						'parent_id' => '51'
+					),
+					(int) 2 => array(
+						'id' => '143',
+						'item_id' => '45',
+						'sell_unit' => 'ea',
+						'sell_quantity' => '1',
+						'type' => '4',
+						'parent_id' => '51'
+					)
+				),
+				'OrderItem' => array(),
+				'Cart' => array(
+					(int) 0 => array(
+						'item_id' => '45',
+						'Cart' => array(
+							(int) 0 => array(
+								'SUM(each_quantity)' => '4'
+							)
+						)
+					)
+				)
+			),
+			'ParentCatalog' => array(
+				'id' => '51',
+				'item_id' => null,
+				'type' => '2',
+				'sell_unit' => null,
+				'sell_quantity' => null,
+				'Item' => array()
+			),
+			'ChildCatalog' => array()
+		),
+		(int) 1 => array(
+			'id' => '89',
+			'item_id' => '45',
+			'sell_unit' => 'ea',
+			'sell_quantity' => '1',
+			'type' => '4',
+			'parent_id' => '51',
+			'Item' => array(
+				'id' => '45',
+				'created' => '2014-03-18 13:38:48',
+				'modified' => '2019-10-29 13:31:19',
+				'item_code' => '',
+				'customer_item_code' => '',
+				'name' => 'first item',
+				'description' => '',
+				'description_2' => null,
+				'color' => null,
+				'price' => '0.00',
+				'weight' => '0.00',
+				'quantity' => '971.0',
+				'reorder_qty' => '0',
+				'available_qty' => '969.0',
+				'pending_qty' => '971.0',
+				'reorder_level' => '1',
+				'minimum' => null,
+				'non_stock' => false,
+				'customer_owned' => false,
+				'catalog_count' => '3',
+				'active' => '1',
+				'vendor_id' => '48',
+				'cost' => '0.00',
+				'po_item_code' => '',
+				'po_description' => null,
+				'po_unit' => 'ea',
+				'po_quantity' => '1',
+				'location_id' => null,
+				'max_quantity' => null,
+				'Catalog' => array(
+					(int) 0 => array(
+						'id' => '52',
+						'item_id' => '45',
+						'sell_unit' => 'ea',
+						'sell_quantity' => '1',
+						'type' => '4',
+						'parent_id' => '51'
+					),
+					(int) 1 => array(
+						'id' => '89',
+						'item_id' => '45',
+						'sell_unit' => 'ea',
+						'sell_quantity' => '1',
+						'type' => '4',
+						'parent_id' => '51'
+					),
+					(int) 2 => array(
+						'id' => '143',
+						'item_id' => '45',
+						'sell_unit' => 'ea',
+						'sell_quantity' => '1',
+						'type' => '4',
+						'parent_id' => '51'
+					)
+				),
+				'OrderItem' => array(),
+				'Cart' => array(
+					(int) 0 => array(
+						'item_id' => '45',
+						'Cart' => array(
+							(int) 0 => array(
+								'SUM(each_quantity)' => '4'
+							)
+						)
+					)
+				)
+			),
+			'ParentCatalog' => array(
+				'id' => '51',
+				'item_id' => null,
+				'type' => '2',
+				'sell_unit' => null,
+				'sell_quantity' => null,
+				'Item' => array()
+			),
+			'ChildCatalog' => array()
+		),
+		(int) 2 => array(
+			'id' => '143',
+			'item_id' => '45',
+			'sell_unit' => 'ea',
+			'sell_quantity' => '1',
+			'type' => '4',
+			'parent_id' => '51',
+			'Item' => array(
+				'id' => '45',
+				'created' => '2014-03-18 13:38:48',
+				'modified' => '2019-10-29 13:31:19',
+				'item_code' => '',
+				'customer_item_code' => '',
+				'name' => 'first item',
+				'description' => '',
+				'description_2' => null,
+				'color' => null,
+				'price' => '0.00',
+				'weight' => '0.00',
+				'quantity' => '971.0',
+				'reorder_qty' => '0',
+				'available_qty' => '969.0',
+				'pending_qty' => '971.0',
+				'reorder_level' => '1',
+				'minimum' => null,
+				'non_stock' => false,
+				'customer_owned' => false,
+				'catalog_count' => '3',
+				'active' => '1',
+				'vendor_id' => '48',
+				'cost' => '0.00',
+				'po_item_code' => '',
+				'po_description' => null,
+				'po_unit' => 'ea',
+				'po_quantity' => '1',
+				'location_id' => null,
+				'max_quantity' => null,
+				'Catalog' => array(
+					(int) 0 => array(
+						'id' => '52',
+						'item_id' => '45',
+						'sell_unit' => 'ea',
+						'sell_quantity' => '1',
+						'type' => '4',
+						'parent_id' => '51'
+					),
+					(int) 1 => array(
+						'id' => '89',
+						'item_id' => '45',
+						'sell_unit' => 'ea',
+						'sell_quantity' => '1',
+						'type' => '4',
+						'parent_id' => '51'
+					),
+					(int) 2 => array(
+						'id' => '143',
+						'item_id' => '45',
+						'sell_unit' => 'ea',
+						'sell_quantity' => '1',
+						'type' => '4',
+						'parent_id' => '51'
+					)
+				),
+				'OrderItem' => array(),
+				'Cart' => array(
+					(int) 0 => array(
+						'item_id' => '45',
+						'Cart' => array(
+							(int) 0 => array(
+								'SUM(each_quantity)' => '4'
+							)
+						)
+					)
+				)
+			),
+			'ParentCatalog' => array(
+				'id' => '51',
+				'item_id' => null,
+				'type' => '2',
+				'sell_unit' => null,
+				'sell_quantity' => null,
+				'Item' => array()
+			),
+			'ChildCatalog' => array()
+		)
+	),
+	'OrderItem' => array(),
+	'Cart' => array(
+		(int) 0 => array(
+			'item_id' => '45',
+			'Cart' => array(
+				(int) 0 => array(
+					'SUM(each_quantity)' => '4'
+				)
+			)
+		)
+	)
+)
+</pre>
+</body>
+</html>
