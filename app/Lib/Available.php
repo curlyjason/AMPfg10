@@ -69,7 +69,15 @@ class Available extends MessageAbstract {
 		$fields = array_intersect_key($product['Item'], $this->itemFields);
 		$this->_set($fields);
 		
-		$this->properties = array_merge($this->itemFields, $this->productFields, array('product_id' => NULL, 'available_qty' => NULL, 'customer_user_id' => NULL));
+		$this->properties = array_merge(
+		    $this->itemFields,
+            $this->productFields,
+            [
+                'product_id' => NULL,
+                'available_qty' => NULL,
+                'customer_user_id' => NULL
+            ]
+        );
 		
 		// to get compatiblity with message notification system
 		foreach ($this->properties as $key => $dummy) {
