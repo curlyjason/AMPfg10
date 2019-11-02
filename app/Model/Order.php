@@ -390,10 +390,10 @@ class Order extends AppModel {
     }
 
     public function withItemAndShipSums($id) {
-        return $this->find('first', array(
-            'conditions' => array(
-                'Order.id' => $id),
-            'fields' => array(
+        return $this->find('first', [
+            'conditions' => [
+                'Order.id' => $id],
+            'fields' => [
                 'id',
                 'user_id',
                 'status',
@@ -408,28 +408,29 @@ class Order extends AppModel {
                 'user_customer_id',
                 'backorder_id',
                 'taxable'
-            ),
-            'contain' => array(
-                'OrderItem' => array(
-                    'fields' => array(
+            ],
+            'contain' => [
+                'OrderItem' => [
+                    'fields' => [
                         'SUM(weight)',
                         'SUM(subtotal)',
                         'COUNT(id)',
                         'SUM(quantity)'
-                    )
-                ),
-                'Shipment' => array(
-                    'fields' => array(
-                        'SUM(shipment_cost)',
+                    ]
+                ],
+                'Shipment' => [
+                    'fields' => [
+//                        'SUM(shipment_cost)',
+                        'shipment_cost',
                         'tax_jurisdiction',
                         'id',
                         'order_id',
                         'tax_rate_id',
                         'tax_percent'
-                    )
-                )
-            )
-        ));
+                    ],
+                ]
+            ]
+        ]);
     }
 
     /**
