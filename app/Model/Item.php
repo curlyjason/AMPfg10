@@ -247,8 +247,7 @@ class Item extends AppModel implements CakeEventListener {
 						'SUM(each_quantity)'
 					]],
 				'OrderItem' => [
-//					'fields' => ['id', 'SUM(each_quantity)'],
-//					'fields' => ['id', 'each_quantity'],
+					'fields' => ['SUM(each_quantity)'],
 					'conditions' => ['pulled' => 0],
 				],
 				'Catalog' => [
@@ -306,7 +305,6 @@ class Item extends AppModel implements CakeEventListener {
 			])
 		);
 		$cartCommit = $orderCommit = $backordered = 0;
-        return;
 
 		// extract the quantity on Cart
 		if (isset($item['Cart'][0]['Cart'][0]['SUM(each_quantity)'])) {
@@ -330,12 +328,11 @@ class Item extends AppModel implements CakeEventListener {
 		// calculate the avaialbe amount
 		$available = $item['Item']['quantity'] - $cartCommit - $orderCommit + $backordered;
 		$this->create();
-		$this->save([
-			'Item' => [
-				'id' => $id,
-				'available_qty' => $available
-			]
-		]);
+		$data = ['Item' => [
+                'id' => $id,
+                'available_qty' => $available
+            ]];
+		$saveResult = $this->save($data);
 		foreach ($item['Catalog'] as $product) {
 			//switch on Catalog type 
 			if($product['type'] & COMPONENT){
@@ -346,7 +343,8 @@ class Item extends AppModel implements CakeEventListener {
 				$this->addAvailableEntry($product, $available);
 			}
 		}
-		return ($this->available);
+
+        return ($this->available);
 	}
 	
 	/**
