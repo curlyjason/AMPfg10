@@ -4,11 +4,13 @@ App::uses('CakeEvent', 'Event');
 App::uses('OrderStatusEvent', 'Lib');
 App::uses('NotificationFileHandler', 'Lib/Notifiers');
 App::uses('FileExtension', 'Lib');
+App::uses('Item', 'Model');
 
 /**
  * Orders Controller
  *
  * @property Order $Order
+ * @property Item $Item
  */
 class OrdersController extends AppController {
 
@@ -797,7 +799,10 @@ class OrdersController extends AppController {
 
         // if we've gone to zero, dump the item and leave
         if ($qty == 0) {
-            $this->removeOrderItem($id, $orderItem['OrderItem']['order_id'], $orderItem['OrderItem']['item_id']);
+            $this->removeOrderItem(
+                $id,
+                $orderItem['OrderItem']['order_id'],
+                $orderItem['OrderItem']['item_id']);
             return;
         } else {
 
@@ -816,7 +821,7 @@ class OrdersController extends AppController {
 
             // let js know about the save result and pass on the saved data
             $orderItem['OrderItem']['result'] = $result;
-            $this->jsonReturn = array_merge($this->jsonReturn, array('Item' => $orderItem), $available);
+            $this->jsonReturn = array_merge($this->jsonReturn, ['Item' => $orderItem], $available);
             $this->installComponent('OrderTools');
             $this->OrderTools->updateOrder($orderItem['OrderItem']['order_id']);
         }
