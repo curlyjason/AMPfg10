@@ -157,7 +157,11 @@ class ReplenishmentsController extends AppController {
 
         // if we've gone to zero, dump the item and leave
         if ($qty == 0) {
-            $this->removeReplenishmentItem($id, $orderItem['ReplenishmentItem']['replenishment_id'], $orderItem['ReplenishmentItem']['item_id']);
+            $this->removeReplenishmentItem(
+                $id,
+                $orderItem['ReplenishmentItem']['replenishment_id'],
+                $orderItem['ReplenishmentItem']['item_id']
+            );
             return;
         }
 
