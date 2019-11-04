@@ -863,20 +863,18 @@ class Order extends AppModel {
         if( !$this->User->accessibleUserInList ) {
             $this->User->getAccessibleUserInList;
         }
-        if($archived){
-            $statusComparator = '=';
-        } else {
-            $statusComparator = '!=';
-        }
+		$conditions = [
+            'OR' => [
+                'Order.user_id' => $this->User->accessibleUserInList,
+                'Order.user_customer_id' => $this->User->accessibleUserInList
+            ]
+        ];
+		if(!$archived){
+		    $conditions['Order.status !='] = 'Archived';
+		}
 
-        $baseOrderInList = $this->find('list', array(
-            'conditions' => array(
-                'Order.status '.$statusComparator => 'Archived',
-                'OR' => array(
-                    'Order.user_id' => $this->User->accessibleUserInList,
-                    'Order.user_customer_id' => $this->User->accessibleUserInList
-                )
-            )));
+		$baseOrderInList = $this->find('list', ['conditions' => $conditions]);
+
 
         //get Orders belonging to Users that were found by $query (if any)
         if(!empty($this->User->userQueryOrderInList)){
