@@ -107,4 +107,57 @@ class OrderItemsController extends AppController {
 		$this->Flash->set(__('Order item was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+
+	/**
+	 * Update pulled flag on shipped orders
+	 *
+	 * This method is used to clean up orders in shipped, invoiced, and archived status
+	 * that have remaining items that are not marked as pulled due to a software failure
+	 * we have yet to track down.
+	 * Admin use only.
+	 */
+	public function setPulledFlagOnShippedOrders()
+	{
+		$unpulledOrderItems = $this->OrderItem->find('all',[
+			'fields' => [
+				'Order.status',
+				'OrderItem.id',
+				'OrderItem.pulled',
+				'OrderItem.item_id'
+			],
+			'contain' => [
+				'Order'
+			],
+			'conditions' => [
+				'OrderItem.pulled' => 0,
+				'Order.status IN' => [
+					'Shipped',
+					'Invoiced',
+					'Archived'
+				]
+			]
+		] );
+		$count = count($unpulledOrderItems);
+		$error = [];
+		$orderItemsForced = [];
+		$orderItemsFailed = [];
+		foreach ($unpulledOrderItems as $orderItem) {
+			$saveArray = [
+				'id' => $orderItem['OrderItem']['id'],
+				'pulled' => 1
+			];
+			If($this->OrderItem->save($saveArray)){
+				$this->OrderItem->Item->manageUncommitted($orderItem['OrderItem']['item_id']);
+				$orderItemsForced[] = $saveArray['id'];
+			} else {
+				$error[] = $orderItem;
+				$orderItemsFailed[] = $saveArray['id'];
+			}
+		}
+		if ($count > 0) {
+			$forced = implode(", ", $orderItemsForced);
+			$failed = implode(", ", $orderItemsFailed);
+			CakeLog::write('force_pulled', "$count orderItems forced to pulled status. \r Forced: $forced \r Failed: $failed");
+		}
+	}
 }

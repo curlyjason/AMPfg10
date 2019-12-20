@@ -129,6 +129,11 @@ CakeLog::config('error', array(
     'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
     'file' => 'error',
 ));
+CakeLog::config('force_pulled', array(
+    'engine' => 'FileLog',
+    'types' => array('force_pulled'),
+    'file' => 'force_pulled'
+));
 
 /**
  * Establish constants

@@ -467,7 +467,13 @@ class ItemsController extends AppController {
 		$this->report['firstWeek'] = date('W', $this->report['firstTime']);
 		$this->report['finalYear'] = date('Y', $this->report['finalTime']);
 		$this->report['finalWeek'] = date('W', $this->report['finalTime']);
-		
+
+		//Deal with issues with week math allowing the end of the year to fall into the "first" week
+		//JT 2019.12.20
+		If($this->report['finalWeek'] == 1){
+			$this->report['finalWeek'] = date('W', $this->report['finalTime'] - WEEK) +1;
+		}
+
 		$this->report['finalWeekTime'] = strtotime("+{$this->report['finalWeek']} week 1/1/{$this->report['finalYear']}");
 		$this->report['firstWeekTime'] = strtotime("+{$this->report['firstWeek']} week 1/1/{$this->report['firstYear']}");
 		

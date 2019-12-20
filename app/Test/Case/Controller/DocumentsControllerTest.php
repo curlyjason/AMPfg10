@@ -20,8 +20,6 @@ class DocumentsControllerTest extends ControllerTestCase
 	
 	public function testSendFile()
 	{
-		$result = $this->testAction('/documents/sendFile/abcdef');
-		debug($result);
 	}
 	
 }

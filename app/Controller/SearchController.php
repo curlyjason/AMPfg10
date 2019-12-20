@@ -1,6 +1,12 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('Order', 'Model');
 
+/**
+ * Class SearchController
+ *
+ * @property Order $Order
+ */
 class SearchController extends AppController {
 	
 // <editor-fold defaultstate="collapsed" desc="Properties">

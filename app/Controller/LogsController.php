@@ -47,7 +47,16 @@ class LogsController extends AppController {
 				$list[$group][] = $path;
 			}
 		}
-		$this->set('out', $list);
+//Add Sorting to list Jason T 2019.12.20
+		$list_sort = [];
+
+		foreach ($list as $group => $array) {
+			if(is_array($array)){
+				sort($array, SORT_NATURAL);
+				$list_sort[$group] = $array;
+			}
+		}
+		$this->set('out', $list_sort);
 	}
 	
 	public function read($param) {

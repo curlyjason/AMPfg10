@@ -1179,7 +1179,233 @@ class OrdersController extends AppController {
         $this->render('/AppAjax/flash_out');
     }
 
-    public function testMe() {
-        $this->archiveOrders();
+    public function testMe($user_cust_id) {
+        $this->addPullCharges($user_cust_id);
+    }
+
+    /**
+     * This is a backfill procedure that will only be run once
+     * And will never be run again after we get this one done.
+     *
+     * Delete if still here after 10/17/2019
+     * Jason
+     *
+     * @todo Delete this procedure after 10/17/2019
+     * @param $user_cust_id
+     */
+    protected function addPullCharges($user_cust_id)
+    {
+        set_time_limit(10000);
+        ini_set('memory_limit', '1024M');
+        $orders = $this->Order->find('list',
+            ['conditions' =>
+                [
+                    'Order.user_customer_id' => $user_cust_id,
+                    'Order.status' => 'Shipped'
+//                    'Order.order_number LIKE' => '%1908%'
+                ],
+            'fields' => ['Order.id', 'Order.order_number'],
+//                'contain' => FALSE
+            ]);
+//        debug($orders);
+//        die;
+            foreach ($orders as $order_id => $order_number) {
+                $this->setPullCharges($order_id);
+            }
+//            die;
+    }
+
+    public function exportIfOnlyWOW()
+    {
+        $this->export("IfOnly WOW");
+    }
+
+    public function exportIfOnlyGCS()
+    {
+        $this->export("IfOnly GCS");
+    }
+
+    public function exportIfOnlyCenturion()
+    {
+        $this->export("IfOnly Amex Centurion");
+    }
+
+    public function exportIfOnly3DM1()
+    {
+        $this->export("IfOnly Amex 3DM1");
+    }
+
+    public function exportIfOnly3DM2()
+    {
+        $this->export("IfOnly Amex 3DM2");
+    }
+
+    public function exportIfOnlyWOWWine()
+    {
+        $this->exportWine("IfOnly WOW");
+    }
+
+    protected function export($customer)
+    {
+        $filename = str_replace(' ', '_', $customer) . "_" . date("Y_m_d") . ".csv";
+        $this->response->download($filename);
+        $qData = $this->orderExportQuery($customer);
+        $_header = ['User', 'Order Date', 'Order Number', 'Order Reference', 'Note', 'Status', 'Item', 'First Name', 'Last Name'];
+        $_serialize = 'qData';
+        $this->viewClass = 'CsvView.Csv';
+        $this->set(compact('qData', '_serialize', '_header'));
+    }
+
+    protected function orderExportQuery($customer)
+    {
+        $options = [
+            'conditions' => [
+                'UserCustomer.username' => $customer,
+                'Order.status' => 'Released'
+            ],
+            'fields' => [
+                'Order.order_number',
+				'Order.created',
+                'Order.order_reference',
+                'Order.note',
+                'Order.status',
+            ],
+            'contain' => [
+                'UserCustomer' => [
+                    'fields' => [
+                        'username'
+                    ]
+                ],
+                'OrderItem' => [
+                    'fields' => [
+                        'name'
+                    ]
+                ],
+                'Shipment' => [
+                    'fields' => [
+                        'first_name',
+                        'last_name'
+                    ]
+                ]
+            ],
+            'order' => [
+                'Order.order_number'
+            ]
+        ];
+        $data = $this->Order->find('all', $options);
+
+        $qData = [];
+        foreach ($data as $index => $datum) {
+            $qData[$index] = [
+                $datum['UserCustomer']['username'],
+				date('D, m/d/y', strtotime($datum['Order']['created'])),
+                $datum['Order']['order_number'],
+                $datum['Order']['order_reference'],
+                $datum['Order']['note'],
+                $datum['Order']['status'],
+                $datum['OrderItem'][0]['name'],
+                $datum['Shipment'][0]['first_name'],
+                $datum['Shipment'][0]['last_name']
+            ];
+        }
+        return $qData;
+    }
+
+    protected function exportWine($customer)
+    {
+        $filename = str_replace(' ', '_', $customer) . "_"  . "Wine_" . date("Y_m_d") . ".csv";
+        $this->response->download($filename);
+        $qData = $this->orderWineExportQuery($customer);
+        $_header = [
+            'User',
+            'Order Number',
+            'Order Reference',
+            'Note',
+            'Status',
+            'Item',
+            'First Name',
+            'Last Name',
+            'Company',
+            'Address',
+            'Address2',
+            'City',
+            'State',
+            'ZIP',
+            'email',
+            'phone'
+        ];
+        $_serialize = 'qData';
+        $this->viewClass = 'CsvView.Csv';
+        $this->set(compact('qData', '_serialize', '_header'));
+    }
+
+    protected function orderWineExportQuery($customer)
+    {
+        $options = [
+            'conditions' => [
+                'UserCustomer.username' => $customer,
+//                'Order.status' => 'Released',
+                'OrderItem.catalog_id' => '1946'
+            ],
+            'fields' => [
+                'Order.order_number',
+                'Order.order_reference',
+                'Order.note',
+                'Order.status',
+            ],
+            'contain' => [
+                'UserCustomer' => [
+                    'fields' => [
+                        'username'
+                    ]
+                ],
+                'OrderItem' => [
+                    'fields' => [
+                        'name'
+                    ]
+                ],
+                'Shipment' => [
+                    'fields' => [
+                        'first_name',
+                        'last_name',
+                        'company',
+                        'address',
+                        'address2',
+                        'city',
+                        'state',
+                        'zip',
+                        'email',
+                        'phone'
+                    ]
+                ]
+            ],
+            'order' => [
+                'Order.order_number'
+            ]
+        ];
+        $data = $this->Order->find('all', $options);
+
+        $qData = [];
+        foreach ($data as $index => $datum) {
+            $qData[$index] = [
+                $datum['UserCustomer']['username'],
+                $datum['Order']['order_number'],
+                $datum['Order']['order_reference'],
+                $datum['Order']['note'],
+                $datum['Order']['status'],
+                $datum['OrderItem'][0]['name'],
+                $datum['Shipment'][0]['first_name'],
+                $datum['Shipment'][0]['last_name'],
+                $datum['Shipment'][0]['company'],
+                $datum['Shipment'][0]['address'],
+                $datum['Shipment'][0]['address2'],
+                $datum['Shipment'][0]['city'],
+                $datum['Shipment'][0]['state'],
+                $datum['Shipment'][0]['zip'],
+                $datum['Shipment'][0]['email'],
+                $datum['Shipment'][0]['phone']
+            ];
+        }
+        return $qData;
     }
 }
