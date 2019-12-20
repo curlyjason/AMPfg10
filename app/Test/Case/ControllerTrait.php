@@ -8,7 +8,7 @@ trait ControllerTrait
      * Make a Controller with Auth and a logged in user
      *
      * @param $controllerName Short name of the contoller to make
-     * @param string $type Future use to control user access levels
+     * @return Controller
      */
     protected function makeController($controllerName, $userType = null)
     {

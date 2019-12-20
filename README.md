@@ -1,5 +1,23 @@
 # Progress
 
+##Testing
+run testing at 
+http://localhost/AMPfg10/app/webroot/test.php 
+although I've previously had it running at
+http://dev.fg.com/app/webroot/test.php
+
+###Testing improvements
+To get an in-test debug you have to 
+
+`debug($var); die;`
+
+I should be able to write some new function to do both those things... 
+or more? write debug to a file that I can then view? Is LOG available?
+
+Can I get a test that will run all in a folder? right now it's all or one.
+
+##Code Development
+
 - 10/15 
    - The repo was moved in, Cake updated and CakeDC/Users updated. 
    - All the non-composer files like those in config were updated by hand
@@ -42,11 +60,20 @@
       - Baking fixtures with data works through console
          
 # Plan
-- Click around to see how app survived deprecation fixes 
+- Click around to see how app survived deprecation fixes
+   - write tests for code that fails
 - Search out php changes
+- It would be best to get testing working on amp-fg so I could write tests 
+that pass in legacy mode, then move them in to fg10 form conformation 
+during refactoring.
+   - the alternative is to take html-grabs and debugs from amp-fg to 
+   use as `expected` data for the tests.
+- Record any schema changes!!! 
+    - Make a table definition file for amp-fg version so it can be 
+    diff'd against a matching file for fg10
 
 ## Found errors
-- Putting an item on the card yields error
+- Putting an item on the cart yields error
    - >Database Error
    >
    >Error: SQLSTATE[42000]: Syntax error or access violation: 
